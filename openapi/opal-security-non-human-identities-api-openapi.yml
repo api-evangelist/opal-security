@@ -1,0 +1,1462 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@opal.dev
+    name: Opal Team
+    url: https://www.opal.dev/
+  description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
+  title: Opal access-rules non-human-identities API
+  version: '1.0'
+servers:
+- description: Production
+  url: https://api.opal.dev/v1
+tags:
+- name: non-human-identities
+  description: Operations related to non-human identities
+paths:
+  /non-human-identities:
+    get:
+      description: Returns a list of non-human identities for your organization.
+      operationId: get_nhis
+      parameters:
+      - description: The pagination cursor value.
+        example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Number of results to return per page. Default is 200.
+        example: 200
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedResourcesList'
+          description: One page worth non-human identities in your organization.
+      security:
+      - BearerAuth: []
+      tags:
+      - non-human-identities
+components:
+  schemas:
+    Resource:
+      description: '# Resource Object
+
+        ### Description
+
+        The `Resource` object is used to represent a resource.
+
+
+        ### Usage Example
+
+        Update from the `UPDATE Resources` endpoint.'
+      example:
+        resource_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+        description: This resource represents AWS IAM role "SupportUser".
+        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        remote_id: 318038399
+        remote_name: repo-name
+        max_duration: 120
+        require_manager_approval: false
+        require_support_ticket: false
+        parent_resource_id: f454d283-ca67-4a8a-bdbb-df212eca5345
+        ancestor_resource_ids:
+        - f454d283-ca67-4a8a-bdbb-df212eca5345
+        descendant_resource_ids:
+        - f454d283-ca67-4a8a-bdbb-df212eca5345
+      properties:
+        resource_id:
+          description: The ID of the resource.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        app_id:
+          description: The ID of the app.
+          example: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+          format: uuid
+          type: string
+        name:
+          description: The name of the resource.
+          example: mongo-db-prod
+          type: string
+        description:
+          description: A description of the resource.
+          example: This resource represents AWS IAM role "SupportUser".
+          type: string
+        admin_owner_id:
+          description: The ID of the owner of the resource.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
+          format: uuid
+          type: string
+        remote_resource_id:
+          description: The ID of the resource on the remote system.
+          example: 318038399
+          type: string
+        remote_resource_name:
+          description: The name of the resource on the remote system.
+          example: repo-name
+          type: string
+        resource_type:
+          $ref: '#/components/schemas/ResourceTypeEnum'
+        max_duration:
+          description: The maximum duration for which the resource can be requested (in minutes).
+          type: integer
+          example: 120
+        recommended_duration:
+          description: The recommended duration for which the resource should be requested (in minutes). -1 represents an indefinite duration.
+          type: integer
+          example: 120
+        extensions_duration_in_minutes:
+          description: The duration for which access can be extended (in minutes). Set to 0 to disable extensions. When > 0, extensions are enabled for the specified duration.
+          type: integer
+          example: 120
+        require_manager_approval:
+          description: A bool representing whether or not access requests to the resource require manager approval.
+          example: false
+          type: boolean
+          deprecated: true
+        require_support_ticket:
+          description: A bool representing whether or not access requests to the resource require an access ticket.
+          example: false
+          type: boolean
+        require_mfa_to_approve:
+          description: A bool representing whether or not to require MFA for reviewers to approve requests for this resource.
+          example: false
+          type: boolean
+        require_mfa_to_request:
+          description: A bool representing whether or not to require MFA for requesting access to this resource.
+          example: false
+          type: boolean
+        require_mfa_to_connect:
+          description: A bool representing whether or not to require MFA to connect to this resource.
+          example: false
+          type: boolean
+        auto_approval:
+          description: A bool representing whether or not to automatically approve requests to this resource.
+          example: false
+          type: boolean
+        request_template_id:
+          description: The ID of the associated request template.
+          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
+          format: uuid
+          type: string
+        is_requestable:
+          description: A bool representing whether or not to allow access requests to this resource.
+          example: false
+          type: boolean
+        parent_resource_id:
+          description: The ID of the parent resource.
+          example: 06851574-e50d-40ca-8c78-f72ae6ab4305
+          format: uuid
+          type: string
+        configuration_template_id:
+          description: The ID of the associated configuration template.
+          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
+          format: uuid
+          type: string
+        request_configurations:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestConfiguration'
+          description: A list of configurations for requests to this resource.
+        request_configuration_list:
+          description: A list of configurations for requests to this resource. Deprecated in favor of `request_configurations`.
+          deprecated: true
+          items:
+            $ref: '#/components/schemas/RequestConfiguration'
+          type: array
+        ticket_propagation:
+          $ref: '#/components/schemas/TicketPropagationConfiguration'
+        custom_request_notification:
+          description: Custom request notification sent upon request approval.
+          type: string
+          maxLength: 800
+          nullable: true
+        risk_sensitivity:
+          description: The risk sensitivity level for the resource. When an override is set, this field will match that.
+          readOnly: true
+          allOf:
+          - $ref: '#/components/schemas/RiskSensitivityEnum'
+        risk_sensitivity_override:
+          allOf:
+          - $ref: '#/components/schemas/RiskSensitivityEnum'
+        metadata:
+          description: JSON metadata about the remote resource. Only set for items linked to remote systems. See [this guide](https://docs.opal.dev/reference/end-system-objects) for details.
+          deprecated: true
+          example: "{\n  \"okta_directory_role\":\n    {\n      \"role_id\": \"SUPER_ADMIN-b52aa037-4a35-4ac3-9350-f6260fd12345\",\n      \"role_type\": \"SUPER_ADMIN\",\n    },\n}"
+          type: string
+        remote_info:
+          $ref: '#/components/schemas/ResourceRemoteInfo'
+        ancestor_resource_ids:
+          description: List of resource IDs that are ancestors of this resource.
+          type: array
+          items:
+            format: uuid
+            type: string
+          example:
+          - f454d283-ca67-4a8a-bdbb-df212eca5345
+          - f454d283-ca67-4a8a-bdbb-df212eca5346
+        descendant_resource_ids:
+          description: List of resource IDs that are descendants of this resource.
+          type: array
+          items:
+            format: uuid
+            type: string
+          example:
+          - f454d283-ca67-4a8a-bdbb-df212eca5347
+          - f454d283-ca67-4a8a-bdbb-df212eca5348
+        last_successful_sync:
+          readOnly: true
+          description: Information about the last successful sync of this resource.
+          $ref: '#/components/schemas/SyncTask'
+      required:
+      - resource_id
+      type: object
+    RDSEngineEnum:
+      type: string
+      description: The database engine for the RDS instance.
+      enum:
+      - MYSQL
+      - POSTGRESQL
+    RequestConfiguration:
+      description: '# Request Configuration Object
+
+        ### Description
+
+        The `RequestConfiguration` object is used to represent a request configuration.
+
+
+        ### Usage Example
+
+        Returned from the `GET Request Configurations` endpoint.'
+      example:
+        request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        organization_id: w86c85d-0651-43e2-a748-d69d658418e8
+        created_at: 2021-01-06 20:00:00+00:00
+        updated_at: 2021-01-06 20:00:00+00:00
+        condition:
+          group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+        allow_requests: true
+        auto_approval: false
+        require_mfa_to_request: false
+        max_duration_minutes: 120
+        recommended_duration_minutes: 120
+        require_support_ticket: false
+        reviewer_stages:
+        - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+          owner_ids:
+          - 37cb7e41-12ba-46da-92ff-030abe0450b1
+          - 37cb7e41-12ba-46da-92ff-030abe0450b2
+          stage: 1
+        priority: 1
+      type: object
+      properties:
+        condition:
+          description: The condition for the request configuration.
+          $ref: '#/components/schemas/Condition'
+        allow_requests:
+          description: A bool representing whether or not to allow requests for this resource.
+          example: true
+          type: boolean
+        auto_approval:
+          description: A bool representing whether or not to automatically approve requests for this resource.
+          example: false
+          type: boolean
+        require_mfa_to_request:
+          description: A bool representing whether or not to require MFA for requesting access to this resource.
+          example: false
+          type: boolean
+        max_duration_minutes:
+          description: The maximum duration for which the resource can be requested (in minutes).
+          type: integer
+          example: 120
+        recommended_duration_minutes:
+          description: The recommended duration for which the resource should be requested (in minutes). -1 represents an indefinite duration.
+          type: integer
+          example: 120
+        require_support_ticket:
+          description: A bool representing whether or not access requests to the resource require an access ticket.
+          example: false
+          type: boolean
+        extensions_duration_in_minutes:
+          description: The duration for which access can be extended (in minutes). Set to 0 to disable extensions. When > 0, extensions are enabled for the specified duration.
+          type: integer
+          example: 120
+        request_template_id:
+          description: The ID of the associated request template.
+          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
+          format: uuid
+          type: string
+        reviewer_stages:
+          description: The list of reviewer stages for the request configuration.
+          items:
+            $ref: '#/components/schemas/ReviewerStage'
+          type: array
+        priority:
+          description: The priority of the request configuration.
+          example: 1
+          type: integer
+      required:
+      - organization_id
+      - allow_requests
+      - auto_approval
+      - require_mfa_to_request
+      - require_support_ticket
+      - priority
+    Condition:
+      description: '# Condition Object
+
+        ### Description
+
+        The `Condition` object is used to represent a condition.
+
+
+        ### Usage Example
+
+        Used to match request configurations to users in `RequestConfiguration`'
+      example:
+        group_ids:
+        - 1b978423-db0a-4037-a4cf-f79c60cb67b3
+      type: object
+      properties:
+        group_ids:
+          description: The list of group IDs to match.
+          example:
+          - 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          items:
+            type: string
+            format: uuid
+          type: array
+        role_remote_ids:
+          description: The list of role remote IDs to match.
+          example:
+          - arn:aws:iam::590304332660:role/AdministratorAccess
+          type: array
+          items:
+            type: string
+    ResourceRemoteInfo:
+      description: Information that defines the remote resource. This replaces the deprecated remote_id and metadata fields.
+      properties:
+        databricks_account_service_principal:
+          description: Remote info for Databricks account service principal.
+          properties:
+            application_id:
+              description: The application ID of the service principal.
+              example: 00000000-0000-0000-0000-000000000000
+              type: string
+            resource_id:
+              description: The resource ID of the service principal.
+              example: 00000000-0000-0000-0000-000000000000
+              type: string
+          type: object
+          required:
+          - application_id
+          - resource_id
+        azure_subscription:
+          description: Remote info for Azure subscription.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the subscription.
+              example: /subscriptions/00000000-0000-0000-0000-000000000000
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_resource_group:
+          description: Remote info for Azure resource group.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the resource group.
+              example: /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-rg
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_management_group:
+          description: Remote info for Azure management group.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the management group.
+              example: /providers/Microsoft.Management/managementGroups/my-mg
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_virtual_machine:
+          description: Remote info for Azure virtual machine.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the virtual machine.
+              example: /subscriptions/0000/resourceGroups/rg/providers/Microsoft.Compute/virtualMachines/vm01
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_storage_account:
+          description: Remote info for Azure storage account.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the storage account.
+              example: /subscriptions/0000/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/sa01
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_storage_container:
+          description: Remote info for Azure storage container.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the storage container.
+              example: /subscriptions/0000/resourceGroups/rg/providers/Microsoft.Storage/storageAccounts/sa01/blobServices/default/containers/c01
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_sql_server:
+          description: Remote info for Azure SQL server.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the SQL server.
+              example: /subscriptions/0000/resourceGroups/rg/providers/Microsoft.Sql/servers/sqldev01
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_sql_database:
+          description: Remote info for Azure SQL database.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the SQL database.
+              example: /subscriptions/0000/resourceGroups/rg/providers/Microsoft.Sql/servers/sqldev01/databases/db01
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_sql_managed_instance:
+          description: Remote info for Azure SQL managed instance.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the SQL managed instance.
+              example: /subscriptions/0000/resourceGroups/rg/providers/Microsoft.Sql/managedInstances/mi01
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_sql_managed_database:
+          description: Remote info for Azure SQL managed database.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the SQL managed database.
+              example: /subscriptions/0000/resourceGroups/rg/providers/Microsoft.Sql/managedInstances/mi01/databases/midb01
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_user_assigned_managed_identity:
+          description: Remote info for Azure user assigned managed identity.
+          properties:
+            resource_id:
+              description: The ARM resource ID of the user assigned managed identity.
+              example: /subscriptions/0000/resourceGroups/rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id01
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_enterprise_app:
+          description: Remote info for Azure Enterprise App.
+          properties:
+            resource_id:
+              description: The remote application identifier (service principal or application object ID).
+              example: aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
+              type: string
+          type: object
+          required:
+          - resource_id
+        azure_entra_id_role:
+          description: Remote info for Azure Entra ID role.
+          properties:
+            resource_id:
+              description: The remote role identifier from Entra (object ID).
+              example: 11111111-2222-3333-4444-555555555555
+              type: string
+          type: object
+          required:
+          - resource_id
+        aws_organizational_unit:
+          description: Remote info for AWS organizational unit.
+          properties:
+            parent_id:
+              description: The id of the parent organizational unit.
+              example: ou-1234
+              type: string
+            organizational_unit_id:
+              description: The id of the AWS organizational unit that is being created.
+              example: ou-1234
+              type: string
+          type: object
+          required:
+          - organizational_unit_id
+        aws_account:
+          description: Remote info for AWS account.
+          properties:
+            account_id:
+              description: The id of the AWS account.
+              example: 234234234234
+              type: string
+            organizational_unit_id:
+              description: The id of the AWS organizational unit. Required only if customer has OUs enabled.
+              example: ou-1234
+              type: string
+          type: object
+          required:
+          - account_id
+        aws_permission_set:
+          description: Remote info for AWS Identity Center permission set.
+          properties:
+            arn:
+              description: The ARN of the permission set.
+              example: arn:aws:sso:::permissionSet/asdf-32139302d201d32/ps-f03323201211e1b9
+              type: string
+            account_id:
+              description: The ID of an AWS account to which this permission set is provisioned.
+              example: 234234234234
+              type: string
+          type: object
+          required:
+          - arn
+          - account_id
+        aws_iam_role:
+          description: Remote info for AWS IAM role.
+          properties:
+            arn:
+              description: The ARN of the IAM role.
+              example: arn:aws:iam::179308207300:role/MyRole
+              type: string
+            account_id:
+              description: The id of the AWS account. Required for AWS Organizations.
+              example: 234234234234
+              type: string
+          type: object
+          required:
+          - arn
+        aws_ec2_instance:
+          description: Remote info for AWS EC2 instance.
+          properties:
+            instance_id:
+              description: The instanceId of the EC2 instance.
+              example: i-13f1a1e2899f9e93a
+              type: string
+            region:
+              description: The region of the EC2 instance.
+              example: us-east-2
+              type: string
+            account_id:
+              description: The id of the AWS account. Required for AWS Organizations.
+              example: 234234234234
+              type: string
+          type: object
+          required:
+          - instance_id
+          - region
+        aws_rds_cluster:
+          description: Remote info for AWS RDS cluster.
+          properties:
+            cluster_id:
+              description: The clusterId of the RDS cluster.
+              example: demo-mysql-cluster
+              type: string
+            region:
+              description: The region of the RDS cluster.
+              example: us-east-2
+              type: string
+            resource_id:
+              description: The resourceId of the RDS cluster.
+              example: cluster-AOO8V0XUCNU13XLZXQDQRSN0NQ
+              type: string
+            account_id:
+              description: The id of the AWS account. Required for AWS Organizations.
+              example: 234234234234
+              type: string
+            database_name:
+              description: The name of the database in the RDS cluster. This can be the value of the tag `opal:database-name` or the database name.
+              example: mydatabase
+              type: string
+            engine:
+              allOf:
+              - $ref: '#/components/schemas/RDSEngineEnum'
+          type: object
+          required:
+          - cluster_id
+          - region
+          - resource_id
+          - account_id
+          - database_name
+          - engine
+        aws_rds_instance:
+          description: Remote info for AWS RDS instance.
+          properties:
+            instance_id:
+              description: The instanceId of the RDS instance.
+              example: demo-mysql-db
+              type: string
+            region:
+              description: The region of the RDS instance.
+              example: us-east-2
+              type: string
+            resource_id:
+              description: The resourceId of the RDS instance.
+              example: db-AOO8V0XUCNU13XLZXQDQRSN0NQ
+              type: string
+            account_id:
+              description: The id of the AWS account. Required for AWS Organizations.
+              example: 234234234234
+              type: string
+          type: object
+          required:
+          - instance_id
+          - region
+          - resource_id
+        aws_eks_cluster:
+          description: Remote info for AWS EKS cluster.
+          properties:
+            arn:
+              description: The ARN of the EKS cluster.
+              example: arn:aws:eks:us-east-2:234234234234:cluster/testcluster
+              type: string
+            account_id:
+              description: The id of the AWS account. Required for AWS Organizations.
+              example: 234234234234
+              type: string
+          type: object
+          required:
+          - arn
+        custom_connector:
+          description: Remote info for a custom connector resource.
+          properties:
+            remote_resource_id:
+              description: The id of the resource in the end system
+              example: 01fa7402-01d8-103b-8deb-5f3a0ab7884
+              type: string
+            can_have_usage_events:
+              description: A bool representing whether or not the resource can have usage data.
+              example: false
+              type: boolean
+          type: object
+          required:
+          - remote_resource_id
+          - can_have_usage_events
+        gcp_organization:
+          description: Remote info for GCP organization.
+          properties:
+            organization_id:
+              description: The id of the organization.
+              example: organizations/898931321
+              type: string
+          type: object
+          required:
+          - organization_id
+        gcp_bucket:
+          description: Remote info for GCP bucket.
+          properties:
+            bucket_id:
+              description: The id of the bucket.
+              example: example-bucket-898931321
+              type: string
+          type: object
+          required:
+          - bucket_id
+        gcp_compute_instance:
+          description: Remote info for GCP compute instance.
+          properties:
+            instance_id:
+              description: The id of the instance.
+              example: example-instance-898931321
+              type: string
+            project_id:
+              description: The id of the project the instance is in.
+              example: example-project-898931321
+              type: string
+            zone:
+              description: The zone the instance is in.
+              example: us-central1-a
+              type: string
+          type: object
+          required:
+          - instance_id
+          - project_id
+          - zone
+        gcp_big_query_dataset:
+          description: Remote info for GCP BigQuery Dataset.
+          properties:
+            project_id:
+              description: The id of the project the dataset is in.
+              example: example-project-898931321
+              type: string
+            dataset_id:
+              description: The id of the dataset.
+              example: example-dataset-898931321
+              type: string
+          type: object
+          required:
+          - project_id
+          - dataset_id
+        gcp_big_query_table:
+          description: Remote info for GCP BigQuery Table.
+          properties:
+            project_id:
+              description: The id of the project the table is in.
+              example: example-project-898931321
+              type: string
+            dataset_id:
+              description: The id of the dataset the table is in.
+              example: example-dataset-898931321
+              type: string
+            table_id:
+              description: The id of the table.
+              example: example-table-898931321
+              type: string
+          type: object
+          required:
+          - project_id
+          - dataset_id
+          - table_id
+        gcp_folder:
+          description: Remote info for GCP folder.
+          properties:
+            folder_id:
+              description: The id of the folder.
+              example: folder/898931321
+              type: string
+          type: object
+          required:
+          - folder_id
+        gcp_gke_cluster:
+          description: Remote info for GCP GKE cluster.
+          properties:
+            cluster_name:
+              description: The name of the GKE cluster.
+              example: example-cluster-898931321
+              type: string
+          type: object
+          required:
+          - cluster_name
+        gcp_project:
+          description: Remote info for GCP project.
+          properties:
+            project_id:
+              description: The id of the project.
+              example: example-project-898931321
+              type: string
+          type: object
+          required:
+          - project_id
+        gcp_sql_instance:
+          description: Remote info for GCP SQL instance.
+          properties:
+            instance_id:
+              description: The id of the SQL instance.
+              example: example-sql-898931321
+              type: string
+            project_id:
+              description: The id of the project the instance is in.
+              example: example-project-898931321
+              type: string
+          type: object
+          required:
+          - instance_id
+          - project_id
+        gcp_service_account:
+          description: Remote info for a GCP service account.
+          properties:
+            email:
+              description: The email of the service account.
+              example: production@project.iam.gserviceaccount.com
+              type: string
+            service_account_id:
+              description: The id of the service account.
+              example: 103561576023829460000
+              type: string
+            project_id:
+              description: The id of the project the service account is in.
+              example: example-project-898931321
+              type: string
+          type: object
+          required:
+          - email
+          - service_account_id
+          - project_id
+        google_workspace_role:
+          description: Remote info for GCP workspace role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: google-workspace-role:01234567890123456
+              type: string
+          type: object
+          required:
+          - role_id
+        github_repo:
+          description: Remote info for GitHub repository.
+          properties:
+            repo_id:
+              deprecated: true
+              description: The id of the repository.
+              example: 898931321
+              type: string
+            repo_name:
+              description: The name of the repository.
+              example: Opal Security
+              type: string
+            org_name:
+              description: GitHub repo's org name, required only for Enterprise.
+              type: string
+          type: object
+          required:
+          - repo_name
+        github_org_role:
+          description: Remote info for GitHub organization role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 112233
+              type: string
+            org_name:
+              description: GitHub org role's org name, required only for Enterprise.
+              type: string
+          type: object
+          required:
+          - role_id
+        github_org:
+          description: Remote info for GitHub organization.
+          properties:
+            org_name:
+              description: The name of the organization.
+              example: Opal Security
+              type: string
+          type: object
+          required:
+          - org_name
+        github_enterprise_role:
+          description: Remote info for GitHub Enterprise role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 112233
+              type: string
+          type: object
+          required:
+          - role_id
+        gitlab_project:
+          description: Remote info for Gitlab project.
+          properties:
+            project_id:
+              description: The id of the project.
+              example: 898931321
+              type: string
+          type: object
+          required:
+          - project_id
+        okta_app:
+          description: Remote info for Okta directory app.
+          properties:
+            app_id:
+              description: The id of the app.
+              example: a9dfas0f678asdf67867
+              type: string
+          type: object
+          required:
+          - app_id
+        okta_standard_role:
+          description: Remote info for Okta directory standard role.
+          properties:
+            role_type:
+              description: The type of the standard role.
+              example: ORG_ADMIN
+              type: string
+          type: object
+          required:
+          - role_type
+        okta_custom_role:
+          description: Remote info for Okta directory custom role.
+          properties:
+            role_id:
+              description: The id of the custom role.
+              example: a9dfas0f678asdf67867
+              type: string
+          type: object
+          required:
+          - role_id
+        snowflake_database:
+          description: Remote info for Snowflake database.
+          properties:
+            database_name:
+              description: The name of the database.
+              example: mydatabase
+              type: string
+          type: object
+          required:
+          - database_name
+        snowflake_schema:
+          description: Remote info for Snowflake schema.
+          properties:
+            database_name:
+              description: The name of the database the schema is in.
+              example: mydatabase
+              type: string
+            schema_name:
+              description: The name of the schema.
+              example: mycatalogschema
+              type: string
+          type: object
+          required:
+          - database_name
+          - schema_name
+        snowflake_table:
+          description: Remote info for Snowflake table.
+          properties:
+            database_name:
+              description: The name of the database the table is in.
+              example: mydatabase
+              type: string
+            schema_name:
+              description: The name of the schema the table is in.
+              example: mycatalogschema
+              type: string
+            table_name:
+              description: The name of the table.
+              example: myitemstable
+              type: string
+          type: object
+          required:
+          - database_name
+          - schema_name
+          - table_name
+        ilevel_advanced_role:
+          description: Remote info for iLevel Advanced role.
+          properties:
+            role_name:
+              description: The name of the role.
+              example: IT User
+              type: string
+          type: object
+          required:
+          - role_name
+        tailscale_ssh:
+          description: Remote info for Tailscale SSH tag.
+          properties:
+            tag_name:
+              description: The name of the tag.
+              example: admin
+              type: string
+          type: object
+          required:
+          - tag_name
+        twingate_resource:
+          description: Remote info for Twingate resource.
+          properties:
+            resource_id:
+              description: The id of the Twingate resource.
+              example: UmVzb3VyY2U6MTIzNA==
+              type: string
+          type: object
+          required:
+          - resource_id
+        pagerduty_role:
+          description: Remote info for Pagerduty role.
+          properties:
+            role_name:
+              description: The name of the role.
+              example: owner
+              type: string
+          type: object
+          required:
+          - role_name
+        workday_role:
+          description: Remote info for Workday role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 123abc456def
+              type: string
+          type: object
+          required:
+          - role_id
+        salesforce_permission_set:
+          description: Remote info for Salesforce permission set.
+          properties:
+            permission_set_id:
+              description: The id of the permission set.
+              example: 0PS5Y090202wOV7WAM
+              type: string
+          type: object
+          required:
+          - permission_set_id
+        salesforce_profile:
+          description: Remote info for Salesforce profile.
+          properties:
+            profile_id:
+              description: The id of the permission set.
+              example: 0PS5Y090202wOV7WAM
+              type: string
+            user_license_id:
+              description: The id of the user license.
+              example: 1005Y030081Qb5XJHS
+              type: string
+          type: object
+          required:
+          - profile_id
+          - user_license_id
+        salesforce_role:
+          description: Remote info for Salesforce role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 0PS5Y090202wOV7WAM
+              type: string
+          type: object
+          required:
+          - role_id
+        teleport_role:
+          description: Remote info for Teleport role.
+          properties:
+            role_name:
+              description: The name role.
+              example: admin_role
+              type: string
+          type: object
+          required:
+          - role_name
+        datastax_astra_role:
+          description: Remote info for an Astra role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 123e4567-e89b-12d3-a456-426614174000
+              type: string
+          type: object
+          required:
+          - role_id
+        coupa_role:
+          description: Remote info for Coupa role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 999
+              type: string
+          type: object
+          required:
+          - role_id
+        cursor_organization:
+          description: Remote info for a Cursor organization.
+          properties:
+            org_id:
+              description: The id of the organization.
+              example: 123e4567-e89b-12d3-a456-426614174000
+              type: string
+          type: object
+          required:
+          - org_id
+        openai_platform_project:
+          description: Remote info for OpenAI Platform project.
+          properties:
+            project_id:
+              description: The id of the project.
+              example: proj_abc
+              type: string
+          type: object
+          required:
+          - project_id
+        openai_platform_service_account:
+          description: Remote info for OpenAI Platform service account.
+          properties:
+            project_id:
+              description: The id of the project for the service account.
+              example: proj_abc
+              type: string
+            service_account_id:
+              description: The id of the service account.
+              example: svc_acct_abc
+              type: string
+          type: object
+          required:
+          - project_id
+          - service_account_id
+        anthropic_workspace:
+          description: Remote info for Anthropic workspace.
+          properties:
+            workspace_id:
+              description: The id of the workspace.
+              example: ws-123456
+              type: string
+          type: object
+          required:
+          - workspace_id
+        oracle_fusion_role:
+          description: Remote info for Oracle Fusion role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 123e4567-e89b-12d3-a456-426614174000
+              type: string
+          type: object
+          required:
+          - role_id
+        devin_organization:
+          description: Remote info for Devin organization.
+          properties:
+            org_id:
+              description: The id of the organization.
+              example: devin-org-01
+              type: string
+          type: object
+          required:
+          - org_id
+        devin_role:
+          description: Remote info for Devin role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: devin-role-01
+              type: string
+          type: object
+          required:
+          - role_id
+        netsuite_role:
+          description: Remote info for NetSuite role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 123e4567-e89b-12d3-a456-426614174000
+              type: string
+          type: object
+          required:
+          - role_id
+        datadog_role:
+          description: Remote info for Datadog role.
+          properties:
+            role_id:
+              description: The id of the role.
+              example: 123e4567-e89b-12d3-a456-426614174000
+              type: string
+          type: object
+          required:
+          - role_id
+        clickhouse_database:
+          description: Remote info for ClickHouse database.
+          properties:
+            database_name:
+              description: The name of the ClickHouse database.
+              example: my_database
+              type: string
+          type: object
+          required:
+          - database_name
+        clickhouse_table:
+          description: Remote info for ClickHouse table.
+          properties:
+            database_name:
+              description: The name of the ClickHouse database containing the table.
+              example: my_database
+              type: string
+            table_name:
+              description: The name of the ClickHouse table.
+              example: my_table
+              type: string
+          type: object
+          required:
+          - database_name
+          - table_name
+        grafana_folder:
+          description: Remote info for Grafana folder.
+          properties:
+            folder_uid:
+              description: The UID of the Grafana folder.
+              example: fffRTXX
+              type: string
+          type: object
+          required:
+          - folder_uid
+        grafana_dashboard:
+          description: Remote info for Grafana dashboard.
+          properties:
+            dashboard_uid:
+              description: The UID of the Grafana dashboard.
+              example: dddRTXX
+              type: string
+          type: object
+          required:
+          - dashboard_uid
+        grafana_role:
+          description: Remote info for Grafana role(fixed or custom).
+          properties:
+            role_uid:
+              description: The UID of the Grafana role.
+              example: rrfRTXX
+              type: string
+          type: object
+          required:
+          - role_uid
+        zendesk_role:
+          description: Remote info for Zendesk custom role.
+          properties:
+            role_id:
+              description: The ID of the Zendesk custom role.
+              example: '12345'
+              type: string
+          type: object
+          required:
+          - role_id
+        hubspot_role:
+          description: Remote info for HubSpot role.
+          properties:
+            role_id:
+              description: The ID of the HubSpot role.
+              example: '12345'
+              type: string
+          type: object
+          required:
+          - role_id
+      type: object
+    RiskSensitivityEnum:
+      type: string
+      description: Indicates the level of potential impact misuse or unauthorized access may incur.
+      enum:
+      - UNKNOWN
+      - CRITICAL
+      - HIGH
+      - MEDIUM
+      - LOW
+      - NONE
+    TicketPropagationConfiguration:
+      description: Configuration for ticket propagation, when enabled, a ticket will be created for access changes related to the users in this resource.
+      type: object
+      properties:
+        enabled_on_grant:
+          type: boolean
+        enabled_on_revocation:
+          type: boolean
+        ticket_provider:
+          $ref: '#/components/schemas/TicketingProviderEnum'
+        ticket_project_id:
+          type: string
+      required:
+      - enabled_on_grant
+      - enabled_on_revocation
+    TicketingProviderEnum:
+      description: The third party ticketing platform provider.
+      enum:
+      - JIRA
+      - LINEAR
+      - SERVICE_NOW
+      example: LINEAR
+      type: string
+    ReviewerStage:
+      description: A reviewer stage.
+      example:
+        owner_ids:
+        - 7870617d-e72a-47f5-a84c-693817ab4567
+        - 1520617d-e72a-47f5-a84c-693817ab48ad2
+        service_user_ids:
+        - 7870617d-e72a-47f5-a84c-693817ab4568
+      properties:
+        require_manager_approval:
+          description: Whether this reviewer stage should require manager approval.
+          example: false
+          type: boolean
+        require_admin_approval:
+          description: Whether this reviewer stage should require admin approval.
+          example: false
+          type: boolean
+        operator:
+          description: The operator of the reviewer stage. Admin and manager approval are also treated as reviewers.
+          enum:
+          - AND
+          - OR
+          example: AND
+          type: string
+        owner_ids:
+          description: The IDs of owners assigned as reviewers for this stage.
+          items:
+            type: string
+            format: uuid
+          type: array
+        service_user_ids:
+          description: The IDs of service users assigned as reviewers for this stage.
+          items:
+            type: string
+            format: uuid
+          type: array
+      type: object
+      required:
+      - operator
+      - require_manager_approval
+      - owner_ids
+      - stage
+    PaginatedResourcesList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - resource_id: f454d283-ca67-4a8a-bdbb-df212eca5353
+          description: This resource represents AWS IAM role "SupportUser".
+          admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+          remote_id: arn:aws:iam::490306337630:role/SupportUser
+          remote_name: SupportUser
+          max_duration: 120
+          require_manager_approval: false
+          require_support_ticket: false
+          parent_resource_id: f454d283-ca67-4a8a-bdbb-df212eca5345
+        - resource_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+          description: This resource represents GCP project "app-demo".
+          remote_id: app-demo-307223
+          remote_name: app-demo
+          admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+          max_duration: 360
+          require_manager_approval: false
+          require_support_ticket: true
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Resource'
+          type: array
+      type: object
+      required:
+      - results
+    ResourceTypeEnum:
+      description: The type of the resource.
+      enum:
+      - AWS_IAM_ROLE
+      - AWS_EC2_INSTANCE
+      - AWS_EKS_CLUSTER
+      - AWS_RDS_POSTGRES_CLUSTER
+      - AWS_RDS_POSTGRES_INSTANCE
+      - AWS_RDS_MYSQL_CLUSTER
+      - AWS_RDS_MYSQL_INSTANCE
+      - AWS_ACCOUNT
+      - AWS_SSO_PERMISSION_SET
+      - AWS_ORGANIZATIONAL_UNIT
+      - AZURE_MANAGEMENT_GROUP
+      - AZURE_RESOURCE_GROUP
+      - AZURE_SUBSCRIPTION
+      - AZURE_VIRTUAL_MACHINE
+      - AZURE_STORAGE_ACCOUNT
+      - AZURE_STORAGE_CONTAINER
+      - AZURE_SQL_SERVER
+      - AZURE_SQL_MANAGED_INSTANCE
+      - AZURE_SQL_DATABASE
+      - AZURE_SQL_MANAGED_DATABASE
+      - AZURE_USER_ASSIGNED_MANAGED_Identity
+      - AZURE_ENTRA_ID_ROLE
+      - AZURE_ENTERPRISE_APP
+      - CUSTOM
+      - CUSTOM_CONNECTOR
+      - DATABRICKS_ACCOUNT_SERVICE_PRINCIPAL
+      - GCP_ORGANIZATION
+      - GCP_BUCKET
+      - GCP_COMPUTE_INSTANCE
+      - GCP_FOLDER
+      - GCP_GKE_CLUSTER
+      - GCP_PROJECT
+      - GCP_CLOUD_SQL_POSTGRES_INSTANCE
+      - GCP_CLOUD_SQL_MYSQL_INSTANCE
+      - GCP_BIG_QUERY_DATASET
+      - GCP_BIG_QUERY_TABLE
+      - GCP_SERVICE_ACCOUNT
+      - GIT_HUB_REPO
+      - GIT_HUB_ORG_ROLE
+      - GIT_LAB_PROJECT
+      - GOOGLE_WORKSPACE_ROLE
+      - MONGO_INSTANCE
+      - MONGO_ATLAS_INSTANCE
+      - NETSUITE_ROLE
+      - DATADOG_ROLE
+      - OKTA_APP
+      - OKTA_ROLE
+      - OPAL_ROLE
+      - OPAL_SCOPED_ROLE
+      - PAGERDUTY_ROLE
+      - TAILSCALE_SSH
+      - SALESFORCE_PERMISSION_SET
+      - SALESFORCE_PROFILE
+      - SALESFORCE_ROLE
+      - SNOWFLAKE_DATABASE
+      - SNOWFLAKE_SCHEMA
+      - SNOWFLAKE_TABLE
+      - WORKDAY_ROLE
+      - MYSQL_INSTANCE
+      - MARIADB_INSTANCE
+      - POSTGRES_INSTANCE
+      - TELEPORT_ROLE
+      - ILEVEL_ADVANCED_ROLE
+      - DATASTAX_ASTRA_ROLE
+      - COUPA_ROLE
+      - CURSOR_ORGANIZATION
+      - OPENAI_PLATFORM_PROJECT
+      - OPENAI_PLATFORM_SERVICE_ACCOUNT
+      - ANTHROPIC_WORKSPACE
+      - GIT_HUB_ORG
+      - ORACLE_FUSION_ROLE
+      - DEVIN_ORGANIZATION
+      - DEVIN_ROLE
+      - VAULT_SECRET
+      - VAULT_POLICY
+      - VAULT_OIDC_ROLE
+      - GIT_HUB_ENTERPRISE_ROLE
+      - GRAFANA_FOLDER
+      - GRAFANA_DASHBOARD
+      - GRAFANA_BASIC_ROLE
+      - GRAFANA_ROLE
+      - CLICKHOUSE_DATABASE
+      - CLICKHOUSE_TABLE
+      - TWINGATE_RESOURCE
+      - ZENDESK_ROLE
+      - HUBSPOT_ROLE
+      example: AWS_IAM_ROLE
+      type: string
+    SyncTask:
+      type: object
+      description: Represents a sync task that has been completed, either successfully or with errors.
+      properties:
+        id:
+          description: The ID of the sync task.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
+          format: uuid
+          type: string
+        completed_at:
+          description: The time when the sync task was completed.
+          example: 2023-10-01 12:00:00+00:00
+          type: string
+          format: date-time
+      required:
+      - id
+      - completed_at
+      example:
+        id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        completed_at: 2023-10-01 12:00:00+00:00
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http

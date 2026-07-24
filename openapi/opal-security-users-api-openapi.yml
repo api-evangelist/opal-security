@@ -1,0 +1,444 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@opal.dev
+    name: Opal Team
+    url: https://www.opal.dev/
+  description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
+  title: Opal access-rules users API
+  version: '1.0'
+servers:
+- description: Production
+  url: https://api.opal.dev/v1
+tags:
+- name: users
+  description: Operations related to users
+paths:
+  /user:
+    get:
+      description: Returns a `User` object.
+      operationId: user
+      parameters:
+      - description: The user ID of the user.
+        example: 32acc112-21ff-4669-91c2-21e27683eaa1
+        explode: true
+        in: query
+        name: user_id
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: The email of the user. If both user ID and email are provided, user ID will take precedence. If neither are provided, an error will occur.
+        example: johndoe@domain.org
+        explode: true
+        in: query
+        name: email
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: The user object associated with the passed-in email or ID.
+      security:
+      - BearerAuth: []
+      tags:
+      - users
+  /users:
+    get:
+      description: Returns a list of users for your organization.
+      operationId: getUsers
+      parameters:
+      - description: The pagination cursor value.
+        example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Number of results to return per page. Default is 200.
+        example: 200
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+        style: form
+      - description: The IDs of the tags to filter by. Returns only users that have any of these tags applied.
+        in: query
+        name: tag_ids
+        required: false
+        schema:
+          type: array
+          items:
+            format: uuid
+            type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedUsersList'
+          description: One page worth users in your organization.
+      security:
+      - BearerAuth: []
+      tags:
+      - users
+  /users/remote_users:
+    get:
+      description: Returns a list of remote users for your organization.
+      operationId: getRemoteUsers
+      parameters:
+      - description: Filter remote users by their third party provider.
+        example:
+        - GIT_HUB
+        in: query
+        name: third_party_provider
+        required: false
+        schema:
+          type: array
+          items:
+            $ref: '#/components/schemas/ThirdPartyProviderEnum'
+        style: form
+      - description: Filter remote users by their user ID.
+        example:
+        - 32acc112-21ff-4669-91c2-21e27683eaa1
+        in: query
+        name: user_id
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            format: uuid
+        style: form
+      - description: Filter remote users by their remote ID.
+        example:
+        - 1234567890
+        in: query
+        name: remote_id
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        style: form
+      - description: The pagination cursor value.
+        example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Number of results to return per page. Default is 200.
+        example: 200
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedRemoteUsersList'
+          description: One page worth users in your organization.
+      security:
+      - BearerAuth: []
+      tags:
+      - users
+  /users/{user_id}/tags:
+    get:
+      description: Returns all tags applied to the user.
+      operationId: get_user_tags
+      parameters:
+      - description: The ID of the user whose tags to return.
+        name: user_id
+        example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+        explode: false
+        in: path
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TagsList'
+          description: The tags applied to the user.
+      security:
+      - BearerAuth: []
+      tags:
+      - users
+components:
+  schemas:
+    ThirdPartyProviderEnum:
+      description: The third party provider of the remote user.
+      enum:
+      - AUTH0
+      - SLACK
+      - GOOGLE_CHAT
+      - JIRA
+      - LINEAR
+      - SERVICE_NOW
+      - FRESH_SERVICE
+      - SHORTCUT
+      - PAGER_DUTY
+      - OPSGENIE
+      - GIT_HUB
+      - GIT_LAB
+      - GIT_LAB_CONNECTION
+      - TELEPORT
+      example: GIT_HUB
+      type: string
+    Tag:
+      description: '# Tag Object
+
+        ### Description
+
+        The `Tag` object is used to represent a tag.
+
+
+        ### Usage Example
+
+        Get tags from the `GET Tag` endpoint.'
+      example:
+        tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+        created_at: 2022-01-23 04:56:07+00:00
+        updated_at: 2022-02-23 01:34:07+00:00
+        user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
+        key: database-name
+        value: redis_db
+      properties:
+        tag_id:
+          description: The ID of the tag.
+          example: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+          format: uuid
+          type: string
+        created_at:
+          description: The date the tag was created.
+          example: 2022-01-23 04:56:07+00:00
+          format: date-time
+          type: string
+        updated_at:
+          description: The date the tag was last updated.
+          example: 2022-02-23 01:34:07+00:00
+          format: date-time
+          type: string
+        user_creator_id:
+          description: The ID of the user that created the tag.
+          example: d4a7d928-783e-4599-8ec6-088d635a5bcc
+          format: uuid
+          type: string
+        key:
+          description: The key of the tag.
+          example: database-name
+          type: string
+        value:
+          description: The value of the tag.
+          example: redis_db
+          type: string
+      type: object
+      required:
+      - tag_id
+    PaginatedUsersList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          email: john.doe@company.dev
+          full_name: John Doe
+          position: Senior Engineer
+        - user_id: e8581682-04f7-473a-a419-472f0fb26d46
+          email: jane.smith@company.dev
+          full_name: Jane Smith
+          position: Product Marketing Lead
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+      type: object
+      required:
+      - results
+    User:
+      description: '# User Object
+
+        ### Description
+
+        The `User` object is used to represent a user.
+
+
+        ### Usage Example
+
+        Fetch from the `LIST Sessions` endpoint.'
+      example:
+        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        email: john.doe@company.dev
+        full_name: John Doe
+        first_name: John
+        last_name: Doe
+        position: Engineer
+      properties:
+        user_id:
+          description: The ID of the user.
+          example: h0z968412-2451-4bbd-42h4-057l715d917m
+          format: uuid
+          type: string
+        email:
+          description: The email of the user.
+          example: john.doe@company.dev
+          type: string
+        full_name:
+          description: The full name of the user.
+          example: John Doe
+          type: string
+        first_name:
+          description: The first name of the user.
+          example: John
+          type: string
+        last_name:
+          description: The last name of the user.
+          example: Doe
+          type: string
+        position:
+          description: The user's position.
+          example: Senior Engineer
+          type: string
+        hr_idp_status:
+          $ref: '#/components/schemas/UserHrIdpStatusEnum'
+      required:
+      - user_id
+      - email
+      - full_name
+      - first_name
+      - last_name
+      - position
+      type: object
+    PaginatedRemoteUsersList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          remote_id: 1234567890
+          third_party_provider: GIT_LAB
+        - user_id: 29827fb8-f2dd-4e80-9576-238979927392
+          remote_id: remoteid123
+          third_party_provider: GIT_HUB
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/RemoteUser'
+          type: array
+      type: object
+      required:
+      - results
+    UserHrIdpStatusEnum:
+      description: User status pulled from an HR/IDP provider.
+      enum:
+      - ACTIVE
+      - SUSPENDED
+      - DEPROVISIONED
+      - DELETED
+      - NOT_FOUND
+      example: ACTIVE
+      type: string
+    TagsList:
+      example:
+        results:
+        - tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+          created_at: 2022-01-23 04:56:07+00:00
+          updated_at: 2022-02-23 01:34:07+00:00
+          user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
+          admin_owner_id: bfb518b1-3f5b-4e3b-8eb8-3b3fabd4ea2b
+          key: database-name
+          value: redis_db
+        - tag_id: 92f0a738-5f9f-43c2-ad67-fa31ff0eb052
+          created_at: 2022-03-23 04:56:07+00:00
+          updated_at: 2022-04-23 01:34:07+00:00
+          user_creator_id: a4d7d928-783e-4599-8ec6-088d635af4ac
+          admin_owner_id: gtg418b1-3f5b-4e3b-8eb8-3b3fabd4eaa1
+          key: database-type
+          value: sql
+      properties:
+        tags:
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
+      required:
+      - tags
+      type: object
+    RemoteUser:
+      description: '# RemoteUser Object
+
+        ### Description
+
+        The `RemoteUser` object is used to represent a remote user.'
+      example:
+        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        remote_id: 1234567890
+        third_party_provider: GIT_HUB
+      properties:
+        user_id:
+          description: The ID of the user.
+          example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          format: uuid
+          type: string
+        remote_id:
+          description: The ID of the remote user.
+          example: 1234567890
+          type: string
+        third_party_provider:
+          description: The third party provider of the remote user.
+          example: GIT_HUB
+          $ref: '#/components/schemas/ThirdPartyProviderEnum'
+      required:
+      - user_id
+      - remote_id
+      - third_party_provider
+      type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http

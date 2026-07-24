@@ -1,0 +1,511 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@opal.dev
+    name: Opal Team
+    url: https://www.opal.dev/
+  description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
+  title: Opal access-rules owners API
+  version: '1.0'
+servers:
+- description: Production
+  url: https://api.opal.dev/v1
+tags:
+- name: owners
+  description: Operations related to owners
+paths:
+  /owners:
+    get:
+      summary: Get owners
+      description: Returns a list of `Owner` objects.
+      operationId: get_owners
+      parameters:
+      - description: The pagination cursor value.
+        example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Number of results to return per page. Default is 200.
+        example: 200
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+        style: form
+      - description: Owner name to filter by.
+        example: 200
+        explode: true
+        in: query
+        name: name
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOwnersList'
+          description: One page worth of owners in your organization.
+      security:
+      - BearerAuth: []
+      tags:
+      - owners
+    post:
+      description: Creates an owner.
+      operationId: createOwner
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOwnerInfo'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+          description: The owner just created.
+      security:
+      - BearerAuth: []
+      tags:
+      - owners
+    put:
+      description: Bulk updates a list of owners.
+      operationId: updateOwners
+      requestBody:
+        description: Owners to be updated
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOwnerInfoList'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateOwnerInfoList'
+          description: The resulting updated owner infos.
+      security:
+      - BearerAuth: []
+      tags:
+      - owners
+  /owners/{owner_id}:
+    get:
+      summary: Get owner by ID
+      description: Returns an `Owner` object.
+      operationId: getOwner
+      parameters:
+      - description: The ID of the owner.
+        example: 32acc112-21ff-4669-91c2-21e27683eaa1
+        explode: true
+        in: path
+        name: owner_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+          description: The owner object associated with the passed-in ID.
+      security:
+      - BearerAuth: []
+      tags:
+      - owners
+    delete:
+      description: Deletes an owner.
+      operationId: delete_owner
+      parameters:
+      - description: The ID of the owner.
+        example: 4baf8423-db0a-4037-a4cf-f79c60cb67a5
+        explode: false
+        in: path
+        name: owner_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        '200':
+          description: The owner was successfully deleted.
+      security:
+      - BearerAuth: []
+      tags:
+      - owners
+  /owners/name/{owner_name}:
+    get:
+      description: Returns an `Owner` object. Does not support owners with `/` in their name, use /owners?name=... instead.
+      operationId: getOwnerFromName
+      parameters:
+      - description: The name of the owner.
+        example: MyOwner
+        explode: true
+        in: path
+        name: owner_name
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Owner'
+          description: The owner object associated with the passed-in name.
+      security:
+      - BearerAuth: []
+      tags:
+      - owners
+  /owners/{owner_id}/users:
+    get:
+      description: Gets the list of users for this owner, in escalation priority order if applicable.
+      operationId: get_owner_users
+      parameters:
+      - description: The ID of the owner.
+        example: 4baf8423-db0a-4037-a4cf-f79c60cb67a5
+        explode: false
+        in: path
+        name: owner_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+          description: The users for this owner.
+      security:
+      - BearerAuth: []
+      tags:
+      - owners
+    put:
+      description: Sets the list of users for this owner. If escalation is enabled, the order of this list is the escalation priority order of the users. If the owner has a source group, adding or removing users from this list won't be possible.
+      operationId: set_owner_users
+      parameters:
+      - description: The ID of the owner.
+        example: 4baf8423-db0a-4037-a4cf-f79c60cb67a5
+        explode: false
+        in: path
+        name: owner_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserIDList'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserList'
+          description: The updated users for the owner.
+      security:
+      - BearerAuth: []
+      tags:
+      - owners
+components:
+  schemas:
+    UpdateOwnerInfoList:
+      example:
+        owners:
+        - owner_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+          name: API Owner
+          description: This owner represents the API team owners.
+          access_request_escalation_period: 120
+        - owner_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+          name: Finance Owner
+          description: This owner represents the Finance team owners.
+          access_request_escalation_period: 15
+      properties:
+        owners:
+          description: A list of owners with information to update.
+          items:
+            $ref: '#/components/schemas/UpdateOwnerInfo'
+          type: array
+      type: object
+      required:
+      - owners
+    PaginatedOwnersList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - owner_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+          name: API Owner
+          description: This owner represents the API team owners.
+          access_request_escalation_period: 120
+        - owner_id: e8581682-04f7-473a-a419-472f0fb26d46
+          name: Finance Owner
+          description: This owner represents the Finance team owners.
+          access_request_escalation_period: 120
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Owner'
+          type: array
+      type: object
+      required:
+      - results
+    Owner:
+      description: '# Owner Object
+
+        ### Description
+
+        The `Owner` object is used to represent an owner.'
+      example:
+        owner_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        name: API Owner
+        description: This owner represents the API team owners.
+        access_request_escalation_period: 120
+      properties:
+        owner_id:
+          description: The ID of the owner.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        name:
+          description: The name of the owner.
+          example: API Owner
+          type: string
+        description:
+          description: A description of the owner.
+          example: This owner represents the API team owners.
+          type: string
+        access_request_escalation_period:
+          description: The amount of time (in minutes) before the next reviewer is notified. Use 0 to remove escalation policy.
+          type: integer
+          example: 120
+        reviewer_message_channel_id:
+          example: 37cb7e41-12ba-46da-92ff-030abe0450b1
+          format: uuid
+          type: string
+          nullable: true
+        source_group_id:
+          example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          format: uuid
+          type: string
+          nullable: true
+      required:
+      - owner_id
+      type: object
+    UserIDList:
+      description: A list of user IDs.
+      example:
+        user_ids:
+        - 7870617d-e72a-47f5-a84c-693817ab4567
+        - 1520617d-e72a-47f5-a84c-693817ab48ad2
+      properties:
+        user_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+      type: object
+      required:
+      - user_ids
+    UpdateOwnerInfo:
+      description: '# UpdateOwnerInfo Object
+
+        ### Description
+
+        The `UpdateOwnerInfo` object is used as an input to the UpdateOwner API.'
+      example:
+        owner_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        name: API Owner
+        description: This owner represents the API team owners.
+        access_request_escalation_period: 120
+      properties:
+        owner_id:
+          description: The ID of the owner.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        name:
+          description: The name of the owner.
+          example: API Owner
+          type: string
+        description:
+          description: A description of the owner.
+          example: This owner represents the API team owners.
+          type: string
+        access_request_escalation_period:
+          description: The amount of time (in minutes) before the next reviewer is notified. Use 0 to remove escalation policy.
+          example: 120
+          type: integer
+        reviewer_message_channel_id:
+          description: The message channel id for the reviewer channel. Use "" to remove an existing message channel.
+          example: 37cb7e41-12ba-46da-92ff-030abe0450b1
+          type: string
+        source_group_id:
+          description: Sync this owner's user list with a source group. Use "" to remove an existing source group.
+          example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          format: uuid
+          type: string
+      required:
+      - owner_id
+      type: object
+    User:
+      description: '# User Object
+
+        ### Description
+
+        The `User` object is used to represent a user.
+
+
+        ### Usage Example
+
+        Fetch from the `LIST Sessions` endpoint.'
+      example:
+        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        email: john.doe@company.dev
+        full_name: John Doe
+        first_name: John
+        last_name: Doe
+        position: Engineer
+      properties:
+        user_id:
+          description: The ID of the user.
+          example: h0z968412-2451-4bbd-42h4-057l715d917m
+          format: uuid
+          type: string
+        email:
+          description: The email of the user.
+          example: john.doe@company.dev
+          type: string
+        full_name:
+          description: The full name of the user.
+          example: John Doe
+          type: string
+        first_name:
+          description: The first name of the user.
+          example: John
+          type: string
+        last_name:
+          description: The last name of the user.
+          example: Doe
+          type: string
+        position:
+          description: The user's position.
+          example: Senior Engineer
+          type: string
+        hr_idp_status:
+          $ref: '#/components/schemas/UserHrIdpStatusEnum'
+      required:
+      - user_id
+      - email
+      - full_name
+      - first_name
+      - last_name
+      - position
+      type: object
+    CreateOwnerInfo:
+      description: '# CreateOwnerInfo Object
+
+        ### Description
+
+        The `CreateOwnerInfo` object is used to store creation info for an owner.
+
+
+        ### Usage Example
+
+        Use in the `POST Owners` endpoint.'
+      example:
+        name: API Owner
+        description: This owner represents the API team owners.
+        access_request_escalation_period: 120
+      properties:
+        name:
+          description: The name of the owner.
+          example: API Owner
+          type: string
+        description:
+          description: A description of the owner.
+          example: This owner represents the API team owners.
+          type: string
+        access_request_escalation_period:
+          description: The amount of time (in minutes) before the next reviewer is notified. Use 0 to remove escalation policy.
+          type: integer
+          example: 120
+        user_ids:
+          description: Users to add to the created owner. If setting a source_group_id this list must be empty.
+          example:
+          - 7870617d-e72a-47f5-a84c-693817ab4567
+          - 1520617d-e72a-47f5-a84c-693817ab48ad2
+          items:
+            type: string
+            format: uuid
+          type: array
+        reviewer_message_channel_id:
+          description: The message channel id for the reviewer channel.
+          example: 37cb7e41-12ba-46da-92ff-030abe0450b1
+          type: string
+        source_group_id:
+          description: Sync this owner's user list with a source group.
+          example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          format: uuid
+          type: string
+      required:
+      - name
+      - user_ids
+      type: object
+    UserHrIdpStatusEnum:
+      description: User status pulled from an HR/IDP provider.
+      enum:
+      - ACTIVE
+      - SUSPENDED
+      - DEPROVISIONED
+      - DELETED
+      - NOT_FOUND
+      example: ACTIVE
+      type: string
+    UserList:
+      description: A list of users.
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+      type: object
+      required:
+      - users
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http

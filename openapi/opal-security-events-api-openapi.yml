@@ -1,0 +1,276 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@opal.dev
+    name: Opal Team
+    url: https://www.opal.dev/
+  description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
+  title: Opal access-rules events API
+  version: '1.0'
+servers:
+- description: Production
+  url: https://api.opal.dev/v1
+tags:
+- name: events
+  description: Operations related to events
+paths:
+  /events:
+    get:
+      description: Returns a list of `Event` objects.
+      operationId: events
+      parameters:
+      - description: A start date filter for the events.
+        examples:
+          withDate:
+            summary: Example with date
+            value: 2021-11-01
+          withDatetime:
+            summary: Example with date and time in ISO 8601 datetime format.
+            value: 2025-01-01 00:00:00+00:00
+        explode: true
+        in: query
+        name: start_date_filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: An end date filter for the events.
+        examples:
+          withDate:
+            summary: Example with date
+            value: 2021-11-12
+          withDatetime:
+            summary: Example with date and time in ISO 8601 datetime format.
+            value: 2025-01-01 00:00:00+00:00
+        explode: true
+        in: query
+        name: end_date_filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: An actor filter for the events. Supply the ID of the actor.
+        example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        explode: true
+        in: query
+        name: actor_filter
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: An object filter for the events. Supply the ID of the object.
+        example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        explode: true
+        in: query
+        name: object_filter
+        required: false
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: An event type filter for the events.
+        example: USER_MFA_RESET
+        explode: true
+        in: query
+        name: event_type_filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: An API filter for the events. Supply the name and preview of the API token.
+        example: fullaccess:**************************M_g==
+        explode: true
+        in: query
+        name: api_token_filter
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: The pagination cursor value.
+        example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        explode: true
+        in: query
+        name: cursor
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Number of results to return per page. Default is 200.
+        example: 200
+        explode: true
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEventList'
+          description: One page worth of events with the appropriate filters applied.
+      security:
+      - BearerAuth: []
+      tags:
+      - events
+  /events/{event_id}:
+    get:
+      summary: Get event by ID
+      description: Returns an `Event` object.
+      operationId: getEvent
+      parameters:
+      - description: The ID of the event.
+        example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        explode: true
+        in: path
+        name: event_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+          description: The requested `Event`.
+        '404':
+          description: Event not found.
+      security:
+      - BearerAuth: []
+      tags:
+      - events
+components:
+  schemas:
+    Event:
+      description: '# Event Object
+
+        ### Description
+
+        The `Event` object is used to represent an event.
+
+
+        ### Usage Example
+
+        Fetch from the `LIST Events` endpoint.'
+      example:
+        event_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        actor_user_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+        created_at: 2022-01-23 04:56:07+00:00
+        event_type: USERS_CREATED
+      properties:
+        event_id:
+          description: The ID of the event.
+          example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          format: uuid
+          type: string
+        actor_user_id:
+          description: The ID of the actor user.
+          example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          format: uuid
+          type: string
+        actor_name:
+          description: The name of the actor user.
+          example: John Smith
+          format: string
+        actor_email:
+          description: The email of the actor user.
+          example: john@acmecorp.com
+          type: string
+        event_type:
+          description: The event type.
+          example: USERS_CREATED
+          type: string
+        created_at:
+          description: The day and time the event was created.
+          example: 2022-01-23 04:56:07+00:00
+          format: date-time
+          type: string
+        actor_ip_address:
+          description: The IP address of the event actor.
+          example: 255.255.255.0
+          type: string
+        api_token_name:
+          description: The name of the API token used to create the event.
+          example: My API Token
+          type: string
+        api_token_preview:
+          description: The preview of the API token used to create the event.
+          example: '**************************M_g=='
+          type: string
+        sub_events:
+          items:
+            $ref: '#/components/schemas/SubEvent'
+          type: array
+      required:
+      - event_id
+      - actor_user_id
+      - actor_name
+      - event_type
+      - created_at
+      type: object
+    PaginatedEventList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - event_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          actor_user_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          created_at: 2022-01-23 04:56:07+00:00
+          event_type: USERS_CREATED
+        - event_id: 7646aa9a-e2ee-4eb5-8c62-91f29038a373
+          actor_user_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          created_at: 2022-02-03 12:33:02+00:00
+          event_type: USER_TEAM_UPDATED
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Event'
+          type: array
+      type: object
+    SubEvent:
+      description: '# Sub event Object
+
+        ### Description
+
+        The `SubEvent` object is used to represent a subevent.
+
+
+        ### Usage Example
+
+        Fetch from the `LIST Events` endpoint.'
+      example:
+        sub_event_type: USERS_CREATED
+        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        user_name: John Smith
+        resource_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        resource_name: Figma
+      properties:
+        sub_event_type:
+          description: The subevent type.
+          example: USERS_CREATED
+          type: string
+      required:
+      - sub_event_type
+      type: object
+      additionalProperties: true
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http

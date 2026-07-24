@@ -1,0 +1,162 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@opal.dev
+    name: Opal Team
+    url: https://www.opal.dev/
+  description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
+  title: Opal access-rules sessions API
+  version: '1.0'
+servers:
+- description: Production
+  url: https://api.opal.dev/v1
+tags:
+- name: sessions
+  description: Operations related to sessions
+paths:
+  /sessions:
+    get:
+      description: Returns a list of `Session` objects.
+      operationId: sessions
+      parameters:
+      - description: The ID of the resource.
+        example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+        explode: true
+        in: query
+        name: resource_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: form
+      - description: The ID of the user you wish to query sessions for.
+        example: 32acc112-21ff-4669-91c2-21e27683eaa1
+        explode: true
+        in: query
+        name: user_id
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SessionsList'
+          description: The sessions associated with a resource.
+      security:
+      - BearerAuth: []
+      tags:
+      - sessions
+components:
+  schemas:
+    ResourceAccessLevel:
+      description: '# Access Level Object
+
+        ### Description
+
+        The `AccessLevel` object is used to represent the level of access that a principal has. The "default" access
+
+        level is a `AccessLevel` object whose fields are all empty strings.
+
+
+        ### Usage Example
+
+        View the `AccessLevel` of a resource/user or resource/group pair to see the level of access granted to the resource.'
+      example:
+        access_level_name: AdminRole
+        access_level_remote_id: arn:aws:iam::590304332660:role/AdministratorAccess
+      properties:
+        access_level_name:
+          description: The human-readable name of the access level.
+          example: AdminRole
+          type: string
+        access_level_remote_id:
+          description: The machine-readable identifier of the access level.
+          example: arn:aws:iam::590304332660:role/AdministratorAccess
+          type: string
+      required:
+      - access_level_name
+      - access_level_remote_id
+      type: object
+    SessionsList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - connection_id: h0z968412-2451-4bbd-42h4-057l715d917m
+          user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          resource_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          expiration_date: 2022-01-23 04:56:07+00:00
+        - connection_id: 6e6b5597-bd36-4f4c-a629-01e3fa791932
+          user_id: b031c922-b84f-4424-9f4f-c49c05871bfe
+          resource_id: 77eb1ab7-2c27-4fc4-afdb-137e1265cddd
+          expiration_date: 2022-03-12 07:22:18+00:00
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Session'
+          type: array
+      type: object
+    Session:
+      description: '# Session Object
+
+        ### Description
+
+        The `Session` object is used to represent an access session. Some resources can be accessed temporarily via a time-bounded session.
+
+
+        ### Usage Example
+
+        Fetch from the `LIST Sessions` endpoint.'
+      example:
+        connection_id: h0z968412-2451-4bbd-42h4-057l715d917m
+        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        resource_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+        expiration_date: 2022-01-23 04:56:07+00:00
+      properties:
+        connection_id:
+          description: The ID of the connection.
+          example: h0z968412-2451-4bbd-42h4-057l715d917m
+          format: uuid
+          type: string
+        user_id:
+          description: The ID of the user.
+          example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          format: uuid
+          type: string
+        resource_id:
+          description: The ID of the resource.
+          example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          format: uuid
+          type: string
+        access_level:
+          $ref: '#/components/schemas/ResourceAccessLevel'
+        expiration_date:
+          description: The day and time the user's access will expire.
+          example: 2022-01-23 04:56:07+00:00
+          format: date-time
+          nullable: false
+          type: string
+      required:
+      - connection_id
+      - user_id
+      - resource_id
+      - access_level
+      - expiration_date
+      type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http

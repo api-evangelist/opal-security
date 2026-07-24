@@ -1,0 +1,269 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@opal.dev
+    name: Opal Team
+    url: https://www.opal.dev/
+  description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
+  title: Opal access-rules event-streams API
+  version: '1.0'
+servers:
+- description: Production
+  url: https://api.opal.dev/v1
+tags:
+- name: event-streams
+  description: Operations related to event streaming connections
+paths:
+  /event-streams:
+    get:
+      summary: Get event streams
+      description: Returns a list of configured event streaming connections for your organization.
+      operationId: getEventStreams
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventStreamList'
+          description: A list of event streams for your organization.
+      security:
+      - BearerAuth: []
+      tags:
+      - event-streams
+    post:
+      summary: Create event stream
+      description: Creates a new event streaming connection.
+      operationId: createEventStream
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEventStreamInfo'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventStream'
+          description: The event stream just created. Credentials are returned in clear text only on creation.
+      security:
+      - BearerAuth: []
+      tags:
+      - event-streams
+  /event-streams/{event_stream_id}:
+    put:
+      summary: Update event stream
+      description: Updates an existing event streaming connection.
+      operationId: updateEventStream
+      parameters:
+      - description: The ID of the event stream.
+        example: 4baf8423-db0a-4037-a4cf-f79c60cb67a5
+        explode: false
+        in: path
+        name: event_stream_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEventStreamInfo'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventStream'
+          description: The updated event stream.
+      security:
+      - BearerAuth: []
+      tags:
+      - event-streams
+    delete:
+      summary: Delete event stream
+      description: Deletes an event streaming connection.
+      operationId: deleteEventStream
+      parameters:
+      - description: The ID of the event stream.
+        example: 4baf8423-db0a-4037-a4cf-f79c60cb67a5
+        explode: false
+        in: path
+        name: event_stream_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        '200':
+          description: The event stream was successfully deleted.
+      security:
+      - BearerAuth: []
+      tags:
+      - event-streams
+components:
+  schemas:
+    WebhookAuthTypeEnum:
+      description: The authentication type for webhook connections.
+      enum:
+      - NONE
+      - API_KEY
+      - HMAC
+      type: string
+    EventStreamConnectionTypeEnum:
+      description: The type of event stream connection.
+      enum:
+      - WEBHOOK
+      type: string
+    WebhookApiKeyLocationEnum:
+      description: Where the API key is placed in webhook requests.
+      enum:
+      - HEADER
+      - QUERY_PARAM
+      type: string
+    EventStreamList:
+      description: A list of event streams.
+      properties:
+        event_streams:
+          items:
+            $ref: '#/components/schemas/EventStream'
+          type: array
+      required:
+      - event_streams
+      type: object
+    CreateEventStreamInfo:
+      description: Information needed to create an event stream.
+      properties:
+        name:
+          description: The name for the event stream.
+          type: string
+        connection_type:
+          $ref: '#/components/schemas/EventStreamConnectionTypeEnum'
+        webhook_url:
+          description: The webhook URL. Required when connection_type is WEBHOOK.
+          type: string
+        credentials:
+          $ref: '#/components/schemas/WebhookCredentials'
+      required:
+      - name
+      - connection_type
+      type: object
+    WebhookCredentials:
+      description: Authentication credentials for a webhook connection.
+      properties:
+        auth_type:
+          $ref: '#/components/schemas/WebhookAuthTypeEnum'
+        api_key_credentials:
+          description: API key credentials, present when auth_type is API_KEY.
+          items:
+            $ref: '#/components/schemas/WebhookApiKeyCredential'
+          type: array
+        hmac_credential_1:
+          description: Primary HMAC credential, present when auth_type is HMAC.
+          nullable: true
+          $ref: '#/components/schemas/WebhookHmacCredential'
+        hmac_credential_2:
+          description: Secondary HMAC credential for rotation, present when auth_type is HMAC.
+          nullable: true
+          $ref: '#/components/schemas/WebhookHmacCredential'
+      required:
+      - auth_type
+      type: object
+    EventStreamConnection:
+      description: The connection configuration for an event stream.
+      properties:
+        name:
+          description: The name of the connection.
+          type: string
+        connection_type:
+          $ref: '#/components/schemas/EventStreamConnectionTypeEnum'
+        enabled:
+          description: Whether the connection is enabled.
+          type: boolean
+        webhook_url:
+          description: The webhook URL, present when connection_type is WEBHOOK.
+          type: string
+        credentials:
+          $ref: '#/components/schemas/WebhookCredentials'
+      required:
+      - name
+      - connection_type
+      - enabled
+      type: object
+    UpdateEventStreamInfo:
+      description: Information needed to update an event stream.
+      properties:
+        name:
+          description: Updated name for the event stream.
+          type: string
+        enabled:
+          description: Whether the event stream should be enabled.
+          type: boolean
+        webhook_url:
+          description: Updated webhook URL.
+          type: string
+        credentials:
+          $ref: '#/components/schemas/WebhookCredentials'
+      type: object
+    WebhookHmacCredential:
+      description: An HMAC credential for webhook authentication.
+      properties:
+        id:
+          description: The unique identifier for the credential.
+          format: uuid
+          type: string
+        secret:
+          description: The HMAC secret value.
+          type: string
+        created_at:
+          description: When the credential was created.
+          format: date-time
+          type: string
+      required:
+      - id
+      - secret
+      - created_at
+      type: object
+    EventStream:
+      description: An event streaming connection that publishes events to an external system.
+      properties:
+        event_stream_id:
+          description: The ID of the event stream.
+          format: uuid
+          type: string
+        connection:
+          $ref: '#/components/schemas/EventStreamConnection'
+      required:
+      - event_stream_id
+      - connection
+      type: object
+    WebhookApiKeyCredential:
+      description: An API key credential for webhook authentication.
+      properties:
+        id:
+          description: The unique identifier for the credential.
+          format: uuid
+          type: string
+        name:
+          description: The name of the API key.
+          type: string
+        value:
+          description: The value of the API key.
+          type: string
+        location:
+          $ref: '#/components/schemas/WebhookApiKeyLocationEnum'
+      required:
+      - id
+      - name
+      - value
+      - location
+      type: object
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http

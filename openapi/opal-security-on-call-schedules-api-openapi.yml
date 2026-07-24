@@ -1,0 +1,167 @@
+openapi: 3.1.0
+info:
+  contact:
+    email: hello@opal.dev
+    name: Opal Team
+    url: https://www.opal.dev/
+  description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
+  title: Opal access-rules on-call-schedules API
+  version: '1.0'
+servers:
+- description: Production
+  url: https://api.opal.dev/v1
+tags:
+- name: on-call-schedules
+  description: Operations related to on-call schedules
+paths:
+  /on-call-schedules:
+    get:
+      summary: Get on call schedules
+      description: Returns a list of `OnCallSchedule` objects.
+      operationId: get_on_call_schedules
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnCallScheduleList'
+          description: A list of on call schedules for your organization.
+      security:
+      - BearerAuth: []
+      tags:
+      - on-call-schedules
+    post:
+      description: Creates a `OnCallSchedule` objects.
+      operationId: create_on_call_schedule
+      requestBody:
+        description: The `OnCallSchedule` object to be created.
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOnCallScheduleInfo'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnCallSchedule'
+          description: The on call schedule that was created.
+      security:
+      - BearerAuth: []
+      tags:
+      - on-call-schedules
+  /on-call-schedules/{on_call_schedule_id}:
+    get:
+      summary: Get on call schedule by ID
+      description: Gets a `OnCallSchedule` object.
+      operationId: get_on_call_schedule
+      parameters:
+      - description: The ID of the on_call_schedule.
+        example: 9546209c-42c2-4801-96d7-9ec42df0f59c
+        explode: false
+        in: path
+        name: on_call_schedule_id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OnCallSchedule'
+          description: The requested on call schedule.
+      security:
+      - BearerAuth: []
+      tags:
+      - on-call-schedules
+components:
+  schemas:
+    OnCallScheduleProviderEnum:
+      description: The third party provider of the on call schedule.
+      enum:
+      - OPSGENIE
+      - PAGER_DUTY
+      example: PAGER_DUTY
+      type: string
+    OnCallSchedule:
+      description: '# OnCallSchedule Object
+
+        ### Description
+
+        The `OnCallSchedule` object is used to represent an on call schedule.
+
+
+        ### Usage Example
+
+        Update a groups on call schedule from the `UPDATE Groups` endpoint.'
+      example:
+        on_call_schedule_id: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
+        third_party_provider: PAGER_DUTY
+        remote_id: P7OWH2R
+        name: Customer Support On-Call
+      properties:
+        on_call_schedule_id:
+          description: The ID of the on-call schedule.
+          example: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
+          format: uuid
+          type: string
+        third_party_provider:
+          $ref: '#/components/schemas/OnCallScheduleProviderEnum'
+        remote_id:
+          description: The remote ID of the on call schedule
+          example: P7OWH2R
+          type: string
+        name:
+          description: The name of the on call schedule.
+          example: Customer Support On-Call
+          type: string
+      type: object
+      required:
+      - message_channel_id
+    OnCallScheduleList:
+      example:
+        on_call_schedules:
+        - on_call_schedule_id: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
+          third_party_provider: PAGER_DUTY
+          remote_id: P7OWH2R
+          name: Customer Support On-Call
+        - on_call_schedule_id: 4d61592c-ed61-4b13-8f22-2fac1c49f574
+          third_party_provider: OPSGENIE
+          remote_id: 72a8cb04-9e25-465d-a932-992f72077c61
+          name: Opal Backend On-Call
+      properties:
+        on_call_schedules:
+          items:
+            $ref: '#/components/schemas/OnCallSchedule'
+          type: array
+      type: object
+      required:
+      - on_call_schedules
+    CreateOnCallScheduleInfo:
+      description: '# CreateOnCallScheduleInfo Object
+
+        ### Description
+
+        The `CreateOnCallScheduleInfo` object is used to describe the on call schedule object to be created.'
+      example:
+        third_party_provider: PAGER_DUTY
+        remote_id: PNZNINN
+      properties:
+        third_party_provider:
+          $ref: '#/components/schemas/OnCallScheduleProviderEnum'
+        remote_id:
+          description: The remote ID of the on call schedule
+          example: PNZNINN
+          type: string
+      type: object
+      required:
+      - third_party_provider
+      - remote_id
+  securitySchemes:
+    BearerAuth:
+      scheme: bearer
+      type: http
