@@ -1,0 +1,51 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opal-security-openapi.yaml + https://docs.opal.dev/reference/authentication
+provider: Opal Security
+description: >-
+  Cross-cutting request/response semantics for the Opal API, derived from the
+  OpenAPI (86 paths, 176 schemas, base https://api.opal.dev/v1) and the
+  authentication reference.
+auth:
+  style: bearer-token
+  scheme: http bearer (BearerAuth)
+  header: Authorization
+  token_types:
+  - service-user-api-key (max 2 per service user, can expire)
+  - personal-access-token (read-only or full-access, scoped to user's Opal role)
+  applies_to: all operations
+  docs: https://docs.opal.dev/reference/authentication
+pagination:
+  style: cursor
+  params:
+  - cursor
+  - page_size
+  - limit
+  notes: >-
+    List endpoints are cursor-paginated; responses carry a cursor to fetch the
+    next page. page_size / limit control page length.
+versioning:
+  style: uri-path
+  current: v1
+error_envelope:
+  format: json
+  rfc9457: false
+  notes: >-
+    Errors are returned as JSON with standard HTTP status codes (403, 404, etc.).
+    No application/problem+json (RFC 9457) media type is declared in the OpenAPI.
+    A SyncError object (first_seen, last_seen, error_message, app_id) is a
+    domain-level error surface for app sync failures.
+idempotency:
+  supported: false
+  notes: No Idempotency-Key header or idempotency parameter is documented in the OpenAPI.
+rate_limiting:
+  signaled: false
+  notes: No rate-limit response headers are declared in the OpenAPI; not documented in developer docs.
+request_id_tracing:
+  documented: false
+metadata_fields:
+  notes: Many resources expose remote_id / remote_resource_id linking Opal objects to their source system.
+cross_links:
+  errors: errors/opal-security-problem-types.yml
+  authentication: authentication/opal-security-authentication.yml
+  lifecycle: lifecycle/opal-security-lifecycle.yml

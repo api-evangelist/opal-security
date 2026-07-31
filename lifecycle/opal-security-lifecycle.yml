@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.opal.dev/ + https://status.opal.dev/ + OpenAPI (https://api.opal.dev/v1)
+provider: Opal Security
+versioning:
+  style: uri-path
+  current: v1
+  base_url: https://api.opal.dev/v1
+  description: >-
+    The Opal API is versioned in the URL path (/v1). A single production server
+    is published in the OpenAPI (https://api.opal.dev/v1). The platform itself
+    uses sequential build versions (e.g. 1.1181.0) tracked in the changelog.
+status_page:
+  url: https://status.opal.dev/
+  detected: true
+changelog:
+  url: https://docs.opal.dev/changelog/changelog
+  cli: https://docs.opal.dev/changelog/cli-changelog
+deprecation:
+  policy_documented: false
+  sunset_header: unknown
+  deprecation_header: unknown
+  deprecated_operations: []
+  notes: >-
+    No formal RFC 8594 Sunset/Deprecation-header policy is published in the docs
+    or OpenAPI. Product deprecations are announced narratively in the changelog
+    (e.g. the 2026-05-26 retirement of Gram-hosted MCP servers). No operations in
+    the current OpenAPI are marked deprecated: true.
+sla:
+  documented: false
+  notes: Uptime is reported via status.opal.dev; no numeric SLA is published in developer docs.

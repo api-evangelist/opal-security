@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.opal.dev/docs/mcp/overview
+provider: Opal Security
+status: live
+transport: http
+description: >-
+  Opal Security hosts three specialized, self-hosted Model Context Protocol (MCP)
+  servers that let AI agents interact with the Opal access-management platform
+  through its REST API. All servers use streamable HTTP transport and are
+  authenticated with an Opal API bearer token (Authorization: Bearer $OPAL_API_TOKEN).
+  As of 2026-05-26 Opal moved off the previously Gram-hosted MCPs to these
+  self-hosted servers (available in self-hosted Opal from v1.1135.0).
+auth:
+  type: bearer
+  header: Authorization
+  value: Bearer ${OPAL_API_TOKEN}
+servers:
+- name: End User MCP
+  endpoint: https://app.opal.dev/mcp/end-user
+  transport: http
+  audience: end-user
+  description: >-
+    Enables end users to request access to Opal resources, groups, and bundles
+    through an AI agent (e.g. "request access to the Production database").
+  docs: https://docs.opal.dev/docs/mcp/end-user
+  install: 'claude mcp add --transport http opal-end-user https://app.opal.dev/mcp/end-user --header "Authorization: Bearer ${OPAL_API_TOKEN}"'
+- name: Admin Provisioning MCP
+  endpoint: https://app.opal.dev/mcp/admin-user-provisioning
+  transport: http
+  audience: admin
+  description: >-
+    Enables admins to view user permissions and add or remove access to resources
+    and groups via an AI agent.
+  docs: https://docs.opal.dev/docs/mcp/admin-provisioning
+  install: 'claude mcp add --transport http opal-admin-user-provisioning https://app.opal.dev/mcp/admin-user-provisioning --header "Authorization: Bearer ${OPAL_API_TOKEN}"'
+- name: Admin Auditing MCP
+  endpoint: https://app.opal.dev/mcp/admin-auditing
+  transport: http
+  audience: admin
+  description: >-
+    Enables admins to investigate access and audit access changes via an AI agent
+    (e.g. "What access changes happened to our AWS resources this week?").
+  docs: https://docs.opal.dev/docs/mcp/admin-auditing
+  install: 'claude mcp add --transport http opal-admin-auditing https://app.opal.dev/mcp/admin-auditing --header "Authorization: Bearer ${OPAL_API_TOKEN}"'
+notes: >-
+  Self-hosted Opal deployments substitute their own base URL for
+  https://app.opal.dev. Source implementation is published at
+  github.com/opalsecurity/opal-mcp. Legacy Gram-hosted MCPs are deprecated.

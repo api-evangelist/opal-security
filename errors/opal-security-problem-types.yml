@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opal-security-openapi.yaml
+provider: Opal Security
+format: http-status-json
+rfc9457: false
+description: >-
+  Error surface derived from the Opal OpenAPI. The API returns standard HTTP
+  status codes with JSON bodies (no RFC 9457 problem+json media type declared).
+  Documented error responses in the spec are sparse (403, 404); the entries below
+  reflect standard REST semantics plus the domain-level SyncError object.
+status_codes:
+- code: 400
+  title: Bad Request
+  meaning: The request was malformed or failed validation.
+- code: 401
+  title: Unauthorized
+  meaning: Missing or invalid bearer token (Authorization header).
+  remediation: Provide a valid service-user API key or personal access token.
+- code: 403
+  title: Forbidden
+  meaning: The authenticated token lacks the Opal role/permission for this resource or operation.
+  remediation: Grant the service user the required scoped role, or use a full-access token.
+- code: 404
+  title: Not Found
+  meaning: The requested resource (app, resource, group, bundle, request, etc.) does not exist or is not visible to the caller.
+- code: 429
+  title: Too Many Requests
+  meaning: Rate limit exceeded (not formally documented; standard REST behavior).
+- code: 500
+  title: Internal Server Error
+  meaning: An unexpected server-side error occurred.
+domain_errors:
+- name: SyncError
+  fields:
+  - first_seen
+  - last_seen
+  - error_message
+  - app_id
+  description: >-
+    Returned by GET /apps/{app_id}/sync_errors — recent connector/app sync
+    failures since the last successful sync. Not an HTTP error envelope.
+notes: >-
+  Only 403 and 404 are explicitly enumerated in the OpenAPI responses; other
+  codes above are standard REST semantics, not spec-declared. No problem+json.

@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.opal.dev/changelog/changelog
+provider: Opal Security
+scheme: sequential-build-version
+version_format: Version <major>.<build>.<patch> (e.g. 1.1181.0)
+current_version: 1.1181.0
+current_date: '2026-07-20'
+cadence: continuous (multiple releases per week)
+categories:
+- Added
+- Improved
+- Bug Fixes
+docs: https://docs.opal.dev/changelog/changelog
+cli_changelog: https://docs.opal.dev/changelog/cli-changelog
+entries:
+- version: 1.1181.0
+  date: '2026-07-20'
+  breaking: false
+  highlights:
+  - Added Tableau integration for syncing users and managing group membership.
+  - Recurring access campaigns can now be scheduled on multiple days of the month.
+  - Improved access campaign generation speed for group-based access; progress totals now exact.
+- version: 1.1180.0
+  date: '2026-07-16'
+  breaking: false
+  highlights:
+  - GCP connection setting to exclude service accounts from import.
+  - Campaign admins can hide Paladin Insights (AI suggestions) from reviewers.
+  - Okta multi-value group attributes now imported as group tags (one tag per value).
+  - OpalScript request objects now expose created_at / updated_at as Unix timestamps.
+notes: >-
+  Recent window only. Opal ships breaking changes rarely; the changelog is
+  categorized Added / Improved / Bug Fixes. A separate CLI changelog tracks the
+  opal-security CLI package.

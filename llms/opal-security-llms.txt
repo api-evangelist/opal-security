@@ -1,0 +1,321 @@
+# Opal Security Docs
+
+## Docs
+
+- [Get access rules](https://docs.opal.dev/api-reference/access-rules/get-access-rules.md): Returns a list of access rules for your organization.
+- [Get access rules 1](https://docs.opal.dev/api-reference/access-rules/get-access-rules-1.md): Returns a list of access rule config given the group_id of the access rule.
+- [Post access rules](https://docs.opal.dev/api-reference/access-rules/post-access-rules.md): Creates a new access rule config for the given group_id.
+- [Put access rules](https://docs.opal.dev/api-reference/access-rules/put-access-rules.md): Updates the access rule config for the given group_id.
+- [Get app by ID](https://docs.opal.dev/api-reference/apps/get-app-by-id.md): Returns an `App` object.
+- [Get apps](https://docs.opal.dev/api-reference/apps/get-apps.md): Returns a list of `App` objects.
+- [Get sync errors](https://docs.opal.dev/api-reference/apps/get-sync_errors.md): Returns a list of recent sync errors that have occurred since the last successful sync.
+- [Delete bundles](https://docs.opal.dev/api-reference/bundles/delete-bundles.md): Deletes a bundle.
+- [Delete bundles groups](https://docs.opal.dev/api-reference/bundles/delete-bundles-groups.md): Removes a group from a bundle.
+- [Delete bundles resources](https://docs.opal.dev/api-reference/bundles/delete-bundles-resources.md): Removes a resource from a bundle.
+- [Get bundle by ID](https://docs.opal.dev/api-reference/bundles/get-bundle-by-id.md): Returns a `Bundle` object.
+- [Get bundles](https://docs.opal.dev/api-reference/bundles/get-bundles.md): Returns a list of `Bundle` objects.
+- [Get bundles groups](https://docs.opal.dev/api-reference/bundles/get-bundles-groups.md): Returns a list of `Group` objects in a given bundle.
+- [Get bundles resources](https://docs.opal.dev/api-reference/bundles/get-bundles-resources.md): Returns a list of `Resource` objects in a given bundle.
+- [Get bundles visibility](https://docs.opal.dev/api-reference/bundles/get-bundles-visibility.md): Gets the visibility of the bundle.
+- [Post bundles](https://docs.opal.dev/api-reference/bundles/post-bundles.md): Creates a bundle.
+- [Post bundles groups](https://docs.opal.dev/api-reference/bundles/post-bundles-groups.md): Adds a group to a bundle.
+- [Post bundles resources](https://docs.opal.dev/api-reference/bundles/post-bundles-resources.md): Adds a resource to a bundle.
+- [Put bundles](https://docs.opal.dev/api-reference/bundles/put-bundles.md): Updates a bundle.
+- [Put bundles visibility](https://docs.opal.dev/api-reference/bundles/put-bundles-visibility.md): Sets the visibility of the bundle.
+- [Delete configuration templates](https://docs.opal.dev/api-reference/configuration-templates/delete-configuration-templates.md): Deletes a configuration template.
+- [Get configuration templates](https://docs.opal.dev/api-reference/configuration-templates/get-configuration-templates.md): Returns a list of `ConfigurationTemplate` objects.
+- [Post configuration templates](https://docs.opal.dev/api-reference/configuration-templates/post-configuration-templates.md): Creates a configuration template.
+- [Put configuration templates](https://docs.opal.dev/api-reference/configuration-templates/put-configuration-templates.md): Update a configuration template.
+- [Delete delegations](https://docs.opal.dev/api-reference/delegations/delete-delegations.md): Deletes a delegation by its ID.
+- [Get delegation by ID](https://docs.opal.dev/api-reference/delegations/get-delegation-by-id.md): Returns a specific delegation by its ID.
+- [Get delegations](https://docs.opal.dev/api-reference/delegations/get-delegations.md): Returns a list of request reviewer delegations configured for your organization.
+- [Post delegations](https://docs.opal.dev/api-reference/delegations/post-delegations.md): Creates a new request reviewer delegation to delegate access review requests from one user to another.
+- [Create event stream](https://docs.opal.dev/api-reference/event-streams/create-event-stream.md): Creates a new event streaming connection.
+- [Delete event stream](https://docs.opal.dev/api-reference/event-streams/delete-event-stream.md): Deletes an event streaming connection.
+- [Get event streams](https://docs.opal.dev/api-reference/event-streams/get-event-streams.md): Returns a list of configured event streaming connections for your organization.
+- [Update event stream](https://docs.opal.dev/api-reference/event-streams/update-event-stream.md): Updates an existing event streaming connection.
+- [Get event by ID](https://docs.opal.dev/api-reference/events/get-event-by-id.md): Returns an `Event` object.
+- [Get events](https://docs.opal.dev/api-reference/events/get-events.md): Returns a list of `Event` objects.
+- [Delete group bindings](https://docs.opal.dev/api-reference/group-bindings/delete-group-bindings.md): Deletes a group binding.
+- [Get group binding by ID](https://docs.opal.dev/api-reference/group-bindings/get-group-binding-by-id.md): Returns a `GroupBinding` object.
+- [Get group bindings](https://docs.opal.dev/api-reference/group-bindings/get-group-bindings.md): Returns a list of `GroupBinding` objects.
+- [Post group bindings](https://docs.opal.dev/api-reference/group-bindings/post-group-bindings.md): Creates a group binding.
+- [Put group bindings](https://docs.opal.dev/api-reference/group-bindings/put-group-bindings.md): Bulk updates a list of group bindings.
+- [Delete groups](https://docs.opal.dev/api-reference/groups/delete-groups.md): Deletes a group.
+- [Delete groups containing groups](https://docs.opal.dev/api-reference/groups/delete-groups-containing-groups.md): Removes a containing group from a group.
+- [Delete groups users](https://docs.opal.dev/api-reference/groups/delete-groups-users.md): Removes a user's access from this group.
+- [Get group by ID](https://docs.opal.dev/api-reference/groups/get-group-by-id.md): Returns a `Group` object.
+- [Get groups](https://docs.opal.dev/api-reference/groups/get-groups.md): Returns a list of groups for your organization.
+- [Get groups message channels](https://docs.opal.dev/api-reference/groups/get-groups-message-channels.md): Gets the list of audit and reviewer message channels attached to a group.
+- [Get groups on call schedules](https://docs.opal.dev/api-reference/groups/get-groups-on-call-schedules.md): Gets the list of on call schedules attached to a group.
+- [Get groups resources](https://docs.opal.dev/api-reference/groups/get-groups-resources.md): Gets the list of resources that the group gives access to.
+- [Get groups reviewer stages](https://docs.opal.dev/api-reference/groups/get-groups-reviewer-stages.md): Gets the list of reviewer stages for a group.
+- [Get groups reviewers](https://docs.opal.dev/api-reference/groups/get-groups-reviewers.md): Gets the list of owner IDs of the reviewers for a group.
+- [Get groups tags](https://docs.opal.dev/api-reference/groups/get-groups-tags.md): Returns all tags applied to the group.
+- [Get groups users](https://docs.opal.dev/api-reference/groups/get-groups-users.md): Gets the list of users for this group.
+- [Get groups visibility](https://docs.opal.dev/api-reference/groups/get-groups-visibility.md): Gets the visibility of this group.
+- [Get groupsusers](https://docs.opal.dev/api-reference/groups/get-groupsusers.md): Returns all groups that the user is a member of.
+- [Get nested group by ID](https://docs.opal.dev/api-reference/groups/get-nested-group-by-id.md): Gets a specific containing group for a group.
+- [Get nested groups](https://docs.opal.dev/api-reference/groups/get-nested-groups.md): Gets the list of groups that the group gives access to.
+- [Post groups](https://docs.opal.dev/api-reference/groups/post-groups.md): Creates an Opal group or [imports a remote group](https://docs.opal.dev/reference/end-system-objects).
+- [Post groups containing groups](https://docs.opal.dev/api-reference/groups/post-groups-containing-groups.md): Creates a new containing group.
+- [Post groups resources](https://docs.opal.dev/api-reference/groups/post-groups-resources.md): Adds a resource to a group.
+- [Post groups users](https://docs.opal.dev/api-reference/groups/post-groups-users.md): Adds a user to this group.
+- [Put groups](https://docs.opal.dev/api-reference/groups/put-groups.md): Bulk updates a list of groups.
+- [Put groups message channels](https://docs.opal.dev/api-reference/groups/put-groups-message-channels.md): Sets the list of audit message channels attached to a group.
+- [Put groups on call schedules](https://docs.opal.dev/api-reference/groups/put-groups-on-call-schedules.md): Sets the list of on call schedules attached to a group.
+- [Put groups resources](https://docs.opal.dev/api-reference/groups/put-groups-resources.md): Sets the list of resources that the group gives access to.
+- [Put groups reviewer stages](https://docs.opal.dev/api-reference/groups/put-groups-reviewer-stages.md): Sets the list of reviewer stages for a group.
+- [Put groups reviewers](https://docs.opal.dev/api-reference/groups/put-groups-reviewers.md): Sets the list of reviewers for a group.
+- [Put groups users](https://docs.opal.dev/api-reference/groups/put-groups-users.md): Updates a user's access level or duration in this group.
+- [Put groups visibility](https://docs.opal.dev/api-reference/groups/put-groups-visibility.md): Sets the visibility of this group.
+- [Delete idp group mappings groups](https://docs.opal.dev/api-reference/idp-group-mappings/delete-idp-group-mappings-groups.md): Deletes an `IdpGroupMapping` object.
+- [Get idp group mappings](https://docs.opal.dev/api-reference/idp-group-mappings/get-idp-group-mappings.md): Returns the configured set of available `IdpGroupMapping` objects for an Okta app.
+- [Get idp group mappings groups](https://docs.opal.dev/api-reference/idp-group-mappings/get-idp-group-mappings-groups.md): Gets an `IdpGroupMapping` object for an Okta app and group.
+- [Post idp group mappings groups](https://docs.opal.dev/api-reference/idp-group-mappings/post-idp-group-mappings-groups.md): Creates or updates an individual `IdpGroupMapping` object (upsert operation).
+- [Put idp group mappings](https://docs.opal.dev/api-reference/idp-group-mappings/put-idp-group-mappings.md): Updates the list of available `IdpGroupMapping` objects for an Okta app.
+- [Get message channel by ID](https://docs.opal.dev/api-reference/message-channels/get-message-channel-by-id.md): Gets a `MessageChannel` object.
+- [Get message channels](https://docs.opal.dev/api-reference/message-channels/get-message-channels.md): Returns a list of `MessageChannel` objects.
+- [Post message channels](https://docs.opal.dev/api-reference/message-channels/post-message-channels.md): Creates a `MessageChannel` objects.
+- [Get non human identities](https://docs.opal.dev/api-reference/non-human-identities/get-non-human-identities.md): Returns a list of non-human identities for your organization.
+- [Get on call schedule by ID](https://docs.opal.dev/api-reference/on-call-schedules/get-on-call-schedule-by-id.md): Gets a `OnCallSchedule` object.
+- [Get on call schedules](https://docs.opal.dev/api-reference/on-call-schedules/get-on-call-schedules.md): Returns a list of `OnCallSchedule` objects.
+- [Post on call schedules](https://docs.opal.dev/api-reference/on-call-schedules/post-on-call-schedules.md): Creates a `OnCallSchedule` objects.
+- [Run an ad-hoc OpalQuery](https://docs.opal.dev/api-reference/opal-queries/run-an-ad-hoc-opalquery.md): Runs an ad-hoc OpalQuery and returns the results. Currently supports NODE queries (users, resources, groups). This endpoint is only available to our OpalQuery beta group. Please contact Opal support if you'd like to be added to the beta.
+- [Delete owners](https://docs.opal.dev/api-reference/owners/delete-owners.md): Deletes an owner.
+- [Get owner by ID](https://docs.opal.dev/api-reference/owners/get-owner-by-id.md): Returns an `Owner` object.
+- [Get owners](https://docs.opal.dev/api-reference/owners/get-owners.md): Returns a list of `Owner` objects.
+- [Get owners users](https://docs.opal.dev/api-reference/owners/get-owners-users.md): Gets the list of users for this owner, in escalation priority order if applicable.
+- [Get ownersname](https://docs.opal.dev/api-reference/owners/get-ownersname.md): Returns an `Owner` object. Does not support owners with `/` in their name, use /owners?name=... instead.
+- [Post owners](https://docs.opal.dev/api-reference/owners/post-owners.md): Creates an owner.
+- [Put owners](https://docs.opal.dev/api-reference/owners/put-owners.md): Bulk updates a list of owners.
+- [Put owners users](https://docs.opal.dev/api-reference/owners/put-owners-users.md): Sets the list of users for this owner. If escalation is enabled, the order of this list is the escalation priority order of the users. If the owner has a source group, adding or removing users from this list won't be possible.
+- [Get request by ID](https://docs.opal.dev/api-reference/requests/get-request-by-id.md): Returns a request by ID.
+- [Get requests](https://docs.opal.dev/api-reference/requests/get-requests.md): Returns a list of requests for your organization that is visible by the admin.
+- [Get requests comments](https://docs.opal.dev/api-reference/requests/get-requests-comments.md): Returns a list of comments for a specific request.
+- [Get requests via Relay](https://docs.opal.dev/api-reference/requests/get-requests-via-relay.md): Returns a paginated list of requests using Relay-style cursor pagination.
+- [Post requests](https://docs.opal.dev/api-reference/requests/post-requests.md): Create an access request
+- [Post requests approve](https://docs.opal.dev/api-reference/requests/post-requests-approve.md): Approve an access request
+- [Post requests comments](https://docs.opal.dev/api-reference/requests/post-requests-comments.md): Comment on an access request
+- [Post requests deny](https://docs.opal.dev/api-reference/requests/post-requests-deny.md): Deny an access request
+- [Delete resources](https://docs.opal.dev/api-reference/resources/delete-resources.md): Deletes a resource.
+- [Delete resources non human identities](https://docs.opal.dev/api-reference/resources/delete-resources-non-human-identities.md): Removes a non-human identity's direct access from this resource.
+- [Delete resources users](https://docs.opal.dev/api-reference/resources/delete-resources-users.md): Removes a user's direct access from this resource.
+- [Get resource by ID](https://docs.opal.dev/api-reference/resources/get-resource-by-id.md): Retrieves a resource.
+- [Get resource user](https://docs.opal.dev/api-reference/resources/get-resource-user.md): Returns information about a specific user's access to a resource.
+- [Get resource user access status ](https://docs.opal.dev/api-reference/resources/get-resource-user-access-status-.md): Get user's access status to a resource.
+- [Get resource users](https://docs.opal.dev/api-reference/resources/get-resource-users.md): Gets the list of users for this resource.
+- [Get resources](https://docs.opal.dev/api-reference/resources/get-resources.md): Returns a list of resources for your organization.
+- [Get resources groups](https://docs.opal.dev/api-reference/resources/get-resources-groups.md): Returns a list of groups that grant access to the resource
+- [Get resources message channels](https://docs.opal.dev/api-reference/resources/get-resources-message-channels.md): Gets the list of audit message channels attached to a resource.
+- [Get resources non human identities](https://docs.opal.dev/api-reference/resources/get-resources-non-human-identities.md): Gets the list of non-human identities with access to this resource.
+- [Get resources reviewer stages](https://docs.opal.dev/api-reference/resources/get-resources-reviewer-stages.md): Gets the list reviewer stages for a resource.
+- [Get resources reviewers](https://docs.opal.dev/api-reference/resources/get-resources-reviewers.md): Gets the list of owner IDs of the reviewers for a resource.
+- [Get resources scoped role permissions](https://docs.opal.dev/api-reference/resources/get-resources-scoped-role-permissions.md): Returns all the scoped role permissions that apply to the given resource. Only OPAL_SCOPED_ROLE resource type supports this field.
+- [Get resources tags](https://docs.opal.dev/api-reference/resources/get-resources-tags.md): Returns all tags applied to the resource.
+- [Get resources visibility](https://docs.opal.dev/api-reference/resources/get-resources-visibility.md): Gets the visibility of this resource.
+- [Get resourcesusers](https://docs.opal.dev/api-reference/resources/get-resourcesusers.md): Gets the list of resources for this user.
+- [Post resources](https://docs.opal.dev/api-reference/resources/post-resources.md): Creates a resource. See [here](https://docs.opal.dev/reference/end-system-objects) for details about importing resources.
+- [Post resources non human identities](https://docs.opal.dev/api-reference/resources/post-resources-non-human-identities.md): Gives a non-human identity access to this resource.
+- [Post resources users](https://docs.opal.dev/api-reference/resources/post-resources-users.md): Adds a user to this resource.
+- [Put resources](https://docs.opal.dev/api-reference/resources/put-resources.md): Bulk updates a list of resources.
+- [Put resources message channels](https://docs.opal.dev/api-reference/resources/put-resources-message-channels.md): Sets the list of audit message channels attached to a resource.
+- [Put resources reviewer stages](https://docs.opal.dev/api-reference/resources/put-resources-reviewer-stages.md): Sets the list of reviewer stages for a resource.
+- [Put resources reviewers](https://docs.opal.dev/api-reference/resources/put-resources-reviewers.md): Sets the list of reviewers for a resource.
+- [Put resources scoped role permissions](https://docs.opal.dev/api-reference/resources/put-resources-scoped-role-permissions.md): Sets all the scoped role permissions on an OPAL_SCOPED_ROLE resource.
+- [Put resources users](https://docs.opal.dev/api-reference/resources/put-resources-users.md): Updates a user's access level or duration on this resource.
+- [Put resources visibility](https://docs.opal.dev/api-reference/resources/put-resources-visibility.md): Sets the visibility of this resource.
+- [Get sessions](https://docs.opal.dev/api-reference/sessions/get-sessions.md): Returns a list of `Session` objects.
+- [Delete tag](https://docs.opal.dev/api-reference/tags/delete-tag.md): UNSTABLE. May be removed at any time. Deletes a tag with the given id.
+- [Delete tags groups](https://docs.opal.dev/api-reference/tags/delete-tags-groups.md): Removes a tag from a group.
+- [Delete tags resources](https://docs.opal.dev/api-reference/tags/delete-tags-resources.md): Removes a tag from a resource.
+- [Delete tags users](https://docs.opal.dev/api-reference/tags/delete-tags-users.md): Removes a tag from a user.
+- [Get tag](https://docs.opal.dev/api-reference/tags/get-tag.md): Gets a tag with the given key and value.
+- [Get tag by ID](https://docs.opal.dev/api-reference/tags/get-tag-by-id.md): UNSTABLE. May be removed at any time. Gets a tag with the given id.
+- [Get tags](https://docs.opal.dev/api-reference/tags/get-tags.md): Returns a list of tags created by your organization.
+- [Post tag](https://docs.opal.dev/api-reference/tags/post-tag.md): Creates a tag with the given key and value.
+- [Post tags groups](https://docs.opal.dev/api-reference/tags/post-tags-groups.md): Applies a tag to a group.
+- [Post tags resources](https://docs.opal.dev/api-reference/tags/post-tags-resources.md): Applies a tag to a resource.
+- [Post tags users](https://docs.opal.dev/api-reference/tags/post-tags-users.md): Applies a tag to a user.
+- [Delete token](https://docs.opal.dev/api-reference/tokens/delete-token.md): Deletes a first-party API token. Admins can delete any token. Non-admins can only delete their own tokens when the organization allows all users to create API tokens.
+- [Get tokens](https://docs.opal.dev/api-reference/tokens/get-tokens.md): Returns a list of first-party API tokens for your organization. Requires admin access.
+- [Get uar](https://docs.opal.dev/api-reference/uars/get-uar.md): Retrieves a specific UAR.
+- [Get uars](https://docs.opal.dev/api-reference/uars/get-uars.md): Returns a list of `UAR` objects.
+- [Post uar](https://docs.opal.dev/api-reference/uars/post-uar.md): Starts a User Access Review.
+- [Get user](https://docs.opal.dev/api-reference/users/get-user.md): Returns a `User` object.
+- [Get users](https://docs.opal.dev/api-reference/users/get-users.md): Returns a list of users for your organization.
+- [Get users tags](https://docs.opal.dev/api-reference/users/get-users-tags.md): Returns all tags applied to the user.
+- [Get usersremote users](https://docs.opal.dev/api-reference/users/get-usersremote_users.md): Returns a list of remote users for your organization.
+- [Changelog](https://docs.opal.dev/changelog/changelog.md): Product updates and announcements
+- [CLI Changelog](https://docs.opal.dev/changelog/cli-changelog.md): Learn about notable changes to the Opal CLI.
+- [Create Access Campaigns](https://docs.opal.dev/docs/access-campaigns.md): Learn how to create a User Access Campaign.
+- [Access Comparison](https://docs.opal.dev/docs/access-comparison.md): Learn how to use our access comparison tool
+- [Create Access Reviews](https://docs.opal.dev/docs/access-reviews-legacy.md): Learn how to create and configure User Access Reviews in Opal.
+- [Access Rules](https://docs.opal.dev/docs/access-rules.md): Use Access Rules to enforce access policies at scale.
+- [Add additional IDP/HR providers](https://docs.opal.dev/docs/add-additional-idphr-providers.md)
+- [Add your first IDP/HR provider](https://docs.opal.dev/docs/add-your-first-idphr-provider.md)
+- [Custom Connector API Spec](https://docs.opal.dev/docs/api-spec.md)
+- [Assign and complete reviews](https://docs.opal.dev/docs/assigning-and-completing-reviews-legacy.md): Learn how to assign and complete User Access reviews in Opal.
+- [Best practices for access requests](https://docs.opal.dev/docs/best-practices-for-access-requests.md): Learn about best practices for organizing and configuring resources.
+- [Best practices for access reviews](https://docs.opal.dev/docs/best-practices-for-user-access-reviews.md)
+- [Bundles](https://docs.opal.dev/docs/bundles.md): Learn how to use bundles to group commonly used resources.
+- [Complete Access Reviews](https://docs.opal.dev/docs/complete-access-reviews.md): Learn how to complete reviews in an Access Campaign.
+- [Configuration templates](https://docs.opal.dev/docs/configuration-templates.md)
+- [Configure Async Exports Storage (Self-Hosted)](https://docs.opal.dev/docs/configure-async-exports-storage.md): Provision an S3 bucket so your self-hosted Opal instance can serve async data exports.
+- [Configure reviewers](https://docs.opal.dev/docs/configure-reviewers.md): Learn how to configure required reviewers for access requests.
+- [Configure SSO and MFA](https://docs.opal.dev/docs/configure-sso-and-mfa.md): Learn how to set up MFA for Opal logins and actions.
+- [Connect Identity or HR Providers](https://docs.opal.dev/docs/connect-your-identity-provider-idp.md)
+- [Connect Productivity Tools](https://docs.opal.dev/docs/connect-your-productivity-tools.md): Learn how to connect Opal with your existing productivity tools.
+- [Overview](https://docs.opal.dev/docs/custom-integrations-overview.md): Learn about different options for building custom integrations in Opal.
+- [Custom Opal roles](https://docs.opal.dev/docs/custom-opal-roles.md): Learn how to create custom Opal roles.
+- [Delegate reviews](https://docs.opal.dev/docs/delegate-reviews.md): Learn how to schedule delegated access request reviews.
+- [Disaster recovery guide](https://docs.opal.dev/docs/disaster-recovery-guide.md)
+- [Access Request FAQs](https://docs.opal.dev/docs/end-user-faq.md): Learn answers to frequently asked questions for end users requesting access with Opal.
+- [Events](https://docs.opal.dev/docs/event-types.md): Use Events to audit access updates and additional events in Opal.
+- [Events Streaming](https://docs.opal.dev/docs/events-streaming.md): Set up Opal to stream Events to your logging destination in near real-time.
+- [Google SAML Setup](https://docs.opal.dev/docs/google-saml-setup.md): Learn how to configure Opal to authenticate users via Google SAML SSO.
+- [Group leaders](https://docs.opal.dev/docs/group-projects.md)
+- [Create your own connector](https://docs.opal.dev/docs/how-to-create-your-own-connector.md): Learn how to build custom connectors to connect Opal with any end system.
+- [Import and configure resources](https://docs.opal.dev/docs/import-and-configure-resources-and-groups.md)
+- [Import user secondary emails](https://docs.opal.dev/docs/importing-user-secondary-email.md): Learn how to consolidate access for users with multiple email addresses.
+- [Install Opal using Helm](https://docs.opal.dev/docs/install-opal-using-helm.md)
+- [Opal's server IP ranges](https://docs.opal.dev/docs/ip-ranges.md)
+- [Kubernetes Components and Health Monitoring](https://docs.opal.dev/docs/kubernetes-components-and-health-monitoring-guide.md): Learn about various kubernetes pods and jobs, and health monitoring recommendations on self-hosted Opal.
+- [Risk Center](https://docs.opal.dev/docs/least-privilege-posture-management.md): Use the Risk Center to gain insights on your least privilege posture.
+- [Linked groups](https://docs.opal.dev/docs/linked-groups.md): Learn how to link identical groups in Opal and set one as the source of truth.
+- [Manage break-glass access](https://docs.opal.dev/docs/manage-breakglass-access.md): Learn how to set up groups and users to support break-glass access paths.
+- [Overview](https://docs.opal.dev/docs/manage-groups-in-opal.md): Learn about the different features Opal provides to manage groups.
+- [Manage Access Campaign](https://docs.opal.dev/docs/managing-access-campaigns.md): Learn how to manage your Access Campaign.
+- [Manage reviews](https://docs.opal.dev/docs/managing-user-access-reviews-legacy.md): Learn how to manage User Access Reviews.
+- [Admin Auditing MCP Server](https://docs.opal.dev/docs/mcp/admin-auditing.md): Let admins audit access with Opal using our Admin Auditing MCP server.
+- [Admin Provisioning MCP Server](https://docs.opal.dev/docs/mcp/admin-provisioning.md): Let admins manage access with Opal using our Admin Provisioning MCP server.
+- [End User MCP Server](https://docs.opal.dev/docs/mcp/end-user.md): Let end users interact with Opal using our end user MCP server.
+- [Legacy MCP](https://docs.opal.dev/docs/mcp/gram-mcp-servers.md): Learn how to install and use Opal's Gram-hosted MCP servers.
+- [Model Context Protocol (MCP)](https://docs.opal.dev/docs/mcp/overview.md): Let your AI Agents interact with Opal by using our MCP server.
+- [Metrics dashboard](https://docs.opal.dev/docs/metrics.md): Learn about Opal's built-in analytics and metrics.
+- [Nested groups](https://docs.opal.dev/docs/nested-groups.md): Learn how to set up nested groups in Opal.
+- [Notifications](https://docs.opal.dev/docs/notifications.md): Learn about the types of notifications sent by Opal.
+- [OIDC Provider Setup for Opal Actions](https://docs.opal.dev/docs/oidc-provider-setup-for-opal-actions.md)
+- [Group aliasing](https://docs.opal.dev/docs/okta-group-aliasing.md)
+- [Okta Multifactor Authentication](https://docs.opal.dev/docs/okta-multifactor-authentication.md)
+- [Okta SAML Setup](https://docs.opal.dev/docs/okta-saml-setup.md): Learn how to configure Opal to authenticate users via Okta SAML SSO.
+- [Okta SCIM: Provision Opal Users](https://docs.opal.dev/docs/okta-scim-integration.md)
+- [Concepts](https://docs.opal.dev/docs/opal-101.md): Learn about fundamental concepts and objects in Opal.
+- [Opal architecture](https://docs.opal.dev/docs/opal-architecture.md): Learn about components in Opal's identity management platform.
+- [Opal CLI](https://docs.opal.dev/docs/opal-cli.md): Learn how to configure and use the Opal CLI.
+- [Overview](https://docs.opal.dev/docs/opal-overview.md)
+- [Overview](https://docs.opal.dev/docs/opal-query.md): Explore and analyze access across your organization with OpalQuery.
+- [Query API](https://docs.opal.dev/docs/opal-query-api.md): Run ad-hoc OpalQuery requests over HTTP to find entities and traverse access relationships.
+- [Use OpalScript to automate access workflows](https://docs.opal.dev/docs/opalscript-overview.md): Build access management workflows with OpalScript.
+- [OpalScript Reference](https://docs.opal.dev/docs/opalscript-reference.md): Learn language basics and quickly reference OpalScript functions.
+- [Utility Modules for OpalScript](https://docs.opal.dev/docs/opalscript-utilitymodules.md): Learn about how to use OpalScript's Utility Modules to automate access management workflows.
+- [Curate end-user catalog](https://docs.opal.dev/docs/organize-access-via-tags.md)
+- [Owner Permissions](https://docs.opal.dev/docs/owner-permissions.md): Learn what owner permissions are and how to customize them.
+- [Review access requests with Paladin](https://docs.opal.dev/docs/paladin/access-request.md): Use a Paladin agent to investigate and decide on access requests within your existing approval chains.
+- [Use Paladin to scale your security function](https://docs.opal.dev/docs/paladin/overview.md): Scale your security function and automate routine operations using Paladin agents.
+- [Request on behalf rules](https://docs.opal.dev/docs/request-on-behalf.md): Learn how request configurations and visibility settings affect requesting access on behalf of other users.
+- [Request Review Example Scripts](https://docs.opal.dev/docs/requestreview-examples.md): Learn to use Request Review scripts through examples.
+- [Start automating workflows around requests](https://docs.opal.dev/docs/requestreview-getstarted.md): Learn how to create request review scripts in OpalScript.
+- [Special roles in Opal](https://docs.opal.dev/docs/roles-in-opal.md)
+- [Self-Hosted on AWS EKS](https://docs.opal.dev/docs/self-host-opal-aws-guide.md): Learn how to deploy Opal on AWS EKS.
+- [Self-Hosted on GKE](https://docs.opal.dev/docs/self-host-opal-gke-guide.md): Learn how to deploy Opal on Google Cloud GKE.
+- [Set up Self-Hosted](https://docs.opal.dev/docs/self-host-overview.md): Learn the prerequisites required to deploy Opal on your own infrastructure.
+- [Set up Cloud](https://docs.opal.dev/docs/set-up-cloud.md): Learn how to get started with Opal Cloud.
+- [Connect Apps and Infrastructure](https://docs.opal.dev/docs/set-up-connections.md)
+- [Set up an Airgapped Opal Environment](https://docs.opal.dev/docs/setup-an-airgapped-opal-environment.md)
+- [SSO with SAML](https://docs.opal.dev/docs/sso-with-saml.md): Learn how to set up SAML SSO to authenticate users to Opal.
+- [Sync schedules and triggers](https://docs.opal.dev/docs/sync-schedules-and-triggers.md): Learn how Opal syncs apps, groups, resources, and users from remote systems.
+- [Manage access with ticketing](https://docs.opal.dev/docs/ticket-propagation.md)
+- [Update your Opal installation](https://docs.opal.dev/docs/update-self-hosted-opal.md): Learn how to update your self-hosted Opal installation.
+- [Use Terraform with Opal](https://docs.opal.dev/docs/use-terraform-with-opal.md): Learn how to set up Opal's Terraform provider.
+- [User provisioning](https://docs.opal.dev/docs/user-provisioning.md): Learn about user provisioning and deprovisioning in Opal.
+- [Webhooks](https://docs.opal.dev/docs/webhooks.md): Learn how to configure webhooks to push changes on access requests.
+- [Quickstart](https://docs.opal.dev/docs/welcome.md): Explore our guides to enable Opal in your organization
+- [Overview](https://docs.opal.dev/integrations/active-directory.md): Connect your Active Directory server to use Opal to manage and review access.
+- [Active Directory IDP/HRIS Integration](https://docs.opal.dev/integrations/active-directory-idphris-integration.md)
+- [Add an EC2 instance](https://docs.opal.dev/integrations/adding-an-ec2-instance.md): Add your AWS EC2 instances to Opal to allow your developers to request temporary access.
+- [Add an EKS cluster](https://docs.opal.dev/integrations/adding-an-eks-cluster.md): Add your AWS EKS clusters to Opal to allow your developers to request temporary access.
+- [Add an IAM role](https://docs.opal.dev/integrations/adding-an-iam-role.md): Add your AWS IAM roles to Opal to allow your developers to request temporary access.
+- [Add an RDS database](https://docs.opal.dev/integrations/adding-an-rds-database.md): Add your AWS RDS databases to Opal to allow your developers to request temporary access.
+- [Adding AWS Resources to Opal Groups via AWS Tags](https://docs.opal.dev/integrations/adding-aws-resources-to-opal-groups-via-aws-tags.md)
+- [Add Azure Databases](https://docs.opal.dev/integrations/adding-azure-sql-databases.md): Add Azure databases to grant users temporary access.
+- [Add a BigQuery Dataset](https://docs.opal.dev/integrations/adding-bigquery-dataset.md)
+- [Add a Compute Engine Instance](https://docs.opal.dev/integrations/adding-compute-instance.md)
+- [Add a Cloud Storage bucket](https://docs.opal.dev/integrations/adding-gcp-bucket.md)
+- [Add a folder](https://docs.opal.dev/integrations/adding-gcp-folder.md): Learn how to add a GCP folder to Opal so you can manage temporary access to them.
+- [Add an organization](https://docs.opal.dev/integrations/adding-gcp-organization.md): Read about how to add a GCP organization to Opal so you can manage temporary access to them.
+- [Add a project](https://docs.opal.dev/integrations/adding-gcp-project.md): Read about how to add a GCP project to Opal so you can manage temporary access to them.
+- [Add a Cloud SQL Instance](https://docs.opal.dev/integrations/adding-sql-instance.md)
+- [Anthropic Platform](https://docs.opal.dev/integrations/anthropic.md): Learn how to connect your Opal instance with Anthropic.
+- [Astra](https://docs.opal.dev/integrations/astra.md): Learn how to connect your Opal instance with Astra.
+- [AWS IAM Identity Center Workflows](https://docs.opal.dev/integrations/aws-iam-identity-center-formerly-aws-sso.md): Manage your permission sets, users, and groups in Opal
+- [Configure AWS for self-hosted Opal](https://docs.opal.dev/integrations/aws-integration-on-prem-setup.md)
+- [AWS Real Time Sync Setup](https://docs.opal.dev/integrations/aws-real-time-sync.md)
+- [Azure](https://docs.opal.dev/integrations/azure.md): Learn how to connect Opal to Azure to manage access.
+- [Azure Entra IDP/HRIS Integration](https://docs.opal.dev/integrations/azure-entra-idphris-integration.md): Learn how to configure Azure Entra as an IDP/HRIS Integration.
+- [Azure Infrastructure Setup](https://docs.opal.dev/integrations/azure-infrastructure-setup.md)
+- [Azure Real Time Sync Setup](https://docs.opal.dev/integrations/azure-real-time-sync.md)
+- [Clickhouse](https://docs.opal.dev/integrations/clickhouse.md): Learn how to connect Opal to Clickhouse to manage access.
+- [Configure additional AWS accounts to manage in Opal](https://docs.opal.dev/integrations/configure-additional-aws-accounts-to-manage-in-opal.md): Learn how to configure additional AWS accounts so you can manage and review access in Opal.
+- [Coupa](https://docs.opal.dev/integrations/coupa.md): Learn how to connect Opal with Coupa.
+- [Cursor](https://docs.opal.dev/integrations/cursor.md): Learn how to connect Opal with Cursor.
+- [Databricks](https://docs.opal.dev/integrations/databricks.md): Learn how to connect your Opal instance to Databricks.
+- [Datadog](https://docs.opal.dev/integrations/datadog.md): Learn how to connect your Datadog instance to Opal to manage and review access.
+- [Devin AI](https://docs.opal.dev/integrations/devin.md): Learn how to connect your Opal instance with Devin AI.
+- [Duo](https://docs.opal.dev/integrations/duo.md): Connect your Duo instance to use Opal to manage and review access.
+- [Freshservice](https://docs.opal.dev/integrations/freshservice.md): Learn how to connect your Opal instance with Freshservice
+- [GCP Service Accounts](https://docs.opal.dev/integrations/gcp-service-accounts.md): Add and manage Google Cloud Platform (GCP) service accounts in Opal.
+- [GitHub](https://docs.opal.dev/integrations/github.md): Connect Opal to your GitHub organization to manage and review access.
+- [GitHub Enterprise](https://docs.opal.dev/integrations/github-enterprise.md): Connect Opal to your GitHub Enterprise account to manage and review access.
+- [GitLab](https://docs.opal.dev/integrations/gitlab.md): Connect Opal to your GitLab instance or group to manage and review access.
+- [Google](https://docs.opal.dev/integrations/google.md)
+- [Google Chat](https://docs.opal.dev/integrations/google-chat.md): Learn how to connect Opal to Google Chat.
+- [Google Cloud Platform (GCP)](https://docs.opal.dev/integrations/google-cloud-platform.md): Connect your GCP infrastructure to use Opal to manage and review access.
+- [Google Groups](https://docs.opal.dev/integrations/google-groups.md): Connect your Google Groups organization to Opal to manage and review access.
+- [Google IDP/HRIS Integration](https://docs.opal.dev/integrations/google-idphris-integration.md)
+- [Google Kubernetes Engine (GKE)](https://docs.opal.dev/integrations/google-kubernetes-engine-getting-started.md): Learn how to manage user access with Google Kubernetes Engine (GKE).
+- [Google Workspace](https://docs.opal.dev/integrations/google-workspace.md): Learn how to connect Google Workspace with Opal.
+- [Grafana](https://docs.opal.dev/integrations/grafana.md): Learn how to connect Opal to Grafana to manage access to Grafana folders, dashboards, roles, and teams.
+- [Hubspot](https://docs.opal.dev/integrations/hubspot.md): Learn how to connect Opal to Hubspot to manage access.
+- [Incident.io](https://docs.opal.dev/integrations/incidentio.md): Learn how to connect Incident.io to Opal.
+- [Jira](https://docs.opal.dev/integrations/jira.md): Learn how to connect your Opal instance with Jira.
+- [LDAP](https://docs.opal.dev/integrations/ldap.md): Connect your LDAP server to use Opal to manage and review access.
+- [Linear](https://docs.opal.dev/integrations/linear.md)
+- [NetSuite](https://docs.opal.dev/integrations/netsuite.md): Learn how to connect your NetSuite instance with Opal to manage and review access.
+- [Notion](https://docs.opal.dev/integrations/notion.md): Learn how to connect your Opal instance with Notion.
+- [Okta](https://docs.opal.dev/integrations/okta.md): Connect your Okta instance to use Opal to manage and review access.
+- [Import Okta apps](https://docs.opal.dev/integrations/okta-apps.md): Learn how to import your Okta apps into Opal.
+- [Okta CIAM](https://docs.opal.dev/integrations/okta-ciam.md): Connect your Okta CIAM instance to Opal to manage and review access.
+- [Okta IDP/HRIS Integration](https://docs.opal.dev/integrations/okta-idphris-integration.md)
+- [Okta rate limits](https://docs.opal.dev/integrations/okta-rate-limits.md): Learn about rate limits that may affect your Okta integration with Opal.
+- [OpenAI Platform](https://docs.opal.dev/integrations/openai.md): Learn how to connect Opal with OpenAI Platform.
+- [Opsgenie](https://docs.opal.dev/integrations/opsgenie.md): Learn how to connect Opal to Opsgenie.
+- [Oracle Fusion Cloud](https://docs.opal.dev/integrations/oracle-fusion-cloud.md): Learn how to connect your Oracle Fusion Cloud instance to Opal to manage and review access.
+- [PagerDuty](https://docs.opal.dev/integrations/pagerduty-entitlements.md): Learn how to connect your PagerDuty accounts with Opal to manage and review access.
+- [PagerDuty](https://docs.opal.dev/integrations/pagerduty-oncall.md): Learn how to connect PagerDuty to Opal.
+- [Risotto](https://docs.opal.dev/integrations/risotto.md): Learn how to connect Opal in Risotto.
+- [Rootly](https://docs.opal.dev/integrations/rootly.md): Learn how to connect Rootly to Opal.
+- [Salesforce](https://docs.opal.dev/integrations/salesforce.md): Learn how to connect your Salesforce accounts with Opal to manage and review access.
+- [ServiceNow](https://docs.opal.dev/integrations/servicenow.md): Learn how to connect ServiceNow to Opal.
+- [Amazon Web Services (AWS)](https://docs.opal.dev/integrations/setting-up-your-aws-organization-in-opal.md): Connect your AWS infrastructure to use Opal to manage and review access.
+- [Shortcut](https://docs.opal.dev/integrations/shortcut.md): Learn how to connect your Opal instance with Shortcut
+- [Slack](https://docs.opal.dev/integrations/slack.md): Learn how to connect your Opal instance to Slack.
+- [Slack users and groups](https://docs.opal.dev/integrations/slack-user-groups.md): Connect your Slack workspace to Opal to manage and review access to Slack users and groups.
+- [Snowflake](https://docs.opal.dev/integrations/snowflake.md): Learn how to connect your Snowflake account and use Opal to manage and review access.
+- [Snowflake User Provisioning](https://docs.opal.dev/integrations/snowflake-user-provisioning.md)
+- [Tailscale](https://docs.opal.dev/integrations/tailscale.md): Learn how to connect Opal to Tailscale to manage SSH access within your tailnet.
+- [Teleport](https://docs.opal.dev/integrations/teleport.md): Learn how to connect Opal to Teleport to manage access to Teleport groups.
+- [Twingate](https://docs.opal.dev/integrations/twingate.md): Learn how to connect Opal to Twingate to manage access to Twingate groups and resources.
+- [Overview](https://docs.opal.dev/integrations/workday.md): Learn how to connect your Workday tenant to Opal.
+- [Workday groups and roles](https://docs.opal.dev/integrations/workday-groups-and-roles.md): Learn how to manage access to Workday groups and roles.
+- [Workday IDP/HRIS Integration](https://docs.opal.dev/integrations/workday-idphris-integration.md): Learn how to connect Workday to Opal as an IDP/HRIS integration.
+- [Zendesk](https://docs.opal.dev/integrations/zendesk.md): Learn how to connect Opal to Zendesk to manage access to Zendesk groups, organizations, and custom roles.
+- [Authentication](https://docs.opal.dev/reference/authentication.md): Learn how to authenticate your requests to the Opal API.
+- [Identifying End System Objects](https://docs.opal.dev/reference/end-system-objects.md): Learn how Opal tracks the resources and groups that it syncs with end systems.
+- [Opal API Rate Limits](https://docs.opal.dev/reference/opal-api-rate-limits.md)
+- [Overview](https://docs.opal.dev/reference/opal-sdks.md): Supported SDKs:
+- [Pagination](https://docs.opal.dev/reference/pagination.md): Learn how to paginate bulk data requests to the Opal API.
+
+## OpenAPI Specs
+
+- [openapi](https://docs.opal.dev/api-reference/openapi.json)

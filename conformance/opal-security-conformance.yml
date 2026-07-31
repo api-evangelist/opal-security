@@ -1,0 +1,42 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opal-security-openapi.yaml + https://docs.opal.dev + https://opal.dev/security
+provider: Opal Security
+description: >-
+  Conformance assertions for cross-cutting industry standards, derived from the
+  Opal OpenAPI and confirmed against the docs and Trust Center. conforms=false
+  with evidence is a valid, honest result.
+standards:
+- id: oauth2
+  conforms: false
+  evidence: >-
+    The API authenticates with static bearer tokens (service-user API keys and
+    personal access tokens), not OAuth2 authorization flows. Auth0 backs
+    platform user login, but the API surface declares only http bearer.
+- id: oidc
+  conforms: false
+  evidence: Opal supports OIDC/SAML SSO for platform login (Okta, Google), but the REST API itself uses bearer tokens.
+- id: scim
+  conforms: partial
+  evidence: >-
+    Opal is a SCIM consumer — it provisions/deprovisions via IdP SCIM (e.g. Okta
+    SCIM) and syncs IDP group mappings — but does not expose a SCIM 2.0 server
+    endpoint in this API.
+- id: rfc9457
+  conforms: false
+  evidence: No application/problem+json responses are declared in the OpenAPI; errors are plain JSON with HTTP status codes.
+- id: pagination
+  conforms: true
+  evidence: List endpoints implement cursor-based pagination (cursor, page_size, limit parameters).
+- id: idempotency
+  conforms: false
+  evidence: No Idempotency-Key header or idempotency semantics documented.
+- id: json:api
+  conforms: false
+  evidence: Responses use resource-specific JSON envelopes, not the JSON:API media type.
+- id: soc2
+  conforms: true
+  evidence: >-
+    Opal Trust Center (opal.dev/security) documents a SOC 2 program, annual
+    third-party penetration testing, monthly vulnerability scans, TLS 1.2+ in
+    transit, and AWS KMS encryption at rest.

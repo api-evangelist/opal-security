@@ -1,9 +1,29 @@
 aid: opal-security
 name: Opal Security
-description: 'Opal Security is a company surfaced as a portfolio company of greylock and added to the
-  API Evangelist network as a stub for enrichment. Sector: cybersecurity. This profile is a lead awaiting
-  the enrichment pipeline.'
+description: >-
+  Opal Security (legal entity Perma Security, Inc.) is a next-generation access
+  management and identity security platform that gives enterprises comprehensive
+  visibility into access across their systems, orchestrates just-in-time and
+  least-privilege access, designs intelligent access policies, and automates user
+  access reviews (UARs). Opal exposes a RESTful API at https://api.opal.dev/v1
+  covering apps, resources, groups, users, bundles, access requests, access rules,
+  owners, events, event streaming, sessions, and tokens, plus official SDKs
+  (Python, Go), a CLI, a Terraform provider, and three hosted Model Context
+  Protocol (MCP) servers for AI agents. Backed by Greylock. Sector: cybersecurity.
 url: https://raw.githubusercontent.com/api-evangelist/opal-security/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://framerusercontent.com/images/HHjnsz66kJwSMAe0rpzp3eREB2k.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -12,16 +32,564 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Cybersecurity
-apis: []
+- Access Management
+- Identity and Access Management
+- Least Privilege
+- Access Reviews
+- Security
+apis:
+- aid: opal-security:opal-security-access-rules-api
+  name: Opal Security access-rules API
+  description: Operations related to access rules
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - access-rules
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-access-rules-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-apps-api
+  name: Opal Security apps API
+  description: Operations related to apps
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - apps
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-apps-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-bundles-api
+  name: Opal Security bundles API
+  description: Operations related to bundles
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - bundles
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-bundles-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-configuration-templates-api
+  name: Opal Security configuration-templates API
+  description: Operations related to configuration templates
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - configuration-templates
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-configuration-templates-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-delegations-api
+  name: Opal Security delegations API
+  description: Operations related to request reviewer delegations
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - delegations
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-delegations-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-event-streams-api
+  name: Opal Security event-streams API
+  description: Operations related to event streaming connections
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - event-streams
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-event-streams-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-events-api
+  name: Opal Security events API
+  description: Operations related to events
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - events
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-events-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-group-bindings-api
+  name: Opal Security group-bindings API
+  description: Operations related to group bindings
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - group-bindings
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-group-bindings-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-groups-api
+  name: Opal Security groups API
+  description: Operations related to groups
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - groups
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-groups-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-idp-group-mappings-api
+  name: Opal Security idp-group-mappings API
+  description: Operations related to IDP group mappings
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - idp-group-mappings
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-idp-group-mappings-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-message-channels-api
+  name: Opal Security message-channels API
+  description: Operations related to message channels
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - message-channels
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-message-channels-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-non-human-identities-api
+  name: Opal Security non-human-identities API
+  description: Operations related to non-human identities
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - non-human-identities
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-non-human-identities-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-on-call-schedules-api
+  name: Opal Security on-call-schedules API
+  description: Operations related to on-call schedules
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - on-call-schedules
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-on-call-schedules-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-opal-queries-api
+  name: Opal Security opal-queries API
+  description: Operations related to OpalQuery
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - opal-queries
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-opal-queries-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-owners-api
+  name: Opal Security owners API
+  description: Operations related to owners
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - owners
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-owners-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-requests-api
+  name: Opal Security requests API
+  description: Operations related to requests
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - requests
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-requests-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-resources-api
+  name: Opal Security resources API
+  description: Operations related to resources
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - resources
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-resources-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-sessions-api
+  name: Opal Security sessions API
+  description: Operations related to sessions
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - sessions
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-sessions-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-tags-api
+  name: Opal Security tags API
+  description: Operations related to tags
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-tags-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-tokens-api
+  name: Opal Security tokens API
+  description: Operations related to API tokens
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - tokens
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-tokens-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-uars-api
+  name: Opal Security uars API
+  description: Operations related to UARs
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - uars
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-uars-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- aid: opal-security:opal-security-users-api
+  name: Opal Security users API
+  description: Operations related to users
+  humanURL: https://docs.opal.dev/
+  baseURL: https://api.opal.dev/v1
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/opal-security-users-api-openapi.yml
+  - type: ErrorCatalog
+    url: errors/opal-security-problem-types.yml
+  - type: DataModel
+    url: data-model/opal-security-data-model.yml
+  - type: Conventions
+    url: conventions/opal-security-conventions.yml
+  - type: Webhooks
+    url: asyncapi/opal-security-events-webhooks.yml
+  - type: Documentation
+    url: https://docs.opal.dev/
+  - type: APIReference
+    url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/opal-security-domain-security.yml
+- type: Authentication
+  url: authentication/opal-security-authentication.yml
+- type: LLMsTxt
+  url: llms/opal-security-llms.txt
+- type: Packages
+  url: packages/opal-security-packages.yml
+- type: SDKs
+  url: packages/opal-security-packages.yml
+- type: MCPServer
+  url: mcp/opal-security-mcp.yml
+- type: CLI
+  url: cli/opal-security-cli.yml
+- type: ChangeLog
+  url: changelog/opal-security-changelog.yml
+- type: Lifecycle
+  url: lifecycle/opal-security-lifecycle.yml
+- type: StatusPage
+  url: https://status.opal.dev/
+- type: Conformance
+  url: conformance/opal-security-conformance.yml
+- type: Compliance
+  url: security/opal-security-trust-center.yml
+- type: TrustCenter
+  url: security/opal-security-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/opal-security-vulnerability-disclosure.yml
+- type: Security
+  url: security/opal-security-vulnerability-disclosure.yml
+- type: AgentSkill
+  url: skills/_index.yml
 - type: Website
   url: https://opal.dev/
+- type: DeveloperPortal
+  url: https://docs.opal.dev/
+- type: Documentation
+  url: https://docs.opal.dev/
+- type: APIReference
+  url: https://docs.opal.dev/api-reference/access-rules/get-access-rules
+- type: GettingStarted
+  url: https://docs.opal.dev/
+- type: Changelog
+  url: https://docs.opal.dev/changelog/changelog
+- type: Blog
+  url: https://opal.dev/blog
+- type: Pricing
+  url: https://opal.dev/pricing
+- type: GitHubOrganization
+  url: https://github.com/opalsecurity
+- type: SignUp
+  url: https://app.opal.dev/
+- type: TermsOfService
+  url: https://opal.dev/terms-of-service
+- type: PrivacyPolicy
+  url: https://opal.dev/privacy-policy
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  pass: local-v1
+  artifacts_added: 20

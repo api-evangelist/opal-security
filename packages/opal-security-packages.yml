@@ -1,0 +1,55 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.opal.dev/docs/opal-cli + registry lookups (npm, PyPI, pkg.go.dev, Terraform Registry, github.com/opalsecurity)
+provider: Opal Security
+description: >-
+  First-party client libraries, CLI, and infrastructure providers published by
+  Opal Security (GitHub org opalsecurity) for the Opal REST API
+  (https://api.opal.dev/v1).
+packages:
+- name: opal-security
+  registry: npm
+  ecosystem: node
+  official: true
+  kind: cli
+  latest: 5.1.2
+  url: https://www.npmjs.com/package/opal-security
+  repository: https://github.com/opalsecurity/opal-cli
+  install: npm install -g opal-security
+  description: Opal CLI — centrally manage access to sensitive systems from the terminal.
+- name: opal-security
+  registry: PyPI
+  ecosystem: python
+  official: true
+  kind: sdk
+  latest: 1.0.5
+  url: https://pypi.org/project/opal-security/
+  repository: https://github.com/opalsecurity/opal-python
+  install: pip install opal-security
+  description: Opal Python SDK for the Opal API.
+- name: github.com/opalsecurity/opal-go
+  registry: pkg.go.dev
+  ecosystem: go
+  official: true
+  kind: sdk
+  latest: v1.5.0
+  url: https://pkg.go.dev/github.com/opalsecurity/opal-go
+  repository: https://github.com/opalsecurity/opal-go
+  install: go get github.com/opalsecurity/opal-go
+  description: Opal Golang SDK for the Opal API.
+- name: opalsecurity/opal
+  registry: Terraform Registry
+  ecosystem: terraform
+  official: true
+  kind: provider
+  url: https://registry.terraform.io/providers/opalsecurity/opal/latest
+  repository: https://github.com/opalsecurity/terraform-provider-opal
+  description: Terraform provider for managing Opal resources (apps, resources, groups, owners, access rules).
+- name: opalsecurity/brew/opal-security
+  registry: Homebrew
+  ecosystem: homebrew
+  official: true
+  kind: cli
+  repository: https://github.com/opalsecurity/homebrew-brew
+  install: brew install opalsecurity/brew/opal-security
+  description: Homebrew tap distribution of the Opal CLI.

@@ -1,0 +1,35 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.opal.dev/docs/opal-cli
+provider: Opal Security
+name: Opal CLI
+binary: opal
+package: opal-security
+description: >-
+  First-party command-line interface for the Opal access-management platform.
+  Developers use it to authenticate, tunnel into self-hosted infrastructure, and
+  drive the Opal API from the terminal. The binary is distributed as the
+  opal-security package (see packages/).
+install:
+- method: npm
+  command: npm install -g opal-security
+- method: homebrew
+  command: brew install opalsecurity/brew/opal-security
+  upgrade: brew update && brew upgrade opal-security
+prerequisites:
+- Node v18 or later
+- Homebrew (for brew install path)
+- AWS CLI + AWS Session Manager plugin (for session/tunnel flows)
+auth:
+  command: opal login
+  description: >-
+    Creates an authentication session token stored securely for future commands.
+    Token lifetime is governed by Organization Settings > Authentication > Login
+    session lifetime. On Linux/Windows a separate local password protects the
+    stored token.
+docs: https://docs.opal.dev/docs/opal-cli
+changelog: https://docs.opal.dev/changelog/cli-changelog
+reference: https://www.npmjs.com/package/opal-security
+notes: >-
+  Full command surface is enumerated on the npm package page. Primary flows:
+  authenticate (opal login), and connect to Opal-managed resources/sessions.

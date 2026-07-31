@@ -1,0 +1,46 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enrichment overlay for the Opal API
+  version: 1.0.0
+x-provenance:
+  generated: '2026-07-20'
+  method: generated
+  source: openapi/opal-security-openapi.yaml
+  extends: openapi/opal-security-openapi.yaml
+  note: >-
+    Non-destructive OpenAPI Overlay capturing API Evangelist enrichment metadata.
+    Apply against the original spec; the source openapi file is never mutated.
+actions:
+- target: $.info
+  update:
+    x-api-evangelist:
+      provider: Opal Security
+      base_url: https://api.opal.dev/v1
+      auth: bearer (service-user API keys / personal access tokens)
+      pagination: cursor (cursor, page_size, limit)
+      mcp_servers:
+      - https://app.opal.dev/mcp/end-user
+      - https://app.opal.dev/mcp/admin-user-provisioning
+      - https://app.opal.dev/mcp/admin-auditing
+      sdks:
+      - npm:opal-security
+      - pypi:opal-security
+      - go:github.com/opalsecurity/opal-go
+      - terraform:opalsecurity/opal
+      docs: https://docs.opal.dev/
+      changelog: https://docs.opal.dev/changelog/changelog
+      status_page: https://status.opal.dev/
+      trust_center: https://opal.dev/security
+- target: $.info
+  update:
+    x-enrichment-tags:
+    - access-management
+    - identity-and-access-management
+    - least-privilege
+    - access-reviews
+    - cybersecurity
+- target: $.servers
+  update:
+    x-server-note: >-
+      Self-hosted Opal deployments substitute their own base URL for
+      https://api.opal.dev/v1.

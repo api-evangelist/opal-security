@@ -1,0 +1,23 @@
+generated: '2026-07-20'
+provider: Opal Security
+description: Agent Skills for the Opal access-management platform.
+skills:
+- name: sox-uar
+  file: opal-security-sox-uar.md
+  method: searched
+  source: https://github.com/opalsecurity/claude-skills
+  official: true
+  summary: >-
+    Provider-published skill — execute a SOX-compliant User Access Review (UAR)
+    campaign end-to-end (recertification, ITGC evidence, reviewer chase,
+    keep/revoke processing, revocation SLA). Saved verbatim from Opal's
+    claude-skills repository.
+- name: opal-access-request
+  file: opal-security-access-request.md
+  method: generated
+  source: openapi/opal-security-openapi.yaml
+  official: false
+  summary: >-
+    Request, review, approve/deny, and directly grant just-in-time access to an
+    Opal resource or group. Grounded in real operationIds (createRequest,
+    approveRequest, denyRequest, add_resource_user, ...).

@@ -1,0 +1,14 @@
+{
+  "repo": "opal-security",
+  "feeds": [
+    {
+      "source": "https://docs.opal.dev/changelog/changelog",
+      "feed_url": "https://docs.opal.dev/changelog/changelog/rss.xml",
+      "title": "",
+      "saved": 4,
+      "method": "discovered"
+    }
+  ],
+  "post_count": 4,
+  "fetched": "2026-07-25T15:00:33Z"
+}

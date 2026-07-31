@@ -1,0 +1,120 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opal-security-openapi.yaml
+provider: Opal Security
+description: >-
+  Entity-relationship graph for the Opal API, derived from OpenAPI schema
+  properties and *_id reference fields (176 schemas, 86 paths). Relationships are
+  inferred from foreign-key-style id fields on each entity.
+entities:
+- name: App
+  key: app_id
+  relationships:
+  - belongs_to: Owner
+    via: admin_owner_id
+  - has_many: Resource
+    via: app_id
+  - has_many: Group
+    via: app_id
+- name: Resource
+  key: resource_id
+  relationships:
+  - belongs_to: App
+    via: app_id
+  - belongs_to: Owner
+    via: admin_owner_id
+  - belongs_to: Resource
+    via: parent_resource_id
+  - belongs_to: ConfigurationTemplate
+    via: configuration_template_id
+  - has_many: ResourceUser
+    via: resource_id
+- name: Group
+  key: group_id
+  relationships:
+  - belongs_to: App
+    via: app_id
+  - belongs_to: Owner
+    via: admin_owner_id
+  - belongs_to: GroupBinding
+    via: group_binding_id
+  - belongs_to: ConfigurationTemplate
+    via: configuration_template_id
+  - has_many: GroupUser
+    via: group_id
+- name: User
+  key: user_id
+  relationships:
+  - has_many: ResourceUser
+    via: user_id
+  - has_many: GroupUser
+    via: user_id
+- name: Bundle
+  key: bundle_id
+  relationships:
+  - belongs_to: Owner
+    via: admin_owner_id
+- name: Request
+  key: id
+  relationships:
+  - belongs_to: User
+    via: requester_id
+  - belongs_to: User
+    via: target_user_id
+  - belongs_to: Group
+    via: target_group_id
+- name: Owner
+  key: owner_id
+  relationships:
+  - belongs_to: MessageChannel
+    via: reviewer_message_channel_id
+  - belongs_to: Group
+    via: source_group_id
+- name: AccessRule
+  key: access_rule_id
+  relationships:
+  - belongs_to: Owner
+    via: admin_owner_id
+- name: GroupBinding
+  key: group_binding_id
+  relationships:
+  - belongs_to: User
+    via: created_by_id
+  - belongs_to: Group
+    via: source_group_id
+- name: Event
+  key: event_id
+  relationships:
+  - belongs_to: User
+    via: actor_user_id
+- name: Session
+  key: connection_id
+  relationships:
+  - belongs_to: User
+    via: user_id
+  - belongs_to: Resource
+    via: resource_id
+- name: Token
+  key: token_id
+  relationships:
+  - belongs_to: User
+    via: creator_user_id
+  - belongs_to: User
+    via: user_id
+- name: Delegation
+  key: id
+  relationships:
+  - belongs_to: User
+    via: delegator_user_id
+  - belongs_to: User
+    via: delegate_user_id
+- name: ConfigurationTemplate
+  key: configuration_template_id
+  relationships:
+  - belongs_to: Owner
+    via: admin_owner_id
+notes: >-
+  Resources form a hierarchy (parent_resource_id / ancestor_resource_ids /
+  descendant_resource_ids). App is the top-level container for Resources and
+  Groups. Access is expressed through Requests targeting Users or Groups against
+  Resources/Groups/Bundles, governed by AccessRules and Owners.

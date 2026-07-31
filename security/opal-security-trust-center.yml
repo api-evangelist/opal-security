@@ -1,0 +1,48 @@
+generated: '2026-07-20'
+method: searched
+source: https://opal.dev/security
+provider: Opal Security
+legal_entity: Perma Security, Inc. (dba Opal)
+trust_center:
+  url: https://opal.dev/security
+  name: Trust Center
+  last_updated: '2025-06-05'
+compliance:
+- name: SOC 2
+  status: documented
+  detail: >-
+    The Trust Center describes SOC 2 as the auditing procedure Opal follows;
+    an independent third-party penetration test is performed at least annually.
+- name: GDPR
+  status: documented
+- name: CCPA
+  status: documented
+security_measures:
+- Personnel security awareness training and confidentiality agreements.
+- Two-factor authentication gating production data access; time-bound, on-call event-bound elevated access; periodic access reviews.
+- Encryption in transit (TLS 1.2+ / VPN) and at rest (AWS KMS), including database backups.
+- Automated alerting and searchable audit logging of access-change events; internal Opal employee actions logged.
+- Daily encrypted database backups (AWS KMS) for the cloud offering.
+- Secure SDLC — third-party automated security testing pre-release, peer-reviewed production releases.
+- Intrusion prevention/detection monitoring; documented incident response plan.
+- Vulnerability management program with monthly internal scans and >= annual third-party penetration testing.
+subprocessors:
+- name: Amazon Web Services (AWS)
+  purpose: Hosting and cloud infrastructure
+  region: USA
+- name: Auth0
+  purpose: Developer user identity platform
+  region: USA
+- name: LaunchDarkly
+  purpose: Feature release management
+  region: USA
+- name: Anthropic
+  purpose: LLM API for remediation recommendations, request feedback, taxonomy suggestions
+  region: USA
+contacts:
+  security: security@opal.dev
+  subprocessors: subprocessors@opal.dev
+documents:
+  privacy_policy: https://opal.dev/privacy-policy
+  terms_of_service: https://opal.dev/terms-of-service
+  saas_agreement: https://opal.dev/saas-agreement

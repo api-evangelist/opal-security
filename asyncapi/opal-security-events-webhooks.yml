@@ -1,0 +1,33 @@
+generated: '2026-07-20'
+method: searched
+source: https://docs.opal.dev/docs/events-streaming + https://docs.opal.dev/docs/event-types + OpenAPI event-streams tag
+provider: Opal Security
+type: Webhooks
+asyncapi_spec: none
+description: >-
+  Opal exposes an event surface via Event Streaming: administrators configure a
+  near-real-time stream of Opal Events to a destination URL of their choice
+  (e.g. a SIEM / logging sink) for auditing, notification, and detection. This is
+  an outbound push (webhook-style) surface, not a formal AsyncAPI document — no
+  AsyncAPI spec is published, so none is fabricated here.
+availability: Opal versions 1.970.0 and later
+management_api:
+  tag: event-streams
+  operations:
+  - GET /event-streams — list configured event streaming connections
+  - POST /event-streams — create an event streaming connection
+  - PUT/PATCH /event-streams/{id} — update an event streaming connection
+  - DELETE /event-streams/{id} — delete an event streaming connection
+  events_api:
+  - GET /events — list Event objects
+  - GET /events/{event_id} — get an Event object
+delivery:
+  style: push-to-url
+  destination: customer-configured URL (SIEM / logging destination)
+  latency: near real-time
+event_catalog_docs: https://docs.opal.dev/docs/event-types
+setup_docs: https://docs.opal.dev/docs/events-streaming
+notes: >-
+  Event payloads describe access updates and platform events (see the Events
+  Streaming and Event Types documentation). Opal also supports polling the /events
+  endpoint via the REST API as an alternative to streaming.

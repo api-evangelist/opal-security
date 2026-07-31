@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opal-security-openapi.yaml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/opal-security-openapi.yaml
