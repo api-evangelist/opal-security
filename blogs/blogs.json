@@ -2,13 +2,20 @@
   "repo": "opal-security",
   "feeds": [
     {
+      "source": "https://docs.opal.dev/changelog/changelog/rss.xml",
+      "feed_url": "https://docs.opal.dev/changelog/changelog/rss.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://docs.opal.dev/changelog/changelog",
       "feed_url": "https://docs.opal.dev/changelog/changelog/rss.xml",
       "title": "",
-      "saved": 4,
+      "saved": 0,
       "method": "discovered"
     }
   ],
-  "post_count": 4,
-  "fetched": "2026-07-25T15:00:33Z"
+  "post_count": 15,
+  "fetched": "2026-08-01T15:49:00Z"
 }

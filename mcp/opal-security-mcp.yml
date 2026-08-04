@@ -2,7 +2,8 @@ generated: '2026-07-20'
 method: searched
 source: https://docs.opal.dev/docs/mcp/overview
 provider: Opal Security
-status: live
+status: published
+status_raw: live
 transport: http
 description: >-
   Opal Security hosts three specialized, self-hosted Model Context Protocol (MCP)
