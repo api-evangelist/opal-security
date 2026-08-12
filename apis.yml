@@ -532,6 +532,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/opal-security-openapi-overlay.yaml
 - type: DomainSecurity
   url: security/opal-security-domain-security.yml
 - type: Authentication
