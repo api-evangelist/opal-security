@@ -5,7 +5,7 @@
       "source": "https://docs.opal.dev/changelog/changelog/rss.xml",
       "feed_url": "https://docs.opal.dev/changelog/changelog/rss.xml",
       "title": "",
-      "saved": 0,
+      "saved": 6,
       "method": "feed"
     },
     {
@@ -16,6 +16,6 @@
       "method": "discovered"
     }
   ],
-  "post_count": 17,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 23,
+  "fetched": "2026-08-15T12:11:08Z"
 }
