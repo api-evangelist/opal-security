@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules configuration-templates API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "configuration-templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getConfigurationTemplates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/configuration-templates",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `ConfigurationTemplate` objects."
+        },
+        {
+          "info": {
+            "name": "createConfigurationTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/configuration-templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a configuration template."
+        },
+        {
+          "info": {
+            "name": "updateConfigurationTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/configuration-templates",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a configuration template."
+        },
+        {
+          "info": {
+            "name": "deleteConfigurationTemplate",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/configuration-templates/:configuration_template_id",
+            "params": [
+              {
+                "name": "configuration_template_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the configuration template."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a configuration template."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

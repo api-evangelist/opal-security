@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules message-channels API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "message-channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get message channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/message-channels",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `MessageChannel` objects."
+        },
+        {
+          "info": {
+            "name": "create_message_channel",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/message-channels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a `MessageChannel` objects."
+        },
+        {
+          "info": {
+            "name": "Get message channel by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/message-channels/:message_channel_id",
+            "params": [
+              {
+                "name": "message_channel_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the message_channel."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets a `MessageChannel` object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

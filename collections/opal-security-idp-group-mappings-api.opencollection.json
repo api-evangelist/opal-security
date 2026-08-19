@@ -1,0 +1,159 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules idp-group-mappings API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "idp-group-mappings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "getIdpGroupMappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/idp-group-mappings/:app_resource_id",
+            "params": [
+              {
+                "name": "app_resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the Okta app."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns the configured set of available `IdpGroupMapping` objects for an Okta app."
+        },
+        {
+          "info": {
+            "name": "updateIdpGroupMappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/idp-group-mappings/:app_resource_id",
+            "params": [
+              {
+                "name": "app_resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the Okta app."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates the list of available `IdpGroupMapping` objects for an Okta app."
+        },
+        {
+          "info": {
+            "name": "getIdpGroupMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/idp-group-mappings/:app_resource_id/groups/:group_id",
+            "params": [
+              {
+                "name": "app_resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the Okta app."
+              },
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets an `IdpGroupMapping` object for an Okta app and group."
+        },
+        {
+          "info": {
+            "name": "createIdpGroupMapping",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/idp-group-mappings/:app_resource_id/groups/:group_id",
+            "params": [
+              {
+                "name": "app_resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the Okta app."
+              },
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates or updates an individual `IdpGroupMapping` object (upsert operation).\n\n**Behavior:**\n- If the mapping doesn't exist, it will be created with the provided values\n- If the mapping exists, only the fields provided in the request will be updated\n"
+        },
+        {
+          "info": {
+            "name": "delete_idp_group_mappings",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/idp-group-mappings/:app_resource_id/groups/:group_id",
+            "params": [
+              {
+                "name": "app_resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the Okta app."
+              },
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes an `IdpGroupMapping` object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

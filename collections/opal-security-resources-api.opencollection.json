@@ -1,0 +1,831 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules resources API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              },
+              {
+                "name": "resource_type_filter",
+                "value": "AWS_IAM_ROLE",
+                "type": "query",
+                "description": "The resource type to filter by. Required when remote_id is provided."
+              },
+              {
+                "name": "resource_ids",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5,1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "query",
+                "description": "The resource ids to filter by."
+              },
+              {
+                "name": "resource_name",
+                "value": "example-name",
+                "type": "query",
+                "description": "Resource name."
+              },
+              {
+                "name": "parent_resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "query",
+                "description": "The parent resource id to filter by."
+              },
+              {
+                "name": "ancestor_resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "query",
+                "description": "The ancestor resource id to filter by. Returns all resources that are descendants of the specified resource."
+              },
+              {
+                "name": "remote_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter resources by their remote id. This will return all resources that have a remote id that matches the provided remote id. Note that this requires resource_type_filter to be provided."
+              },
+              {
+                "name": "tag_ids",
+                "value": "",
+                "type": "query",
+                "description": "The IDs of the tags to filter by. Returns only resources that have any of these tags applied."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of resources for your organization."
+        },
+        {
+          "info": {
+            "name": "createResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/resources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a resource. See [here](https://docs.opal.dev/reference/end-system-objects) for details about importing resources."
+        },
+        {
+          "info": {
+            "name": "updateResources",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/resources",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Bulk updates a list of resources."
+        },
+        {
+          "info": {
+            "name": "Get resource by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieves a resource."
+        },
+        {
+          "info": {
+            "name": "delete_resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/resources/:resource_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a resource."
+        },
+        {
+          "info": {
+            "name": "get_resource_message_channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/message-channels",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of audit message channels attached to a resource."
+        },
+        {
+          "info": {
+            "name": "set_resource_message_channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/message-channels",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of audit message channels attached to a resource."
+        },
+        {
+          "info": {
+            "name": "get_resource_visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/visibility",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the visibility of this resource."
+        },
+        {
+          "info": {
+            "name": "set_resource_visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/visibility",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the visibility of this resource."
+        },
+        {
+          "info": {
+            "name": "get_resource_reviewers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/reviewers",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of owner IDs of the reviewers for a resource."
+        },
+        {
+          "info": {
+            "name": "set_resource_reviewers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/reviewers",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of reviewers for a resource."
+        },
+        {
+          "info": {
+            "name": "get_resource_reviewer_stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/reviewer-stages",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list reviewer stages for a resource."
+        },
+        {
+          "info": {
+            "name": "set_resource_reviewer_stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/reviewer-stages",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of reviewer stages for a resource."
+        },
+        {
+          "info": {
+            "name": "get_resource_nhis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/non-human-identities",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "limit",
+                "value": "200",
+                "type": "query",
+                "description": "Limit the number of results returned."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of non-human identities with access to this resource."
+        },
+        {
+          "info": {
+            "name": "Get resource users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/users",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "limit",
+                "value": "200",
+                "type": "query",
+                "description": "Limit the number of results returned."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of users for this resource."
+        },
+        {
+          "info": {
+            "name": "add_resource_nhi",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/non-human-identities/:non_human_identity_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "non_human_identity_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "path",
+                "description": "The resource ID of the non-human identity to add."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gives a non-human identity access to this resource."
+        },
+        {
+          "info": {
+            "name": "delete_resource_nhi",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/non-human-identities/:non_human_identity_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "non_human_identity_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "path",
+                "description": "The resource ID of the non-human identity to remove from this resource."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "roles/cloudsql.instanceUser",
+                "type": "query",
+                "description": "The remote ID of the access level for which this non-human identity has direct access. If omitted, the default access level remote ID value (empty string) is assumed."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a non-human identity's direct access from this resource."
+        },
+        {
+          "info": {
+            "name": "Get resource user",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/users/:user_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "user_id",
+                "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac",
+                "type": "path",
+                "description": "The ID of the user."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns information about a specific user's access to a resource."
+        },
+        {
+          "info": {
+            "name": "add_resource_user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/users/:user_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "user_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "path",
+                "description": "The ID of the user to add."
+              },
+              {
+                "name": "duration_minutes",
+                "value": "60",
+                "type": "query",
+                "description": "The duration for which the resource can be accessed (in minutes). Use 0 to set to indefinite."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The remote ID of the access level to grant to this user. If omitted, the default access level remote ID value (empty string) is used."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Adds a user to this resource."
+        },
+        {
+          "info": {
+            "name": "update_resource_user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/users/:user_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "user_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "path",
+                "description": "The ID of the user whose access is being updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a user's access level or duration on this resource."
+        },
+        {
+          "info": {
+            "name": "delete_resource_user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/users/:user_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "user_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "path",
+                "description": "The ID of a user to remove from this resource."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The remote ID of the access level for which this user has direct access. If omitted, the default access level remote ID value (empty string) is assumed."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a user's direct access from this resource."
+        },
+        {
+          "info": {
+            "name": "resource_user_access_status_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resource-user-access-status/:resource_id/:user_id",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "user_id",
+                "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac",
+                "type": "path",
+                "description": "The ID of the user."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The remote ID of the access level that you wish to query for the resource. If omitted, the default access level remote ID value (empty string) is used."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get user's access status to a resource."
+        },
+        {
+          "info": {
+            "name": "get_resource_tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/tags",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the resource whose tags to return."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns all tags applied to the resource."
+        },
+        {
+          "info": {
+            "name": "get_resource_scoped_role_permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/scoped-role-permissions",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the resource whose scoped role permissions belong to."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns all the scoped role permissions that apply to the given resource. Only OPAL_SCOPED_ROLE resource type supports this field."
+        },
+        {
+          "info": {
+            "name": "set_resource_scoped_role_permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/scoped-role-permissions",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the resource whose scoped role permissions belong to. Must be of OPAL_SCOPED_ROLE resource type."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets all the scoped role permissions on an OPAL_SCOPED_ROLE resource."
+        },
+        {
+          "info": {
+            "name": "get_user_resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the user."
+              },
+              {
+                "name": "limit",
+                "value": "200",
+                "type": "query",
+                "description": "Limit the number of results returned."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "include_unmanaged",
+                "value": "false",
+                "type": "query",
+                "description": "Include user's access to unmanaged resources."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of resources for this user."
+        },
+        {
+          "info": {
+            "name": "get_resource_groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/resources/:resource_id/groups",
+            "params": [
+              {
+                "name": "resource_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the resource that the groups grant access to."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of groups that grant access to the resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

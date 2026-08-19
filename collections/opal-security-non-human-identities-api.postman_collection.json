@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "85725b01-5731-4d4e-86b4-d72664d518e4",
+      "name": "non-human-identities",
+      "description": {
+        "content": "Operations related to non-human identities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "265ba93c-d90b-47f2-8cd8-80590fecc4c2",
+          "name": "get nhis",
+          "request": {
+            "name": "get nhis",
+            "description": {
+              "content": "Returns a list of non-human identities for your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "non-human-identities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08f5aeea-2886-4f1e-b806-8cb97ca7d457",
+              "name": "One page worth non-human identities in your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "non-human-identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"resource_id\": \"f454d283-ca67-4a8a-bdbb-df212eca5353\",\n      \"description\": \"This resource represents AWS IAM role \\\"SupportUser\\\".\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"remote_name\": \"SupportUser\",\n      \"max_duration\": 120,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": false,\n      \"parent_resource_id\": \"f454d283-ca67-4a8a-bdbb-df212eca5345\"\n    },\n    {\n      \"resource_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"description\": \"This resource represents GCP project \\\"app-demo\\\".\",\n      \"remote_id\": \"app-demo-307223\",\n      \"remote_name\": \"app-demo\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"max_duration\": 360,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fd0480ee-bfa8-4fe8-a774-2707943b1c63",
+    "name": "Opal access-rules non-human-identities API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,3430 @@
+{
+  "item": [
+    {
+      "id": "3ea5b75b-0992-4707-8b7e-d864fea6d7fc",
+      "name": "resources",
+      "description": {
+        "content": "Operations related to resources",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4f40082-25ce-4cba-a7c8-5a5e1362a8f9",
+          "name": "Get resources",
+          "request": {
+            "name": "Get resources",
+            "description": {
+              "content": "Returns a list of resources for your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "resource_type_filter",
+                  "value": "<string>",
+                  "description": "The resource type to filter by. Required when remote_id is provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "resource_ids",
+                  "value": "<uuid>,<uuid>",
+                  "description": "The resource ids to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "resource_name",
+                  "value": "<string>",
+                  "description": "Resource name."
+                },
+                {
+                  "disabled": false,
+                  "key": "parent_resource_id",
+                  "value": "<uuid>",
+                  "description": "The parent resource id to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "ancestor_resource_id",
+                  "value": "<uuid>",
+                  "description": "The ancestor resource id to filter by. Returns all resources that are descendants of the specified resource."
+                },
+                {
+                  "disabled": false,
+                  "key": "remote_id",
+                  "value": "<string>",
+                  "description": "Filter resources by their remote id. This will return all resources that have a remote id that matches the provided remote id. Note that this requires resource_type_filter to be provided."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag_ids",
+                  "value": "<uuid>",
+                  "description": "The IDs of the tags to filter by. Returns only resources that have any of these tags applied."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag_ids",
+                  "value": "<uuid>",
+                  "description": "The IDs of the tags to filter by. Returns only resources that have any of these tags applied."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aee3def5-ccfe-4032-a7de-e56d7b77a863",
+              "name": "One page worth resources associated with your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    },
+                    {
+                      "key": "resource_type_filter",
+                      "value": "AWS_IAM_ROLE"
+                    },
+                    {
+                      "key": "resource_ids",
+                      "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5,1b978423-db0a-4037-a4cf-f79c60cb67b3"
+                    },
+                    {
+                      "key": "resource_name",
+                      "value": "example-name"
+                    },
+                    {
+                      "key": "parent_resource_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "ancestor_resource_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "remote_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "tag_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "tag_ids",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"resource_id\": \"f454d283-ca67-4a8a-bdbb-df212eca5353\",\n      \"description\": \"This resource represents AWS IAM role \\\"SupportUser\\\".\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"remote_name\": \"SupportUser\",\n      \"max_duration\": 120,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": false,\n      \"parent_resource_id\": \"f454d283-ca67-4a8a-bdbb-df212eca5345\"\n    },\n    {\n      \"resource_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"description\": \"This resource represents GCP project \\\"app-demo\\\".\",\n      \"remote_id\": \"app-demo-307223\",\n      \"remote_name\": \"app-demo\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"max_duration\": 360,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "284006d3-9f9e-4342-898d-533283773f42",
+          "name": "update Resources",
+          "request": {
+            "name": "update Resources",
+            "description": {
+              "content": "Bulk updates a list of resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resources\": [\n    {\n      \"resource_id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"admin_owner_id\": \"<uuid>\",\n      \"max_duration\": \"<integer>\",\n      \"recommended_duration\": \"<integer>\",\n      \"require_manager_approval\": \"<boolean>\",\n      \"require_support_ticket\": \"<boolean>\",\n      \"folder_id\": \"<uuid>\",\n      \"require_mfa_to_approve\": \"<boolean>\",\n      \"require_mfa_to_request\": \"<boolean>\",\n      \"require_mfa_to_connect\": \"<boolean>\",\n      \"auto_approval\": \"<boolean>\",\n      \"ticket_propagation\": {\n        \"enabled_on_grant\": \"<boolean>\",\n        \"enabled_on_revocation\": \"<boolean>\",\n        \"ticket_provider\": \"<string>\",\n        \"ticket_project_id\": \"<string>\"\n      },\n      \"custom_request_notification\": \"<string>\",\n      \"risk_sensitivity_override\": \"<string>\",\n      \"configuration_template_id\": \"<uuid>\",\n      \"request_template_id\": \"<uuid>\",\n      \"is_requestable\": \"<boolean>\",\n      \"extensions_duration_in_minutes\": \"<integer>\",\n      \"parent_resource_id\": \"<uuid>\",\n      \"request_configurations\": [\n        {\n          \"allow_requests\": \"<boolean>\",\n          \"auto_approval\": \"<boolean>\",\n          \"require_mfa_to_request\": \"<boolean>\",\n          \"require_support_ticket\": \"<boolean>\",\n          \"priority\": \"<integer>\",\n          \"condition\": {\n            \"group_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"role_remote_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"max_duration_minutes\": \"<integer>\",\n          \"recommended_duration_minutes\": \"<integer>\",\n          \"extensions_duration_in_minutes\": \"<integer>\",\n          \"request_template_id\": \"<uuid>\",\n          \"reviewer_stages\": [\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"allow_requests\": \"<boolean>\",\n          \"auto_approval\": \"<boolean>\",\n          \"require_mfa_to_request\": \"<boolean>\",\n          \"require_support_ticket\": \"<boolean>\",\n          \"priority\": \"<integer>\",\n          \"condition\": {\n            \"group_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"role_remote_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"max_duration_minutes\": \"<integer>\",\n          \"recommended_duration_minutes\": \"<integer>\",\n          \"extensions_duration_in_minutes\": \"<integer>\",\n          \"request_template_id\": \"<uuid>\",\n          \"reviewer_stages\": [\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"request_configuration_list\": {\n        \"request_configurations\": [\n          {\n            \"allow_requests\": \"<boolean>\",\n            \"auto_approval\": \"<boolean>\",\n            \"require_mfa_to_request\": \"<boolean>\",\n            \"require_support_ticket\": \"<boolean>\",\n            \"priority\": \"<integer>\",\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_duration_minutes\": \"<integer>\",\n            \"recommended_duration_minutes\": \"<integer>\",\n            \"extensions_duration_in_minutes\": \"<integer>\",\n            \"request_template_id\": \"<uuid>\",\n            \"reviewer_stages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"allow_requests\": \"<boolean>\",\n            \"auto_approval\": \"<boolean>\",\n            \"require_mfa_to_request\": \"<boolean>\",\n            \"require_support_ticket\": \"<boolean>\",\n            \"priority\": \"<integer>\",\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_duration_minutes\": \"<integer>\",\n            \"recommended_duration_minutes\": \"<integer>\",\n            \"extensions_duration_in_minutes\": \"<integer>\",\n            \"request_template_id\": \"<uuid>\",\n            \"reviewer_stages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    },\n    {\n      \"resource_id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"admin_owner_id\": \"<uuid>\",\n      \"max_duration\": \"<integer>\",\n      \"recommended_duration\": \"<integer>\",\n      \"require_manager_approval\": \"<boolean>\",\n      \"require_support_ticket\": \"<boolean>\",\n      \"folder_id\": \"<uuid>\",\n      \"require_mfa_to_approve\": \"<boolean>\",\n      \"require_mfa_to_request\": \"<boolean>\",\n      \"require_mfa_to_connect\": \"<boolean>\",\n      \"auto_approval\": \"<boolean>\",\n      \"ticket_propagation\": {\n        \"enabled_on_grant\": \"<boolean>\",\n        \"enabled_on_revocation\": \"<boolean>\",\n        \"ticket_provider\": \"<string>\",\n        \"ticket_project_id\": \"<string>\"\n      },\n      \"custom_request_notification\": \"<string>\",\n      \"risk_sensitivity_override\": \"<string>\",\n      \"configuration_template_id\": \"<uuid>\",\n      \"request_template_id\": \"<uuid>\",\n      \"is_requestable\": \"<boolean>\",\n      \"extensions_duration_in_minutes\": \"<integer>\",\n      \"parent_resource_id\": \"<uuid>\",\n      \"request_configurations\": [\n        {\n          \"allow_requests\": \"<boolean>\",\n          \"auto_approval\": \"<boolean>\",\n          \"require_mfa_to_request\": \"<boolean>\",\n          \"require_support_ticket\": \"<boolean>\",\n          \"priority\": \"<integer>\",\n          \"condition\": {\n            \"group_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"role_remote_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"max_duration_minutes\": \"<integer>\",\n          \"recommended_duration_minutes\": \"<integer>\",\n          \"extensions_duration_in_minutes\": \"<integer>\",\n          \"request_template_id\": \"<uuid>\",\n          \"reviewer_stages\": [\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"allow_requests\": \"<boolean>\",\n          \"auto_approval\": \"<boolean>\",\n          \"require_mfa_to_request\": \"<boolean>\",\n          \"require_support_ticket\": \"<boolean>\",\n          \"priority\": \"<integer>\",\n          \"condition\": {\n            \"group_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"role_remote_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"max_duration_minutes\": \"<integer>\",\n          \"recommended_duration_minutes\": \"<integer>\",\n          \"extensions_duration_in_minutes\": \"<integer>\",\n          \"request_template_id\": \"<uuid>\",\n          \"reviewer_stages\": [\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"request_configuration_list\": {\n        \"request_configurations\": [\n          {\n            \"allow_requests\": \"<boolean>\",\n            \"auto_approval\": \"<boolean>\",\n            \"require_mfa_to_request\": \"<boolean>\",\n            \"require_support_ticket\": \"<boolean>\",\n            \"priority\": \"<integer>\",\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_duration_minutes\": \"<integer>\",\n            \"recommended_duration_minutes\": \"<integer>\",\n            \"extensions_duration_in_minutes\": \"<integer>\",\n            \"request_template_id\": \"<uuid>\",\n            \"reviewer_stages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"allow_requests\": \"<boolean>\",\n            \"auto_approval\": \"<boolean>\",\n            \"require_mfa_to_request\": \"<boolean>\",\n            \"require_support_ticket\": \"<boolean>\",\n            \"priority\": \"<integer>\",\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_duration_minutes\": \"<integer>\",\n            \"recommended_duration_minutes\": \"<integer>\",\n            \"extensions_duration_in_minutes\": \"<integer>\",\n            \"request_template_id\": \"<uuid>\",\n            \"reviewer_stages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "83fa15f1-1999-4637-b603-1b5d3a7c4f69",
+              "name": "The resulting updated resource infos.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resources\": [\n    {\n      \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"my-mongo-db\",\n      \"description\": \"This resource represents AWS IAM role \\\"SupportUser\\\".\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"max_duration\": 120,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": false\n    },\n    {\n      \"resource_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"name\": \"Admin Role\",\n      \"description\": \"This resource represents GCP project \\\"app-demo\\\".\",\n      \"admin_owner_id\": \"4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3\",\n      \"max_duration\": 360,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resources\": [\n    {\n      \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"my-mongo-db\",\n      \"description\": \"This resource represents AWS IAM role \\\"SupportUser\\\".\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"max_duration\": 120,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": false\n    },\n    {\n      \"resource_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"name\": \"Admin Role\",\n      \"description\": \"This resource represents GCP project \\\"app-demo\\\".\",\n      \"admin_owner_id\": \"4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3\",\n      \"max_duration\": 360,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03d86cb6-91f8-4663-b7ba-0ddb603ee6d1",
+          "name": "create Resource",
+          "request": {
+            "name": "create Resource",
+            "description": {
+              "content": "Creates a resource. See [here](https://docs.opal.dev/reference/end-system-objects) for details about importing resources.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"resource_type\": \"<string>\",\n  \"app_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"remote_info\": {\n    \"databricks_account_service_principal\": {\n      \"application_id\": \"<string>\",\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_subscription\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_resource_group\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_management_group\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_virtual_machine\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_storage_account\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_storage_container\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_sql_server\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_sql_database\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_sql_managed_instance\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_sql_managed_database\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_user_assigned_managed_identity\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_enterprise_app\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"azure_entra_id_role\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"aws_organizational_unit\": {\n      \"organizational_unit_id\": \"<string>\",\n      \"parent_id\": \"<string>\"\n    },\n    \"aws_account\": {\n      \"account_id\": \"<string>\",\n      \"organizational_unit_id\": \"<string>\"\n    },\n    \"aws_permission_set\": {\n      \"arn\": \"<string>\",\n      \"account_id\": \"<string>\"\n    },\n    \"aws_iam_role\": {\n      \"arn\": \"<string>\",\n      \"account_id\": \"<string>\"\n    },\n    \"aws_ec2_instance\": {\n      \"instance_id\": \"<string>\",\n      \"region\": \"<string>\",\n      \"account_id\": \"<string>\"\n    },\n    \"aws_rds_cluster\": {\n      \"cluster_id\": \"<string>\",\n      \"region\": \"<string>\",\n      \"resource_id\": \"<string>\",\n      \"account_id\": \"<string>\",\n      \"database_name\": \"<string>\",\n      \"engine\": \"<string>\"\n    },\n    \"aws_rds_instance\": {\n      \"instance_id\": \"<string>\",\n      \"region\": \"<string>\",\n      \"resource_id\": \"<string>\",\n      \"account_id\": \"<string>\"\n    },\n    \"aws_eks_cluster\": {\n      \"arn\": \"<string>\",\n      \"account_id\": \"<string>\"\n    },\n    \"custom_connector\": {\n      \"remote_resource_id\": \"<string>\",\n      \"can_have_usage_events\": \"<boolean>\"\n    },\n    \"gcp_organization\": {\n      \"organization_id\": \"<string>\"\n    },\n    \"gcp_bucket\": {\n      \"bucket_id\": \"<string>\"\n    },\n    \"gcp_compute_instance\": {\n      \"instance_id\": \"<string>\",\n      \"project_id\": \"<string>\",\n      \"zone\": \"<string>\"\n    },\n    \"gcp_big_query_dataset\": {\n      \"project_id\": \"<string>\",\n      \"dataset_id\": \"<string>\"\n    },\n    \"gcp_big_query_table\": {\n      \"project_id\": \"<string>\",\n      \"dataset_id\": \"<string>\",\n      \"table_id\": \"<string>\"\n    },\n    \"gcp_folder\": {\n      \"folder_id\": \"<string>\"\n    },\n    \"gcp_gke_cluster\": {\n      \"cluster_name\": \"<string>\"\n    },\n    \"gcp_project\": {\n      \"project_id\": \"<string>\"\n    },\n    \"gcp_sql_instance\": {\n      \"instance_id\": \"<string>\",\n      \"project_id\": \"<string>\"\n    },\n    \"gcp_service_account\": {\n      \"email\": \"<string>\",\n      \"service_account_id\": \"<string>\",\n      \"project_id\": \"<string>\"\n    },\n    \"google_workspace_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"github_repo\": {\n      \"repo_name\": \"<string>\",\n      \"repo_id\": \"<string>\",\n      \"org_name\": \"<string>\"\n    },\n    \"github_org_role\": {\n      \"role_id\": \"<string>\",\n      \"org_name\": \"<string>\"\n    },\n    \"github_org\": {\n      \"org_name\": \"<string>\"\n    },\n    \"github_enterprise_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"gitlab_project\": {\n      \"project_id\": \"<string>\"\n    },\n    \"okta_app\": {\n      \"app_id\": \"<string>\"\n    },\n    \"okta_standard_role\": {\n      \"role_type\": \"<string>\"\n    },\n    \"okta_custom_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"snowflake_database\": {\n      \"database_name\": \"<string>\"\n    },\n    \"snowflake_schema\": {\n      \"database_name\": \"<string>\",\n      \"schema_name\": \"<string>\"\n    },\n    \"snowflake_table\": {\n      \"database_name\": \"<string>\",\n      \"schema_name\": \"<string>\",\n      \"table_name\": \"<string>\"\n    },\n    \"ilevel_advanced_role\": {\n      \"role_name\": \"<string>\"\n    },\n    \"tailscale_ssh\": {\n      \"tag_name\": \"<string>\"\n    },\n    \"twingate_resource\": {\n      \"resource_id\": \"<string>\"\n    },\n    \"pagerduty_role\": {\n      \"role_name\": \"<string>\"\n    },\n    \"workday_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"salesforce_permission_set\": {\n      \"permission_set_id\": \"<string>\"\n    },\n    \"salesforce_profile\": {\n      \"profile_id\": \"<string>\",\n      \"user_license_id\": \"<string>\"\n    },\n    \"salesforce_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"teleport_role\": {\n      \"role_name\": \"<string>\"\n    },\n    \"datastax_astra_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"coupa_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"cursor_organization\": {\n      \"org_id\": \"<string>\"\n    },\n    \"openai_platform_project\": {\n      \"project_id\": \"<string>\"\n    },\n    \"openai_platform_service_account\": {\n      \"project_id\": \"<string>\",\n      \"service_account_id\": \"<string>\"\n    },\n    \"anthropic_workspace\": {\n      \"workspace_id\": \"<string>\"\n    },\n    \"oracle_fusion_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"devin_organization\": {\n      \"org_id\": \"<string>\"\n    },\n    \"devin_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"netsuite_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"datadog_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"clickhouse_database\": {\n      \"database_name\": \"<string>\"\n    },\n    \"clickhouse_table\": {\n      \"database_name\": \"<string>\",\n      \"table_name\": \"<string>\"\n    },\n    \"grafana_folder\": {\n      \"folder_uid\": \"<string>\"\n    },\n    \"grafana_dashboard\": {\n      \"dashboard_uid\": \"<string>\"\n    },\n    \"grafana_role\": {\n      \"role_uid\": \"<string>\"\n    },\n    \"zendesk_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"hubspot_role\": {\n      \"role_id\": \"<string>\"\n    }\n  },\n  \"remote_resource_id\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"custom_request_notification\": \"<string>\",\n  \"risk_sensitivity_override\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b6edef4-b959-4c11-ad54-8c3dda3bd1f9",
+              "name": "The resource just created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"remote_resource_id\": \"API_ACCESS_MANAGEMENT_ADMIN-51d203da-313a-4fd9-8fcf-420ce6312345\",\n  \"name\": \"Okta Engineering Super Admin\",\n  \"description\": \"Okta super admin role.\",\n  \"resource_type\": \"OKTA_ROLE\",\n  \"metadata\": \"{\\n  \\\"okta_directory_role\\\":\\n    {\\n      \\\"role_id\\\": \\\"SUPER_ADMIN-b52aa037-4a35-4ac3-9350-f6260fd12345\\\",\\n      \\\"role_type\\\": \\\"SUPER_ADMIN\\\",\\n    },\\n}\",\n  \"app_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n  \"description\": \"This resource represents AWS IAM role \\\"SupportUser\\\".\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"remote_id\": 318038399,\n  \"remote_name\": \"repo-name\",\n  \"max_duration\": 120,\n  \"require_manager_approval\": false,\n  \"require_support_ticket\": false,\n  \"parent_resource_id\": \"f454d283-ca67-4a8a-bdbb-df212eca5345\",\n  \"ancestor_resource_ids\": [\n    \"f454d283-ca67-4a8a-bdbb-df212eca5345\"\n  ],\n  \"descendant_resource_ids\": [\n    \"f454d283-ca67-4a8a-bdbb-df212eca5345\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5baa8c98-e4c2-44e8-bb33-d4103d419ccd",
+          "name": "Get resource by ID",
+          "request": {
+            "name": "Get resource by ID",
+            "description": {
+              "content": "Retrieves a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b38a3eb1-0765-4a53-968f-24a5989cfa82",
+              "name": "The requested resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n  \"description\": \"This resource represents AWS IAM role \\\"SupportUser\\\".\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"remote_id\": 318038399,\n  \"remote_name\": \"repo-name\",\n  \"max_duration\": 120,\n  \"require_manager_approval\": false,\n  \"require_support_ticket\": false,\n  \"parent_resource_id\": \"f454d283-ca67-4a8a-bdbb-df212eca5345\",\n  \"ancestor_resource_ids\": [\n    \"f454d283-ca67-4a8a-bdbb-df212eca5345\"\n  ],\n  \"descendant_resource_ids\": [\n    \"f454d283-ca67-4a8a-bdbb-df212eca5345\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69c514ec-cde3-4c70-bed3-0f16e1b61c37",
+          "name": "delete resource",
+          "request": {
+            "name": "delete resource",
+            "description": {
+              "content": "Deletes a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e54e3848-08ec-4439-a083-67c33a28f515",
+              "name": "The resource was successfully deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "763a1eea-b538-4928-983f-b31a8f382ae2",
+          "name": "get resource message channels",
+          "request": {
+            "name": "get resource message channels",
+            "description": {
+              "content": "Gets the list of audit message channels attached to a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "message-channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "54dedb57-5d87-4c4e-9820-b3def102bde0",
+              "name": "The audit message channels attached to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "message-channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"channels\": [\n    {\n      \"message_channel_id\": \"6670617d-e72a-47f5-a84c-693817ab4860\",\n      \"third_party_provider\": \"SLACK\",\n      \"remote_id\": \"C03FJR97276\",\n      \"name\": \"api-team-audit-channel\",\n      \"is_private\": false\n    },\n    {\n      \"message_channel_id\": \"6670617d-e72a-47f5-a84c-693817ab4860\",\n      \"third_party_provider\": \"SLACK\",\n      \"remote_id\": \"C03FJR97276\",\n      \"name\": \"api-team-audit-channel\",\n      \"is_private\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "20f2e1ee-70a7-44b3-934e-dca4aa5539ac",
+          "name": "set resource message channels",
+          "request": {
+            "name": "set resource message channels",
+            "description": {
+              "content": "Sets the list of audit message channels attached to a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "message-channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message_channel_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6d79ad27-7dde-4dd9-8feb-0b40d55ecbb2",
+              "name": "The updated audit message channel IDs for the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "message-channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message_channel_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "824356f0-e90c-484b-89c5-260ee02158e5",
+          "name": "get resource visibility",
+          "request": {
+            "name": "get resource visibility",
+            "description": {
+              "content": "Gets the visibility of this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "visibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "62d12411-d481-4a82-8111-db15ae1045d1",
+              "name": "The visibility info of this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "visibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visibility\": \"GLOBAL\",\n  \"visibility_group_ids\": [\n    \"d48afacc-ac6b-7af6-da6f-39635873df8c\",\n    \"258c3c97-065f-f138-1b7b-ce41e1ec2a32\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91427217-a1ef-4646-ad54-b6d172bb9a7a",
+          "name": "set resource visibility",
+          "request": {
+            "name": "set resource visibility",
+            "description": {
+              "content": "Sets the visibility of this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "visibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visibility\": \"<string>\",\n  \"visibility_group_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d6c06701-08da-4a3e-b9d3-e3f6d2fd7713",
+              "name": "The visibility info of this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "visibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visibility\": \"GLOBAL\",\n  \"visibility_group_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visibility\": \"GLOBAL\",\n  \"visibility_group_ids\": [\n    \"d48afacc-ac6b-7af6-da6f-39635873df8c\",\n    \"258c3c97-065f-f138-1b7b-ce41e1ec2a32\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ddb1743f-6536-4e6a-95f9-a5cf4863ce0d",
+          "name": "get resource reviewers",
+          "request": {
+            "name": "get resource reviewers",
+            "description": {
+              "content": "Gets the list of owner IDs of the reviewers for a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "reviewers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0b45d3c4-0868-4a36-a98b-78f627332d63",
+              "name": "The IDs of owners that are reviewers for this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "reviewers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8c5e3600-5749-42b6-a90a-d97f84e3c972",
+          "name": "set resource reviewers",
+          "request": {
+            "name": "set resource reviewers",
+            "description": {
+              "content": "Sets the list of reviewers for a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "reviewers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reviewer_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b4a5a1e-63f4-49fa-bd90-314c6b113c97",
+              "name": "The updated IDs of owners that are reviewers for this resource",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "reviewers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reviewer_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "870af082-0513-4b80-8bcb-a65c8822bc66",
+          "name": "get resource reviewer stages",
+          "request": {
+            "name": "get resource reviewer stages",
+            "description": {
+              "content": "Gets the list reviewer stages for a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "reviewer-stages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a6727e8-8d8b-46d4-9ef2-fe26b759edfc",
+              "name": "The reviewer stages for this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "reviewer-stages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"operator\": \"AND\",\n    \"require_manager_approval\": false,\n    \"owner_ids\": [\n      \"2417a017-9af4-33e5-42d1-e3bc3a55174e\",\n      \"f334f989-3f8c-2ca0-9153-163243f6aed3\"\n    ],\n    \"require_admin_approval\": false,\n    \"service_user_ids\": [\n      \"9f89f11c-48f1-3845-9782-c57b65e145d5\",\n      \"91b8d883-6df4-5f82-a3b3-bd900eaca21f\"\n    ]\n  },\n  {\n    \"operator\": \"AND\",\n    \"require_manager_approval\": false,\n    \"owner_ids\": [\n      \"f44b6642-4a08-75ac-5b66-57c4ff322c14\",\n      \"34d717f8-3e14-124d-4da1-60f2339e8aae\"\n    ],\n    \"require_admin_approval\": false,\n    \"service_user_ids\": [\n      \"0149c0a7-424e-a1d7-5904-5b3bc0714529\",\n      \"13cd72c4-48e1-48b5-431d-12cb1af07d52\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f031ee84-9bd8-4875-9b5d-5f747358be70",
+          "name": "set resource reviewer stages",
+          "request": {
+            "name": "set resource reviewer stages",
+            "description": {
+              "content": "Sets the list of reviewer stages for a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "reviewer-stages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stages\": [\n    {\n      \"operator\": \"<string>\",\n      \"require_manager_approval\": \"<boolean>\",\n      \"owner_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"require_admin_approval\": \"<boolean>\",\n      \"service_user_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ]\n    },\n    {\n      \"operator\": \"<string>\",\n      \"require_manager_approval\": \"<boolean>\",\n      \"owner_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"require_admin_approval\": \"<boolean>\",\n      \"service_user_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f447465-9f4f-4739-babd-60bd26b8f227",
+              "name": "The updated reviewer stages for this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "reviewer-stages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stages\": [\n    {\n      \"operator\": \"AND\",\n      \"require_manager_approval\": false,\n      \"owner_ids\": [\n        \"1a640c62-66f4-4ff1-544e-83d14b48e482\",\n        \"8b91593c-a010-efca-8ddc-ea5f7434e4b7\"\n      ],\n      \"require_admin_approval\": false,\n      \"service_user_ids\": [\n        \"7977ee7d-e617-503e-5fa3-c87992ec94a7\",\n        \"57cc696f-b121-6ce4-29cc-e78d06ce31b9\"\n      ]\n    },\n    {\n      \"operator\": \"AND\",\n      \"require_manager_approval\": false,\n      \"owner_ids\": [\n        \"f6e54d8b-f319-9f9c-b668-34a08eb3ed97\",\n        \"d37ae58b-4899-2d17-556b-dcd679412a62\"\n      ],\n      \"require_admin_approval\": false,\n      \"service_user_ids\": [\n        \"aafc615c-db14-0a83-d38f-ad60df8c2e4f\",\n        \"db2f0cdd-6b02-d23f-5eb7-5fa98efd4a99\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"operator\": \"AND\",\n    \"require_manager_approval\": false,\n    \"owner_ids\": [\n      \"2417a017-9af4-33e5-42d1-e3bc3a55174e\",\n      \"f334f989-3f8c-2ca0-9153-163243f6aed3\"\n    ],\n    \"require_admin_approval\": false,\n    \"service_user_ids\": [\n      \"9f89f11c-48f1-3845-9782-c57b65e145d5\",\n      \"91b8d883-6df4-5f82-a3b3-bd900eaca21f\"\n    ]\n  },\n  {\n    \"operator\": \"AND\",\n    \"require_manager_approval\": false,\n    \"owner_ids\": [\n      \"f44b6642-4a08-75ac-5b66-57c4ff322c14\",\n      \"34d717f8-3e14-124d-4da1-60f2339e8aae\"\n    ],\n    \"require_admin_approval\": false,\n    \"service_user_ids\": [\n      \"0149c0a7-424e-a1d7-5904-5b3bc0714529\",\n      \"13cd72c4-48e1-48b5-431d-12cb1af07d52\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42d6c669-8c4e-444d-ad4a-1d0f580062ab",
+          "name": "get resource nhis",
+          "request": {
+            "name": "get resource nhis",
+            "description": {
+              "content": "Gets the list of non-human identities with access to this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "non-human-identities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit the number of results returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "81eaf25d-f442-42f4-bcec-b279c169bb3b",
+              "name": "List of non-human identities with access to this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "non-human-identities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"principal_id\": \"74908af0-9383-4feb-b7ea-8b305d737338\",\n      \"principal_type\": \"RESOURCE\",\n      \"entity_id\": \"db04925a-635d-4764-870e-500b9b035c8e\",\n      \"entity_type\": \"RESOURCE\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"has_direct_access\": true,\n      \"num_access_paths\": 3\n    },\n    {\n      \"principal_id\": \"d940df34-726a-4403-864e-16cb2a0d6793\",\n      \"principal_type\": \"RESOURCE\",\n      \"entity_id\": \"c26cd16c-a3fa-4b82-96b1-32177f8b8f59\",\n      \"entity_type\": \"RESOURCE\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"has_direct_access\": true,\n      \"num_access_paths\": 3\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "803970e6-287b-41f1-a8e6-a157cfdcb8ec",
+          "name": "Get resource users",
+          "request": {
+            "name": "Get resource users",
+            "description": {
+              "content": "Gets the list of users for this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit the number of results returned."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cc735187-8d52-4561-a492-81f11e04ace5",
+              "name": "List of users with access to this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"has_direct_access\": true,\n      \"num_access_paths\": 3,\n      \"resource_name\": \"AdministratorAccess\",\n      \"description\": \"Full access to all resources and settings.\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"propagation_status\": {\n        \"status\": \"PENDING\"\n      }\n    },\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"has_direct_access\": true,\n      \"num_access_paths\": 3,\n      \"resource_name\": \"AdministratorAccess\",\n      \"description\": \"Full access to all resources and settings.\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"propagation_status\": {\n        \"status\": \"ERR_REMOTE_PROVISIONING_VIA_IDP_FAILED\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f0849d54-2dae-48d3-a68d-8725feb399fe",
+          "name": "add resource nhi",
+          "request": {
+            "name": "add resource nhi",
+            "description": {
+              "content": "Gives a non-human identity access to this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "non-human-identities",
+                ":non_human_identity_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "non_human_identity_id",
+                  "description": "(Required) The resource ID of the non-human identity to add."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"duration_minutes\": \"<integer>\",\n  \"access_level_remote_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b6d2e5c-78ba-4c04-a1d3-2480c37cc958",
+              "name": "Details about the access that the non-human identity was granted to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "non-human-identities",
+                    ":non_human_identity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "non_human_identity_id",
+                      "description": "(Required) The resource ID of the non-human identity to add."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"duration_minutes\": 60,\n  \"access_level_remote_id\": \"roles/cloudsql.instanceUser\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"non_human_identity_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n  \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a349ac86-80af-4ca5-b9b3-3bb852ad11dd",
+          "name": "delete resource nhi",
+          "request": {
+            "name": "delete resource nhi",
+            "description": {
+              "content": "Removes a non-human identity's direct access from this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "non-human-identities",
+                ":non_human_identity_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The remote ID of the access level for which this non-human identity has direct access. If omitted, the default access level remote ID value (empty string) is assumed."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "non_human_identity_id",
+                  "description": "(Required) The resource ID of the non-human identity to remove from this resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ba5c3864-f966-4b81-a3e8-70197b6c84e9",
+              "name": "This non-human identity's access was successfully removed from this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "non-human-identities",
+                    ":non_human_identity_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "roles/cloudsql.instanceUser"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "non_human_identity_id",
+                      "description": "(Required) The resource ID of the non-human identity to remove from this resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48ef1490-0285-4d47-b7a2-1ce9a09d7f37",
+          "name": "add resource user",
+          "request": {
+            "name": "add resource user",
+            "description": {
+              "content": "Adds a user to this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_minutes",
+                  "value": "<integer>",
+                  "description": "The duration for which the resource can be accessed (in minutes). Use 0 to set to indefinite."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The remote ID of the access level to grant to this user. If omitted, the default access level remote ID value (empty string) is used."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user to add."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"duration_minutes\": \"<integer>\",\n  \"access_level_remote_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c07ab1ac-9117-423c-9095-cae4e9cbfb11",
+              "name": "The ResourceUser that was created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_minutes",
+                      "value": "60"
+                    },
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "arn:aws:iam::590304332660:role/AdministratorAccess"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user to add."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"duration_minutes\": 60,\n  \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"jake@company.dev\",\n  \"full_name\": \"Jake Barnes\",\n  \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n  \"access_level\": {\n    \"access_level_name\": \"AdminRole\",\n    \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n  },\n  \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a09a8ca8-4dab-41b7-a4a8-d5efbe603724",
+          "name": "update resource user",
+          "request": {
+            "name": "update resource user",
+            "description": {
+              "content": "Updates a user's access level or duration on this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user whose access is being updated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"duration_minutes\": \"<integer>\",\n  \"access_level_remote_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "97b0a4a7-002d-413f-9037-5e06bdc477e4",
+              "name": "The ResourceUser was successfully updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user whose access is being updated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"duration_minutes\": 60,\n  \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"jake@company.dev\",\n  \"full_name\": \"Jake Barnes\",\n  \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n  \"access_level\": {\n    \"access_level_name\": \"AdminRole\",\n    \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n  },\n  \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90c11c68-d140-43c0-a609-3cc85c99b2b7",
+          "name": "delete resource user",
+          "request": {
+            "name": "delete resource user",
+            "description": {
+              "content": "Removes a user's direct access from this resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The remote ID of the access level for which this user has direct access. If omitted, the default access level remote ID value (empty string) is assumed."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of a user to remove from this resource."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4cb680f0-4ab8-43f3-b351-1d4dcb61b694",
+              "name": "This user's access was successfully removed from this resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "arn:aws:iam::590304332660:role/AdministratorAccess"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of a user to remove from this resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2069ffd-e94f-4ae3-be35-1347aee7336b",
+          "name": "Get resource user",
+          "request": {
+            "name": "Get resource user",
+            "description": {
+              "content": "Returns information about a specific user's access to a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d38a8c4a-fe8f-4279-8281-41a5e2458a85",
+              "name": "List of ResourceUser records for the user's access to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n    },\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n    }\n  ],\n  \"cursor\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"total_count\": 120\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfb2ecc3-5c13-4891-a510-5a048181e0aa",
+              "name": "Resource or user not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02ccea88-a714-4508-b2a2-e155d7d43d81",
+          "name": "resource user access status retrieve",
+          "request": {
+            "name": "resource user access status retrieve",
+            "description": {
+              "content": "Get user's access status to a resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resource-user-access-status",
+                ":resource_id",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The remote ID of the access level that you wish to query for the resource. If omitted, the default access level remote ID value (empty string) is used."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "86518a50-809e-47f0-87f6-015e8c3e8153",
+              "name": "The access status reflecting the user's access to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resource-user-access-status",
+                    ":resource_id",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "arn:aws:iam::590304332660:role/AdministratorAccess"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n  \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n  \"status\": \"AUTHORIZED\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f7587c9-c54d-4c48-b85f-584db5173864",
+          "name": "get resource tags",
+          "request": {
+            "name": "get resource tags",
+            "description": {
+              "content": "Returns all tags applied to the resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource whose tags to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cf5dd1dd-be2d-411d-8ac5-a45df53309d2",
+              "name": "The tags applied to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource whose tags to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": [\n    {\n      \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n      \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n      \"key\": \"database-name\",\n      \"value\": \"redis_db\"\n    },\n    {\n      \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n      \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n      \"key\": \"database-name\",\n      \"value\": \"redis_db\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e3de8b02-36db-4055-ac49-081ee8b7ccb4",
+          "name": "get resource scoped role permissions",
+          "request": {
+            "name": "get resource scoped role permissions",
+            "description": {
+              "content": "Returns all the scoped role permissions that apply to the given resource. Only OPAL_SCOPED_ROLE resource type supports this field.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "scoped-role-permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource whose scoped role permissions belong to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dc593b5d-770e-4371-9bbb-d61d6a926782",
+              "name": "The role permissions that this Opal Scoped Role has.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "scoped-role-permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource whose scoped role permissions belong to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permissions\": [\n    {\n      \"target_type\": \"RESOURCE\",\n      \"permission_name\": \"READ\",\n      \"allow_all\": false,\n      \"target_ids\": [\n        \"a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1\",\n        \"8294e9c9-deb6-48e9-9c99-da2a1e04a87f\"\n      ]\n    },\n    {\n      \"target_type\": \"RESOURCE\",\n      \"permission_name\": \"READ\",\n      \"allow_all\": true,\n      \"target_ids\": [\n        \"a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1\",\n        \"8294e9c9-deb6-48e9-9c99-da2a1e04a87f\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0d4741c3-b77d-478d-a8db-1d594fba6079",
+          "name": "set resource scoped role permissions",
+          "request": {
+            "name": "set resource scoped role permissions",
+            "description": {
+              "content": "Sets all the scoped role permissions on an OPAL_SCOPED_ROLE resource.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "scoped-role-permissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource whose scoped role permissions belong to. Must be of OPAL_SCOPED_ROLE resource type."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"permissions\": [\n    {\n      \"target_type\": \"<string>\",\n      \"permission_name\": \"<string>\",\n      \"allow_all\": \"<boolean>\",\n      \"target_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ]\n    },\n    {\n      \"target_type\": \"<string>\",\n      \"permission_name\": \"<string>\",\n      \"allow_all\": \"<boolean>\",\n      \"target_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7220739a-87ef-469e-bcdc-e7f4f8bd6d2c",
+              "name": "The role permissions that this Opal Scoped Role has.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "scoped-role-permissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource whose scoped role permissions belong to. Must be of OPAL_SCOPED_ROLE resource type."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"permissions\": [\n    {\n      \"target_type\": \"RESOURCE\",\n      \"permission_name\": \"READ\",\n      \"allow_all\": true,\n      \"target_ids\": [\n        \"a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1\",\n        \"8294e9c9-deb6-48e9-9c99-da2a1e04a87f\"\n      ]\n    },\n    {\n      \"target_type\": \"RESOURCE\",\n      \"permission_name\": \"READ\",\n      \"allow_all\": false,\n      \"target_ids\": [\n        \"a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1\",\n        \"8294e9c9-deb6-48e9-9c99-da2a1e04a87f\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"permissions\": [\n    {\n      \"target_type\": \"RESOURCE\",\n      \"permission_name\": \"READ\",\n      \"allow_all\": false,\n      \"target_ids\": [\n        \"a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1\",\n        \"8294e9c9-deb6-48e9-9c99-da2a1e04a87f\"\n      ]\n    },\n    {\n      \"target_type\": \"RESOURCE\",\n      \"permission_name\": \"READ\",\n      \"allow_all\": true,\n      \"target_ids\": [\n        \"a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1\",\n        \"8294e9c9-deb6-48e9-9c99-da2a1e04a87f\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96368de8-98b6-40fa-a532-5eb09d720d69",
+          "name": "get user resources",
+          "request": {
+            "name": "get user resources",
+            "description": {
+              "content": "Gets the list of resources for this user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Limit the number of results returned."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "include_unmanaged",
+                  "value": "<boolean>",
+                  "description": "Include user's access to unmanaged resources."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ac29d967-c980-42a1-9388-115040381ce8",
+              "name": "List of resources user has access to.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "200"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "include_unmanaged",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"has_direct_access\": true,\n      \"num_access_paths\": 3,\n      \"resource_name\": \"AdministratorAccess\",\n      \"description\": \"Full access to all resources and settings.\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"propagation_status\": {\n        \"status\": \"PENDING\"\n      }\n    },\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"has_direct_access\": true,\n      \"num_access_paths\": 3,\n      \"resource_name\": \"AdministratorAccess\",\n      \"description\": \"Full access to all resources and settings.\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"propagation_status\": {\n        \"status\": \"ERR_REMOTE_PROVISIONING_VIA_IDP_FAILED\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e37b6cab-349b-4ac0-96bd-488a746f3b28",
+          "name": "get resource groups",
+          "request": {
+            "name": "get resource groups",
+            "description": {
+              "content": "Returns a list of groups that grant access to the resource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                ":resource_id",
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource that the groups grant access to."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e5bb7612-e2d8-407e-9ae3-69269205611b",
+              "name": "The groups that grant access to the resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    ":resource_id",
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource that the groups grant access to."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group_resources\": [\n    {\n      \"group_id\": \"f454d283-ca87-4a87-bdbb-df212eca5353\",\n      \"resource_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"group_name\": \"API Group\",\n      \"resource_name\": \"API Group\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n    },\n    {\n      \"group_id\": \"f454d283-ca87-4a87-bdbb-df212eca5353\",\n      \"resource_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"group_name\": \"API Group\",\n      \"resource_name\": \"API Group\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "06f5bbfb-b467-4637-a04a-f6b2c9a4c09e",
+    "name": "Opal access-rules resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules group-bindings API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "group-bindings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get group bindings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/group-bindings",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `GroupBinding` objects."
+        },
+        {
+          "info": {
+            "name": "createGroupBinding",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/group-bindings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a group binding."
+        },
+        {
+          "info": {
+            "name": "updateGroupBindings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/group-bindings",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Bulk updates a list of group bindings."
+        },
+        {
+          "info": {
+            "name": "Get group binding by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/group-bindings/:group_binding_id",
+            "params": [
+              {
+                "name": "group_binding_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the group binding."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a `GroupBinding` object."
+        },
+        {
+          "info": {
+            "name": "deleteGroupBinding",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/group-bindings/:group_binding_id",
+            "params": [
+              {
+                "name": "group_binding_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group binding."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a group binding."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

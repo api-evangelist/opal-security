@@ -1,0 +1,140 @@
+{
+  "item": [
+    {
+      "id": "471a3106-fd1f-446f-9bf6-acf890fd917d",
+      "name": "sessions",
+      "description": {
+        "content": "Operations related to sessions",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b42f930-e676-4b76-9427-713874694453",
+          "name": "sessions",
+          "request": {
+            "name": "sessions",
+            "description": {
+              "content": "Returns a list of `Session` objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resource_id",
+                  "value": "<uuid>",
+                  "description": "(Required) The ID of the resource."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<string>",
+                  "description": "The ID of the user you wish to query sessions for."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9d0179b3-58c3-4e65-a25e-880821355b69",
+              "name": "The sessions associated with a resource.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resource_id",
+                      "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "32acc112-21ff-4669-91c2-21e27683eaa1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"connection_id\": \"5ff045d9-87aa-4dd2-e367-35c4fc0f2483\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n    },\n    {\n      \"connection_id\": \"f057ff2b-3419-61b8-3a51-b4b72875e49b\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"resource_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c678ae93-94f0-4535-85e3-3f90a4a02282",
+    "name": "Opal access-rules sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

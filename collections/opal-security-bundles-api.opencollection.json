@@ -1,0 +1,389 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules bundles API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "bundles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get bundles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/bundles",
+            "params": [
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "The maximum number of bundles to return from the beginning of the list. Default is 200, max is 1000."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "A cursor indicating where to start fetching items after a specific point."
+              },
+              {
+                "name": "contains",
+                "value": "Engineering",
+                "type": "query",
+                "description": "A filter for the bundle name."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `Bundle` objects."
+        },
+        {
+          "info": {
+            "name": "createBundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/bundles",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a bundle."
+        },
+        {
+          "info": {
+            "name": "Get bundle by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a `Bundle` object."
+        },
+        {
+          "info": {
+            "name": "updateBundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle to be updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a bundle."
+        },
+        {
+          "info": {
+            "name": "deleteBundle",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a bundle."
+        },
+        {
+          "info": {
+            "name": "getBundleResources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id/resources",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "The maximum number of resources to return from the beginning of the list. Default is 200, max is 1000."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "A cursor indicating where to start fetching items after a specific point."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `Resource` objects in a given bundle."
+        },
+        {
+          "info": {
+            "name": "addBundleResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id/resources",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Adds a resource to a bundle."
+        },
+        {
+          "info": {
+            "name": "removeBundleResource",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id/resources/:resource_id",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              },
+              {
+                "name": "resource_id",
+                "value": "72e75a6f-7183-48c5-94ff-6013f213314b",
+                "type": "path",
+                "description": "The ID of the resource to remove."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The remote ID of the access level to grant. If omitted, the default access level remote ID value (empty string) is used."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a resource from a bundle."
+        },
+        {
+          "info": {
+            "name": "getBundleGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id/groups",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "The maximum number of groups to return from the beginning of the list. Default is 200, max is 1000."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "A cursor indicating where to start fetching items after a specific point."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `Group` objects in a given bundle."
+        },
+        {
+          "info": {
+            "name": "addBundleGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id/groups",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Adds a group to a bundle."
+        },
+        {
+          "info": {
+            "name": "removeBundleGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id/groups/:group_id",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              },
+              {
+                "name": "group_id",
+                "value": "72e75a6f-7183-48c5-94ff-6013f213314b",
+                "type": "path",
+                "description": "The ID of the group to remove."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The remote ID of the access level to remove."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a group from a bundle."
+        },
+        {
+          "info": {
+            "name": "getBundleVisibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id/visibility",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the visibility of the bundle."
+        },
+        {
+          "info": {
+            "name": "setBundleVisibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/bundles/:bundle_id/visibility",
+            "params": [
+              {
+                "name": "bundle_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the bundle."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the visibility of the bundle."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

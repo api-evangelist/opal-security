@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules delegations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "delegations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get delegations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/delegations",
+            "params": [
+              {
+                "name": "delegator_user_id",
+                "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac",
+                "type": "query",
+                "description": "The delegator user ID to filter delegations by the user delegating their access review requests."
+              },
+              {
+                "name": "delegate_user_id",
+                "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac",
+                "type": "query",
+                "description": "The delegate user ID to filter delegations by the user being delegated to."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "A cursor to indicate where to start fetching results."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "The maximum number of results to return per page. The default is 200."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of request reviewer delegations configured for your organization."
+        },
+        {
+          "info": {
+            "name": "createDelegation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/delegations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new request reviewer delegation to delegate access review requests from one user to another."
+        },
+        {
+          "info": {
+            "name": "Get delegation by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/delegations/:delegation_id",
+            "params": [
+              {
+                "name": "delegation_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the delegation to retrieve."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a specific delegation by its ID."
+        },
+        {
+          "info": {
+            "name": "deleteDelegation",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/delegations/:delegation_id",
+            "params": [
+              {
+                "name": "delegation_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the delegation to remove."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a delegation by its ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

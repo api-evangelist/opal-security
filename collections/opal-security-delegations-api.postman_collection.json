@@ -1,0 +1,465 @@
+{
+  "item": [
+    {
+      "id": "fc327588-79b1-4c00-b85b-86aba9dcacdf",
+      "name": "delegations",
+      "description": {
+        "content": "Operations related to request reviewer delegations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a45cfcad-8a4d-4f6c-8679-5133d341aeae",
+          "name": "Get delegations",
+          "request": {
+            "name": "Get delegations",
+            "description": {
+              "content": "Returns a list of request reviewer delegations configured for your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "delegations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "delegator_user_id",
+                  "value": "<uuid>",
+                  "description": "The delegator user ID to filter delegations by the user delegating their access review requests."
+                },
+                {
+                  "disabled": false,
+                  "key": "delegate_user_id",
+                  "value": "<uuid>",
+                  "description": "The delegate user ID to filter delegations by the user being delegated to."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "A cursor to indicate where to start fetching results."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "The maximum number of results to return per page. The default is 200."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a8efca12-f44d-48d7-b8c0-e7c5046fb4c0",
+              "name": "A list of delegations for your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delegations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "delegator_user_id",
+                      "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac"
+                    },
+                    {
+                      "key": "delegate_user_id",
+                      "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"id\": \"4aed3e8a-727b-4d72-8010-3b8710c50bec\",\n      \"delegator_user_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"delegate_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"start_time\": \"2023-10-01 12:00:00+00:00\",\n      \"end_time\": \"2023-10-01 12:00:00+00:00\",\n      \"reason\": \"I need to be out of the office\",\n      \"created_at\": \"2023-10-01 12:00:00+00:00\",\n      \"updated_at\": \"2023-10-01 12:00:00+00:00\"\n    },\n    {\n      \"id\": \"4aed3e8a-727b-4d72-8010-3b8710c50bec\",\n      \"delegator_user_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n      \"delegate_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"start_time\": \"2023-10-01 12:00:00+00:00\",\n      \"end_time\": \"2023-10-01 12:00:00+00:00\",\n      \"reason\": \"I need to be out of the office\",\n      \"created_at\": \"2023-10-01 12:00:00+00:00\",\n      \"updated_at\": \"2023-10-01 12:00:00+00:00\"\n    }\n  ],\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"total_count\": 2\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "48b728ad-422e-424e-b813-5917295cb8e5",
+          "name": "create Delegation",
+          "request": {
+            "name": "create Delegation",
+            "description": {
+              "content": "Creates a new request reviewer delegation to delegate access review requests from one user to another.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "delegations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"delegator_user_id\": \"<uuid>\",\n  \"delegate_user_id\": \"<uuid>\",\n  \"start_time\": \"<dateTime>\",\n  \"end_time\": \"<dateTime>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7885534-b0af-45fa-9677-bcb82d74490c",
+              "name": "Delegation created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delegations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"delegator_user_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"delegate_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"start_time\": \"2023-10-01 12:00:00+00:00\",\n  \"end_time\": \"2023-10-01 12:00:00+00:00\",\n  \"reason\": \"I need to be out of the office\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4aed3e8a-727b-4d72-8010-3b8710c50bec\",\n  \"delegator_user_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"delegate_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"start_time\": \"2023-10-01 12:00:00+00:00\",\n  \"end_time\": \"2023-10-01 12:00:00+00:00\",\n  \"reason\": \"I need to be out of the office\",\n  \"created_at\": \"2023-10-01 12:00:00+00:00\",\n  \"updated_at\": \"2023-10-01 12:00:00+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eb89718d-9404-4cf6-aefc-47b826577dc4",
+          "name": "Get delegation by ID",
+          "request": {
+            "name": "Get delegation by ID",
+            "description": {
+              "content": "Returns a specific delegation by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "delegations",
+                ":delegation_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "delegation_id",
+                  "description": "(Required) The ID of the delegation to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5da08790-da35-4845-af74-7725b221d408",
+              "name": "The requested delegation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delegations",
+                    ":delegation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "delegation_id",
+                      "description": "(Required) The ID of the delegation to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4aed3e8a-727b-4d72-8010-3b8710c50bec\",\n  \"delegator_user_id\": \"123e4567-e89b-12d3-a456-426614174000\",\n  \"delegate_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"start_time\": \"2023-10-01 12:00:00+00:00\",\n  \"end_time\": \"2023-10-01 12:00:00+00:00\",\n  \"reason\": \"I need to be out of the office\",\n  \"created_at\": \"2023-10-01 12:00:00+00:00\",\n  \"updated_at\": \"2023-10-01 12:00:00+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e20ceeb-5572-431e-ba7e-9bbc7fcedaae",
+          "name": "delete Delegation",
+          "request": {
+            "name": "delete Delegation",
+            "description": {
+              "content": "Deletes a delegation by its ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "delegations",
+                ":delegation_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "delegation_id",
+                  "description": "(Required) The ID of the delegation to remove."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "018a64b0-2844-4beb-a845-97379c12665e",
+              "name": "Delegation removed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delegations",
+                    ":delegation_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "delegation_id",
+                      "description": "(Required) The ID of the delegation to remove."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c08396f9-2979-421a-b5de-31798b6f49e3",
+    "name": "Opal access-rules delegations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

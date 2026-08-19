@@ -1,0 +1,352 @@
+{
+  "item": [
+    {
+      "id": "593a97d7-d210-4172-98f9-6f80428dbf06",
+      "name": "events",
+      "description": {
+        "content": "Operations related to events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d17d6942-4bd7-4910-bef2-bf7b42ff2539",
+          "name": "events",
+          "request": {
+            "name": "events",
+            "description": {
+              "content": "Returns a list of `Event` objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date_filter",
+                  "value": "<string>",
+                  "description": "A start date filter for the events."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date_filter",
+                  "value": "<string>",
+                  "description": "An end date filter for the events."
+                },
+                {
+                  "disabled": false,
+                  "key": "actor_filter",
+                  "value": "<uuid>",
+                  "description": "An actor filter for the events. Supply the ID of the actor."
+                },
+                {
+                  "disabled": false,
+                  "key": "object_filter",
+                  "value": "<uuid>",
+                  "description": "An object filter for the events. Supply the ID of the object."
+                },
+                {
+                  "disabled": false,
+                  "key": "event_type_filter",
+                  "value": "<string>",
+                  "description": "An event type filter for the events."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_token_filter",
+                  "value": "<string>",
+                  "description": "An API filter for the events. Supply the name and preview of the API token."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1969db56-81a8-4d3e-81fb-0580b372b57a",
+              "name": "One page worth of events with the appropriate filters applied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_filter",
+                      "value": "2021-11-01"
+                    },
+                    {
+                      "key": "end_date_filter",
+                      "value": "2021-11-12"
+                    },
+                    {
+                      "key": "actor_filter",
+                      "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac"
+                    },
+                    {
+                      "key": "object_filter",
+                      "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac"
+                    },
+                    {
+                      "key": "event_type_filter",
+                      "value": "USER_MFA_RESET"
+                    },
+                    {
+                      "key": "api_token_filter",
+                      "value": "fullaccess:**************************M_g=="
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"event_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"actor_user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"actor_name\": {},\n      \"event_type\": \"USERS_CREATED\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"actor_email\": \"john@acmecorp.com\",\n      \"actor_ip_address\": \"255.255.255.0\",\n      \"api_token_name\": \"My API Token\",\n      \"api_token_preview\": \"**************************M_g==\",\n      \"sub_events\": [\n        {\n          \"sub_event_type\": \"USERS_CREATED\",\n          \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n          \"user_name\": \"John Smith\",\n          \"resource_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n          \"resource_name\": \"Figma\"\n        },\n        {\n          \"sub_event_type\": \"USERS_CREATED\",\n          \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n          \"user_name\": \"John Smith\",\n          \"resource_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n          \"resource_name\": \"Figma\"\n        }\n      ]\n    },\n    {\n      \"event_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"actor_user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"actor_name\": {},\n      \"event_type\": \"USERS_CREATED\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"actor_email\": \"john@acmecorp.com\",\n      \"actor_ip_address\": \"255.255.255.0\",\n      \"api_token_name\": \"My API Token\",\n      \"api_token_preview\": \"**************************M_g==\",\n      \"sub_events\": [\n        {\n          \"sub_event_type\": \"USERS_CREATED\",\n          \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n          \"user_name\": \"John Smith\",\n          \"resource_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n          \"resource_name\": \"Figma\"\n        },\n        {\n          \"sub_event_type\": \"USERS_CREATED\",\n          \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n          \"user_name\": \"John Smith\",\n          \"resource_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n          \"resource_name\": \"Figma\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1d833065-9c1f-4653-a2fc-f3796854e217",
+          "name": "Get event by ID",
+          "request": {
+            "name": "Get event by ID",
+            "description": {
+              "content": "Returns an `Event` object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                ":event_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "event_id",
+                  "description": "(Required) The ID of the event."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7be5ed88-5d16-4450-b6cc-7bb4c8e53b01",
+              "name": "The requested `Event`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "event_id",
+                      "description": "(Required) The ID of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"actor_user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n  \"actor_name\": {},\n  \"event_type\": \"USERS_CREATED\",\n  \"created_at\": \"2022-01-23 04:56:07+00:00\",\n  \"actor_email\": \"john@acmecorp.com\",\n  \"actor_ip_address\": \"255.255.255.0\",\n  \"api_token_name\": \"My API Token\",\n  \"api_token_preview\": \"**************************M_g==\",\n  \"sub_events\": [\n    {\n      \"sub_event_type\": \"USERS_CREATED\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"user_name\": \"John Smith\",\n      \"resource_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"resource_name\": \"Figma\"\n    },\n    {\n      \"sub_event_type\": \"USERS_CREATED\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"user_name\": \"John Smith\",\n      \"resource_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"resource_name\": \"Figma\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb3463aa-37ac-4718-9e7e-3e439cbd1733",
+              "name": "Event not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    ":event_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "event_id",
+                      "description": "(Required) The ID of the event."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "02333e2b-d8ff-4934-baf1-2629e4d99762",
+    "name": "Opal access-rules events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

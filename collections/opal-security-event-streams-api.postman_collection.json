@@ -1,0 +1,444 @@
+{
+  "item": [
+    {
+      "id": "a36f81c6-d6c8-4493-89e0-8a9173e008d4",
+      "name": "event-streams",
+      "description": {
+        "content": "Operations related to event streaming connections",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3dd4944b-ccb9-4071-8829-e5777019bb2d",
+          "name": "Get event streams",
+          "request": {
+            "name": "Get event streams",
+            "description": {
+              "content": "Returns a list of configured event streaming connections for your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event-streams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "46b8c5cf-5e39-4544-a41b-93700f561b7f",
+              "name": "A list of event streams for your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-streams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_streams\": [\n    {\n      \"event_stream_id\": \"b8fe8740-2f82-5e7e-155d-39f8911d89d7\",\n      \"connection\": {\n        \"name\": \"string\",\n        \"connection_type\": \"WEBHOOK\",\n        \"enabled\": true,\n        \"webhook_url\": \"string\",\n        \"credentials\": {\n          \"auth_type\": \"NONE\",\n          \"api_key_credentials\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"hmac_credential_1\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"hmac_credential_2\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    },\n    {\n      \"event_stream_id\": \"d26d4d5e-d1ed-cf9d-09b7-e3e841c117e7\",\n      \"connection\": {\n        \"name\": \"string\",\n        \"connection_type\": \"WEBHOOK\",\n        \"enabled\": true,\n        \"webhook_url\": \"string\",\n        \"credentials\": {\n          \"auth_type\": \"HMAC\",\n          \"api_key_credentials\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"hmac_credential_1\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"hmac_credential_2\": {\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"secret\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"created_at\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69957022-3b61-4f0c-80ac-598efd86c90c",
+          "name": "Create event stream",
+          "request": {
+            "name": "Create event stream",
+            "description": {
+              "content": "Creates a new event streaming connection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event-streams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"connection_type\": \"<string>\",\n  \"webhook_url\": \"<string>\",\n  \"credentials\": {\n    \"auth_type\": \"<string>\",\n    \"api_key_credentials\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ],\n    \"hmac_credential_1\": {\n      \"id\": \"<uuid>\",\n      \"secret\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    },\n    \"hmac_credential_2\": {\n      \"id\": \"<uuid>\",\n      \"secret\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "65539829-35db-4a7e-a455-5c458be01dd6",
+              "name": "The event stream just created. Credentials are returned in clear text only on creation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-streams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"connection_type\": \"WEBHOOK\",\n  \"webhook_url\": \"<string>\",\n  \"credentials\": {\n    \"auth_type\": \"NONE\",\n    \"api_key_credentials\": [\n      {\n        \"id\": \"f3e50852-1e55-6728-aa79-2c2f547cbeb5\",\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"location\": \"QUERY_PARAM\"\n      },\n      {\n        \"id\": \"c2c135ef-dff5-f3ad-5e9f-9781fe13c2c4\",\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"location\": \"HEADER\"\n      }\n    ],\n    \"hmac_credential_1\": {\n      \"id\": \"f0e1845d-f018-96d2-1197-efa4bf856a6a\",\n      \"secret\": \"string\",\n      \"created_at\": \"1992-09-07T05:18:16.438Z\"\n    },\n    \"hmac_credential_2\": {\n      \"id\": \"d371a5e6-1082-4585-b187-fe7329f72333\",\n      \"secret\": \"string\",\n      \"created_at\": \"1968-09-05T13:17:59.598Z\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_stream_id\": \"750f8b70-241e-535a-02d9-3d59c20ba3cc\",\n  \"connection\": {\n    \"name\": \"string\",\n    \"connection_type\": \"WEBHOOK\",\n    \"enabled\": true,\n    \"webhook_url\": \"string\",\n    \"credentials\": {\n      \"auth_type\": \"API_KEY\",\n      \"api_key_credentials\": [\n        {\n          \"id\": \"bc2658ca-44af-7c39-0d89-e78ea1801f91\",\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"location\": \"HEADER\"\n        },\n        {\n          \"id\": \"9c0779de-8933-3789-3dea-d5a184ed6bb9\",\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"location\": \"HEADER\"\n        }\n      ],\n      \"hmac_credential_1\": {\n        \"id\": \"5704d8d0-66fc-4be1-5ca6-9d75e9942f69\",\n        \"secret\": \"string\",\n        \"created_at\": \"1958-08-20T17:09:17.065Z\"\n      },\n      \"hmac_credential_2\": {\n        \"id\": \"4d5a88c1-47d5-7ad1-3be1-892b1bc52f42\",\n        \"secret\": \"string\",\n        \"created_at\": \"1986-08-18T22:37:37.569Z\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "797e3d55-5cc9-4cf4-961e-0592b9c015ba",
+          "name": "Update event stream",
+          "request": {
+            "name": "Update event stream",
+            "description": {
+              "content": "Updates an existing event streaming connection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event-streams",
+                ":event_stream_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "event_stream_id",
+                  "description": "(Required) The ID of the event stream."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"webhook_url\": \"<string>\",\n  \"credentials\": {\n    \"auth_type\": \"<string>\",\n    \"api_key_credentials\": [\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"location\": \"<string>\"\n      },\n      {\n        \"id\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"value\": \"<string>\",\n        \"location\": \"<string>\"\n      }\n    ],\n    \"hmac_credential_1\": {\n      \"id\": \"<uuid>\",\n      \"secret\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    },\n    \"hmac_credential_2\": {\n      \"id\": \"<uuid>\",\n      \"secret\": \"<string>\",\n      \"created_at\": \"<dateTime>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "560e4e2f-fe25-4b8e-95e7-b8375bfcd8e5",
+              "name": "The updated event stream.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-streams",
+                    ":event_stream_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "event_stream_id",
+                      "description": "(Required) The ID of the event stream."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"webhook_url\": \"<string>\",\n  \"credentials\": {\n    \"auth_type\": \"NONE\",\n    \"api_key_credentials\": [\n      {\n        \"id\": \"0e05eb50-f06e-022d-51c1-ff64586a4f6f\",\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"location\": \"HEADER\"\n      },\n      {\n        \"id\": \"6e31258b-7774-1fad-8318-46bc403d70e5\",\n        \"name\": \"string\",\n        \"value\": \"string\",\n        \"location\": \"QUERY_PARAM\"\n      }\n    ],\n    \"hmac_credential_1\": {\n      \"id\": \"91662f46-a840-49d2-e160-a38cd8763c36\",\n      \"secret\": \"string\",\n      \"created_at\": \"2011-08-10T22:48:46.989Z\"\n    },\n    \"hmac_credential_2\": {\n      \"id\": \"5e5a1118-9e69-f85b-e9cf-1bdd95ff37be\",\n      \"secret\": \"string\",\n      \"created_at\": \"1980-09-30T20:36:27.707Z\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"event_stream_id\": \"750f8b70-241e-535a-02d9-3d59c20ba3cc\",\n  \"connection\": {\n    \"name\": \"string\",\n    \"connection_type\": \"WEBHOOK\",\n    \"enabled\": true,\n    \"webhook_url\": \"string\",\n    \"credentials\": {\n      \"auth_type\": \"API_KEY\",\n      \"api_key_credentials\": [\n        {\n          \"id\": \"bc2658ca-44af-7c39-0d89-e78ea1801f91\",\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"location\": \"HEADER\"\n        },\n        {\n          \"id\": \"9c0779de-8933-3789-3dea-d5a184ed6bb9\",\n          \"name\": \"string\",\n          \"value\": \"string\",\n          \"location\": \"HEADER\"\n        }\n      ],\n      \"hmac_credential_1\": {\n        \"id\": \"5704d8d0-66fc-4be1-5ca6-9d75e9942f69\",\n        \"secret\": \"string\",\n        \"created_at\": \"1958-08-20T17:09:17.065Z\"\n      },\n      \"hmac_credential_2\": {\n        \"id\": \"4d5a88c1-47d5-7ad1-3be1-892b1bc52f42\",\n        \"secret\": \"string\",\n        \"created_at\": \"1986-08-18T22:37:37.569Z\"\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c1c3784-a6d4-4aae-bc22-61e502f8a417",
+          "name": "Delete event stream",
+          "request": {
+            "name": "Delete event stream",
+            "description": {
+              "content": "Deletes an event streaming connection.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "event-streams",
+                ":event_stream_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "event_stream_id",
+                  "description": "(Required) The ID of the event stream."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c794a2af-fc10-405c-9c71-f8b78a7facc7",
+              "name": "The event stream was successfully deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "event-streams",
+                    ":event_stream_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "event_stream_id",
+                      "description": "(Required) The ID of the event stream."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "750091a3-6e41-4235-b6c0-1f155a2d5f33",
+    "name": "Opal access-rules event-streams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

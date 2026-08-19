@@ -1,0 +1,3432 @@
+{
+  "item": [
+    {
+      "id": "6b859819-4c7a-43ed-bc5f-597e792ebd35",
+      "name": "groups",
+      "description": {
+        "content": "Operations related to groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "987e500b-6750-41b9-8d15-41029c4abdfd",
+          "name": "Get groups",
+          "request": {
+            "name": "Get groups",
+            "description": {
+              "content": "Returns a list of groups for your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "group_type_filter",
+                  "value": "<string>",
+                  "description": "The group type to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "group_ids",
+                  "value": "<uuid>,<uuid>",
+                  "description": "The group ids to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "group_name",
+                  "value": "<string>",
+                  "description": "Group name."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag_ids",
+                  "value": "<uuid>",
+                  "description": "The IDs of the tags to filter by. Returns only groups that have any of these tags applied."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag_ids",
+                  "value": "<uuid>",
+                  "description": "The IDs of the tags to filter by. Returns only groups that have any of these tags applied."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0f88e9ee-ee52-4d4c-9245-29a444421f25",
+              "name": "One page worth groups associated with your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    },
+                    {
+                      "key": "group_type_filter",
+                      "value": "OPAL_GROUP"
+                    },
+                    {
+                      "key": "group_ids",
+                      "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5,1b978423-db0a-4037-a4cf-f79c60cb67b3"
+                    },
+                    {
+                      "key": "group_name",
+                      "value": "example-name"
+                    },
+                    {
+                      "key": "tag_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "tag_ids",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n      \"name\": \"Payments Production Admin\",\n      \"description\": \"This group represents Active Directory group \\\"Payments Production Admin\\\". We use this AD group to facilitate staging deployments and qualifying new releases.\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"group_leader_user_ids\": [\n        \"7c86c85d-0651-43e2-a748-d69d658418e8\"\n      ],\n      \"remote_id\": \"037m2jsg218b2wb\",\n      \"remote_name\": \"Finance Team\",\n      \"group_type\": \"ACTIVE_DIRECTORY_GROUP\",\n      \"max_duration\": 120,\n      \"recommended_duration\": 60,\n      \"extensions_duration_in_minutes\": 60,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": false,\n      \"require_mfa_to_approve\": false,\n      \"require_mfa_to_request\": false,\n      \"auto_approval\": false,\n      \"is_requestable\": true\n    },\n    {\n      \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"app_id\": \"a7c3e291-1234-4abc-9def-1234567890ab\",\n      \"name\": \"Integrations On-Call\",\n      \"description\": \"Manages the Integrations Team on-call privileged resources. This group is automatically synced with the on-call rotation defined in PagerDuty.\",\n      \"admin_owner_id\": \"4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3\",\n      \"group_leader_user_ids\": [],\n      \"remote_id\": \"pagerduty-schedule:P123XYZ\",\n      \"remote_name\": \"Integrations On-Call\",\n      \"group_type\": \"PAGERDUTY_ON_CALL_SCHEDULE\",\n      \"max_duration\": 360,\n      \"recommended_duration\": 120,\n      \"extensions_duration_in_minutes\": 0,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": true,\n      \"require_mfa_to_approve\": false,\n      \"require_mfa_to_request\": false,\n      \"auto_approval\": false,\n      \"is_requestable\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2aed0354-e60a-400a-9af3-3382133824c5",
+          "name": "update Groups",
+          "request": {
+            "name": "update Groups",
+            "description": {
+              "content": "Bulk updates a list of groups.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"groups\": [\n    {\n      \"group_id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"admin_owner_id\": \"<uuid>\",\n      \"max_duration\": \"<integer>\",\n      \"recommended_duration\": \"<integer>\",\n      \"require_manager_approval\": \"<boolean>\",\n      \"require_support_ticket\": \"<boolean>\",\n      \"folder_id\": \"<uuid>\",\n      \"require_mfa_to_approve\": \"<boolean>\",\n      \"require_mfa_to_request\": \"<boolean>\",\n      \"auto_approval\": \"<boolean>\",\n      \"configuration_template_id\": \"<uuid>\",\n      \"request_template_id\": \"<uuid>\",\n      \"is_requestable\": \"<boolean>\",\n      \"group_leader_user_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"extensions_duration_in_minutes\": \"<integer>\",\n      \"request_configurations\": [\n        {\n          \"allow_requests\": \"<boolean>\",\n          \"auto_approval\": \"<boolean>\",\n          \"require_mfa_to_request\": \"<boolean>\",\n          \"require_support_ticket\": \"<boolean>\",\n          \"priority\": \"<integer>\",\n          \"condition\": {\n            \"group_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"role_remote_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"max_duration_minutes\": \"<integer>\",\n          \"recommended_duration_minutes\": \"<integer>\",\n          \"extensions_duration_in_minutes\": \"<integer>\",\n          \"request_template_id\": \"<uuid>\",\n          \"reviewer_stages\": [\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"allow_requests\": \"<boolean>\",\n          \"auto_approval\": \"<boolean>\",\n          \"require_mfa_to_request\": \"<boolean>\",\n          \"require_support_ticket\": \"<boolean>\",\n          \"priority\": \"<integer>\",\n          \"condition\": {\n            \"group_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"role_remote_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"max_duration_minutes\": \"<integer>\",\n          \"recommended_duration_minutes\": \"<integer>\",\n          \"extensions_duration_in_minutes\": \"<integer>\",\n          \"request_template_id\": \"<uuid>\",\n          \"reviewer_stages\": [\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"request_configuration_list\": {\n        \"request_configurations\": [\n          {\n            \"allow_requests\": \"<boolean>\",\n            \"auto_approval\": \"<boolean>\",\n            \"require_mfa_to_request\": \"<boolean>\",\n            \"require_support_ticket\": \"<boolean>\",\n            \"priority\": \"<integer>\",\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_duration_minutes\": \"<integer>\",\n            \"recommended_duration_minutes\": \"<integer>\",\n            \"extensions_duration_in_minutes\": \"<integer>\",\n            \"request_template_id\": \"<uuid>\",\n            \"reviewer_stages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"allow_requests\": \"<boolean>\",\n            \"auto_approval\": \"<boolean>\",\n            \"require_mfa_to_request\": \"<boolean>\",\n            \"require_support_ticket\": \"<boolean>\",\n            \"priority\": \"<integer>\",\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_duration_minutes\": \"<integer>\",\n            \"recommended_duration_minutes\": \"<integer>\",\n            \"extensions_duration_in_minutes\": \"<integer>\",\n            \"request_template_id\": \"<uuid>\",\n            \"reviewer_stages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"custom_request_notification\": \"<string>\",\n      \"risk_sensitivity_override\": \"<string>\"\n    },\n    {\n      \"group_id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"admin_owner_id\": \"<uuid>\",\n      \"max_duration\": \"<integer>\",\n      \"recommended_duration\": \"<integer>\",\n      \"require_manager_approval\": \"<boolean>\",\n      \"require_support_ticket\": \"<boolean>\",\n      \"folder_id\": \"<uuid>\",\n      \"require_mfa_to_approve\": \"<boolean>\",\n      \"require_mfa_to_request\": \"<boolean>\",\n      \"auto_approval\": \"<boolean>\",\n      \"configuration_template_id\": \"<uuid>\",\n      \"request_template_id\": \"<uuid>\",\n      \"is_requestable\": \"<boolean>\",\n      \"group_leader_user_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"extensions_duration_in_minutes\": \"<integer>\",\n      \"request_configurations\": [\n        {\n          \"allow_requests\": \"<boolean>\",\n          \"auto_approval\": \"<boolean>\",\n          \"require_mfa_to_request\": \"<boolean>\",\n          \"require_support_ticket\": \"<boolean>\",\n          \"priority\": \"<integer>\",\n          \"condition\": {\n            \"group_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"role_remote_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"max_duration_minutes\": \"<integer>\",\n          \"recommended_duration_minutes\": \"<integer>\",\n          \"extensions_duration_in_minutes\": \"<integer>\",\n          \"request_template_id\": \"<uuid>\",\n          \"reviewer_stages\": [\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"allow_requests\": \"<boolean>\",\n          \"auto_approval\": \"<boolean>\",\n          \"require_mfa_to_request\": \"<boolean>\",\n          \"require_support_ticket\": \"<boolean>\",\n          \"priority\": \"<integer>\",\n          \"condition\": {\n            \"group_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"role_remote_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          \"max_duration_minutes\": \"<integer>\",\n          \"recommended_duration_minutes\": \"<integer>\",\n          \"extensions_duration_in_minutes\": \"<integer>\",\n          \"request_template_id\": \"<uuid>\",\n          \"reviewer_stages\": [\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"operator\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_manager_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"owner_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"require_admin_approval\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"service_user_ids\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ],\n      \"request_configuration_list\": {\n        \"request_configurations\": [\n          {\n            \"allow_requests\": \"<boolean>\",\n            \"auto_approval\": \"<boolean>\",\n            \"require_mfa_to_request\": \"<boolean>\",\n            \"require_support_ticket\": \"<boolean>\",\n            \"priority\": \"<integer>\",\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_duration_minutes\": \"<integer>\",\n            \"recommended_duration_minutes\": \"<integer>\",\n            \"extensions_duration_in_minutes\": \"<integer>\",\n            \"request_template_id\": \"<uuid>\",\n            \"reviewer_stages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"allow_requests\": \"<boolean>\",\n            \"auto_approval\": \"<boolean>\",\n            \"require_mfa_to_request\": \"<boolean>\",\n            \"require_support_ticket\": \"<boolean>\",\n            \"priority\": \"<integer>\",\n            \"condition\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"max_duration_minutes\": \"<integer>\",\n            \"recommended_duration_minutes\": \"<integer>\",\n            \"extensions_duration_in_minutes\": \"<integer>\",\n            \"request_template_id\": \"<uuid>\",\n            \"reviewer_stages\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      \"custom_request_notification\": \"<string>\",\n      \"risk_sensitivity_override\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "80347298-de0b-453b-a487-6e2f0a1dc26c",
+              "name": "The resulting updated group infos.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"groups\": [\n    {\n      \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"description\": \"This group represents Active Directory group \\\"Payments Production Admin\\\". We use this AD group to facilitate staging deployments and qualifying new releases.\",\n      \"name\": \"api-group\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"max_duration\": 120,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": false\n    },\n    {\n      \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"description\": \"Manages the Integrations Team on-call privileged resources. This group is automatically synced with the on-call rotation defined in PagerDuty.\",\n      \"name\": \"on-call-integrations\",\n      \"admin_owner_id\": \"4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3\",\n      \"max_duration\": 360,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": true\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"groups\": [\n    {\n      \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"description\": \"This group represents Active Directory group \\\"Payments Production Admin\\\". We use this AD group to facilitate staging deployments and qualifying new releases.\",\n      \"name\": \"api-group\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"max_duration\": 120,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": false\n    },\n    {\n      \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"description\": \"Manages the Integrations Team on-call privileged resources. This group is automatically synced with the on-call rotation defined in PagerDuty.\",\n      \"name\": \"on-call-integrations\",\n      \"admin_owner_id\": \"4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3\",\n      \"max_duration\": 360,\n      \"require_manager_approval\": false,\n      \"require_support_ticket\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f61693b-a7fe-41cb-a291-7fec82749f4d",
+          "name": "create Group",
+          "request": {
+            "name": "create Group",
+            "description": {
+              "content": "Creates an Opal group or [imports a remote group](https://docs.opal.dev/reference/end-system-objects).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"group_type\": \"<string>\",\n  \"app_id\": \"<uuid>\",\n  \"description\": \"<string>\",\n  \"remote_info\": {\n    \"active_directory_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"tailscale_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"twingate_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"twingate_group_synced\": {\n      \"group_id\": \"<string>\"\n    },\n    \"aws_sso_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"databricks_account_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"connector_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"github_team\": {\n      \"team_slug\": \"<string>\",\n      \"team_id\": \"<string>\",\n      \"org_name\": \"<string>\"\n    },\n    \"github_enterprise_team\": {\n      \"team_slug\": \"<string>\"\n    },\n    \"gitlab_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"google_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"ldap_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"okta_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"duo_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"azure_ad_security_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"azure_ad_microsoft_365_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"snowflake_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"okta_group_rule\": {\n      \"rule_id\": \"<string>\"\n    },\n    \"workday_user_security_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"pagerduty_on_call_schedule\": {\n      \"schedule_id\": \"<string>\"\n    },\n    \"incidentio_on_call_schedule\": {\n      \"schedule_id\": \"<string>\"\n    },\n    \"rootly_on_call_schedule\": {\n      \"schedule_id\": \"<string>\"\n    },\n    \"devin_group\": {\n      \"group_name\": \"<string>\"\n    },\n    \"clickhouse_role\": {\n      \"role_id\": \"<string>\"\n    },\n    \"grafana_team\": {\n      \"team_id\": \"<string>\"\n    },\n    \"zendesk_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"slack_user_group\": {\n      \"group_id\": \"<string>\"\n    },\n    \"zendesk_organization\": {\n      \"organization_id\": \"<string>\"\n    },\n    \"hubspot_team\": {\n      \"team_id\": \"<string>\"\n    },\n    \"tableau_group\": {\n      \"group_id\": \"<string>\"\n    }\n  },\n  \"remote_group_id\": \"<string>\",\n  \"metadata\": \"<string>\",\n  \"custom_request_notification\": \"<string>\",\n  \"risk_sensitivity_override\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "170ae4fa-49d3-4d57-a25e-acb7d7d025ba",
+              "name": "The group just created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"remote_group_id\": \"00g4fixjd6Bc9w0TT5d7\",\n  \"name\": \"Engineering Team\",\n  \"description\": \"Engineering team Okta group.\",\n  \"group_type\": \"OKTA_GROUP\",\n  \"metadata\": \"{ \\\"okta_directory_group\\\": { \\\"group_id\\\": \\\"00g4bs66kwtpe1g12345\\\" } }\",\n  \"app_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n  \"name\": \"Payments Production Admin\",\n  \"description\": \"This group represents Active Directory group \\\"Payments Production Admin\\\". We use this AD group to facilitate staging deployments and qualifying new releases.\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"group_leader_user_ids\": [\n    \"7c86c85d-0651-43e2-a748-d69d658418e8\"\n  ],\n  \"remote_id\": \"037m2jsg218b2wb\",\n  \"remote_name\": \"Finance Team\",\n  \"group_type\": \"ACTIVE_DIRECTORY_GROUP\",\n  \"max_duration\": 120,\n  \"recommended_duration\": 60,\n  \"extensions_duration_in_minutes\": 60,\n  \"require_manager_approval\": false,\n  \"require_support_ticket\": false,\n  \"require_mfa_to_approve\": false,\n  \"require_mfa_to_request\": false,\n  \"auto_approval\": false,\n  \"is_requestable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7e898f5-8c32-403a-a207-dcdbd1a07808",
+          "name": "Get group by ID",
+          "request": {
+            "name": "Get group by ID",
+            "description": {
+              "content": "Returns a `Group` object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "60f49ff4-5912-4e34-acd5-16e16813c4d2",
+              "name": "The requested `Group`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n  \"name\": \"Payments Production Admin\",\n  \"description\": \"This group represents Active Directory group \\\"Payments Production Admin\\\". We use this AD group to facilitate staging deployments and qualifying new releases.\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"group_leader_user_ids\": [\n    \"7c86c85d-0651-43e2-a748-d69d658418e8\"\n  ],\n  \"remote_id\": \"037m2jsg218b2wb\",\n  \"remote_name\": \"Finance Team\",\n  \"group_type\": \"ACTIVE_DIRECTORY_GROUP\",\n  \"max_duration\": 120,\n  \"recommended_duration\": 60,\n  \"extensions_duration_in_minutes\": 60,\n  \"require_manager_approval\": false,\n  \"require_support_ticket\": false,\n  \"require_mfa_to_approve\": false,\n  \"require_mfa_to_request\": false,\n  \"auto_approval\": false,\n  \"is_requestable\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ac809da-2a9b-4ad8-ac39-5fb456c9e178",
+          "name": "delete group",
+          "request": {
+            "name": "delete group",
+            "description": {
+              "content": "Deletes a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "15d5bf3d-ad39-4956-9421-32c4527f040f",
+              "name": "The group was successfully deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fdf78659-e187-4e81-adf3-2357b0f63ae6",
+          "name": "get group message channels",
+          "request": {
+            "name": "get group message channels",
+            "description": {
+              "content": "Gets the list of audit and reviewer message channels attached to a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "message-channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bf83fd51-9af8-42b6-adab-7075e6d7cbc1",
+              "name": "The audit and reviewer message channels attached to the group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "message-channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"channels\": [\n    {\n      \"message_channel_id\": \"6670617d-e72a-47f5-a84c-693817ab4860\",\n      \"third_party_provider\": \"SLACK\",\n      \"remote_id\": \"C03FJR97276\",\n      \"name\": \"api-team-audit-channel\",\n      \"is_private\": false\n    },\n    {\n      \"message_channel_id\": \"6670617d-e72a-47f5-a84c-693817ab4860\",\n      \"third_party_provider\": \"SLACK\",\n      \"remote_id\": \"C03FJR97276\",\n      \"name\": \"api-team-audit-channel\",\n      \"is_private\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fafdc0a4-eeee-4c1c-a35f-6f780a139701",
+          "name": "set group message channels",
+          "request": {
+            "name": "set group message channels",
+            "description": {
+              "content": "Sets the list of audit message channels attached to a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "message-channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message_channel_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cc255ffd-9859-4129-8538-da20335e354c",
+              "name": "The updated audit message channel IDs for the group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "message-channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message_channel_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33ef7351-be46-42ff-b13d-71bd749fe077",
+          "name": "get group on call schedules",
+          "request": {
+            "name": "get group on call schedules",
+            "description": {
+              "content": "Gets the list of on call schedules attached to a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "on-call-schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "22e5b9cf-b49a-4e9c-b900-5c09bba9a6e7",
+              "name": "The on call schedules attached to the group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "on-call-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"on_call_schedules\": [\n    {\n      \"on_call_schedule_id\": \"50d5e9f6-f23f-4d5a-ae91-b2640cf3975e\",\n      \"third_party_provider\": \"PAGER_DUTY\",\n      \"remote_id\": \"P7OWH2R\",\n      \"name\": \"Customer Support On-Call\"\n    },\n    {\n      \"on_call_schedule_id\": \"50d5e9f6-f23f-4d5a-ae91-b2640cf3975e\",\n      \"third_party_provider\": \"PAGER_DUTY\",\n      \"remote_id\": \"P7OWH2R\",\n      \"name\": \"Customer Support On-Call\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "742d8db5-458e-4815-93be-d91e32a61516",
+          "name": "set group on call schedules",
+          "request": {
+            "name": "set group on call schedules",
+            "description": {
+              "content": "Sets the list of on call schedules attached to a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "on-call-schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"on_call_schedule_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4c7850e4-9b86-4d42-8138-026a6590be93",
+              "name": "The updated on call schedule IDs for the group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "on-call-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"on_call_schedule_ids\": [\n    \"9546209c-42c2-4801-96d7-9ec42df0f59c\",\n    \"bb0197c0-5ea5-45d9-b3b7-b6c439be6435\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"bb0197c0-5ea5-45d9-b3b7-b6c439be6435\",\n  \"bb0197c0-5ea5-45d9-b3b7-b6c439be6435\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d130ed7a-c2f1-48c6-b81a-17c61383be66",
+          "name": "get group resources",
+          "request": {
+            "name": "get group resources",
+            "description": {
+              "content": "Gets the list of resources that the group gives access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "149fb7b7-c9f1-45cc-b63f-df50799d10de",
+              "name": "The resources that the group gives access to.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group_resources\": [\n    {\n      \"group_id\": \"f454d283-ca87-4a87-bdbb-df212eca5353\",\n      \"resource_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"group_name\": \"API Group\",\n      \"resource_name\": \"API Group\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n    },\n    {\n      \"group_id\": \"f454d283-ca87-4a87-bdbb-df212eca5353\",\n      \"resource_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n      \"access_level\": {\n        \"access_level_name\": \"AdminRole\",\n        \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n      },\n      \"group_name\": \"API Group\",\n      \"resource_name\": \"API Group\",\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f655b9cb-a381-48ac-a77d-f11be62cc875",
+          "name": "set group resources",
+          "request": {
+            "name": "set group resources",
+            "description": {
+              "content": "Sets the list of resources that the group gives access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resources\": [\n    {\n      \"resource_id\": \"<uuid>\",\n      \"access_level_remote_id\": \"<string>\"\n    },\n    {\n      \"resource_id\": \"<uuid>\",\n      \"access_level_remote_id\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0473c454-0eff-4192-845d-f830e34595dc",
+              "name": "The group resource were successfully set.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resources\": [\n    {\n      \"resource_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n      \"access_level_remote_id\": \"write\"\n    },\n    {\n      \"resource_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n      \"access_level_remote_id\": \"write\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e21b514-21a1-433b-83f7-f494f3c3d61f",
+          "name": "Get nested groups",
+          "request": {
+            "name": "Get nested groups",
+            "description": {
+              "content": "Gets the list of groups that the group gives access to.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "containing-groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The access level's remote ID to filter by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7a550b99-5460-4d71-8cb3-4694b1d0f769",
+              "name": "The groups that the group gives access to.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "containing-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "arn:aws:iam::590304332660:role/AdministratorAccess"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"containing_groups\": [\n    {\n      \"containing_group_id\": \"7870617d-e72a-47f5-a84c-693817ab4567\"\n    },\n    {\n      \"containing_group_id\": \"50333e67-73ce-47ab-b049-d8abcd45f7a1\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17372c48-2458-4478-80a8-d5ea20d5614a",
+          "name": "add group containing group",
+          "request": {
+            "name": "add group containing group",
+            "description": {
+              "content": "Creates a new containing group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "containing-groups"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"containing_group_id\": \"<uuid>\",\n  \"duration_minutes\": \"<integer>\",\n  \"access_level_remote_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e7982277-87a3-4158-9564-de53f832eeeb",
+              "name": "The created `GroupContainingGroup` object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "containing-groups"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"containing_group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"containing_group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1872a885-7a35-47f7-854e-bfd5b244f13d",
+          "name": "Get nested group by ID",
+          "request": {
+            "name": "Get nested group by ID",
+            "description": {
+              "content": "Gets a specific containing group for a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "containing-groups",
+                ":containing_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "containing_group_id",
+                  "description": "(Required) The ID of the containing group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5767eeac-b962-475f-8c78-bf19cf89fda3",
+              "name": "The created `GroupContainingGroup` object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "containing-groups",
+                    ":containing_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "containing_group_id",
+                      "description": "(Required) The ID of the containing group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"containing_group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d399d726-c7ec-4c0c-8bd4-c64711076714",
+          "name": "remove group containing group",
+          "request": {
+            "name": "remove group containing group",
+            "description": {
+              "content": "Removes a containing group from a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "containing-groups",
+                ":containing_group_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The remote ID of the member group's access level to filter by."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the member group to remove."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "containing_group_id",
+                  "description": "(Required) The ID of the containing group."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4361afda-9df2-4c57-9d71-ca3d5fa68f8a",
+              "name": "The member group was successfully removed from the containing group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "containing-groups",
+                    ":containing_group_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "arn:aws:iam::590304332660:role/AdministratorAccess"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the member group to remove."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "containing_group_id",
+                      "description": "(Required) The ID of the containing group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "75dd7f1e-543d-4fdb-82a2-202a685efdaa",
+          "name": "add group resource",
+          "request": {
+            "name": "add group resource",
+            "description": {
+              "content": "Adds a resource to a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "resources",
+                ":resource_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The remote ID of the access level to grant to this user. If omitted, the default access level remote ID value (empty string) is used."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "resource_id",
+                  "description": "(Required) The ID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"access_level_remote_id\": \"<string>\",\n  \"duration_minutes\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a44e7d78-8d55-43ab-ac00-47640c61a197",
+              "name": "The created `GroupResource` object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "resources",
+                    ":resource_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "arn:aws:iam::590304332660:role/AdministratorAccess"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "resource_id",
+                      "description": "(Required) The ID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\",\n  \"duration_minutes\": 60\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"group_id\": \"f454d283-ca87-4a87-bdbb-df212eca5353\",\n  \"resource_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n  \"access_level\": {\n    \"access_level_name\": \"AdminRole\",\n    \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n  },\n  \"group_name\": \"API Group\",\n  \"resource_name\": \"API Group\",\n  \"expiration_date\": \"2022-01-23 04:56:07+00:00\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c30ce46a-653f-46b5-81ca-5632f4463d2c",
+          "name": "get group visibility",
+          "request": {
+            "name": "get group visibility",
+            "description": {
+              "content": "Gets the visibility of this group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "visibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "72e67ab9-5bcd-4768-a669-1685a1dad237",
+              "name": "The visibility info of this group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "visibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visibility\": \"GLOBAL\",\n  \"visibility_group_ids\": [\n    \"c1e657eb-2500-42fc-709f-0e8693873237\",\n    \"9e8507b6-3e3d-6b1b-3aa6-59cfa1a5bfa4\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e3a356e-15f4-4102-a8cd-e4c302071b04",
+          "name": "set group visibility",
+          "request": {
+            "name": "set group visibility",
+            "description": {
+              "content": "Sets the visibility of this group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "visibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visibility\": \"<string>\",\n  \"visibility_group_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "941a80d5-a7a1-4882-ae15-a892bfcc975e",
+              "name": "The visibility info of this group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "visibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visibility\": \"GLOBAL\",\n  \"visibility_group_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"visibility\": \"GLOBAL\",\n  \"visibility_group_ids\": [\n    \"c1e657eb-2500-42fc-709f-0e8693873237\",\n    \"9e8507b6-3e3d-6b1b-3aa6-59cfa1a5bfa4\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c4bdf07-2e59-4c51-8a6a-d9d2ea1e9515",
+          "name": "get group reviewers",
+          "request": {
+            "name": "get group reviewers",
+            "description": {
+              "content": "Gets the list of owner IDs of the reviewers for a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "reviewers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "43ef5a9e-8273-4a2e-b31d-605b66921078",
+              "name": "The IDs of owners that are reviewers for this group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "reviewers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6ef48837-b1ce-4216-9ce0-89be3e0deb06",
+          "name": "set group reviewers",
+          "request": {
+            "name": "set group reviewers",
+            "description": {
+              "content": "Sets the list of reviewers for a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "reviewers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reviewer_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b30df71-5024-49d3-8254-bbc738b70ad5",
+              "name": "The updated IDs of owners that are reviewers for this group",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "reviewers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reviewer_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "01ebde32-34d9-40bb-99a1-970674e38f78",
+          "name": "get group reviewer stages",
+          "request": {
+            "name": "get group reviewer stages",
+            "description": {
+              "content": "Gets the list of reviewer stages for a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "reviewer-stages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a49b887-4336-4c61-b7bf-770e16ce6f79",
+              "name": "The reviewer stages for this group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "reviewer-stages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"operator\": \"AND\",\n    \"require_manager_approval\": false,\n    \"owner_ids\": [\n      \"3bcb9996-d7c3-6e40-8b39-a4e669b934ec\",\n      \"5cbb7095-2955-168b-b867-2fe36093d4aa\"\n    ],\n    \"require_admin_approval\": false,\n    \"service_user_ids\": [\n      \"7e3b61ff-2797-3cfe-cbaa-9c00aa4060c2\",\n      \"5e75093c-8005-4339-455a-b5ed6005d01c\"\n    ]\n  },\n  {\n    \"operator\": \"AND\",\n    \"require_manager_approval\": false,\n    \"owner_ids\": [\n      \"178b24cf-8f5d-8bd9-4112-f7012665f16e\",\n      \"e90b695b-2445-7a10-c512-9dd2ef269cda\"\n    ],\n    \"require_admin_approval\": false,\n    \"service_user_ids\": [\n      \"ec3da2ba-2ad9-869b-ca8e-11d07c9be0f2\",\n      \"83a6418e-8a14-b3ab-e129-cc5fbad14bf7\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79f369f0-1459-4705-9b99-ea0f5dbd9909",
+          "name": "set group reviewer stages",
+          "request": {
+            "name": "set group reviewer stages",
+            "description": {
+              "content": "Sets the list of reviewer stages for a group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "reviewer-stages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"stages\": [\n    {\n      \"operator\": \"<string>\",\n      \"require_manager_approval\": \"<boolean>\",\n      \"owner_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"require_admin_approval\": \"<boolean>\",\n      \"service_user_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ]\n    },\n    {\n      \"operator\": \"<string>\",\n      \"require_manager_approval\": \"<boolean>\",\n      \"owner_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ],\n      \"require_admin_approval\": \"<boolean>\",\n      \"service_user_ids\": [\n        \"<uuid>\",\n        \"<uuid>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b2b8bdf1-62cd-4c0b-b7d0-3c190a79f8df",
+              "name": "The updated reviewer stages for this group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "reviewer-stages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"stages\": [\n    {\n      \"operator\": \"AND\",\n      \"require_manager_approval\": false,\n      \"owner_ids\": [\n        \"7bc0616e-dda8-93ff-c11a-1d1448b64a22\",\n        \"de4ce73b-436a-0367-3858-6bbff30fe085\"\n      ],\n      \"require_admin_approval\": false,\n      \"service_user_ids\": [\n        \"59b8fc47-da91-6505-cbba-b25f40682fc8\",\n        \"846e3e3c-81a5-5460-73ef-ad4813dd3854\"\n      ]\n    },\n    {\n      \"operator\": \"AND\",\n      \"require_manager_approval\": false,\n      \"owner_ids\": [\n        \"3736f8e3-8c2e-33d9-b411-4a73895b6a10\",\n        \"ee6d94eb-3b56-e44f-6405-b25ac472937e\"\n      ],\n      \"require_admin_approval\": false,\n      \"service_user_ids\": [\n        \"625fdb0d-1c06-2743-1525-1a1e0033954a\",\n        \"006a525d-8733-61bd-f06d-a10b47a2a2b6\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"operator\": \"AND\",\n    \"require_manager_approval\": false,\n    \"owner_ids\": [\n      \"3bcb9996-d7c3-6e40-8b39-a4e669b934ec\",\n      \"5cbb7095-2955-168b-b867-2fe36093d4aa\"\n    ],\n    \"require_admin_approval\": false,\n    \"service_user_ids\": [\n      \"7e3b61ff-2797-3cfe-cbaa-9c00aa4060c2\",\n      \"5e75093c-8005-4339-455a-b5ed6005d01c\"\n    ]\n  },\n  {\n    \"operator\": \"AND\",\n    \"require_manager_approval\": false,\n    \"owner_ids\": [\n      \"178b24cf-8f5d-8bd9-4112-f7012665f16e\",\n      \"e90b695b-2445-7a10-c512-9dd2ef269cda\"\n    ],\n    \"require_admin_approval\": false,\n    \"service_user_ids\": [\n      \"ec3da2ba-2ad9-869b-ca8e-11d07c9be0f2\",\n      \"83a6418e-8a14-b3ab-e129-cc5fbad14bf7\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c8df890-fd9b-4b1b-b99e-502fcb790273",
+          "name": "get group tags",
+          "request": {
+            "name": "get group tags",
+            "description": {
+              "content": "Returns all tags applied to the group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group whose tags to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e09f6d3d-bb29-48c6-abaf-e948a82067b0",
+              "name": "The tags applied to the group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group whose tags to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": [\n    {\n      \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n      \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n      \"key\": \"database-name\",\n      \"value\": \"redis_db\"\n    },\n    {\n      \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n      \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n      \"key\": \"database-name\",\n      \"value\": \"redis_db\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87ace127-7d84-4993-83e9-53445521b844",
+          "name": "get group users",
+          "request": {
+            "name": "get group users",
+            "description": {
+              "content": "Gets the list of users for this group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page, up to 1000. When set (or when a cursor is provided), the response contains a single page of results and a `next` cursor; the default page size is 200. When both page_size and cursor are omitted, the entire group membership is returned in one response with no `next` cursor. For large groups, prefer setting page_size and following `next`."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "54dd7809-a99a-403d-a4f1-b686d5c9fbab",
+              "name": "List of users with access to this group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"group_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"group_name\": \"API Group\",\n      \"description\": \"Group required to request API's\",\n      \"access_level\": {\n        \"access_level_name\": \"Developer\",\n        \"access_level_remote_id\": \"string\"\n      },\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"propagation_status\": {\n        \"status\": \"ERR_REMOTE_PROVISIONING_VIA_IDP_FAILED\"\n      }\n    },\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"group_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"group_name\": \"API Group\",\n      \"description\": \"Group required to request API's\",\n      \"access_level\": {\n        \"access_level_name\": \"Developer\",\n        \"access_level_remote_id\": \"string\"\n      },\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"propagation_status\": {\n        \"status\": \"ERR_TIMEOUT\"\n      }\n    }\n  ],\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dad75d36-bbd8-4b35-aea9-66d10f7dcb6c",
+          "name": "update group user",
+          "request": {
+            "name": "update group user",
+            "description": {
+              "content": "Updates a user's access level or duration in this group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user whose access is being updated."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"duration_minutes\": \"<integer>\",\n  \"access_level_remote_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04fb0986-c737-445e-9295-57e8eb6a93ae",
+              "name": "The GroupUser was successfully updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user whose access is being updated."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"duration_minutes\": 60,\n  \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"jake@company.dev\",\n  \"full_name\": \"Jake Barnes\",\n  \"group_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n  \"group_name\": \"API Group\",\n  \"description\": \"Group required to request API's\",\n  \"access_level\": {\n    \"access_level_name\": \"Developer\",\n    \"access_level_remote_id\": \"string\"\n  },\n  \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n  \"propagation_status\": {\n    \"status\": \"ERR_ORG_READ_ONLY\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8aa44b7c-4a90-4075-9771-69b8dbddc659",
+          "name": "add group user",
+          "request": {
+            "name": "add group user",
+            "description": {
+              "content": "Adds a user to this group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "duration_minutes",
+                  "value": "<integer>",
+                  "description": "The duration for which the group can be accessed (in minutes). Use 0 to set to indefinite."
+                },
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The remote ID of the access level to grant to this user. If omitted, the default access level remote ID value (empty string) is used."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user to add."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"duration_minutes\": \"<integer>\",\n  \"access_level_remote_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b612ef3b-d9e8-478e-b497-46b2463160cb",
+              "name": "The GroupUser that was created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "duration_minutes",
+                      "value": "60"
+                    },
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "arn:aws:iam::590304332660:role/AdministratorAccess"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user to add."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"duration_minutes\": 60,\n  \"access_level_remote_id\": \"arn:aws:iam::590304332660:role/AdministratorAccess\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"jake@company.dev\",\n  \"full_name\": \"Jake Barnes\",\n  \"group_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n  \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n  \"group_name\": \"API Group\",\n  \"description\": \"Group required to request API's\",\n  \"access_level\": {\n    \"access_level_name\": \"Developer\",\n    \"access_level_remote_id\": \"string\"\n  },\n  \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n  \"propagation_status\": {\n    \"status\": \"ERR_ORG_READ_ONLY\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd51fe1f-c16a-41bf-9ba4-41f39362636a",
+          "name": "delete group user",
+          "request": {
+            "name": "delete group user",
+            "description": {
+              "content": "Removes a user's access from this group.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                ":group_id",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "access_level_remote_id",
+                  "value": "<string>",
+                  "description": "The remote ID of the access level for which this user has direct access. If omitted, the default access level remote ID value (empty string) is assumed."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "group_id",
+                  "description": "(Required) The ID of the group."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of a user to remove from this group."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7ad82f2b-e075-49db-be62-229abcecd505",
+              "name": "This user's access was successfully removed from this group.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    ":group_id",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "access_level_remote_id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "group_id",
+                      "description": "(Required) The ID of the group."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of a user to remove from this group."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "482fb43d-ee8e-4afc-a64f-adc8e0f8bba9",
+          "name": "get user groups",
+          "request": {
+            "name": "get user groups",
+            "description": {
+              "content": "Returns all groups that the user is a member of.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user whose groups to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "87dc866d-5940-4082-8e94-f93c2576505b",
+              "name": "The groups that the user is a member of.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user whose groups to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"group_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"group_name\": \"API Group\",\n      \"description\": \"Group required to request API's\",\n      \"access_level\": {\n        \"access_level_name\": \"Developer\",\n        \"access_level_remote_id\": \"string\"\n      },\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"propagation_status\": {\n        \"status\": \"ERR_REMOTE_PROVISIONING_VIA_IDP_FAILED\"\n      }\n    },\n    {\n      \"email\": \"jake@company.dev\",\n      \"full_name\": \"Jake Barnes\",\n      \"group_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\",\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"group_name\": \"API Group\",\n      \"description\": \"Group required to request API's\",\n      \"access_level\": {\n        \"access_level_name\": \"Developer\",\n        \"access_level_remote_id\": \"string\"\n      },\n      \"expiration_date\": \"2022-01-23 04:56:07+00:00\",\n      \"propagation_status\": {\n        \"status\": \"ERR_TIMEOUT\"\n      }\n    }\n  ],\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "85b6fbf8-9b66-4fd4-bd26-41b015cd347d",
+    "name": "Opal access-rules groups API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

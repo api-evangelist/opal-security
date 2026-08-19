@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules on-call-schedules API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "on-call-schedules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get on call schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/on-call-schedules",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `OnCallSchedule` objects."
+        },
+        {
+          "info": {
+            "name": "create_on_call_schedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/on-call-schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a `OnCallSchedule` objects."
+        },
+        {
+          "info": {
+            "name": "Get on call schedule by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/on-call-schedules/:on_call_schedule_id",
+            "params": [
+              {
+                "name": "on_call_schedule_id",
+                "value": "9546209c-42c2-4801-96d7-9ec42df0f59c",
+                "type": "path",
+                "description": "The ID of the on_call_schedule."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets a `OnCallSchedule` object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

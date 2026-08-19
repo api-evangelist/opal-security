@@ -1,0 +1,210 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules owners API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "owners",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get owners",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/owners",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              },
+              {
+                "name": "name",
+                "value": "200",
+                "type": "query",
+                "description": "Owner name to filter by."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `Owner` objects."
+        },
+        {
+          "info": {
+            "name": "createOwner",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/owners",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates an owner."
+        },
+        {
+          "info": {
+            "name": "updateOwners",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/owners",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Bulk updates a list of owners."
+        },
+        {
+          "info": {
+            "name": "Get owner by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/owners/:owner_id",
+            "params": [
+              {
+                "name": "owner_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the owner."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns an `Owner` object."
+        },
+        {
+          "info": {
+            "name": "delete_owner",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/owners/:owner_id",
+            "params": [
+              {
+                "name": "owner_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the owner."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes an owner."
+        },
+        {
+          "info": {
+            "name": "getOwnerFromName",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/owners/name/:owner_name",
+            "params": [
+              {
+                "name": "owner_name",
+                "value": "MyOwner",
+                "type": "path",
+                "description": "The name of the owner."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns an `Owner` object. Does not support owners with `/` in their name, use /owners?name=... instead."
+        },
+        {
+          "info": {
+            "name": "get_owner_users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/owners/:owner_id/users",
+            "params": [
+              {
+                "name": "owner_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the owner."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of users for this owner, in escalation priority order if applicable."
+        },
+        {
+          "info": {
+            "name": "set_owner_users",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/owners/:owner_id/users",
+            "params": [
+              {
+                "name": "owner_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the owner."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of users for this owner. If escalation is enabled, the order of this list is the escalation priority order of the users. If the owner has a source group, adding or removing users from this list won't be possible."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

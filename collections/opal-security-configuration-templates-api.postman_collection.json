@@ -1,0 +1,426 @@
+{
+  "item": [
+    {
+      "id": "dbd0854b-391c-4cb4-a803-c358ca08fc7f",
+      "name": "configuration-templates",
+      "description": {
+        "content": "Operations related to configuration templates",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b891e25-2d59-4587-9709-cbb8c69e28f1",
+          "name": "get Configuration Templates",
+          "request": {
+            "name": "get Configuration Templates",
+            "description": {
+              "content": "Returns a list of `ConfigurationTemplate` objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configuration-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "af3c8526-5a5e-47bc-8456-480a98072eb2",
+              "name": "One page worth of configuration templates for your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"configuration_template_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"name\": \"Prod AWS Template\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"visibility\": {\n        \"visibility\": \"GLOBAL\",\n        \"visibility_group_ids\": [\n          \"ba8bb87c-ed81-b780-4022-dc0e3416af33\",\n          \"0bf43e54-3595-711a-c028-7e6cc7c913bf\"\n        ]\n      },\n      \"linked_audit_message_channel_ids\": [\n        \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n        \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n      ],\n      \"request_configuration_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"member_oncall_schedule_ids\": [\n        \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n        \"7c86c85d-0651-43e2-a748-d69d658418e8\"\n      ],\n      \"break_glass_user_ids\": [\n        \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n        \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n      ],\n      \"require_mfa_to_approve\": false,\n      \"require_mfa_to_connect\": false,\n      \"ticket_propagation\": {\n        \"enabled_on_grant\": false,\n        \"enabled_on_revocation\": true,\n        \"ticket_provider\": \"LINEAR\",\n        \"ticket_project_id\": \"string\"\n      },\n      \"custom_request_notification\": \"Check your email to register your account.\"\n    },\n    {\n      \"configuration_template_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"name\": \"Prod AWS Template\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"visibility\": {\n        \"visibility\": \"GLOBAL\",\n        \"visibility_group_ids\": [\n          \"038ece67-ea41-8182-3840-f151eee891be\",\n          \"613ec155-d96d-bdf2-495f-f9ce2512ccf4\"\n        ]\n      },\n      \"linked_audit_message_channel_ids\": [\n        \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n        \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n      ],\n      \"request_configuration_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"member_oncall_schedule_ids\": [\n        \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n        \"7c86c85d-0651-43e2-a748-d69d658418e8\"\n      ],\n      \"break_glass_user_ids\": [\n        \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n        \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n      ],\n      \"require_mfa_to_approve\": false,\n      \"require_mfa_to_connect\": false,\n      \"ticket_propagation\": {\n        \"enabled_on_grant\": true,\n        \"enabled_on_revocation\": false,\n        \"ticket_provider\": \"LINEAR\",\n        \"ticket_project_id\": \"string\"\n      },\n      \"custom_request_notification\": \"Check your email to register your account.\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65e1a316-b47d-45a9-ab2c-ec927d88eac2",
+          "name": "create Configuration Template",
+          "request": {
+            "name": "create Configuration Template",
+            "description": {
+              "content": "Creates a configuration template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configuration-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"admin_owner_id\": \"<uuid>\",\n  \"visibility\": {\n    \"visibility\": \"<string>\",\n    \"visibility_group_ids\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  },\n  \"name\": \"<string>\",\n  \"require_mfa_to_approve\": \"<boolean>\",\n  \"require_mfa_to_connect\": \"<boolean>\",\n  \"linked_audit_message_channel_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"member_oncall_schedule_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"break_glass_user_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"request_configurations\": [\n    {\n      \"allow_requests\": \"<boolean>\",\n      \"auto_approval\": \"<boolean>\",\n      \"require_mfa_to_request\": \"<boolean>\",\n      \"require_support_ticket\": \"<boolean>\",\n      \"priority\": \"<integer>\",\n      \"condition\": {\n        \"group_ids\": [\n          \"<uuid>\",\n          \"<uuid>\"\n        ],\n        \"role_remote_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"max_duration_minutes\": \"<integer>\",\n      \"recommended_duration_minutes\": \"<integer>\",\n      \"extensions_duration_in_minutes\": \"<integer>\",\n      \"request_template_id\": \"<uuid>\",\n      \"reviewer_stages\": [\n        {\n          \"operator\": \"<string>\",\n          \"require_manager_approval\": \"<boolean>\",\n          \"owner_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"require_admin_approval\": \"<boolean>\",\n          \"service_user_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ]\n        },\n        {\n          \"operator\": \"<string>\",\n          \"require_manager_approval\": \"<boolean>\",\n          \"owner_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"require_admin_approval\": \"<boolean>\",\n          \"service_user_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"allow_requests\": \"<boolean>\",\n      \"auto_approval\": \"<boolean>\",\n      \"require_mfa_to_request\": \"<boolean>\",\n      \"require_support_ticket\": \"<boolean>\",\n      \"priority\": \"<integer>\",\n      \"condition\": {\n        \"group_ids\": [\n          \"<uuid>\",\n          \"<uuid>\"\n        ],\n        \"role_remote_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"max_duration_minutes\": \"<integer>\",\n      \"recommended_duration_minutes\": \"<integer>\",\n      \"extensions_duration_in_minutes\": \"<integer>\",\n      \"request_template_id\": \"<uuid>\",\n      \"reviewer_stages\": [\n        {\n          \"operator\": \"<string>\",\n          \"require_manager_approval\": \"<boolean>\",\n          \"owner_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"require_admin_approval\": \"<boolean>\",\n          \"service_user_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ]\n        },\n        {\n          \"operator\": \"<string>\",\n          \"require_manager_approval\": \"<boolean>\",\n          \"owner_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"require_admin_approval\": \"<boolean>\",\n          \"service_user_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"request_configuration_list\": {\n    \"request_configurations\": [\n      {\n        \"allow_requests\": \"<boolean>\",\n        \"auto_approval\": \"<boolean>\",\n        \"require_mfa_to_request\": \"<boolean>\",\n        \"require_support_ticket\": \"<boolean>\",\n        \"priority\": \"<integer>\",\n        \"condition\": {\n          \"group_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"role_remote_ids\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"max_duration_minutes\": \"<integer>\",\n        \"recommended_duration_minutes\": \"<integer>\",\n        \"extensions_duration_in_minutes\": \"<integer>\",\n        \"request_template_id\": \"<uuid>\",\n        \"reviewer_stages\": [\n          {\n            \"operator\": \"<string>\",\n            \"require_manager_approval\": \"<boolean>\",\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": \"<boolean>\",\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operator\": \"<string>\",\n            \"require_manager_approval\": \"<boolean>\",\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": \"<boolean>\",\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"allow_requests\": \"<boolean>\",\n        \"auto_approval\": \"<boolean>\",\n        \"require_mfa_to_request\": \"<boolean>\",\n        \"require_support_ticket\": \"<boolean>\",\n        \"priority\": \"<integer>\",\n        \"condition\": {\n          \"group_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"role_remote_ids\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"max_duration_minutes\": \"<integer>\",\n        \"recommended_duration_minutes\": \"<integer>\",\n        \"extensions_duration_in_minutes\": \"<integer>\",\n        \"request_template_id\": \"<uuid>\",\n        \"reviewer_stages\": [\n          {\n            \"operator\": \"<string>\",\n            \"require_manager_approval\": \"<boolean>\",\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": \"<boolean>\",\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operator\": \"<string>\",\n            \"require_manager_approval\": \"<boolean>\",\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": \"<boolean>\",\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"ticket_propagation\": {\n    \"enabled_on_grant\": \"<boolean>\",\n    \"enabled_on_revocation\": \"<boolean>\",\n    \"ticket_provider\": \"<string>\",\n    \"ticket_project_id\": \"<string>\"\n  },\n  \"custom_request_notification\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aec6a28e-aae3-4127-a46e-ef3efafae000",
+              "name": "The configuration template just created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"visibility\": {\n    \"visibility\": \"GLOBAL\",\n    \"visibility_group_ids\": [\n      \"bb8d8325-01c6-fb2c-899d-ebc6a689b9b2\",\n      \"2bb0718f-d567-83b3-5192-30961ff0dac9\"\n    ]\n  },\n  \"name\": \"Prod AWS Template\",\n  \"require_mfa_to_approve\": false,\n  \"require_mfa_to_connect\": false,\n  \"linked_audit_message_channel_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"member_oncall_schedule_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"break_glass_user_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"request_configurations\": [\n    {\n      \"allow_requests\": true,\n      \"auto_approval\": false,\n      \"require_mfa_to_request\": false,\n      \"require_support_ticket\": false,\n      \"priority\": 1,\n      \"condition\": {\n        \"group_ids\": [\n          \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n        ]\n      },\n      \"max_duration_minutes\": 120,\n      \"recommended_duration_minutes\": 120,\n      \"extensions_duration_in_minutes\": 120,\n      \"request_template_id\": \"06851574-e50d-40ca-8c78-f72ae6ab4304\",\n      \"reviewer_stages\": [\n        {\n          \"operator\": \"AND\",\n          \"require_manager_approval\": false,\n          \"owner_ids\": [\n            \"b4267c81-4080-5a08-a36b-8dfdcd95a820\",\n            \"2eafd82f-f9c7-d89e-4e0c-cdfaedabe8a1\"\n          ],\n          \"require_admin_approval\": false,\n          \"service_user_ids\": [\n            \"01ef91d5-667c-8bb8-1144-d6ad94b383b8\",\n            \"14b89c4a-c271-9448-4a76-95064de2f797\"\n          ]\n        },\n        {\n          \"operator\": \"AND\",\n          \"require_manager_approval\": false,\n          \"owner_ids\": [\n            \"bc5d69be-da55-da85-248c-b45f4a97d453\",\n            \"9217effc-572c-3b9c-5270-64b0188e8c1e\"\n          ],\n          \"require_admin_approval\": false,\n          \"service_user_ids\": [\n            \"16d6570f-cd13-134c-7b62-16efbd1e38ae\",\n            \"a0044232-6606-eeb6-ce07-68f63d00525e\"\n          ]\n        }\n      ]\n    },\n    {\n      \"allow_requests\": true,\n      \"auto_approval\": false,\n      \"require_mfa_to_request\": false,\n      \"require_support_ticket\": false,\n      \"priority\": 1,\n      \"condition\": {\n        \"group_ids\": [\n          \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n        ]\n      },\n      \"max_duration_minutes\": 120,\n      \"recommended_duration_minutes\": 120,\n      \"extensions_duration_in_minutes\": 120,\n      \"request_template_id\": \"06851574-e50d-40ca-8c78-f72ae6ab4304\",\n      \"reviewer_stages\": [\n        {\n          \"operator\": \"AND\",\n          \"require_manager_approval\": false,\n          \"owner_ids\": [\n            \"292112d6-c16e-766f-0e0c-ee4abe6985bb\",\n            \"444ea9cb-8bdf-fc8b-9387-69ab2bae43ff\"\n          ],\n          \"require_admin_approval\": false,\n          \"service_user_ids\": [\n            \"b6ffdd84-8070-b4e2-828e-d1f1bdefd587\",\n            \"54a4935d-7a56-d4b6-a693-a50426cff890\"\n          ]\n        },\n        {\n          \"operator\": \"AND\",\n          \"require_manager_approval\": false,\n          \"owner_ids\": [\n            \"aef0218d-5005-2671-b5d1-99ee012d2c0d\",\n            \"44e37f9d-3eb8-384b-4d5c-e4ad74bf65d1\"\n          ],\n          \"require_admin_approval\": false,\n          \"service_user_ids\": [\n            \"80ef6cf0-9387-4d32-50d3-1357ed7753e3\",\n            \"976bd157-93ae-e8c4-9d41-17ad9ae9aa4a\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"request_configuration_list\": {\n    \"request_configurations\": [\n      {\n        \"allow_requests\": true,\n        \"auto_approval\": false,\n        \"require_mfa_to_request\": false,\n        \"require_support_ticket\": false,\n        \"priority\": 1,\n        \"condition\": {\n          \"group_ids\": [\n            \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n          ]\n        },\n        \"max_duration_minutes\": 120,\n        \"recommended_duration_minutes\": 120,\n        \"extensions_duration_in_minutes\": 120,\n        \"request_template_id\": \"06851574-e50d-40ca-8c78-f72ae6ab4304\",\n        \"reviewer_stages\": [\n          {\n            \"operator\": \"AND\",\n            \"require_manager_approval\": false,\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": false,\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operator\": \"AND\",\n            \"require_manager_approval\": false,\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": false,\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"allow_requests\": true,\n        \"auto_approval\": false,\n        \"require_mfa_to_request\": false,\n        \"require_support_ticket\": false,\n        \"priority\": 1,\n        \"condition\": {\n          \"group_ids\": [\n            \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n          ]\n        },\n        \"max_duration_minutes\": 120,\n        \"recommended_duration_minutes\": 120,\n        \"extensions_duration_in_minutes\": 120,\n        \"request_template_id\": \"06851574-e50d-40ca-8c78-f72ae6ab4304\",\n        \"reviewer_stages\": [\n          {\n            \"operator\": \"AND\",\n            \"require_manager_approval\": false,\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": false,\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operator\": \"AND\",\n            \"require_manager_approval\": false,\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": false,\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"ticket_propagation\": {\n    \"enabled_on_grant\": true,\n    \"enabled_on_revocation\": false,\n    \"ticket_provider\": \"LINEAR\",\n    \"ticket_project_id\": \"string\"\n  },\n  \"custom_request_notification\": \"Check your email to register your account.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"configuration_template_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"name\": \"Prod AWS Template\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"visibility\": {\n    \"visibility\": \"GLOBAL\",\n    \"visibility_group_ids\": [\n      \"ed41e914-1ea3-d2c5-b398-a0130081103a\",\n      \"63faaa79-951c-b785-3519-c2e316aa58eb\"\n    ]\n  },\n  \"linked_audit_message_channel_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"request_configuration_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"member_oncall_schedule_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"7c86c85d-0651-43e2-a748-d69d658418e8\"\n  ],\n  \"break_glass_user_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"require_mfa_to_approve\": false,\n  \"require_mfa_to_connect\": false,\n  \"ticket_propagation\": {\n    \"enabled_on_grant\": true,\n    \"enabled_on_revocation\": false,\n    \"ticket_provider\": \"LINEAR\",\n    \"ticket_project_id\": \"string\"\n  },\n  \"custom_request_notification\": \"Check your email to register your account.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03a97f85-8d92-4d1b-a24a-0c2f73b46949",
+          "name": "update Configuration Template",
+          "request": {
+            "name": "update Configuration Template",
+            "description": {
+              "content": "Update a configuration template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configuration-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"configuration_template_id\": \"<uuid>\",\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"visibility\": {\n    \"visibility\": \"<string>\",\n    \"visibility_group_ids\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ]\n  },\n  \"linked_audit_message_channel_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"request_configurations\": [\n    {\n      \"allow_requests\": \"<boolean>\",\n      \"auto_approval\": \"<boolean>\",\n      \"require_mfa_to_request\": \"<boolean>\",\n      \"require_support_ticket\": \"<boolean>\",\n      \"priority\": \"<integer>\",\n      \"condition\": {\n        \"group_ids\": [\n          \"<uuid>\",\n          \"<uuid>\"\n        ],\n        \"role_remote_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"max_duration_minutes\": \"<integer>\",\n      \"recommended_duration_minutes\": \"<integer>\",\n      \"extensions_duration_in_minutes\": \"<integer>\",\n      \"request_template_id\": \"<uuid>\",\n      \"reviewer_stages\": [\n        {\n          \"operator\": \"<string>\",\n          \"require_manager_approval\": \"<boolean>\",\n          \"owner_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"require_admin_approval\": \"<boolean>\",\n          \"service_user_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ]\n        },\n        {\n          \"operator\": \"<string>\",\n          \"require_manager_approval\": \"<boolean>\",\n          \"owner_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"require_admin_approval\": \"<boolean>\",\n          \"service_user_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"allow_requests\": \"<boolean>\",\n      \"auto_approval\": \"<boolean>\",\n      \"require_mfa_to_request\": \"<boolean>\",\n      \"require_support_ticket\": \"<boolean>\",\n      \"priority\": \"<integer>\",\n      \"condition\": {\n        \"group_ids\": [\n          \"<uuid>\",\n          \"<uuid>\"\n        ],\n        \"role_remote_ids\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"max_duration_minutes\": \"<integer>\",\n      \"recommended_duration_minutes\": \"<integer>\",\n      \"extensions_duration_in_minutes\": \"<integer>\",\n      \"request_template_id\": \"<uuid>\",\n      \"reviewer_stages\": [\n        {\n          \"operator\": \"<string>\",\n          \"require_manager_approval\": \"<boolean>\",\n          \"owner_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"require_admin_approval\": \"<boolean>\",\n          \"service_user_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ]\n        },\n        {\n          \"operator\": \"<string>\",\n          \"require_manager_approval\": \"<boolean>\",\n          \"owner_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"require_admin_approval\": \"<boolean>\",\n          \"service_user_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"request_configuration_list\": {\n    \"request_configurations\": [\n      {\n        \"allow_requests\": \"<boolean>\",\n        \"auto_approval\": \"<boolean>\",\n        \"require_mfa_to_request\": \"<boolean>\",\n        \"require_support_ticket\": \"<boolean>\",\n        \"priority\": \"<integer>\",\n        \"condition\": {\n          \"group_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"role_remote_ids\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"max_duration_minutes\": \"<integer>\",\n        \"recommended_duration_minutes\": \"<integer>\",\n        \"extensions_duration_in_minutes\": \"<integer>\",\n        \"request_template_id\": \"<uuid>\",\n        \"reviewer_stages\": [\n          {\n            \"operator\": \"<string>\",\n            \"require_manager_approval\": \"<boolean>\",\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": \"<boolean>\",\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operator\": \"<string>\",\n            \"require_manager_approval\": \"<boolean>\",\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": \"<boolean>\",\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"allow_requests\": \"<boolean>\",\n        \"auto_approval\": \"<boolean>\",\n        \"require_mfa_to_request\": \"<boolean>\",\n        \"require_support_ticket\": \"<boolean>\",\n        \"priority\": \"<integer>\",\n        \"condition\": {\n          \"group_ids\": [\n            \"<uuid>\",\n            \"<uuid>\"\n          ],\n          \"role_remote_ids\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"max_duration_minutes\": \"<integer>\",\n        \"recommended_duration_minutes\": \"<integer>\",\n        \"extensions_duration_in_minutes\": \"<integer>\",\n        \"request_template_id\": \"<uuid>\",\n        \"reviewer_stages\": [\n          {\n            \"operator\": \"<string>\",\n            \"require_manager_approval\": \"<boolean>\",\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": \"<boolean>\",\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operator\": \"<string>\",\n            \"require_manager_approval\": \"<boolean>\",\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": \"<boolean>\",\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"member_oncall_schedule_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"break_glass_user_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"require_mfa_to_approve\": \"<boolean>\",\n  \"require_mfa_to_connect\": \"<boolean>\",\n  \"ticket_propagation\": {\n    \"enabled_on_grant\": \"<boolean>\",\n    \"enabled_on_revocation\": \"<boolean>\",\n    \"ticket_provider\": \"<string>\",\n    \"ticket_project_id\": \"<string>\"\n  },\n  \"custom_request_notification\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1e042baa-5550-4d33-830e-1204ba630c4c",
+              "name": "The configuration template just updated.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"configuration_template_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"name\": \"Prod AWS Template\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"visibility\": {\n    \"visibility\": \"GLOBAL\",\n    \"visibility_group_ids\": [\n      \"81d49777-59b3-df26-b449-e08827cae8db\",\n      \"59afdead-2b6d-f101-fd00-e634533f7cf3\"\n    ]\n  },\n  \"linked_audit_message_channel_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"request_configurations\": [\n    {\n      \"allow_requests\": true,\n      \"auto_approval\": false,\n      \"require_mfa_to_request\": false,\n      \"require_support_ticket\": false,\n      \"priority\": 1,\n      \"condition\": {\n        \"group_ids\": [\n          \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n        ]\n      },\n      \"max_duration_minutes\": 120,\n      \"recommended_duration_minutes\": 120,\n      \"extensions_duration_in_minutes\": 120,\n      \"request_template_id\": \"06851574-e50d-40ca-8c78-f72ae6ab4304\",\n      \"reviewer_stages\": [\n        {\n          \"operator\": \"AND\",\n          \"require_manager_approval\": false,\n          \"owner_ids\": [\n            \"57654bd1-0f2b-c650-daa7-9b10140754fb\",\n            \"3779e538-6729-5f79-a6de-957e14195dfa\"\n          ],\n          \"require_admin_approval\": false,\n          \"service_user_ids\": [\n            \"0922bedb-ec6a-e10d-2198-30749a77cfa0\",\n            \"59185363-779c-4617-9488-dae6f117030e\"\n          ]\n        },\n        {\n          \"operator\": \"AND\",\n          \"require_manager_approval\": false,\n          \"owner_ids\": [\n            \"2187855e-5a1a-02f6-c13e-0bc26b1a2921\",\n            \"04b42e02-ac22-100e-0dcb-a6688c4a68e2\"\n          ],\n          \"require_admin_approval\": false,\n          \"service_user_ids\": [\n            \"8b327a84-bb46-201e-3212-1d49c6936488\",\n            \"d73ad5b4-8cf4-ba9f-a332-6e021209f853\"\n          ]\n        }\n      ]\n    },\n    {\n      \"allow_requests\": true,\n      \"auto_approval\": false,\n      \"require_mfa_to_request\": false,\n      \"require_support_ticket\": false,\n      \"priority\": 1,\n      \"condition\": {\n        \"group_ids\": [\n          \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n        ]\n      },\n      \"max_duration_minutes\": 120,\n      \"recommended_duration_minutes\": 120,\n      \"extensions_duration_in_minutes\": 120,\n      \"request_template_id\": \"06851574-e50d-40ca-8c78-f72ae6ab4304\",\n      \"reviewer_stages\": [\n        {\n          \"operator\": \"AND\",\n          \"require_manager_approval\": false,\n          \"owner_ids\": [\n            \"41ed9e92-f138-f5f0-fbb9-859c54ac491b\",\n            \"e73ab1d0-2458-d661-7f2d-d077ea743bed\"\n          ],\n          \"require_admin_approval\": false,\n          \"service_user_ids\": [\n            \"afd291ef-ecdf-9888-9c9f-634cfaa604f0\",\n            \"c1461216-49ed-dd4f-059c-ab23b7df9c41\"\n          ]\n        },\n        {\n          \"operator\": \"AND\",\n          \"require_manager_approval\": false,\n          \"owner_ids\": [\n            \"93cef139-7868-0ec4-2b6e-b7b2128be120\",\n            \"33da96c9-8af8-8acf-432e-60146ccfa882\"\n          ],\n          \"require_admin_approval\": false,\n          \"service_user_ids\": [\n            \"80e87dcf-70f9-859e-6403-be13b19b7be0\",\n            \"08e53f33-d690-e5de-e7be-b66089581ac1\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"request_configuration_list\": {\n    \"request_configurations\": [\n      {\n        \"allow_requests\": true,\n        \"auto_approval\": false,\n        \"require_mfa_to_request\": false,\n        \"require_support_ticket\": false,\n        \"priority\": 1,\n        \"condition\": {\n          \"group_ids\": [\n            \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n          ]\n        },\n        \"max_duration_minutes\": 120,\n        \"recommended_duration_minutes\": 120,\n        \"extensions_duration_in_minutes\": 120,\n        \"request_template_id\": \"06851574-e50d-40ca-8c78-f72ae6ab4304\",\n        \"reviewer_stages\": [\n          {\n            \"operator\": \"AND\",\n            \"require_manager_approval\": false,\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": false,\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operator\": \"AND\",\n            \"require_manager_approval\": false,\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": false,\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"allow_requests\": true,\n        \"auto_approval\": false,\n        \"require_mfa_to_request\": false,\n        \"require_support_ticket\": false,\n        \"priority\": 1,\n        \"condition\": {\n          \"group_ids\": [\n            \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n          ]\n        },\n        \"max_duration_minutes\": 120,\n        \"recommended_duration_minutes\": 120,\n        \"extensions_duration_in_minutes\": 120,\n        \"request_template_id\": \"06851574-e50d-40ca-8c78-f72ae6ab4304\",\n        \"reviewer_stages\": [\n          {\n            \"operator\": \"AND\",\n            \"require_manager_approval\": false,\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": false,\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"operator\": \"AND\",\n            \"require_manager_approval\": false,\n            \"owner_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"require_admin_approval\": false,\n            \"service_user_ids\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  },\n  \"member_oncall_schedule_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"7c86c85d-0651-43e2-a748-d69d658418e8\"\n  ],\n  \"break_glass_user_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"require_mfa_to_approve\": false,\n  \"require_mfa_to_connect\": false,\n  \"ticket_propagation\": {\n    \"enabled_on_grant\": true,\n    \"enabled_on_revocation\": true,\n    \"ticket_provider\": \"LINEAR\",\n    \"ticket_project_id\": \"string\"\n  },\n  \"custom_request_notification\": \"Check your email to register your account.\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"configuration_template_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"name\": \"Prod AWS Template\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"visibility\": {\n    \"visibility\": \"GLOBAL\",\n    \"visibility_group_ids\": [\n      \"ed41e914-1ea3-d2c5-b398-a0130081103a\",\n      \"63faaa79-951c-b785-3519-c2e316aa58eb\"\n    ]\n  },\n  \"linked_audit_message_channel_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"request_configuration_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"member_oncall_schedule_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"7c86c85d-0651-43e2-a748-d69d658418e8\"\n  ],\n  \"break_glass_user_ids\": [\n    \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n    \"37cb7e41-12ba-46da-92ff-030abe0450b2\"\n  ],\n  \"require_mfa_to_approve\": false,\n  \"require_mfa_to_connect\": false,\n  \"ticket_propagation\": {\n    \"enabled_on_grant\": true,\n    \"enabled_on_revocation\": false,\n    \"ticket_provider\": \"LINEAR\",\n    \"ticket_project_id\": \"string\"\n  },\n  \"custom_request_notification\": \"Check your email to register your account.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea2016c7-e8a2-46cc-9d60-c54369b6e37e",
+          "name": "delete Configuration Template",
+          "request": {
+            "name": "delete Configuration Template",
+            "description": {
+              "content": "Deletes a configuration template.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "configuration-templates",
+                ":configuration_template_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "configuration_template_id",
+                  "description": "(Required) The ID of the configuration template."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7a69c8b7-b1f9-4de8-a1f4-2553653f4a46",
+              "name": "The configuration template was successfully deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "configuration-templates",
+                    ":configuration_template_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "configuration_template_id",
+                      "description": "(Required) The ID of the configuration template."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "db07f3e0-3df7-47ec-9995-85547c70701c",
+    "name": "Opal access-rules configuration-templates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

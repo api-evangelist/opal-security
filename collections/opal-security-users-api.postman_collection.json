@@ -1,0 +1,536 @@
+{
+  "item": [
+    {
+      "id": "42c30d53-4e0f-4e8c-a01c-7627b17193bc",
+      "name": "users",
+      "description": {
+        "content": "Operations related to users",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e065a97c-5cb3-4443-8066-5e7c1a40e1b6",
+          "name": "user",
+          "request": {
+            "name": "user",
+            "description": {
+              "content": "Returns a `User` object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<uuid>",
+                  "description": "The user ID of the user."
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "The email of the user. If both user ID and email are provided, user ID will take precedence. If neither are provided, an error will occur."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b769eeb1-2593-49ae-9a0f-ff69900dc531",
+              "name": "The user object associated with the passed-in email or ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_id",
+                      "value": "32acc112-21ff-4669-91c2-21e27683eaa1"
+                    },
+                    {
+                      "key": "email",
+                      "value": "johndoe@domain.org"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n  \"email\": \"john.doe@company.dev\",\n  \"full_name\": \"John Doe\",\n  \"first_name\": \"John\",\n  \"last_name\": \"Doe\",\n  \"position\": \"Engineer\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7d0eaa77-fea3-4287-8c50-b4eebbebdd03",
+          "name": "get Users",
+          "request": {
+            "name": "get Users",
+            "description": {
+              "content": "Returns a list of users for your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag_ids",
+                  "value": "<uuid>",
+                  "description": "The IDs of the tags to filter by. Returns only users that have any of these tags applied."
+                },
+                {
+                  "disabled": false,
+                  "key": "tag_ids",
+                  "value": "<uuid>",
+                  "description": "The IDs of the tags to filter by. Returns only users that have any of these tags applied."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6baad2f-c2ab-479e-b52e-737282ff19b7",
+              "name": "One page worth users in your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    },
+                    {
+                      "key": "tag_ids",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "tag_ids",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"email\": \"john.doe@company.dev\",\n      \"full_name\": \"John Doe\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"position\": \"Engineer\"\n    },\n    {\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"email\": \"john.doe@company.dev\",\n      \"full_name\": \"John Doe\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"position\": \"Engineer\"\n    }\n  ],\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e00c538d-914f-425c-9342-02e7d9dc3f33",
+          "name": "get Remote Users",
+          "request": {
+            "name": "get Remote Users",
+            "description": {
+              "content": "Returns a list of remote users for your organization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                "remote_users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "third_party_provider",
+                  "value": "<string>",
+                  "description": "Filter remote users by their third party provider."
+                },
+                {
+                  "disabled": false,
+                  "key": "third_party_provider",
+                  "value": "<string>",
+                  "description": "Filter remote users by their third party provider."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<uuid>",
+                  "description": "Filter remote users by their user ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "user_id",
+                  "value": "<uuid>",
+                  "description": "Filter remote users by their user ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "remote_id",
+                  "value": "<string>",
+                  "description": "Filter remote users by their remote ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "remote_id",
+                  "value": "<string>",
+                  "description": "Filter remote users by their remote ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "071a60d1-9eae-420e-80ba-bc4369d251f3",
+              "name": "One page worth users in your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    "remote_users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "third_party_provider",
+                      "value": "GIT_HUB"
+                    },
+                    {
+                      "key": "user_id",
+                      "value": "32acc112-21ff-4669-91c2-21e27683eaa1"
+                    },
+                    {
+                      "key": "remote_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "remote_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"remote_id\": \"string\",\n      \"third_party_provider\": \"GIT_HUB\"\n    },\n    {\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"remote_id\": \"string\",\n      \"third_party_provider\": \"GIT_HUB\"\n    }\n  ],\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69a449d5-46bb-4d38-8832-361208275632",
+          "name": "get user tags",
+          "request": {
+            "name": "get user tags",
+            "description": {
+              "content": "Returns all tags applied to the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "user_id",
+                  "description": "(Required) The ID of the user whose tags to return."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "981ed2a1-eb2d-4006-b849-8d50668dbdb3",
+              "name": "The tags applied to the user.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "user_id",
+                      "description": "(Required) The ID of the user whose tags to return."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": [\n    {\n      \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n      \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n      \"key\": \"database-name\",\n      \"value\": \"redis_db\"\n    },\n    {\n      \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n      \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n      \"key\": \"database-name\",\n      \"value\": \"redis_db\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2f55c370-1db1-439f-942a-f5bfad34a2ea",
+    "name": "Opal access-rules users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

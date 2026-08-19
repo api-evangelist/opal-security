@@ -1,0 +1,820 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules groups API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              },
+              {
+                "name": "group_type_filter",
+                "value": "OPAL_GROUP",
+                "type": "query",
+                "description": "The group type to filter by."
+              },
+              {
+                "name": "group_ids",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5,1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "query",
+                "description": "The group ids to filter by."
+              },
+              {
+                "name": "group_name",
+                "value": "example-name",
+                "type": "query",
+                "description": "Group name."
+              },
+              {
+                "name": "tag_ids",
+                "value": "",
+                "type": "query",
+                "description": "The IDs of the tags to filter by. Returns only groups that have any of these tags applied."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of groups for your organization."
+        },
+        {
+          "info": {
+            "name": "createGroup",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates an Opal group or [imports a remote group](https://docs.opal.dev/reference/end-system-objects)."
+        },
+        {
+          "info": {
+            "name": "updateGroups",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/groups",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Bulk updates a list of groups."
+        },
+        {
+          "info": {
+            "name": "Get group by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "32acc112-21ff-4669-91c2-21e27683eaa1",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a `Group` object."
+        },
+        {
+          "info": {
+            "name": "delete_group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/groups/:group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a group."
+        },
+        {
+          "info": {
+            "name": "get_group_message_channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/message-channels",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of audit and reviewer message channels attached to a group."
+        },
+        {
+          "info": {
+            "name": "set_group_message_channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/groups/:group_id/message-channels",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of audit message channels attached to a group."
+        },
+        {
+          "info": {
+            "name": "get_group_on_call_schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/on-call-schedules",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of on call schedules attached to a group."
+        },
+        {
+          "info": {
+            "name": "set_group_on_call_schedules",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/groups/:group_id/on-call-schedules",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of on call schedules attached to a group."
+        },
+        {
+          "info": {
+            "name": "get_group_resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/resources",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of resources that the group gives access to."
+        },
+        {
+          "info": {
+            "name": "set_group_resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/groups/:group_id/resources",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of resources that the group gives access to."
+        },
+        {
+          "info": {
+            "name": "Get nested groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/containing-groups",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The access level's remote ID to filter by."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of groups that the group gives access to."
+        },
+        {
+          "info": {
+            "name": "add_group_containing_group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/groups/:group_id/containing-groups",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new containing group."
+        },
+        {
+          "info": {
+            "name": "Get nested group by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/containing-groups/:containing_group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              },
+              {
+                "name": "containing_group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the containing group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets a specific containing group for a group."
+        },
+        {
+          "info": {
+            "name": "remove_group_containing_group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/groups/:group_id/containing-groups/:containing_group_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the member group to remove."
+              },
+              {
+                "name": "containing_group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the containing group."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The remote ID of the member group's access level to filter by."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a containing group from a group."
+        },
+        {
+          "info": {
+            "name": "add_group_resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/groups/:group_id/resources/:resource_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              },
+              {
+                "name": "resource_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the resource."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The remote ID of the access level to grant to this user. If omitted, the default access level remote ID value (empty string) is used."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Adds a resource to a group."
+        },
+        {
+          "info": {
+            "name": "get_group_visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/visibility",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the visibility of this group."
+        },
+        {
+          "info": {
+            "name": "set_group_visibility",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/groups/:group_id/visibility",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the visibility of this group."
+        },
+        {
+          "info": {
+            "name": "get_group_reviewers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/reviewers",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of owner IDs of the reviewers for a group."
+        },
+        {
+          "info": {
+            "name": "set_group_reviewers",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/groups/:group_id/reviewers",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of reviewers for a group."
+        },
+        {
+          "info": {
+            "name": "get_group_reviewer_stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/reviewer-stages",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of reviewer stages for a group."
+        },
+        {
+          "info": {
+            "name": "set_group_reviewer_stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/groups/:group_id/reviewer-stages",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Sets the list of reviewer stages for a group."
+        },
+        {
+          "info": {
+            "name": "get_group_tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/tags",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the group whose tags to return."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns all tags applied to the group."
+        },
+        {
+          "info": {
+            "name": "get_group_users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/:group_id/users",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page, up to 1000. When set (or when a cursor is provided), the response contains a single page of results and a `next` cursor; the default page size is 200. When both page_size and cursor are omitted, the entire group membership is returned in one response with no `next` cursor. For large groups, prefer setting page_size and following `next`."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets the list of users for this group."
+        },
+        {
+          "info": {
+            "name": "add_group_user",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/groups/:group_id/users/:user_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              },
+              {
+                "name": "user_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "path",
+                "description": "The ID of the user to add."
+              },
+              {
+                "name": "duration_minutes",
+                "value": "60",
+                "type": "query",
+                "description": "The duration for which the group can be accessed (in minutes). Use 0 to set to indefinite."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "arn:aws:iam::590304332660:role/AdministratorAccess",
+                "type": "query",
+                "description": "The remote ID of the access level to grant to this user. If omitted, the default access level remote ID value (empty string) is used."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Adds a user to this group."
+        },
+        {
+          "info": {
+            "name": "update_group_user",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/groups/:group_id/users/:user_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              },
+              {
+                "name": "user_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "path",
+                "description": "The ID of the user whose access is being updated."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates a user's access level or duration in this group."
+        },
+        {
+          "info": {
+            "name": "delete_group_user",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/groups/:group_id/users/:user_id",
+            "params": [
+              {
+                "name": "group_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the group."
+              },
+              {
+                "name": "user_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "path",
+                "description": "The ID of a user to remove from this group."
+              },
+              {
+                "name": "access_level_remote_id",
+                "value": "30",
+                "type": "query",
+                "description": "The remote ID of the access level for which this user has direct access. If omitted, the default access level remote ID value (empty string) is assumed."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a user's access from this group."
+        },
+        {
+          "info": {
+            "name": "get_user_groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/groups/users/:user_id",
+            "params": [
+              {
+                "name": "user_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the user whose groups to return."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns all groups that the user is a member of."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

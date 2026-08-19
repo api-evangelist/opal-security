@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules tokens API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/tokens",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              },
+              {
+                "name": "token_ids",
+                "value": "",
+                "type": "query",
+                "description": "Filter by token IDs."
+              },
+              {
+                "name": "user_id",
+                "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac",
+                "type": "query",
+                "description": "Filter by user ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of first-party API tokens for your organization. Requires admin access."
+        },
+        {
+          "info": {
+            "name": "Delete token",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/tokens/:token_id",
+            "params": [
+              {
+                "name": "token_id",
+                "value": "f454d283-ca87-4a8a-bdbb-df212eca5353",
+                "type": "path",
+                "description": "The ID of the token to delete."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes a first-party API token. Admins can delete any token. Non-admins can only delete their own tokens when the organization allows all users to create API tokens."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

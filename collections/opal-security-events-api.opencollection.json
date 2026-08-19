@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules events API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/events",
+            "params": [
+              {
+                "name": "start_date_filter",
+                "value": "",
+                "type": "query",
+                "description": "A start date filter for the events."
+              },
+              {
+                "name": "end_date_filter",
+                "value": "",
+                "type": "query",
+                "description": "An end date filter for the events."
+              },
+              {
+                "name": "actor_filter",
+                "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac",
+                "type": "query",
+                "description": "An actor filter for the events. Supply the ID of the actor."
+              },
+              {
+                "name": "object_filter",
+                "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac",
+                "type": "query",
+                "description": "An object filter for the events. Supply the ID of the object."
+              },
+              {
+                "name": "event_type_filter",
+                "value": "USER_MFA_RESET",
+                "type": "query",
+                "description": "An event type filter for the events."
+              },
+              {
+                "name": "api_token_filter",
+                "value": "fullaccess:**************************M_g==",
+                "type": "query",
+                "description": "An API filter for the events. Supply the name and preview of the API token."
+              },
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of `Event` objects."
+        },
+        {
+          "info": {
+            "name": "Get event by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/events/:event_id",
+            "params": [
+              {
+                "name": "event_id",
+                "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac",
+                "type": "path",
+                "description": "The ID of the event."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns an `Event` object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

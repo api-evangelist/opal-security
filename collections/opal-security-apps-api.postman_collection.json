@@ -1,0 +1,362 @@
+{
+  "item": [
+    {
+      "id": "10e1420f-3385-4f59-a5a6-ffe531c04976",
+      "name": "apps",
+      "description": {
+        "content": "Operations related to apps",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c548fb97-982d-4d40-a88d-577f3774f10a",
+          "name": "Get apps",
+          "request": {
+            "name": "Get apps",
+            "description": {
+              "content": "Returns a list of `App` objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_type_filter",
+                  "value": "<string>,<string>",
+                  "description": "A list of app types to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "owner_filter",
+                  "value": "<uuid>",
+                  "description": "An owner ID to filter by."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "704d8a35-5c13-43a8-bd0c-237de7742362",
+              "name": "A list of apps for your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_type_filter",
+                      "value": "OKTA_DIRECTORY,GIT_HUB"
+                    },
+                    {
+                      "key": "owner_filter",
+                      "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"apps\": [\n    {\n      \"app_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"Okta Org\",\n      \"description\": \"Okta directory for the engineering team.\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"app_type\": \"OKTA_DIRECTORY\"\n    },\n    {\n      \"app_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"Okta Org\",\n      \"description\": \"Okta directory for the engineering team.\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"app_type\": \"OKTA_DIRECTORY\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65851a1f-d32d-4244-93c5-97a68ac83dab",
+          "name": "Get app by ID",
+          "request": {
+            "name": "Get app by ID",
+            "description": {
+              "content": "Returns an `App` object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "apps",
+                ":app_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "app_id",
+                  "description": "(Required) The ID of the app."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "529f2740-4536-4790-a37e-8fe37fcc08bc",
+              "name": "The requested `App`.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "apps",
+                    ":app_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "app_id",
+                      "description": "(Required) The ID of the app."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"app_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"name\": \"Okta Org\",\n  \"description\": \"Okta directory for the engineering team.\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"app_type\": \"OKTA_DIRECTORY\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ce696be9-58a1-4ee6-9c19-876ad8c4aa33",
+          "name": "get Sync Errors",
+          "request": {
+            "name": "get Sync Errors",
+            "description": {
+              "content": "Returns a list of recent sync errors that have occurred since the last successful sync.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sync_errors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "app_id",
+                  "value": "<uuid>",
+                  "description": "The ID of the app to list sync errors for."
+                },
+                {
+                  "disabled": false,
+                  "key": "resource_id",
+                  "value": "<uuid>",
+                  "description": "The ID of the resource to list sync errors for."
+                },
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<uuid>",
+                  "description": "The ID of the group to list sync errors for."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f402d40c-4078-4cfc-82c7-a55256606be6",
+              "name": "A list of sync errors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sync_errors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "app_id",
+                      "value": "29827fb8-f2dd-4e80-9576-28e31e9934ac"
+                    },
+                    {
+                      "key": "resource_id",
+                      "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "9546209c-42c2-4801-96d7-9ec42df0f59c"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"sync_errors\": [\n      {\n        \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n        \"first_seen\": \"2022-07-14 06:59:59+00:00\",\n        \"last_seen\": \"2022-08-23 04:32:46+00:00\",\n        \"error_message\": \"Failed to connect to the remote system - insufficient credentials.\"\n      },\n      {\n        \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n        \"first_seen\": \"2023-04-24 06:59:59+00:00\",\n        \"last_seen\": \"2024-08-21 04:32:46+00:00\",\n        \"error_message\": \"Resource not found.\"\n      }\n    ]\n  },\n  {\n    \"sync_errors\": [\n      {\n        \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n        \"first_seen\": \"2022-07-14 06:59:59+00:00\",\n        \"last_seen\": \"2022-08-23 04:32:46+00:00\",\n        \"error_message\": \"Failed to connect to the remote system - insufficient credentials.\"\n      },\n      {\n        \"app_id\": \"b5a5ca27-0ea3-4d86-9199-2126d57d1fbd\",\n        \"first_seen\": \"2023-04-24 06:59:59+00:00\",\n        \"last_seen\": \"2024-08-21 04:32:46+00:00\",\n        \"error_message\": \"Resource not found.\"\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "76c39bf6-bc98-4c52-9276-616f444d09f1",
+    "name": "Opal access-rules apps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

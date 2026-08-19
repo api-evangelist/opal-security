@@ -1,0 +1,329 @@
+{
+  "item": [
+    {
+      "id": "68041343-32aa-4b8b-b0d6-cd00057d89bb",
+      "name": "message-channels",
+      "description": {
+        "content": "Operations related to message channels",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fbf4895c-f029-48c4-b983-ca8b1149a671",
+          "name": "Get message channels",
+          "request": {
+            "name": "Get message channels",
+            "description": {
+              "content": "Returns a list of `MessageChannel` objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "message-channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "df1d1bd2-f1ee-46ee-82df-46a310e54ce5",
+              "name": "A list of message channels for your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "message-channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"channels\": [\n    {\n      \"message_channel_id\": \"6670617d-e72a-47f5-a84c-693817ab4860\",\n      \"third_party_provider\": \"SLACK\",\n      \"remote_id\": \"C03FJR97276\",\n      \"name\": \"api-team-audit-channel\",\n      \"is_private\": false\n    },\n    {\n      \"message_channel_id\": \"6670617d-e72a-47f5-a84c-693817ab4860\",\n      \"third_party_provider\": \"SLACK\",\n      \"remote_id\": \"C03FJR97276\",\n      \"name\": \"api-team-audit-channel\",\n      \"is_private\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e299a66-29f2-43ed-b66d-dcb6ef513f45",
+          "name": "create message channel",
+          "request": {
+            "name": "create message channel",
+            "description": {
+              "content": "Creates a `MessageChannel` objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "message-channels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"third_party_provider\": \"<string>\",\n  \"remote_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4450a6b0-7a72-40c3-bdd2-5e90b8e44e9f",
+              "name": "The message channel that was created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "message-channels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"third_party_provider\": \"SLACK\",\n  \"remote_id\": \"C03FJR97276\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message_channel_id\": \"6670617d-e72a-47f5-a84c-693817ab4860\",\n  \"third_party_provider\": \"SLACK\",\n  \"remote_id\": \"C03FJR97276\",\n  \"name\": \"api-team-audit-channel\",\n  \"is_private\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6dd8dddd-ddac-429c-bc38-49ec98513c75",
+          "name": "Get message channel by ID",
+          "request": {
+            "name": "Get message channel by ID",
+            "description": {
+              "content": "Gets a `MessageChannel` object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "message-channels",
+                ":message_channel_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "message_channel_id",
+                  "description": "(Required) The ID of the message_channel."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "aa38708a-39ef-4b22-a295-32bc42e11929",
+              "name": "The requested message channel.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "message-channels",
+                    ":message_channel_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "message_channel_id",
+                      "description": "(Required) The ID of the message_channel."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message_channel_id\": \"6670617d-e72a-47f5-a84c-693817ab4860\",\n  \"third_party_provider\": \"SLACK\",\n  \"remote_id\": \"C03FJR97276\",\n  \"name\": \"api-team-audit-channel\",\n  \"is_private\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d1fc5de8-8679-4f8b-9642-a03fc9b362ad",
+    "name": "Opal access-rules message-channels API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

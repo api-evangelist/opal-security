@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules non-human-identities API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "non-human-identities",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_nhis",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/non-human-identities",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of non-human identities for your organization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,351 @@
+{
+  "item": [
+    {
+      "id": "91eded3d-6b39-4011-8a34-13e1bfe83073",
+      "name": "uars",
+      "description": {
+        "content": "Operations related to UARs",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4fde104-06a6-4c8f-91d8-269018e173b3",
+          "name": "get UA Rs",
+          "request": {
+            "name": "get UA Rs",
+            "description": {
+              "content": "Returns a list of `UAR` objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "uars"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "8882921d-c9cd-4488-8f71-7d5ca9df0c88",
+              "name": "A list of UARs for your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uars"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"uar_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"Monthly UAR (July)\",\n      \"deadline\": \"2022-07-14 06:59:59+00:00\",\n      \"reviewer_assignment_policy\": \"MANUALLY\",\n      \"send_reviewer_assignment_notification\": false,\n      \"time_zone\": \"America/Los_Angeles\",\n      \"self_review_allowed\": false,\n      \"instantly_action_reviews\": false,\n      \"uar_scope\": {\n        \"group_visibility\": \"VIEW_VISIBLE_AND_ASSIGNED\",\n        \"users\": [\n          \"723ab476-fca1-6b05-8a6e-0f3ce28a7630\",\n          \"5871aadf-5fd5-422a-68c0-7ccd64499891\"\n        ],\n        \"filter_operator\": \"ANY\",\n        \"entities\": [\n          \"598c277b-d66b-7b51-900e-86ef11f46db7\",\n          \"e71cb83e-2e1d-d541-4dc3-61aef1b74456\"\n        ],\n        \"apps\": [\n          \"0a368a32-1985-6ac2-62bd-39f78b8a3e0d\",\n          \"c153e0a6-8841-5f5c-b5f3-25cef5d46727\"\n        ],\n        \"admins\": [\n          \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n        ],\n        \"group_types\": [\n          \"OPAL_GROUP\",\n          \"OPAL_GROUP\"\n        ],\n        \"resource_types\": [\n          \"AWS_IAM_ROLE\",\n          \"AWS_IAM_ROLE\"\n        ],\n        \"include_group_bindings\": false,\n        \"tags\": [\n          {\n            \"key\": \"uar_scope\",\n            \"value\": \"high_priority\"\n          },\n          {\n            \"key\": \"uar_scope\",\n            \"value\": \"high_priority\"\n          }\n        ],\n        \"names\": [\n          \"demo\",\n          \"demo\"\n        ]\n      }\n    },\n    {\n      \"uar_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"Monthly UAR (July)\",\n      \"deadline\": \"2022-07-14 06:59:59+00:00\",\n      \"reviewer_assignment_policy\": \"MANUALLY\",\n      \"send_reviewer_assignment_notification\": false,\n      \"time_zone\": \"America/Los_Angeles\",\n      \"self_review_allowed\": false,\n      \"instantly_action_reviews\": false,\n      \"uar_scope\": {\n        \"group_visibility\": \"VIEW_ALL\",\n        \"users\": [\n          \"5f8f977c-b727-cfca-9d82-043c6a1f70e3\",\n          \"2a4b5b94-f1a6-c37c-0635-4062a4cd04db\"\n        ],\n        \"filter_operator\": \"ALL\",\n        \"entities\": [\n          \"4c45f6fc-9dd8-566f-f269-a5d8306db23d\",\n          \"cab032dd-988e-8809-288f-d6d1c3d191a2\"\n        ],\n        \"apps\": [\n          \"d77d8178-c2a2-9871-7392-6f808eac2136\",\n          \"979d0ac3-4f92-ca0f-d6e4-609784ae06f2\"\n        ],\n        \"admins\": [\n          \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n        ],\n        \"group_types\": [\n          \"OPAL_GROUP\",\n          \"OPAL_GROUP\"\n        ],\n        \"resource_types\": [\n          \"AWS_IAM_ROLE\",\n          \"AWS_IAM_ROLE\"\n        ],\n        \"include_group_bindings\": false,\n        \"tags\": [\n          {\n            \"key\": \"uar_scope\",\n            \"value\": \"high_priority\"\n          },\n          {\n            \"key\": \"uar_scope\",\n            \"value\": \"high_priority\"\n          }\n        ],\n        \"names\": [\n          \"demo\",\n          \"demo\"\n        ]\n      }\n    }\n  ],\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58334124-b40c-4dbe-9dea-aa8799172d48",
+          "name": "create uar",
+          "request": {
+            "name": "create uar",
+            "description": {
+              "content": "Starts a User Access Review.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "uar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"deadline\": \"<dateTime>\",\n  \"reviewer_assignment_policy\": \"<string>\",\n  \"send_reviewer_assignment_notification\": \"<boolean>\",\n  \"time_zone\": \"<string>\",\n  \"self_review_allowed\": \"<boolean>\",\n  \"instantly_action_reviews\": \"<boolean>\",\n  \"reminder_schedule\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"reminder_include_manager\": \"<boolean>\",\n  \"uar_scope\": {\n    \"group_visibility\": \"<string>\",\n    \"users\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"filter_operator\": \"<string>\",\n    \"entities\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"apps\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"admins\": [\n      \"<uuid>\",\n      \"<uuid>\"\n    ],\n    \"group_types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"resource_types\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"include_group_bindings\": \"<boolean>\",\n    \"tags\": [\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"value\": \"<string>\"\n      }\n    ],\n    \"names\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9d349e85-579a-429b-b43e-f6e195d0dce3",
+              "name": "The UAR that was started.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Monthly UAR (July)\",\n  \"deadline\": \"2022-07-14 06:59:59+00:00\",\n  \"reviewer_assignment_policy\": \"MANUALLY\",\n  \"send_reviewer_assignment_notification\": false,\n  \"time_zone\": \"America/Los_Angeles\",\n  \"self_review_allowed\": false,\n  \"instantly_action_reviews\": false,\n  \"reminder_schedule\": [\n    \"<integer>\",\n    \"<integer>\"\n  ],\n  \"reminder_include_manager\": false,\n  \"uar_scope\": {\n    \"group_visibility\": \"VIEW_ALL\",\n    \"users\": [\n      \"3f97c5be-b9f1-2d45-5bf1-388be4b5df9c\",\n      \"05c92dc9-4576-52c4-6a40-b257ffedd164\"\n    ],\n    \"filter_operator\": \"ANY\",\n    \"entities\": [\n      \"d853e8ff-d363-29a0-df0f-5c87cf8df245\",\n      \"74ac1970-5fb5-178f-d39b-81a52d5269e4\"\n    ],\n    \"apps\": [\n      \"14c8327b-3a26-8cf0-5af6-0b97e1e385dd\",\n      \"49a17b3d-413e-715d-2a71-7403d4a816c0\"\n    ],\n    \"admins\": [\n      \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n    ],\n    \"group_types\": [\n      \"OPAL_GROUP\",\n      \"OPAL_GROUP\"\n    ],\n    \"resource_types\": [\n      \"AWS_IAM_ROLE\",\n      \"AWS_IAM_ROLE\"\n    ],\n    \"include_group_bindings\": false,\n    \"tags\": [\n      {\n        \"key\": \"uar_scope\",\n        \"value\": \"high_priority\"\n      },\n      {\n        \"key\": \"uar_scope\",\n        \"value\": \"high_priority\"\n      }\n    ],\n    \"names\": [\n      \"demo\",\n      \"demo\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uar_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"name\": \"Monthly UAR (July)\",\n  \"deadline\": \"2022-07-14 06:59:59+00:00\",\n  \"reviewer_assignment_policy\": \"MANUALLY\",\n  \"send_reviewer_assignment_notification\": false,\n  \"time_zone\": \"America/Los_Angeles\",\n  \"self_review_allowed\": false,\n  \"instantly_action_reviews\": false,\n  \"uar_scope\": {\n    \"group_visibility\": \"VIEW_ALL\",\n    \"users\": [\n      \"5cca739d-8ee9-2aad-f915-edfcd2f66e29\",\n      \"32fc2970-49f2-4c57-3472-b5c8ba2d5b26\"\n    ],\n    \"filter_operator\": \"ALL\",\n    \"entities\": [\n      \"b9da851c-ed66-e2fb-d520-fb6bd8c643cb\",\n      \"3f0ac7cc-082f-d8dc-8edc-61b176697c06\"\n    ],\n    \"apps\": [\n      \"ad7a1c33-8024-c536-daad-80d01cc39512\",\n      \"881e0df5-62b0-3b54-0feb-6acde774e4fa\"\n    ],\n    \"admins\": [\n      \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n    ],\n    \"group_types\": [\n      \"OPAL_GROUP\",\n      \"OPAL_GROUP\"\n    ],\n    \"resource_types\": [\n      \"AWS_IAM_ROLE\",\n      \"AWS_IAM_ROLE\"\n    ],\n    \"include_group_bindings\": false,\n    \"tags\": [\n      {\n        \"key\": \"uar_scope\",\n        \"value\": \"high_priority\"\n      },\n      {\n        \"key\": \"uar_scope\",\n        \"value\": \"high_priority\"\n      }\n    ],\n    \"names\": [\n      \"demo\",\n      \"demo\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "710acdcd-71b4-4ab3-a640-bb11c8e9f051",
+          "name": "get uar",
+          "request": {
+            "name": "get uar",
+            "description": {
+              "content": "Retrieves a specific UAR.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "uar",
+                ":uar_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "uar_id",
+                  "description": "(Required) The ID of the UAR."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0931bee2-4f8d-4d18-ac87-64d22d67bc5f",
+              "name": "The UAR that was requested.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "uar",
+                    ":uar_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "uar_id",
+                      "description": "(Required) The ID of the UAR."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"uar_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"name\": \"Monthly UAR (July)\",\n  \"deadline\": \"2022-07-14 06:59:59+00:00\",\n  \"reviewer_assignment_policy\": \"MANUALLY\",\n  \"send_reviewer_assignment_notification\": false,\n  \"time_zone\": \"America/Los_Angeles\",\n  \"self_review_allowed\": false,\n  \"instantly_action_reviews\": false,\n  \"uar_scope\": {\n    \"group_visibility\": \"VIEW_ALL\",\n    \"users\": [\n      \"5cca739d-8ee9-2aad-f915-edfcd2f66e29\",\n      \"32fc2970-49f2-4c57-3472-b5c8ba2d5b26\"\n    ],\n    \"filter_operator\": \"ALL\",\n    \"entities\": [\n      \"b9da851c-ed66-e2fb-d520-fb6bd8c643cb\",\n      \"3f0ac7cc-082f-d8dc-8edc-61b176697c06\"\n    ],\n    \"apps\": [\n      \"ad7a1c33-8024-c536-daad-80d01cc39512\",\n      \"881e0df5-62b0-3b54-0feb-6acde774e4fa\"\n    ],\n    \"admins\": [\n      \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n    ],\n    \"group_types\": [\n      \"OPAL_GROUP\",\n      \"OPAL_GROUP\"\n    ],\n    \"resource_types\": [\n      \"AWS_IAM_ROLE\",\n      \"AWS_IAM_ROLE\"\n    ],\n    \"include_group_bindings\": false,\n    \"tags\": [\n      {\n        \"key\": \"uar_scope\",\n        \"value\": \"high_priority\"\n      },\n      {\n        \"key\": \"uar_scope\",\n        \"value\": \"high_priority\"\n      }\n    ],\n    \"names\": [\n      \"demo\",\n      \"demo\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "57cc824c-ca53-4293-b134-1ccbdb0bff04",
+    "name": "Opal access-rules uars API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules tags API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get tag by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/tag/:tag_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The tag ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "UNSTABLE. May be removed at any time. Gets a tag with the given id."
+        },
+        {
+          "info": {
+            "name": "delete_tag_by_ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/tag/:tag_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The tag ID"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "UNSTABLE. May be removed at any time. Deletes a tag with the given id."
+        },
+        {
+          "info": {
+            "name": "get_tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/tag",
+            "params": [
+              {
+                "name": "tag_key",
+                "value": "api-scope",
+                "type": "query",
+                "description": "The key of the tag to get."
+              },
+              {
+                "name": "tag_value",
+                "value": "production",
+                "type": "query",
+                "description": "The value of the tag to get."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Gets a tag with the given key and value."
+        },
+        {
+          "info": {
+            "name": "create_tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/tag",
+            "params": [
+              {
+                "name": "tag_key",
+                "value": "api-scope",
+                "type": "query",
+                "description": "The key of the tag to create."
+              },
+              {
+                "name": "tag_value",
+                "value": "production",
+                "type": "query",
+                "description": "The value of the tag to create."
+              },
+              {
+                "name": "admin_owner_id",
+                "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06",
+                "type": "query",
+                "description": "The ID of the owner that manages the tag."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a tag with the given key and value."
+        },
+        {
+          "info": {
+            "name": "Get tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/tags",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of tags created by your organization."
+        },
+        {
+          "info": {
+            "name": "add_user_tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/tags/:tag_id/users/:user_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the tag to apply."
+              },
+              {
+                "name": "user_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the user to apply the tag to."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Applies a tag to a user."
+        },
+        {
+          "info": {
+            "name": "remove_user_tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/tags/:tag_id/users/:user_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the tag to remove."
+              },
+              {
+                "name": "user_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the user to remove the tag from."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a tag from a user."
+        },
+        {
+          "info": {
+            "name": "add_group_tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/tags/:tag_id/groups/:group_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the tag to apply."
+              },
+              {
+                "name": "group_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the group to apply the tag to."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Applies a tag to a group."
+        },
+        {
+          "info": {
+            "name": "remove_group_tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/tags/:tag_id/groups/:group_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the tag to remove."
+              },
+              {
+                "name": "group_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the group to remove the tag from."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a tag from a group."
+        },
+        {
+          "info": {
+            "name": "add_resource_tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/tags/:tag_id/resources/:resource_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the tag to apply."
+              },
+              {
+                "name": "resource_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the resource to apply the tag to."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Applies a tag to a resource."
+        },
+        {
+          "info": {
+            "name": "remove_resource_tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/tags/:tag_id/resources/:resource_id",
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the tag to remove."
+              },
+              {
+                "name": "resource_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The ID of the resource to remove the tag from."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Removes a tag from a resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1068 @@
+{
+  "item": [
+    {
+      "id": "9292c350-3d8a-4760-9bb0-654f6f7b6b3f",
+      "name": "requests",
+      "description": {
+        "content": "Operations related to requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4e1aade8-e9b8-4ae8-bc27-0f61c9d63e8e",
+          "name": "Get requests",
+          "request": {
+            "name": "Get requests",
+            "description": {
+              "content": "Returns a list of requests for your organization that is visible by the admin.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "start_date_filter",
+                  "value": "<string>",
+                  "description": "A start date filter for the events."
+                },
+                {
+                  "disabled": false,
+                  "key": "end_date_filter",
+                  "value": "<string>",
+                  "description": "An end date filter for the events."
+                },
+                {
+                  "disabled": false,
+                  "key": "requester_id",
+                  "value": "<uuid>",
+                  "description": "Filter requests by their requester ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "target_user_id",
+                  "value": "<uuid>",
+                  "description": "Filter requests by their target user ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "resource_id",
+                  "value": "<uuid>",
+                  "description": "Filter requests by the resource ID that was requested."
+                },
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<uuid>",
+                  "description": "Filter requests by the group ID that was requested."
+                },
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "show_pending_only",
+                  "value": "<boolean>",
+                  "description": "Boolean toggle for if it should only show pending requests."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "95c07ff7-8fb3-4287-9c32-5a0addd129db",
+              "name": "The list of requests.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "start_date_filter",
+                      "value": "2021-11-01"
+                    },
+                    {
+                      "key": "end_date_filter",
+                      "value": "2021-11-12"
+                    },
+                    {
+                      "key": "requester_id",
+                      "value": "37cb7e41-12ba-46da-92ff-030abe0450b1"
+                    },
+                    {
+                      "key": "target_user_id",
+                      "value": "37cb7e41-12ba-46da-92ff-030abe0450b1"
+                    },
+                    {
+                      "key": "resource_id",
+                      "value": "37cb7e41-12ba-46da-92ff-030abe0450b1"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "37cb7e41-12ba-46da-92ff-030abe0450b1"
+                    },
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    },
+                    {
+                      "key": "show_pending_only",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"requests\": [\n    {\n      \"id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"created_at\": \"2021-01-06 20:00:00+00:00\",\n      \"updated_at\": \"2021-01-06 20:00:00+00:00\",\n      \"requester_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"status\": \"PENDING\",\n      \"reason\": \"I need access to the AWS account.\",\n      \"target_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"target_group_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"duration_minutes\": 120,\n      \"requested_items_list\": [\n        {\n          \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"access_level_name\": \"admin\",\n          \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n          \"name\": \"Engineering Team\",\n          \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n          \"remote_name\": \"SupportUser\"\n        },\n        {\n          \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"access_level_name\": \"admin\",\n          \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n          \"name\": \"Engineering Team\",\n          \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n          \"remote_name\": \"SupportUser\"\n        }\n      ],\n      \"custom_fields_responses\": [\n        {\n          \"field_name\": \"string\",\n          \"field_type\": \"SHORT_TEXT\",\n          \"field_value\": \"This is a response to a long text or short text or multi choice\"\n        },\n        {\n          \"field_name\": \"string\",\n          \"field_type\": \"SHORT_TEXT\",\n          \"field_value\": \"This is a response to a long text or short text or multi choice\"\n        }\n      ],\n      \"stages\": {\n        \"requestedItemName\": \"string\",\n        \"stages\": [\n          {\n            \"stage\": 2508,\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"stage\": 8256,\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"requestedRoleName\": \"string\"\n      },\n      \"reviewer_stages\": [\n        {\n          \"item_name\": \"string\",\n          \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"stages\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"access_level_name\": \"admin\",\n          \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n        },\n        {\n          \"item_name\": \"string\",\n          \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"stages\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"access_level_name\": \"admin\",\n          \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n        }\n      ]\n    },\n    {\n      \"id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"created_at\": \"2021-01-06 20:00:00+00:00\",\n      \"updated_at\": \"2021-01-06 20:00:00+00:00\",\n      \"requester_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"status\": \"DENIED\",\n      \"reason\": \"I need access to the AWS account.\",\n      \"target_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"target_group_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"duration_minutes\": 120,\n      \"requested_items_list\": [\n        {\n          \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"access_level_name\": \"admin\",\n          \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n          \"name\": \"Engineering Team\",\n          \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n          \"remote_name\": \"SupportUser\"\n        },\n        {\n          \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"access_level_name\": \"admin\",\n          \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n          \"name\": \"Engineering Team\",\n          \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n          \"remote_name\": \"SupportUser\"\n        }\n      ],\n      \"custom_fields_responses\": [\n        {\n          \"field_name\": \"string\",\n          \"field_type\": \"SHORT_TEXT\",\n          \"field_value\": \"This is a response to a long text or short text or multi choice\"\n        },\n        {\n          \"field_name\": \"string\",\n          \"field_type\": \"SHORT_TEXT\",\n          \"field_value\": \"This is a response to a long text or short text or multi choice\"\n        }\n      ],\n      \"stages\": {\n        \"requestedItemName\": \"string\",\n        \"stages\": [\n          {\n            \"stage\": 1563,\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"stage\": 2264,\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"requestedRoleName\": \"string\"\n      },\n      \"reviewer_stages\": [\n        {\n          \"item_name\": \"string\",\n          \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"stages\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"access_level_name\": \"admin\",\n          \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n        },\n        {\n          \"item_name\": \"string\",\n          \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"stages\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"access_level_name\": \"admin\",\n          \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n        }\n      ]\n    }\n  ],\n  \"cursor\": \"eyJjcmVhdGVkX2F0IjoiMjAyMS0wMS0wNlQyMDo0NzowMFoiLCJ2YWx1ZSI6ImFkbWluIn0=\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0cfb586-c12d-4ecc-8641-1487e09f4d4e",
+          "name": "create Request",
+          "request": {
+            "name": "create Request",
+            "description": {
+              "content": "Create an access request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reason\": \"<string>\",\n  \"duration_minutes\": \"<integer>\",\n  \"resources\": [\n    {\n      \"id\": \"<uuid>\",\n      \"access_level_remote_id\": \"<string>\",\n      \"access_level_name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"access_level_remote_id\": \"<string>\",\n      \"access_level_name\": \"<string>\"\n    }\n  ],\n  \"groups\": [\n    {\n      \"id\": \"<uuid>\",\n      \"access_level_remote_id\": \"<string>\",\n      \"access_level_name\": \"<string>\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"access_level_remote_id\": \"<string>\",\n      \"access_level_name\": \"<string>\"\n    }\n  ],\n  \"target_user_id\": \"<uuid>\",\n  \"target_group_id\": \"<uuid>\",\n  \"support_ticket\": {\n    \"ticketing_provider\": \"<string>\",\n    \"remote_id\": \"<string>\",\n    \"identifier\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  \"custom_metadata\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21ae97f2-4243-40ec-8a6f-5333919ea9d2",
+              "name": "The resulting request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"reason\": \"<string>\",\n  \"duration_minutes\": \"<integer>\",\n  \"resources\": [\n    {\n      \"id\": \"<uuid>\",\n      \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"access_level_name\": \"arn:aws:iam::490306337630:role/SupportUser\"\n    },\n    {\n      \"id\": \"<uuid>\",\n      \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"access_level_name\": \"arn:aws:iam::490306337630:role/SupportUser\"\n    }\n  ],\n  \"groups\": [\n    {\n      \"id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"access_level_name\": \"arn:aws:iam::490306337630:role/SupportUser\"\n    },\n    {\n      \"id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"access_level_name\": \"arn:aws:iam::490306337630:role/SupportUser\"\n    }\n  ],\n  \"target_user_id\": \"<uuid>\",\n  \"target_group_id\": \"<uuid>\",\n  \"support_ticket\": {\n    \"ticketing_provider\": \"LINEAR\",\n    \"remote_id\": \"<string>\",\n    \"identifier\": \"<string>\",\n    \"url\": \"<string>\"\n  },\n  \"custom_metadata\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"SHORT_TEXT\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"BOOLEAN\",\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"4baf8423-db0a-4037-a4cf-f79c60cb67a5\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e22fd8db-d9cc-4e40-aee1-39dcd6f77cc0",
+          "name": "Get requests via Relay",
+          "request": {
+            "name": "Get requests via Relay",
+            "description": {
+              "content": "Returns a paginated list of requests using Relay-style cursor pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests",
+                "relay"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "first",
+                  "value": "<integer>",
+                  "description": "Number of results to return after the cursor. Use either first/after or last/before, not both."
+                },
+                {
+                  "disabled": false,
+                  "key": "after",
+                  "value": "<string>",
+                  "description": "Cursor to fetch results after. Used with 'first' for forward pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "last",
+                  "value": "<integer>",
+                  "description": "Number of results to return before the cursor. Use either first/after or last/before, not both."
+                },
+                {
+                  "disabled": false,
+                  "key": "before",
+                  "value": "<string>",
+                  "description": "Cursor to fetch results before. Used with 'last' for backward pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter requests by their status."
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<uuid>",
+                  "description": "Filter requests assigned to a specific user ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<uuid>",
+                  "description": "Filter requests made by a specific user ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4d9d4780-242d-493f-8eab-7abe493c3eea",
+              "name": "A paginated list of requests using Relay-style cursor pagination.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests",
+                    "relay"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "first",
+                      "value": "10"
+                    },
+                    {
+                      "key": "after",
+                      "value": "Y3Vyc29yOnYyOpK5MjAyMS0wMS0wN1QwNzo0MToyNy4xMTlaFjYwZmM2YmJlZjk4YzE1N2ZhNjFhYjk4Nw=="
+                    },
+                    {
+                      "key": "last",
+                      "value": "10"
+                    },
+                    {
+                      "key": "before",
+                      "value": "Y3Vyc29yOnYyOpK5MjAyMS0wMS0wN1QwNzo0MToyNy4xMTlaFjYwZmM2YmJlZjk4YzE1N2ZhNjFhYjk4Nw=="
+                    },
+                    {
+                      "key": "status",
+                      "value": "PENDING"
+                    },
+                    {
+                      "key": "to",
+                      "value": "37cb7e41-12ba-46da-92ff-030abe0450b1"
+                    },
+                    {
+                      "key": "from",
+                      "value": "37cb7e41-12ba-46da-92ff-030abe0450b1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"edges\": [\n    {\n      \"node\": {\n        \"id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n        \"created_at\": \"2021-01-06 20:00:00+00:00\",\n        \"updated_at\": \"2021-01-06 20:00:00+00:00\",\n        \"requester_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n        \"status\": \"CANCELED\",\n        \"reason\": \"I need access to the AWS account.\",\n        \"target_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n        \"target_group_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n        \"duration_minutes\": 120,\n        \"requested_items_list\": [\n          {\n            \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n            \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n            \"access_level_name\": \"admin\",\n            \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n            \"name\": \"Engineering Team\",\n            \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n            \"remote_name\": \"SupportUser\"\n          },\n          {\n            \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n            \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n            \"access_level_name\": \"admin\",\n            \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n            \"name\": \"Engineering Team\",\n            \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n            \"remote_name\": \"SupportUser\"\n          }\n        ],\n        \"custom_fields_responses\": [\n          {\n            \"field_name\": \"string\",\n            \"field_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"field_value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"field_name\": \"string\",\n            \"field_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"field_value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"stages\": {\n          \"requestedItemName\": \"string\",\n          \"stages\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"requestedRoleName\": \"string\"\n        },\n        \"reviewer_stages\": [\n          {\n            \"item_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"item_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"stages\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"access_level_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"access_level_remote_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"item_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"item_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"stages\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"access_level_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"access_level_remote_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"cursor\": \"string\"\n    },\n    {\n      \"node\": {\n        \"id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n        \"created_at\": \"2021-01-06 20:00:00+00:00\",\n        \"updated_at\": \"2021-01-06 20:00:00+00:00\",\n        \"requester_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n        \"status\": \"PENDING\",\n        \"reason\": \"I need access to the AWS account.\",\n        \"target_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n        \"target_group_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n        \"duration_minutes\": 120,\n        \"requested_items_list\": [\n          {\n            \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n            \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n            \"access_level_name\": \"admin\",\n            \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n            \"name\": \"Engineering Team\",\n            \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n            \"remote_name\": \"SupportUser\"\n          },\n          {\n            \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n            \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n            \"access_level_name\": \"admin\",\n            \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n            \"name\": \"Engineering Team\",\n            \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n            \"remote_name\": \"SupportUser\"\n          }\n        ],\n        \"custom_fields_responses\": [\n          {\n            \"field_name\": \"string\",\n            \"field_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"field_value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"field_name\": \"string\",\n            \"field_type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"field_value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"stages\": {\n          \"requestedItemName\": \"string\",\n          \"stages\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"requestedRoleName\": \"string\"\n        },\n        \"reviewer_stages\": [\n          {\n            \"item_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"item_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"stages\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"access_level_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"access_level_remote_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"item_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"item_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"stages\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"access_level_name\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"access_level_remote_id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"cursor\": \"string\"\n    }\n  ],\n  \"pageInfo\": {\n    \"hasNextPage\": true,\n    \"endCursor\": \"string\",\n    \"hasPreviousPage\": true,\n    \"startCursor\": \"string\"\n  },\n  \"totalCount\": 4639\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d83e17a5-8c07-4e63-bde8-311faaacf53c",
+          "name": "Get request by ID",
+          "request": {
+            "name": "Get request by ID",
+            "description": {
+              "content": "Returns a request by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the request."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "27c3f110-6b32-4177-97ef-dfba6becc1a2",
+              "name": "The requested request object.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"created_at\": \"2021-01-06 20:00:00+00:00\",\n  \"updated_at\": \"2021-01-06 20:00:00+00:00\",\n  \"requester_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"status\": \"PENDING\",\n  \"reason\": \"I need access to the AWS account.\",\n  \"target_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"target_group_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"duration_minutes\": 120,\n  \"requested_items_list\": [\n    {\n      \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"access_level_name\": \"admin\",\n      \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"name\": \"Engineering Team\",\n      \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"remote_name\": \"SupportUser\"\n    },\n    {\n      \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"access_level_name\": \"admin\",\n      \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"name\": \"Engineering Team\",\n      \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n      \"remote_name\": \"SupportUser\"\n    }\n  ],\n  \"custom_fields_responses\": [\n    {\n      \"field_name\": \"string\",\n      \"field_type\": \"SHORT_TEXT\",\n      \"field_value\": \"This is a response to a long text or short text or multi choice\"\n    },\n    {\n      \"field_name\": \"string\",\n      \"field_type\": \"SHORT_TEXT\",\n      \"field_value\": \"This is a response to a long text or short text or multi choice\"\n    }\n  ],\n  \"stages\": {\n    \"requestedItemName\": \"string\",\n    \"stages\": [\n      {\n        \"stage\": 2916,\n        \"operator\": \"OR\",\n        \"reviewers\": [\n          {\n            \"id\": \"f90f59c9-ad87-3f45-65ac-fcb840c36708\",\n            \"status\": \"REJECTED\",\n            \"full_name\": \"Jake Barnes\"\n          },\n          {\n            \"id\": \"f39e9eca-71b5-3f82-c003-4f9efc5e9a7f\",\n            \"status\": \"PENDING\",\n            \"full_name\": \"Jake Barnes\"\n          }\n        ]\n      },\n      {\n        \"stage\": 1525,\n        \"operator\": \"AND\",\n        \"reviewers\": [\n          {\n            \"id\": \"0e903568-414b-fea3-4a7b-c9d116f3caf4\",\n            \"status\": \"REJECTED\",\n            \"full_name\": \"Jake Barnes\"\n          },\n          {\n            \"id\": \"18611483-19bd-3c7e-315d-446020a91f4c\",\n            \"status\": \"APPROVED\",\n            \"full_name\": \"Jake Barnes\"\n          }\n        ]\n      }\n    ],\n    \"requestedRoleName\": \"string\"\n  },\n  \"reviewer_stages\": [\n    {\n      \"item_name\": \"string\",\n      \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"stages\": [\n        {\n          \"stage\": 5217,\n          \"operator\": \"AND\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"stage\": 3386,\n          \"operator\": \"OR\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"access_level_name\": \"admin\",\n      \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n    },\n    {\n      \"item_name\": \"string\",\n      \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"stages\": [\n        {\n          \"stage\": 4107,\n          \"operator\": \"OR\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"stage\": 4211,\n          \"operator\": \"AND\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"access_level_name\": \"admin\",\n      \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6aa6d23a-0848-4a68-bed8-55df203d8907",
+          "name": "approve Request",
+          "request": {
+            "name": "approve Request",
+            "description": {
+              "content": "Approve an access request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests",
+                ":id",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the request to approve"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"level\": \"<string>\",\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "49c60092-c5da-4d12-87a7-46e6cf369798",
+              "name": "Request successfully approved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests",
+                    ":id",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request to approve"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"level\": \"REGULAR\",\n  \"comment\": \"Approved after security review\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request\": {\n    \"id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"created_at\": \"2021-01-06 20:00:00+00:00\",\n    \"updated_at\": \"2021-01-06 20:00:00+00:00\",\n    \"requester_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"status\": \"APPROVED\",\n    \"reason\": \"I need access to the AWS account.\",\n    \"target_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"target_group_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"duration_minutes\": 120,\n    \"requested_items_list\": [\n      {\n        \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"name\": \"Engineering Team\",\n        \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"remote_name\": \"SupportUser\"\n      },\n      {\n        \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"name\": \"Engineering Team\",\n        \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"remote_name\": \"SupportUser\"\n      }\n    ],\n    \"custom_fields_responses\": [\n      {\n        \"field_name\": \"string\",\n        \"field_type\": \"SHORT_TEXT\",\n        \"field_value\": \"This is a response to a long text or short text or multi choice\"\n      },\n      {\n        \"field_name\": \"string\",\n        \"field_type\": \"SHORT_TEXT\",\n        \"field_value\": \"This is a response to a long text or short text or multi choice\"\n      }\n    ],\n    \"stages\": {\n      \"requestedItemName\": \"string\",\n      \"stages\": [\n        {\n          \"stage\": 7790,\n          \"operator\": \"OR\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"stage\": 7109,\n          \"operator\": \"OR\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"requestedRoleName\": \"string\"\n    },\n    \"reviewer_stages\": [\n      {\n        \"item_name\": \"string\",\n        \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"stages\": [\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n      },\n      {\n        \"item_name\": \"string\",\n        \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"stages\": [\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79b3f85c-03b5-4440-9801-4d1d32359eaa",
+          "name": "deny Request",
+          "request": {
+            "name": "deny Request",
+            "description": {
+              "content": "Deny an access request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests",
+                ":id",
+                "deny"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the request to deny"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\",\n  \"level\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0eb309ef-7392-4ae1-9a13-433a9951389f",
+              "name": "Request successfully denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests",
+                    ":id",
+                    "deny"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request to deny"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"Denied due to insufficient justification\",\n  \"level\": \"REGULAR\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request\": {\n    \"id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"created_at\": \"2021-01-06 20:00:00+00:00\",\n    \"updated_at\": \"2021-01-06 20:00:00+00:00\",\n    \"requester_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"status\": \"APPROVED\",\n    \"reason\": \"I need access to the AWS account.\",\n    \"target_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"target_group_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"duration_minutes\": 120,\n    \"requested_items_list\": [\n      {\n        \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"name\": \"Engineering Team\",\n        \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"remote_name\": \"SupportUser\"\n      },\n      {\n        \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"name\": \"Engineering Team\",\n        \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"remote_name\": \"SupportUser\"\n      }\n    ],\n    \"custom_fields_responses\": [\n      {\n        \"field_name\": \"string\",\n        \"field_type\": \"SHORT_TEXT\",\n        \"field_value\": \"This is a response to a long text or short text or multi choice\"\n      },\n      {\n        \"field_name\": \"string\",\n        \"field_type\": \"SHORT_TEXT\",\n        \"field_value\": \"This is a response to a long text or short text or multi choice\"\n      }\n    ],\n    \"stages\": {\n      \"requestedItemName\": \"string\",\n      \"stages\": [\n        {\n          \"stage\": 7790,\n          \"operator\": \"OR\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"stage\": 7109,\n          \"operator\": \"OR\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"requestedRoleName\": \"string\"\n    },\n    \"reviewer_stages\": [\n      {\n        \"item_name\": \"string\",\n        \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"stages\": [\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n      },\n      {\n        \"item_name\": \"string\",\n        \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"stages\": [\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b64ae7a7-2448-44b7-be8a-1e82c56fc9e3",
+          "name": "get Request Comments",
+          "request": {
+            "name": "get Request Comments",
+            "description": {
+              "content": "Returns a list of comments for a specific request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests",
+                ":id",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the request to get comments for"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3640167c-0b01-43d9-8977-2001d8f843dc",
+              "name": "A list of comments associated with the specified request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request to get comments for"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"comments\": [\n    {\n      \"created_at\": \"2021-01-06 20:00:00+00:00\",\n      \"request_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"comment\": \"This is a comment.\",\n      \"user_full_name\": \"Jake Barnes\",\n      \"user_email\": \"jake.barnes@company.com\"\n    },\n    {\n      \"created_at\": \"2021-01-06 20:00:00+00:00\",\n      \"request_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"comment\": \"This is a comment.\",\n      \"user_full_name\": \"Jake Barnes\",\n      \"user_email\": \"jake.barnes@company.com\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78465896-ba6f-4cd2-adb1-82b1a9e5785b",
+          "name": "create Request Comment",
+          "request": {
+            "name": "create Request Comment",
+            "description": {
+              "content": "Comment on an access request",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "requests",
+                ":id",
+                "comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The ID of the request to comment on"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"comment\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "450130aa-1f34-41a0-9834-75a24d12e732",
+              "name": "Request successfully commented",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "requests",
+                    ":id",
+                    "comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The ID of the request to comment on"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"comment\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"request\": {\n    \"id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"created_at\": \"2021-01-06 20:00:00+00:00\",\n    \"updated_at\": \"2021-01-06 20:00:00+00:00\",\n    \"requester_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"status\": \"APPROVED\",\n    \"reason\": \"I need access to the AWS account.\",\n    \"target_user_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"target_group_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n    \"duration_minutes\": 120,\n    \"requested_items_list\": [\n      {\n        \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"name\": \"Engineering Team\",\n        \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"remote_name\": \"SupportUser\"\n      },\n      {\n        \"resource_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"name\": \"Engineering Team\",\n        \"remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\",\n        \"remote_name\": \"SupportUser\"\n      }\n    ],\n    \"custom_fields_responses\": [\n      {\n        \"field_name\": \"string\",\n        \"field_type\": \"SHORT_TEXT\",\n        \"field_value\": \"This is a response to a long text or short text or multi choice\"\n      },\n      {\n        \"field_name\": \"string\",\n        \"field_type\": \"SHORT_TEXT\",\n        \"field_value\": \"This is a response to a long text or short text or multi choice\"\n      }\n    ],\n    \"stages\": {\n      \"requestedItemName\": \"string\",\n      \"stages\": [\n        {\n          \"stage\": 7790,\n          \"operator\": \"OR\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"stage\": 7109,\n          \"operator\": \"OR\",\n          \"reviewers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"requestedRoleName\": \"string\"\n    },\n    \"reviewer_stages\": [\n      {\n        \"item_name\": \"string\",\n        \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"stages\": [\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n      },\n      {\n        \"item_name\": \"string\",\n        \"item_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n        \"stages\": [\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"stage\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"operator\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"reviewers\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"access_level_name\": \"admin\",\n        \"access_level_remote_id\": \"arn:aws:iam::490306337630:role/SupportUser\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "279d0185-542f-434e-b5a4-16246a7e2ec8",
+    "name": "Opal access-rules requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,901 @@
+{
+  "item": [
+    {
+      "id": "905c987f-9757-4431-aa49-218a4457df20",
+      "name": "owners",
+      "description": {
+        "content": "Operations related to owners",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b7f48ae1-5d93-4cb6-bf17-5ae3500c6b71",
+          "name": "Get owners",
+          "request": {
+            "name": "Get owners",
+            "description": {
+              "content": "Returns a list of `Owner` objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cursor",
+                  "value": "<string>",
+                  "description": "The pagination cursor value."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page. Default is 200."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Owner name to filter by."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f9b19cb9-93cb-4320-8f87-14858c2f442a",
+              "name": "One page worth of owners in your organization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cursor",
+                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "200"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"owner_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"API Owner\",\n      \"description\": \"This owner represents the API team owners.\",\n      \"access_request_escalation_period\": 120\n    },\n    {\n      \"owner_id\": \"e8581682-04f7-473a-a419-472f0fb26d46\",\n      \"name\": \"Finance Owner\",\n      \"description\": \"This owner represents the Finance team owners.\",\n      \"access_request_escalation_period\": 120\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5b48065-dbbd-4216-866f-97ade42e6b9a",
+          "name": "create Owner",
+          "request": {
+            "name": "create Owner",
+            "description": {
+              "content": "Creates an owner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"user_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"description\": \"<string>\",\n  \"access_request_escalation_period\": \"<integer>\",\n  \"reviewer_message_channel_id\": \"<string>\",\n  \"source_group_id\": \"<uuid>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ef2df134-b550-4833-a12a-4e1281ebf128",
+              "name": "The owner just created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"API Owner\",\n  \"user_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ],\n  \"description\": \"This owner represents the API team owners.\",\n  \"access_request_escalation_period\": 120,\n  \"reviewer_message_channel_id\": \"37cb7e41-12ba-46da-92ff-030abe0450b1\",\n  \"source_group_id\": \"1b978423-db0a-4037-a4cf-f79c60cb67b3\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owner_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"name\": \"API Owner\",\n  \"description\": \"This owner represents the API team owners.\",\n  \"access_request_escalation_period\": 120\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3518356d-52db-4a6f-89fb-658ab0ef6c20",
+          "name": "update Owners",
+          "request": {
+            "name": "update Owners",
+            "description": {
+              "content": "Bulk updates a list of owners.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"owners\": [\n    {\n      \"owner_id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"access_request_escalation_period\": \"<integer>\",\n      \"reviewer_message_channel_id\": \"<string>\",\n      \"source_group_id\": \"<uuid>\"\n    },\n    {\n      \"owner_id\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"access_request_escalation_period\": \"<integer>\",\n      \"reviewer_message_channel_id\": \"<string>\",\n      \"source_group_id\": \"<uuid>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08af1628-5d00-4282-a6b4-156f55183c6c",
+              "name": "The resulting updated owner infos.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"owners\": [\n    {\n      \"owner_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"API Owner\",\n      \"description\": \"This owner represents the API team owners.\",\n      \"access_request_escalation_period\": 120\n    },\n    {\n      \"owner_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"name\": \"Finance Owner\",\n      \"description\": \"This owner represents the Finance team owners.\",\n      \"access_request_escalation_period\": 15\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owners\": [\n    {\n      \"owner_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"name\": \"API Owner\",\n      \"description\": \"This owner represents the API team owners.\",\n      \"access_request_escalation_period\": 120\n    },\n    {\n      \"owner_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"name\": \"Finance Owner\",\n      \"description\": \"This owner represents the Finance team owners.\",\n      \"access_request_escalation_period\": 15\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e79184e8-235a-4552-8141-e48792cd1cfc",
+          "name": "Get owner by ID",
+          "request": {
+            "name": "Get owner by ID",
+            "description": {
+              "content": "Returns an `Owner` object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners",
+                ":owner_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "owner_id",
+                  "description": "(Required) The ID of the owner."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dc6c50e5-e16d-433a-8a3d-c78d998b2c1a",
+              "name": "The owner object associated with the passed-in ID.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners",
+                    ":owner_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "owner_id",
+                      "description": "(Required) The ID of the owner."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owner_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"name\": \"API Owner\",\n  \"description\": \"This owner represents the API team owners.\",\n  \"access_request_escalation_period\": 120\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aaeaf04d-312e-4398-a0d6-6e618d78d24c",
+          "name": "delete owner",
+          "request": {
+            "name": "delete owner",
+            "description": {
+              "content": "Deletes an owner.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners",
+                ":owner_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "owner_id",
+                  "description": "(Required) The ID of the owner."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5e1f0f56-0ff0-4fad-b50c-d1f8dff74620",
+              "name": "The owner was successfully deleted.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners",
+                    ":owner_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "owner_id",
+                      "description": "(Required) The ID of the owner."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcaf35f6-5dc9-4832-8109-fe9465991820",
+          "name": "get Owner From Name",
+          "request": {
+            "name": "get Owner From Name",
+            "description": {
+              "content": "Returns an `Owner` object. Does not support owners with `/` in their name, use /owners?name=... instead.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners",
+                "name",
+                ":owner_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "owner_name",
+                  "description": "(Required) The name of the owner."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2250bf2c-d9c7-4677-a122-7407f13055a4",
+              "name": "The owner object associated with the passed-in name.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners",
+                    "name",
+                    ":owner_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "owner_name",
+                      "description": "(Required) The name of the owner."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"owner_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"name\": \"API Owner\",\n  \"description\": \"This owner represents the API team owners.\",\n  \"access_request_escalation_period\": 120\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af04d354-0586-428b-9a6d-89c3dfff3205",
+          "name": "get owner users",
+          "request": {
+            "name": "get owner users",
+            "description": {
+              "content": "Gets the list of users for this owner, in escalation priority order if applicable.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners",
+                ":owner_id",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "owner_id",
+                  "description": "(Required) The ID of the owner."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5239dab2-27b1-4338-8288-fc225e188772",
+              "name": "The users for this owner.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners",
+                    ":owner_id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "owner_id",
+                      "description": "(Required) The ID of the owner."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"email\": \"john.doe@company.dev\",\n      \"full_name\": \"John Doe\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"position\": \"Engineer\"\n    },\n    {\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"email\": \"john.doe@company.dev\",\n      \"full_name\": \"John Doe\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"position\": \"Engineer\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd854905-9ee9-4fbf-b0ee-e6d66b83e8d2",
+          "name": "set owner users",
+          "request": {
+            "name": "set owner users",
+            "description": {
+              "content": "Sets the list of users for this owner. If escalation is enabled, the order of this list is the escalation priority order of the users. If the owner has a source group, adding or removing users from this list won't be possible.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "owners",
+                ":owner_id",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "owner_id",
+                  "description": "(Required) The ID of the owner."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9924cfba-b649-4f3a-8dc1-8fe688828c5d",
+              "name": "The updated users for the owner.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "owners",
+                    ":owner_id",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "owner_id",
+                      "description": "(Required) The ID of the owner."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"user_ids\": [\n    \"<uuid>\",\n    \"<uuid>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"users\": [\n    {\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"email\": \"john.doe@company.dev\",\n      \"full_name\": \"John Doe\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"position\": \"Engineer\"\n    },\n    {\n      \"user_id\": \"29827fb8-f2dd-4e80-9576-28e31e9934ac\",\n      \"email\": \"john.doe@company.dev\",\n      \"full_name\": \"John Doe\",\n      \"first_name\": \"John\",\n      \"last_name\": \"Doe\",\n      \"position\": \"Engineer\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "43b01494-a0ff-4efe-b727-692cb93a06a6",
+    "name": "Opal access-rules owners API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

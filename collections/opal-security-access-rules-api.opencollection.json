@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "access-rules",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "get_access_rules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/access-rules",
+            "params": [
+              {
+                "name": "cursor",
+                "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw",
+                "type": "query",
+                "description": "The pagination cursor value."
+              },
+              {
+                "name": "page_size",
+                "value": "200",
+                "type": "query",
+                "description": "Number of results to return per page. Default is 200."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of access rules for your organization."
+        },
+        {
+          "info": {
+            "name": "create_access_rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/access-rules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new access rule config for the given group_id."
+        },
+        {
+          "info": {
+            "name": "get_access_rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/access-rules/:access_rule_id",
+            "params": [
+              {
+                "name": "access_rule_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The access rule ID (group ID) of the access rule."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of access rule config given the group_id of the access rule."
+        },
+        {
+          "info": {
+            "name": "update_access_rule",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/access-rules/:access_rule_id",
+            "params": [
+              {
+                "name": "access_rule_id",
+                "value": "1b978423-db0a-4037-a4cf-f79c60cb67b3",
+                "type": "path",
+                "description": "The access rule ID (group ID) of the access rule."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates the access rule config for the given group_id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

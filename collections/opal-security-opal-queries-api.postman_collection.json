@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "509d3ac5-f3d8-40fb-b90c-fd7e368272da",
+      "name": "opal-queries",
+      "description": {
+        "content": "Operations related to OpalQuery",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d6786ef4-c780-4efc-af3f-f00ee4d4d4ce",
+          "name": "Run an ad-hoc OpalQuery",
+          "request": {
+            "name": "Run an ad-hoc OpalQuery",
+            "description": {
+              "content": "Runs an ad-hoc OpalQuery and returns the results. Currently supports NODE queries (users, resources, groups). This endpoint is only available to our OpalQuery beta group. Please contact Opal support if you'd like to be added to the beta.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "queries",
+                "run"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"query\": {\n    \"nodeFilters\": 8293,\n    \"accessFilters\": {\n      \"isAccessibleBy\": \"string\",\n      \"hasAccessTo\": false\n    }\n  },\n  \"first\": \"<integer>\",\n  \"after\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5c3ee447-9c2b-4339-9f85-c6afcc6c6bd5",
+              "name": "The results of the OpalQuery.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queries",
+                    "run"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"NODE\",\n  \"query\": {\n    \"nodeFilters\": {\n      \"entityTypes\": [\n        \"RESOURCE\"\n      ],\n      \"entityTag\": {\n        \"key\": \"env\",\n        \"value\": \"prod\"\n      }\n    },\n    \"accessFilters\": {\n      \"isAccessibleBy\": {\n        \"entityTypes\": [\n          \"USER\"\n        ],\n        \"entityTag\": {\n          \"key\": \"contractor\"\n        }\n      }\n    }\n  },\n  \"first\": 50\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"type\": \"NODE\",\n  \"edges\": [\n    {\n      \"node\": {\n        \"id\": \"fcc8a978-8704-c820-22f7-ccc4cb2f42cd\",\n        \"name\": \"string\",\n        \"entityType\": \"RESOURCE\",\n        \"entityItemType\": \"OPAL_ROLE\"\n      },\n      \"cursor\": \"string\"\n    },\n    {\n      \"node\": {\n        \"id\": \"c931deef-9db6-0dab-aa4d-8428590d2fbf\",\n        \"name\": \"string\",\n        \"entityType\": \"RESOURCE\",\n        \"entityItemType\": \"OPAL_ROLE\"\n      },\n      \"cursor\": \"string\"\n    }\n  ],\n  \"pageInfo\": {\n    \"hasNextPage\": true,\n    \"endCursor\": \"string\",\n    \"hasPreviousPage\": false,\n    \"startCursor\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opal.dev/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6efa1b95-ad59-4b84-99f7-8baf2e644ecd",
+    "name": "Opal access-rules opal-queries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+      "type": "text/plain"
+    }
+  }
+}

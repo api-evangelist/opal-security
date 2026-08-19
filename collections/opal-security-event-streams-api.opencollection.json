@@ -1,0 +1,102 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Opal access-rules event-streams API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "event-streams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get event streams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opal.dev/v1/event-streams",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Returns a list of configured event streaming connections for your organization."
+        },
+        {
+          "info": {
+            "name": "Create event stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opal.dev/v1/event-streams",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Creates a new event streaming connection."
+        },
+        {
+          "info": {
+            "name": "Update event stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.opal.dev/v1/event-streams/:event_stream_id",
+            "params": [
+              {
+                "name": "event_stream_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the event stream."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Updates an existing event streaming connection."
+        },
+        {
+          "info": {
+            "name": "Delete event stream",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opal.dev/v1/event-streams/:event_stream_id",
+            "params": [
+              {
+                "name": "event_stream_id",
+                "value": "4baf8423-db0a-4037-a4cf-f79c60cb67a5",
+                "type": "path",
+                "description": "The ID of the event stream."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Deletes an event streaming connection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
