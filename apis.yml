@@ -48,6 +48,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Access Rules
+  tags_raw:
   - access-rules
   properties:
   - type: OpenAPI
@@ -70,6 +72,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Application
+  tags_raw:
   - apps
   properties:
   - type: OpenAPI
@@ -92,6 +96,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Bundles
+  tags_raw:
   - bundles
   properties:
   - type: OpenAPI
@@ -114,6 +120,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Configuration Templates
+  tags_raw:
   - configuration-templates
   properties:
   - type: OpenAPI
@@ -136,6 +144,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Delegations
+  tags_raw:
   - delegations
   properties:
   - type: OpenAPI
@@ -158,6 +168,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Event Streams
+  tags_raw:
   - event-streams
   properties:
   - type: OpenAPI
@@ -180,6 +192,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Event
+  tags_raw:
   - events
   properties:
   - type: OpenAPI
@@ -224,6 +238,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Group
+  tags_raw:
   - groups
   properties:
   - type: OpenAPI
@@ -312,6 +328,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - On-Call Schedules
+  tags_raw:
   - on-call-schedules
   properties:
   - type: OpenAPI
@@ -356,6 +374,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Owners
+  tags_raw:
   - owners
   properties:
   - type: OpenAPI
@@ -378,6 +398,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Requests
+  tags_raw:
   - requests
   properties:
   - type: OpenAPI
@@ -400,6 +422,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Resources
+  tags_raw:
   - resources
   properties:
   - type: OpenAPI
@@ -422,6 +446,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Sessions
+  tags_raw:
   - sessions
   properties:
   - type: OpenAPI
@@ -444,6 +470,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Tags
+  tags_raw:
   - tags
   properties:
   - type: OpenAPI
@@ -466,6 +494,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Tokens
+  tags_raw:
   - tokens
   properties:
   - type: OpenAPI
@@ -510,6 +540,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
