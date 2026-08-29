@@ -11,6 +11,18 @@ description: >-
   (Python, Go), a CLI, a Terraform provider, and three hosted Model Context
   Protocol (MCP) servers for AI agents. Backed by Greylock. Sector: cybersecurity.
 url: https://raw.githubusercontent.com/api-evangelist/opal-security/refs/heads/main/apis.yml
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
