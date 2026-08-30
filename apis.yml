@@ -60,7 +60,7 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
-  - Access Rules
+  - access-rules
   tags_raw:
   - access-rules
   properties:
@@ -132,7 +132,7 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
-  - Configuration Templates
+  - configuration-templates
   tags_raw:
   - configuration-templates
   properties:
@@ -156,7 +156,7 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
-  - Delegations
+  - delegations
   tags_raw:
   - delegations
   properties:
@@ -180,7 +180,7 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
-  - Event Streams
+  - event-streams
   tags_raw:
   - event-streams
   properties:
@@ -340,7 +340,7 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
-  - On-Call Schedules
+  - on-call-schedules
   tags_raw:
   - on-call-schedules
   properties:
