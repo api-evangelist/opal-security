@@ -157,7 +157,7 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
-  - Delegations
+  - Delegation
   tags_raw:
   - delegations
   properties:
