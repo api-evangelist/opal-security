@@ -319,6 +319,8 @@ apis:
   humanURL: https://docs.opal.dev/
   baseURL: https://api.opal.dev/v1
   tags:
+  - Non-Human Identities
+  tags_raw:
   - non-human-identities
   properties:
   - type: OpenAPI
