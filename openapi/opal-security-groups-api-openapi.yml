@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: hello@opal.dev
     name: Opal Team
     url: https://www.opal.dev/
   description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
-  title: Opal access-rules groups API
+  title: Opal Groups API
   version: '1.0'
 servers:
 - description: Production
   url: https://api.opal.dev/v1
 tags:
-- name: groups
+- name: Groups
   description: Operations related to groups
 paths:
   /groups:
@@ -91,7 +91,7 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
     put:
       description: Bulk updates a list of groups.
       operationId: updateGroups
@@ -112,9 +112,11 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Update groups
+      x-summary-source: derived
     post:
-      description: Creates an Opal group or [imports a remote group](https://docs.opal.dev/reference/end-system-objects).
+      description: Creates an Opal group or imports a remote group.
       operationId: createGroup
       requestBody:
         required: true
@@ -132,7 +134,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Create group
+      x-summary-source: derived
   /groups/{group_id}:
     get:
       summary: Get group by ID
@@ -159,7 +163,7 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
     delete:
       description: Deletes a group.
       operationId: delete_group
@@ -180,7 +184,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Delete group
+      x-summary-source: derived
   /groups/{group_id}/message-channels:
     get:
       description: Gets the list of audit and reviewer message channels attached to a group.
@@ -206,7 +212,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get group message channels
+      x-summary-source: derived
     put:
       description: Sets the list of audit message channels attached to a group.
       operationId: set_group_message_channels
@@ -241,7 +249,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Set group message channels
+      x-summary-source: derived
   /groups/{group_id}/on-call-schedules:
     get:
       description: Gets the list of on call schedules attached to a group.
@@ -267,7 +277,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get group on call schedules
+      x-summary-source: derived
     put:
       description: Sets the list of on call schedules attached to a group.
       operationId: set_group_on_call_schedules
@@ -302,7 +314,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Set group on call schedules
+      x-summary-source: derived
   /groups/{group_id}/resources:
     get:
       description: Gets the list of resources that the group gives access to.
@@ -328,7 +342,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get group resources
+      x-summary-source: derived
     put:
       description: Sets the list of resources that the group gives access to.
       operationId: set_group_resources
@@ -355,7 +371,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Set group resources
+      x-summary-source: derived
   /groups/{group_id}/containing-groups:
     get:
       summary: Get nested groups
@@ -391,7 +409,7 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
     post:
       description: Creates a new containing group.
       operationId: add_group_containing_group
@@ -422,7 +440,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Add group containing group
+      x-summary-source: derived
   /groups/{group_id}/containing-groups/{containing_group_id}:
     get:
       summary: Get nested group by ID
@@ -459,7 +479,7 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
     delete:
       description: Removes a containing group from a group.
       operationId: remove_group_containing_group
@@ -499,7 +519,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Remove group containing group
+      x-summary-source: derived
   /groups/{group_id}/resources/{resource_id}:
     post:
       description: Adds a resource to a group.
@@ -565,7 +587,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Add group resource
+      x-summary-source: derived
   /groups/{group_id}/visibility:
     get:
       description: Gets the visibility of this group.
@@ -591,7 +615,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get group visibility
+      x-summary-source: derived
     put:
       description: Sets the visibility of this group.
       operationId: set_group_visibility
@@ -622,7 +648,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Set group visibility
+      x-summary-source: derived
   /groups/{group_id}/reviewers:
     get:
       deprecated: true
@@ -653,7 +681,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get group reviewers
+      x-summary-source: derived
     put:
       deprecated: true
       description: Sets the list of reviewers for a group.
@@ -689,7 +719,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Set group reviewers
+      x-summary-source: derived
   /groups/{group_id}/reviewer-stages:
     get:
       deprecated: true
@@ -719,7 +751,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get group reviewer stages
+      x-summary-source: derived
     put:
       deprecated: true
       description: Sets the list of reviewer stages for a group.
@@ -754,7 +788,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Set group reviewer stages
+      x-summary-source: derived
   /groups/{group_id}/tags:
     get:
       description: Returns all tags applied to the group.
@@ -780,7 +816,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get group tags
+      x-summary-source: derived
   /groups/{group_id}/users:
     get:
       description: Gets the list of users for this group.
@@ -825,7 +863,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get group users
+      x-summary-source: derived
   /groups/{group_id}/users/{user_id}:
     put:
       description: Updates a user's access level or duration in this group.
@@ -880,7 +920,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Update group user
+      x-summary-source: derived
     post:
       description: Adds a user to this group.
       operationId: add_group_user
@@ -956,7 +998,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Add group user
+      x-summary-source: derived
     delete:
       description: Removes a user's access from this group.
       operationId: delete_group_user
@@ -996,7 +1040,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Delete group user
+      x-summary-source: derived
   /groups/users/{user_id}:
     get:
       description: Returns all groups that the user is a member of.
@@ -1041,33 +1087,35 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - groups
+      - Groups
+      summary: Get user groups
+      x-summary-source: derived
 components:
   schemas:
-    ResourceAccessLevel:
+    GroupAccessLevel:
       description: '# Access Level Object
 
         ### Description
 
-        The `AccessLevel` object is used to represent the level of access that a principal has. The "default" access
+        The `GroupAccessLevel` object is used to represent the level of access that a user has to a group or a group has to a group. The "default" access
 
-        level is a `AccessLevel` object whose fields are all empty strings.
+        level is a `GroupAccessLevel` object whose fields are all empty strings.
 
 
         ### Usage Example
 
-        View the `AccessLevel` of a resource/user or resource/group pair to see the level of access granted to the resource.'
+        View the `GroupAccessLevel` of a group/user or group/group pair to see the level of access granted to the group.'
       example:
-        access_level_name: AdminRole
-        access_level_remote_id: arn:aws:iam::590304332660:role/AdministratorAccess
+        access_level_name: Developer
+        access_level_remote_id: 20
       properties:
         access_level_name:
           description: The human-readable name of the access level.
-          example: AdminRole
+          example: Developer
           type: string
         access_level_remote_id:
           description: The machine-readable identifier of the access level.
-          example: arn:aws:iam::590304332660:role/AdministratorAccess
+          example: 20
           type: string
       required:
       - access_level_name
@@ -1080,298 +1128,135 @@ components:
       - PAGER_DUTY
       example: PAGER_DUTY
       type: string
-    CreateGroupInfo:
-      description: '# CreateGroupInfo Object
+    TagsList:
+      example:
+        results:
+        - tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+          created_at: 2022-01-23 04:56:07+00:00
+          updated_at: 2022-02-23 01:34:07+00:00
+          user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
+          admin_owner_id: bfb518b1-3f5b-4e3b-8eb8-3b3fabd4ea2b
+          key: database-name
+          value: redis_db
+        - tag_id: 92f0a738-5f9f-43c2-ad67-fa31ff0eb052
+          created_at: 2022-03-23 04:56:07+00:00
+          updated_at: 2022-04-23 01:34:07+00:00
+          user_creator_id: a4d7d928-783e-4599-8ec6-088d635af4ac
+          admin_owner_id: gtg418b1-3f5b-4e3b-8eb8-3b3fabd4eaa1
+          key: database-type
+          value: sql
+      properties:
+        tags:
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
+      required:
+      - tags
+      type: object
+    GroupContainingGroup:
+      description: '# GroupContainingGroup Object
 
         ### Description
 
-        The `CreateGroupInfo` object is used to store creation info for a group.
-
-
-        ### Usage Example
-
-        Use in the `POST Groups` endpoint.'
+        The `GroupContainingGroup` object is used to represent a relationship between a group and a group.'
       example:
-        remote_group_id: 00g4fixjd6Bc9w0TT5d7
-        name: Engineering Team
-        description: Engineering team Okta group.
-        group_type: OKTA_GROUP
-        metadata: '{ "okta_directory_group": { "group_id": "00g4bs66kwtpe1g12345" } }'
-        app_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        containing_group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
       properties:
-        name:
-          description: The name of the remote group.
-          example: mongo-db-prod
-          type: string
-        description:
-          description: A description of the remote group.
-          example: Engineering team Okta group.
-          type: string
-        group_type:
-          $ref: '#/components/schemas/GroupTypeEnum'
-        app_id:
-          description: The ID of the app for the group.
+        containing_group_id:
+          description: The groupID of the containing group.
           example: f454d283-ca87-4a8a-bdbb-df212eca5353
           format: uuid
           type: string
-        remote_info:
-          $ref: '#/components/schemas/GroupRemoteInfo'
-        remote_group_id:
-          deprecated: true
-          description: Deprecated - use remote_info instead. The ID of the group on the remote system. Include only for items linked to remote systems. See [this guide](https://docs.opal.dev/reference/end-system-objects) for details on how to specify this field.
-          example: 00g4fixjd6Bc9w012345
+        duration_minutes:
+          description: The updated duration for which the group can be accessed (in minutes). Use 0 for indefinite.
+          type: integer
+          maximum: 525960
+          example: 120
+        access_level_remote_id:
+          description: The updated remote ID of the access level granted to this group.
           type: string
-        metadata:
-          deprecated: true
-          description: "Deprecated - use remote_info instead.\n\nJSON metadata about the remote group. Include only for items linked to remote systems. See [this guide](https://docs.opal.dev/reference/end-system-objects) for details on how to specify this field.\nThe required format is dependent on group_type and should have the following schema:\n<style type=\"text/css\">\ncode {max-height:300px !important}\n</style>\n```json\n{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"title\": \"Group Metadata\",\n  \"properties\": {\n    \"ad_group\": {\n      \"properties\": {\n        \"object_guid\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"object_guid\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"Active Directory Group\"\n    },\n    \"duo_group\": {\n      \"properties\": {\n        \"group_id\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"group_id\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"Duo Group\"\n    },\n    \"git_hub_team\": {\n      \"properties\": {\n        \"org_name\": {\n          \"type\": \"string\"\n        },\n        \"team_slug\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"org_name\", \"team_slug\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"GitHub Team\"\n    },\n    \"google_groups_group\": {\n      \"properties\": {\n        \"group_id\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"group_id\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"Google Groups Group\"\n    },\n    \"ldap_group\": {\n      \"properties\": {\n        \"group_uid\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"group_uid\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"LDAP Group\"\n    },\n    \"okta_directory_group\": {\n      \"properties\": {\n        \"group_id\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"group_id\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"Okta Directory Group\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"minProperties\": 1,\n  \"maxProperties\": 1,\n  \"type\": \"object\"\n}\n```"
-          example: '{ "okta_directory_group": { "group_id": "00g4bs66kwtpe1g12345" } }'
-          type: string
-        custom_request_notification:
-          description: Custom request notification sent upon request approval.
-          type: string
-          maxLength: 800
-          nullable: true
-          example: Check your email to register your account.
-        risk_sensitivity_override:
-          allOf:
-          - $ref: '#/components/schemas/RiskSensitivityEnum'
+          example: arn:aws:iam::590304332660:role/ReadOnlyAccess
       required:
-      - name
-      - group_type
-      - app_id
+      - containing_group_id
       type: object
-    VisibilityInfo:
-      description: Visibility infomation of an entity.
+    UpdateGroupResourcesInfo:
       example:
-        visibility: LIMITED
-        visibility_group_ids:
-        - 7870617d-e72a-47f5-a84c-693817ab4567
-        - 1520617d-e72a-47f5-a84c-693817ab48ad2
+        group_resources:
+        - resource_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
+          access_level_remote_id: ''
+        - resource_id: 6f99639b-7928-4043-8184-47cbc6766145
+          access_level_remote_id: write
       properties:
-        visibility:
-          $ref: '#/components/schemas/VisibilityTypeEnum'
-        visibility_group_ids:
+        resources:
           items:
-            type: string
-            format: uuid
+            $ref: '#/components/schemas/ResourceWithAccessLevel'
           type: array
       type: object
       required:
-      - visibility
-    RequestConfiguration:
-      description: '# Request Configuration Object
+      - resources
+    GroupUser:
+      description: '# Group Access User Object
 
         ### Description
 
-        The `RequestConfiguration` object is used to represent a request configuration.
+        The `GroupAccessUser` object is used to represent a user with access to a group.
 
 
         ### Usage Example
 
-        Returned from the `GET Request Configurations` endpoint.'
+        Fetch from the `LIST GroupUsers` endpoint.'
       example:
-        request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-        organization_id: w86c85d-0651-43e2-a748-d69d658418e8
-        created_at: 2021-01-06 20:00:00+00:00
-        updated_at: 2021-01-06 20:00:00+00:00
-        condition:
-          group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
-        allow_requests: true
-        auto_approval: false
-        require_mfa_to_request: false
-        max_duration_minutes: 120
-        recommended_duration_minutes: 120
-        require_support_ticket: false
-        reviewer_stages:
-        - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-          owner_ids:
-          - 37cb7e41-12ba-46da-92ff-030abe0450b1
-          - 37cb7e41-12ba-46da-92ff-030abe0450b2
-          stage: 1
-        priority: 1
-      type: object
+        full_name: Jake Barnes
+        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+        expiration_date: 2022-01-23 04:56:07+00:00
+        email: jake@company.dev
       properties:
-        condition:
-          description: The condition for the request configuration.
-          $ref: '#/components/schemas/Condition'
-        allow_requests:
-          description: A bool representing whether or not to allow requests for this resource.
-          example: true
-          type: boolean
-        auto_approval:
-          description: A bool representing whether or not to automatically approve requests for this resource.
-          example: false
-          type: boolean
-        require_mfa_to_request:
-          description: A bool representing whether or not to require MFA for requesting access to this resource.
-          example: false
-          type: boolean
-        max_duration_minutes:
-          description: The maximum duration for which the resource can be requested (in minutes).
-          type: integer
-          example: 120
-        recommended_duration_minutes:
-          description: The recommended duration for which the resource should be requested (in minutes). -1 represents an indefinite duration.
-          type: integer
-          example: 120
-        require_support_ticket:
-          description: A bool representing whether or not access requests to the resource require an access ticket.
-          example: false
-          type: boolean
-        extensions_duration_in_minutes:
-          description: The duration for which access can be extended (in minutes). Set to 0 to disable extensions. When > 0, extensions are enabled for the specified duration.
-          type: integer
-          example: 120
-        request_template_id:
-          description: The ID of the associated request template.
-          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
+        group_id:
+          description: The ID of the group.
+          example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
           format: uuid
           type: string
-        reviewer_stages:
-          description: The list of reviewer stages for the request configuration.
-          items:
-            $ref: '#/components/schemas/ReviewerStage'
-          type: array
-        priority:
-          description: The priority of the request configuration.
-          example: 1
-          type: integer
-      required:
-      - organization_id
-      - allow_requests
-      - auto_approval
-      - require_mfa_to_request
-      - require_support_ticket
-      - priority
-    GroupUserList:
-      example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        results:
-        - full_name: Jake Barnes
-          user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-          group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
-          expiration_date: 2022-01-23 04:56:07+00:00
-          email: jake@company.dev
-        - full_name: Brett Ashley
-          user_id: 7646aa9a-e2ee-4eb5-8c62-91f29038a373
-          group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
-          expiration_date: 2022-02-03 12:33:02+00:00
-          email: brett@company.dev
-      properties:
-        results:
-          items:
-            $ref: '#/components/schemas/GroupUser'
-          type: array
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
+        group_name:
+          description: The name of the group.
+          example: API Group
           type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
+        description:
+          description: The description of the group.
+          example: Group required to request API's
           type: string
-      type: object
-    Tag:
-      description: '# Tag Object
-
-        ### Description
-
-        The `Tag` object is used to represent a tag.
-
-
-        ### Usage Example
-
-        Get tags from the `GET Tag` endpoint.'
-      example:
-        tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
-        created_at: 2022-01-23 04:56:07+00:00
-        updated_at: 2022-02-23 01:34:07+00:00
-        user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
-        key: database-name
-        value: redis_db
-      properties:
-        tag_id:
-          description: The ID of the tag.
-          example: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+        user_id:
+          description: The ID of the user.
+          example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
           format: uuid
           type: string
-        created_at:
-          description: The date the tag was created.
+        access_level:
+          $ref: '#/components/schemas/GroupAccessLevel'
+          nullable: true
+        full_name:
+          description: The user's full name.
+          example: Jake Barnes
+          type: string
+        email:
+          description: The user's email.
+          example: jake@company.dev
+          type: string
+        expiration_date:
+          description: The day and time the user's access will expire.
           example: 2022-01-23 04:56:07+00:00
           format: date-time
+          nullable: true
           type: string
-        updated_at:
-          description: The date the tag was last updated.
-          example: 2022-02-23 01:34:07+00:00
-          format: date-time
-          type: string
-        user_creator_id:
-          description: The ID of the user that created the tag.
-          example: d4a7d928-783e-4599-8ec6-088d635a5bcc
-          format: uuid
-          type: string
-        key:
-          description: The key of the tag.
-          example: database-name
-          type: string
-        value:
-          description: The value of the tag.
-          example: redis_db
-          type: string
-      type: object
+        propagation_status:
+          $ref: '#/components/schemas/PropagationStatus'
       required:
-      - tag_id
-    UpdateGroupInfoList:
-      example:
-        groups:
-        - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-          description: This group represents Active Directory group "Payments Production Admin". We use this AD group to facilitate staging deployments and qualifying new releases.
-          name: api-group
-          admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-          max_duration: 120
-          require_manager_approval: false
-          require_support_ticket: false
-        - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
-          description: Manages the Integrations Team on-call privileged resources. This group is automatically synced with the on-call rotation defined in PagerDuty.
-          name: on-call-integrations
-          admin_owner_id: 4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3
-          max_duration: 360
-          require_manager_approval: false
-          require_support_ticket: true
-      properties:
-        groups:
-          description: A list of groups with information to update.
-          items:
-            $ref: '#/components/schemas/UpdateGroupInfo'
-          type: array
+      - email
+      - full_name
+      - group_id
+      - user_id
+      - group_name
+      - description
       type: object
-      required:
-      - groups
-    MessageChannelIDList:
-      description: A list of message channel IDs.
-      example:
-        message_channel_ids:
-        - 7870617d-e72a-47f5-a84c-693817ab4567
-        - 1520617d-e72a-47f5-a84c-693817ab48ad2
-      properties:
-        message_channel_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-      type: object
-      required:
-      - message_channel_ids
-    VisibilityTypeEnum:
-      description: The visibility level of the entity.
-      enum:
-      - GLOBAL
-      - LIMITED
-      example: GLOBAL
-      type: string
     Group:
       description: '# Group Object
 
@@ -1536,70 +1421,410 @@ components:
       required:
       - group_id
       type: object
-    GroupAccessLevel:
-      description: '# Access Level Object
+    MessageChannelList:
+      example:
+        channels:
+        - message_channel_id: 7870617d-e72a-47f5-a84c-693817ab4567
+          third_party_provider: SLACK
+          remote_id: C03FJR97276
+          name: api-team-audit-channel
+          is_private: false
+        - message_channel_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
+          third_party_provider: SLACK
+          remote_id: A4FJR97365D
+          name: api-team-monitor-channel
+          is_private: false
+      properties:
+        channels:
+          items:
+            $ref: '#/components/schemas/MessageChannel'
+          type: array
+      type: object
+      required:
+      - channels
+    Tag:
+      description: '# Tag Object
 
         ### Description
 
-        The `GroupAccessLevel` object is used to represent the level of access that a user has to a group or a group has to a group. The "default" access
-
-        level is a `GroupAccessLevel` object whose fields are all empty strings.
+        The `Tag` object is used to represent a tag.
 
 
         ### Usage Example
 
-        View the `GroupAccessLevel` of a group/user or group/group pair to see the level of access granted to the group.'
+        Get tags from the `GET Tag` endpoint.'
       example:
-        access_level_name: Developer
-        access_level_remote_id: 20
+        tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+        created_at: 2022-01-23 04:56:07+00:00
+        updated_at: 2022-02-23 01:34:07+00:00
+        user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
+        key: database-name
+        value: redis_db
+      properties:
+        tag_id:
+          description: The ID of the tag.
+          example: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+          format: uuid
+          type: string
+        created_at:
+          description: The date the tag was created.
+          example: 2022-01-23 04:56:07+00:00
+          format: date-time
+          type: string
+        updated_at:
+          description: The date the tag was last updated.
+          example: 2022-02-23 01:34:07+00:00
+          format: date-time
+          type: string
+        user_creator_id:
+          description: The ID of the user that created the tag.
+          example: d4a7d928-783e-4599-8ec6-088d635a5bcc
+          format: uuid
+          type: string
+        key:
+          description: The key of the tag.
+          example: database-name
+          type: string
+        value:
+          description: The value of the tag.
+          example: redis_db
+          type: string
+      type: object
+      required:
+      - tag_id
+    PaginatedGroupsList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+          app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+          name: Payments Production Admin
+          description: This group represents Active Directory group "Payments Production Admin". We use this AD group to facilitate staging deployments and qualifying new releases.
+          admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+          group_leader_user_ids:
+          - 7c86c85d-0651-43e2-a748-d69d658418e8
+          remote_id: 037m2jsg218b2wb
+          remote_name: Finance Team
+          group_type: ACTIVE_DIRECTORY_GROUP
+          max_duration: 120
+          recommended_duration: 60
+          extensions_duration_in_minutes: 60
+          require_manager_approval: false
+          require_support_ticket: false
+          require_mfa_to_approve: false
+          require_mfa_to_request: false
+          auto_approval: false
+          is_requestable: true
+        - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+          app_id: a7c3e291-1234-4abc-9def-1234567890ab
+          name: Integrations On-Call
+          description: Manages the Integrations Team on-call privileged resources. This group is automatically synced with the on-call rotation defined in PagerDuty.
+          admin_owner_id: 4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3
+          group_leader_user_ids: []
+          remote_id: pagerduty-schedule:P123XYZ
+          remote_name: Integrations On-Call
+          group_type: PAGERDUTY_ON_CALL_SCHEDULE
+          max_duration: 360
+          recommended_duration: 120
+          extensions_duration_in_minutes: 0
+          require_manager_approval: false
+          require_support_ticket: true
+          require_mfa_to_approve: false
+          require_mfa_to_request: false
+          auto_approval: false
+          is_requestable: true
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Group'
+          type: array
+      type: object
+      required:
+      - results
+    GroupResourceList:
+      example:
+        group_resources:
+        - group_id: 7870617d-e72a-47f5-a84c-693817ab4567
+          resource_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
+          access_level_remote_id: ''
+        - group_id: 50333e67-73ce-47ab-b049-d8abcd45f7a1
+          resource_id: 6f99639b-7928-4043-8184-47cbc6766145
+          access_level_remote_id: write
+      properties:
+        group_resources:
+          items:
+            $ref: '#/components/schemas/GroupResource'
+          type: array
+      type: object
+      required:
+      - group_resources
+    RiskSensitivityEnum:
+      type: string
+      description: Indicates the level of potential impact misuse or unauthorized access may incur.
+      enum:
+      - UNKNOWN
+      - CRITICAL
+      - HIGH
+      - MEDIUM
+      - LOW
+      - NONE
+    MessageChannelProviderEnum:
+      description: The third party provider of the message channel.
+      enum:
+      - SLACK
+      example: SLACK
+      type: string
+    PropagationStatusEnum:
+      description: The status of whether the user has been synced to the group or resource in the remote system.
+      enum:
+      - SUCCESS
+      - ERR_REMOTE_INTERNAL_ERROR
+      - ERR_REMOTE_USER_NOT_FOUND
+      - ERR_REMOTE_USER_NOT_LINKED
+      - ERR_REMOTE_RESOURCE_NOT_FOUND
+      - ERR_REMOTE_THROTTLE
+      - ERR_NOT_AUTHORIZED_TO_QUERY_RESOURCE
+      - ERR_REMOTE_PROVISIONING_VIA_IDP_FAILED
+      - ERR_IDP_EMAIL_UPDATE_CONFLICT
+      - ERR_TIMEOUT
+      - ERR_UNKNOWN
+      - ERR_OPAL_INTERNAL_ERROR
+      - ERR_ORG_READ_ONLY
+      - ERR_OPERATION_UNSUPPORTED
+      - PENDING
+      - PENDING_MANUAL_PROPAGATION
+      - PENDING_TICKET_CREATION
+      - ERR_TICKET_CREATION_SKIPPED
+      - ERR_DRY_RUN_MODE_ENABLED
+      - ERR_HR_IDP_PROVIDER_NOT_LINKED
+      - ERR_REMOTE_UNRECOVERABLE_ERROR
+      - ERR_REMOTE_TICKET_NOT_FOUND
+      example:
+      - SUCCESS
+      type: string
+    CreateGroupInfo:
+      description: '# CreateGroupInfo Object
+
+        ### Description
+
+        The `CreateGroupInfo` object is used to store creation info for a group.
+
+
+        ### Usage Example
+
+        Use in the `POST Groups` endpoint.'
+      example:
+        remote_group_id: 00g4fixjd6Bc9w0TT5d7
+        name: Engineering Team
+        description: Engineering team Okta group.
+        group_type: OKTA_GROUP
+        metadata: '{ "okta_directory_group": { "group_id": "00g4bs66kwtpe1g12345" } }'
+        app_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+      properties:
+        name:
+          description: The name of the remote group.
+          example: mongo-db-prod
+          type: string
+        description:
+          description: A description of the remote group.
+          example: Engineering team Okta group.
+          type: string
+        group_type:
+          $ref: '#/components/schemas/GroupTypeEnum'
+        app_id:
+          description: The ID of the app for the group.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        remote_info:
+          $ref: '#/components/schemas/GroupRemoteInfo'
+        remote_group_id:
+          deprecated: true
+          description: Deprecated - use remote_info instead. The ID of the group on the remote system. Include only for items linked to remote systems. See [this guide](https://docs.opal.dev/reference/end-system-objects) for details on how to specify this field.
+          example: 00g4fixjd6Bc9w012345
+          type: string
+        metadata:
+          deprecated: true
+          description: "Deprecated - use remote_info instead.\n\nJSON metadata about the remote group. Include only for items linked to remote systems. See [this guide](https://docs.opal.dev/reference/end-system-objects) for details on how to specify this field.\nThe required format is dependent on group_type and should have the following schema:\n<style type=\"text/css\">\ncode {max-height:300px !important}\n</style>\n```json\n{\n  \"$schema\": \"http://json-schema.org/draft-04/schema#\",\n  \"title\": \"Group Metadata\",\n  \"properties\": {\n    \"ad_group\": {\n      \"properties\": {\n        \"object_guid\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"object_guid\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"Active Directory Group\"\n    },\n    \"duo_group\": {\n      \"properties\": {\n        \"group_id\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"group_id\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"Duo Group\"\n    },\n    \"git_hub_team\": {\n      \"properties\": {\n        \"org_name\": {\n          \"type\": \"string\"\n        },\n        \"team_slug\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"org_name\", \"team_slug\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"GitHub Team\"\n    },\n    \"google_groups_group\": {\n      \"properties\": {\n        \"group_id\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"group_id\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"Google Groups Group\"\n    },\n    \"ldap_group\": {\n      \"properties\": {\n        \"group_uid\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"group_uid\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"LDAP Group\"\n    },\n    \"okta_directory_group\": {\n      \"properties\": {\n        \"group_id\": {\n          \"type\": \"string\"\n        }\n      },\n      \"required\": [\"group_id\"],\n      \"additionalProperties\": false,\n      \"type\": \"object\",\n      \"title\": \"Okta Directory Group\"\n    }\n  },\n  \"additionalProperties\": false,\n  \"minProperties\": 1,\n  \"maxProperties\": 1,\n  \"type\": \"object\"\n}\n```"
+          example: '{ "okta_directory_group": { "group_id": "00g4bs66kwtpe1g12345" } }'
+          type: string
+        custom_request_notification:
+          description: Custom request notification sent upon request approval.
+          type: string
+          maxLength: 800
+          nullable: true
+          example: Check your email to register your account.
+        risk_sensitivity_override:
+          allOf:
+          - $ref: '#/components/schemas/RiskSensitivityEnum'
+      required:
+      - name
+      - group_type
+      - app_id
+      type: object
+    GroupResource:
+      description: '# GroupResource Object
+
+        ### Description
+
+        The `GroupResource` object is used to represent a relationship between a group and a resource.'
+      example:
+        group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        resource_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+        access_level_remote_id: write
+      properties:
+        group_id:
+          description: The ID of the group.
+          example: f454d283-ca87-4a87-bdbb-df212eca5353
+          format: uuid
+          type: string
+        resource_id:
+          description: The ID of the resource.
+          example: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+          format: uuid
+          type: string
+        group_name:
+          description: The name of the group
+          example: API Group
+          type: string
+        resource_name:
+          description: The name of the resource
+          example: API Group
+          type: string
+        expiration_date:
+          description: The day and time the group's access will expire.
+          example: 2022-01-23 04:56:07+00:00
+          format: date-time
+          nullable: true
+          type: string
+        access_level:
+          $ref: '#/components/schemas/ResourceAccessLevel'
+      required:
+      - group_id
+      - resource_id
+      - access_level
+      type: object
+    PropagationStatus:
+      description: The state of whether the push action was propagated to the remote system. If this is null, the access was synced from the remote system.
+      properties:
+        status:
+          $ref: '#/components/schemas/PropagationStatusEnum'
+      required:
+      - status
+    Condition:
+      description: '# Condition Object
+
+        ### Description
+
+        The `Condition` object is used to represent a condition.
+
+
+        ### Usage Example
+
+        Used to match request configurations to users in `RequestConfiguration`'
+      example:
+        group_ids:
+        - 1b978423-db0a-4037-a4cf-f79c60cb67b3
+      type: object
+      properties:
+        group_ids:
+          description: The list of group IDs to match.
+          example:
+          - 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          items:
+            type: string
+            format: uuid
+          type: array
+        role_remote_ids:
+          description: The list of role remote IDs to match.
+          example:
+          - arn:aws:iam::590304332660:role/AdministratorAccess
+          type: array
+          items:
+            type: string
+    ResourceAccessLevel:
+      description: '# Access Level Object
+
+        ### Description
+
+        The `AccessLevel` object is used to represent the level of access that a principal has. The "default" access
+
+        level is a `AccessLevel` object whose fields are all empty strings.
+
+
+        ### Usage Example
+
+        View the `AccessLevel` of a resource/user or resource/group pair to see the level of access granted to the resource.'
+      example:
+        access_level_name: AdminRole
+        access_level_remote_id: arn:aws:iam::590304332660:role/AdministratorAccess
       properties:
         access_level_name:
           description: The human-readable name of the access level.
-          example: Developer
+          example: AdminRole
           type: string
         access_level_remote_id:
           description: The machine-readable identifier of the access level.
-          example: 20
+          example: arn:aws:iam::590304332660:role/AdministratorAccess
           type: string
       required:
       - access_level_name
       - access_level_remote_id
       type: object
-    SyncTask:
-      type: object
-      description: Represents a sync task that has been completed, either successfully or with errors.
-      properties:
-        id:
-          description: The ID of the sync task.
-          example: 7c86c85d-0651-43e2-a748-d69d658418e8
-          format: uuid
-          type: string
-        completed_at:
-          description: The time when the sync task was completed.
-          example: 2023-10-01 12:00:00+00:00
-          type: string
-          format: date-time
-      required:
-      - id
-      - completed_at
+    ReviewerIDList:
+      description: A list of reviewer IDs.
       example:
-        id: 7c86c85d-0651-43e2-a748-d69d658418e8
-        completed_at: 2023-10-01 12:00:00+00:00
-    UpdateGroupResourcesInfo:
-      example:
-        group_resources:
-        - resource_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
-          access_level_remote_id: ''
-        - resource_id: 6f99639b-7928-4043-8184-47cbc6766145
-          access_level_remote_id: write
+        reviewer_ids:
+        - 7870617d-e72a-47f5-a84c-693817ab4567
+        - 1520617d-e72a-47f5-a84c-693817ab48ad2
       properties:
-        resources:
+        reviewer_ids:
           items:
-            $ref: '#/components/schemas/ResourceWithAccessLevel'
+            type: string
+            format: uuid
           type: array
       type: object
       required:
-      - resources
+      - reviewer_ids
+    ReviewerStageList:
+      properties:
+        stages:
+          description: A list of reviewer stages.
+          items:
+            $ref: '#/components/schemas/ReviewerStage'
+          type: array
+      type: object
+      required:
+      - stages
+    ResourceWithAccessLevel:
+      description: Information about a resource and corresponding access level
+      example:
+        resource_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+        access_level_remote_id: write
+      properties:
+        resource_id:
+          description: The ID of the resource.
+          example: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+          format: uuid
+          type: string
+        access_level_remote_id:
+          description: The ID of the resource.
+          example: write
+          type: string
+      required:
+      - resource_id
+      type: object
     OnCallScheduleList:
       example:
         on_call_schedules:
@@ -1619,133 +1844,235 @@ components:
       type: object
       required:
       - on_call_schedules
-    GroupUser:
-      description: '# Group Access User Object
+    VisibilityTypeEnum:
+      description: The visibility level of the entity.
+      enum:
+      - GLOBAL
+      - LIMITED
+      example: GLOBAL
+      type: string
+    GroupUserList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - full_name: Jake Barnes
+          user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          expiration_date: 2022-01-23 04:56:07+00:00
+          email: jake@company.dev
+        - full_name: Brett Ashley
+          user_id: 7646aa9a-e2ee-4eb5-8c62-91f29038a373
+          group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          expiration_date: 2022-02-03 12:33:02+00:00
+          email: brett@company.dev
+      properties:
+        results:
+          items:
+            $ref: '#/components/schemas/GroupUser'
+          type: array
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+      type: object
+    UpdateGroupInfo:
+      description: '# UpdateGroupInfo Object
 
         ### Description
 
-        The `GroupAccessUser` object is used to represent a user with access to a group.
-
-
-        ### Usage Example
-
-        Fetch from the `LIST GroupUsers` endpoint.'
+        The `UpdateGroupInfo` object is used as an input to the UpdateGroup API.'
       example:
-        full_name: Jake Barnes
-        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-        group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
-        expiration_date: 2022-01-23 04:56:07+00:00
-        email: jake@company.dev
+        group_id: f454d283-ca87-4a87-bdbb-df212eca5353
+        description: This group represents Active Directory group "Payments Production Admin". We use this AD group to facilitate staging deployments and qualifying new releases.
+        name: api-group
+        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        max_duration: 120
+        require_manager_approval: false
+        require_support_ticket: false
       properties:
         group_id:
           description: The ID of the group.
-          example: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          example: f454d283-ca87-4a87-bdbb-df212eca5353
           format: uuid
           type: string
-        group_name:
+        name:
           description: The name of the group.
-          example: API Group
+          example: api-group
           type: string
         description:
-          description: The description of the group.
-          example: Group required to request API's
+          description: A description of the group.
+          example: This group represents Active Directory group "Payments Production Admin". We use this AD group to facilitate staging deployments and qualifying new releases.
           type: string
-        user_id:
-          description: The ID of the user.
-          example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        admin_owner_id:
+          description: The ID of the owner of the group.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
           format: uuid
           type: string
-        access_level:
-          $ref: '#/components/schemas/GroupAccessLevel'
-          nullable: true
-        full_name:
-          description: The user's full name.
-          example: Jake Barnes
-          type: string
-        email:
-          description: The user's email.
-          example: jake@company.dev
-          type: string
-        expiration_date:
-          description: The day and time the user's access will expire.
-          example: 2022-01-23 04:56:07+00:00
-          format: date-time
-          nullable: true
-          type: string
-        propagation_status:
-          $ref: '#/components/schemas/PropagationStatus'
-      required:
-      - email
-      - full_name
-      - group_id
-      - user_id
-      - group_name
-      - description
-      type: object
-    GroupResourceList:
-      example:
-        group_resources:
-        - group_id: 7870617d-e72a-47f5-a84c-693817ab4567
-          resource_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
-          access_level_remote_id: ''
-        - group_id: 50333e67-73ce-47ab-b049-d8abcd45f7a1
-          resource_id: 6f99639b-7928-4043-8184-47cbc6766145
-          access_level_remote_id: write
-      properties:
-        group_resources:
-          items:
-            $ref: '#/components/schemas/GroupResource'
-          type: array
-      type: object
-      required:
-      - group_resources
-    GroupContainingGroup:
-      description: '# GroupContainingGroup Object
-
-        ### Description
-
-        The `GroupContainingGroup` object is used to represent a relationship between a group and a group.'
-      example:
-        containing_group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-      properties:
-        containing_group_id:
-          description: The groupID of the containing group.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        duration_minutes:
-          description: The updated duration for which the group can be accessed (in minutes). Use 0 for indefinite.
+        max_duration:
+          description: The maximum duration for which the group can be requested (in minutes). Use -1 to set to indefinite. Deprecated in favor of `request_configurations`.
           type: integer
-          maximum: 525960
           example: 120
-        access_level_remote_id:
-          description: The updated remote ID of the access level granted to this group.
+          deprecated: true
+        recommended_duration:
+          description: The recommended duration for which the group should be requested (in minutes). Will be the default value in a request. Use -1 to set to indefinite and 0 to unset. Deprecated in favor of `request_configurations`.
+          type: integer
+          example: 120
+          deprecated: true
+        require_manager_approval:
+          description: A bool representing whether or not access requests to the group require manager approval. Deprecated in favor of `request_configurations`.
+          example: false
+          type: boolean
+          deprecated: true
+        require_support_ticket:
+          description: A bool representing whether or not access requests to the group require an access ticket. Deprecated in favor of `request_configurations`.
+          example: false
+          type: boolean
+          deprecated: true
+        folder_id:
+          description: The ID of the folder that the group is located in.
+          example: e27cb7b0-98e2-4555-9916-9e6d8ca6b079
+          format: uuid
           type: string
-          example: arn:aws:iam::590304332660:role/ReadOnlyAccess
-      required:
-      - containing_group_id
-      type: object
-    MessageChannelProviderEnum:
-      description: The third party provider of the message channel.
-      enum:
-      - SLACK
-      example: SLACK
-      type: string
-    ReviewerIDList:
-      description: A list of reviewer IDs.
-      example:
-        reviewer_ids:
-        - 7870617d-e72a-47f5-a84c-693817ab4567
-        - 1520617d-e72a-47f5-a84c-693817ab48ad2
-      properties:
-        reviewer_ids:
+          deprecated: true
+        require_mfa_to_approve:
+          description: A bool representing whether or not to require MFA for reviewers to approve requests for this group.
+          example: false
+          type: boolean
+        require_mfa_to_request:
+          description: A bool representing whether or not to require MFA for requesting access to this group. Deprecated in favor of `request_configurations`.
+          example: false
+          type: boolean
+          deprecated: true
+        auto_approval:
+          description: A bool representing whether or not to automatically approve requests to this group. Deprecated in favor of `request_configurations`.
+          example: false
+          type: boolean
+          deprecated: true
+        configuration_template_id:
+          description: The ID of the associated configuration template.
+          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
+          format: uuid
+          type: string
+        request_template_id:
+          description: The ID of the associated request template. Deprecated in favor of `request_configurations`.
+          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
+          format: uuid
+          type: string
+          deprecated: true
+        is_requestable:
+          description: A bool representing whether or not to allow access requests to this group. Deprecated in favor of `request_configurations`.
+          example: false
+          type: boolean
+          deprecated: true
+        group_leader_user_ids:
+          description: A list of User IDs for the group leaders of the group
           items:
             type: string
             format: uuid
           type: array
+        extensions_duration_in_minutes:
+          description: The duration for which access can be extended (in minutes). Deprecated, set the extension duration in the request_configuration you want it to apply to.
+          type: integer
+          example: 120
+          deprecated: true
+        request_configurations:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestConfiguration'
+          description: The request configuration list of the configuration template. If not provided, the default request configuration will be used.
+        request_configuration_list:
+          description: The request configuration list of the configuration template. If not provided, the default request configuration will be used. Deprecated in favor of `request_configurations`.
+          $ref: '#/components/schemas/CreateRequestConfigurationInfoList'
+          deprecated: true
+          example:
+            request_configurations:
+            - request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+              organization_id: w86c85d-0651-43e2-a748-d69d658418e8
+              condition: null
+              allow_requests: true
+              auto_approval: false
+              require_mfa_to_request: false
+              max_duration_minutes: 120
+              recommended_duration_minutes: 120
+              require_support_ticket: false
+              reviewer_stages:
+              - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+                owner_ids:
+                - 37cb7e41-12ba-46da-92ff-030abe0450b1
+                - 37cb7e41-12ba-46da-92ff-030abe0450b2
+                stage: 1
+              priority: 0
+            - request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e9
+              organization_id: w86c85d-0651-43e2-a748-d69d658418e8
+              condition:
+                group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b4
+              allow_requests: true
+              auto_approval: false
+              require_mfa_to_request: false
+              max_duration_minutes: 120
+              recommended_duration_minutes: 120
+              require_support_ticket: false
+              reviewer_stages:
+              - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+                owner_ids:
+                - 37cb7e41-12ba-46da-92ff-030abe0450b1
+                - 37cb7e41-12ba-46da-92ff-030abe0450b2
+                stage: 1
+              priority: 1
+        custom_request_notification:
+          description: Custom request notification sent to the requester when the request is approved.
+          type: string
+          maxLength: 800
+          nullable: true
+          example: Check your email to register your account.
+        risk_sensitivity_override:
+          allOf:
+          - $ref: '#/components/schemas/RiskSensitivityEnum'
+      required:
+      - group_id
+      type: object
+    OnCallSchedule:
+      description: '# OnCallSchedule Object
+
+        ### Description
+
+        The `OnCallSchedule` object is used to represent an on call schedule.
+
+
+        ### Usage Example
+
+        Update a groups on call schedule from the `UPDATE Groups` endpoint.'
+      example:
+        on_call_schedule_id: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
+        third_party_provider: PAGER_DUTY
+        remote_id: P7OWH2R
+        name: Customer Support On-Call
+      properties:
+        on_call_schedule_id:
+          description: The ID of the on-call schedule.
+          example: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
+          format: uuid
+          type: string
+        third_party_provider:
+          $ref: '#/components/schemas/OnCallScheduleProviderEnum'
+        remote_id:
+          description: The remote ID of the on call schedule
+          example: P7OWH2R
+          type: string
+        name:
+          description: The name of the on call schedule.
+          example: Customer Support On-Call
+          type: string
       type: object
       required:
-      - reviewer_ids
+      - message_channel_id
     OnCallScheduleIDList:
       description: A list of on call schedule Opal UUIDs. To get the matching remote IDs, use the /on-call-schedules endpoints.
       example:
@@ -1761,6 +2088,201 @@ components:
       type: object
       required:
       - on_call_schedule_ids
+    CreateRequestConfigurationInfoList:
+      description: '# CreateRequestConfigurationInfoList Object
+
+        ### Description
+
+        The `CreateRequestConfigurationInfoList` object is used as an input to the CreateRequestConfigurations API.
+
+
+        ### Formatting Requirements
+
+        The `CreateRequestConfigurationInfoList` object must contain a list of `RequestConfiguration` objects.
+
+        Exactly one default `RequestConfiguration` must be provided.  A default `RequestConfiguration` is one with a `condition` of `null`
+
+        and a `priority` of `0`.  The default `RequestConfiguration` will be used when no other `RequestConfiguration` matches the request.
+
+
+        Only one `RequestConfiguration` may be provided for each priority, and the priorities must be contiguous.  For example, if there are
+
+        two `RequestConfigurations` with priorities 0 and 2, there must be a `RequestConfiguration` with priority 1.
+
+
+        To use the `condition` field, the `condition` must be a valid JSON object.
+
+
+        The `condition` must be a JSON object with the key `group_ids` (more options may be added in the future), whose value is a list of
+
+        group IDs.
+
+        The `condition` will match if the user requesting access is a member of any of the groups in the list. Currently, we only support
+
+        using a single group as a condition.'
+      example:
+        request_configurations:
+        - request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+          organization_id: w86c85d-0651-43e2-a748-d69d658418e8
+          condition: null
+          allow_requests: true
+          auto_approval: false
+          require_mfa_to_request: false
+          max_duration_minutes: 120
+          recommended_duration_minutes: 120
+          require_support_ticket: false
+          reviewer_stages:
+          - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+            owner_ids:
+            - 37cb7e41-12ba-46da-92ff-030abe0450b1
+            - 37cb7e41-12ba-46da-92ff-030abe0450b2
+            stage: 1
+          priority: 0
+        - request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e9
+          organization_id: w86c85d-0651-43e2-a748-d69d658418e8
+          condition:
+            group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b4
+          allow_requests: true
+          auto_approval: false
+          require_mfa_to_request: false
+          max_duration_minutes: 120
+          recommended_duration_minutes: 120
+          require_support_ticket: false
+          reviewer_stages:
+          - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+            owner_ids:
+            - 37cb7e41-12ba-46da-92ff-030abe0450b1
+            - 37cb7e41-12ba-46da-92ff-030abe0450b2
+            stage: 1
+          priority: 1
+      properties:
+        request_configurations:
+          description: A list of request configurations to create.
+          items:
+            $ref: '#/components/schemas/RequestConfiguration'
+          type: array
+      type: object
+      required:
+      - request_configurations
+    MessageChannel:
+      description: '# MessageChannel Object
+
+        ### Description
+
+        The `MessageChannel` object is used to represent a message channel.
+
+
+        ### Usage Example
+
+        Update a groups message channel from the `UPDATE Groups` endpoint.'
+      example:
+        message_channel_id: 6670617d-e72a-47f5-a84c-693817ab4860
+        third_party_provider: SLACK
+        remote_id: C03FJR97276
+        name: api-team-audit-channel
+        is_private: false
+      properties:
+        message_channel_id:
+          description: The ID of the message channel.
+          example: 6670617d-e72a-47f5-a84c-693817ab4860
+          format: uuid
+          type: string
+        third_party_provider:
+          $ref: '#/components/schemas/MessageChannelProviderEnum'
+        remote_id:
+          description: The remote ID of the message channel
+          example: C03FJR97276
+          type: string
+        name:
+          description: The name of the message channel.
+          example: api-team-audit-channel
+          type: string
+        is_private:
+          description: A bool representing whether or not the message channel is private.
+          example: false
+          type: boolean
+      type: object
+      required:
+      - message_channel_id
+    MessageChannelIDList:
+      description: A list of message channel IDs.
+      example:
+        message_channel_ids:
+        - 7870617d-e72a-47f5-a84c-693817ab4567
+        - 1520617d-e72a-47f5-a84c-693817ab48ad2
+      properties:
+        message_channel_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+      type: object
+      required:
+      - message_channel_ids
+    UpdateGroupInfoList:
+      example:
+        groups:
+        - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+          description: This group represents Active Directory group "Payments Production Admin". We use this AD group to facilitate staging deployments and qualifying new releases.
+          name: api-group
+          admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+          max_duration: 120
+          require_manager_approval: false
+          require_support_ticket: false
+        - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+          description: Manages the Integrations Team on-call privileged resources. This group is automatically synced with the on-call rotation defined in PagerDuty.
+          name: on-call-integrations
+          admin_owner_id: 4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3
+          max_duration: 360
+          require_manager_approval: false
+          require_support_ticket: true
+      properties:
+        groups:
+          description: A list of groups with information to update.
+          items:
+            $ref: '#/components/schemas/UpdateGroupInfo'
+          type: array
+      type: object
+      required:
+      - groups
+    GroupTypeEnum:
+      description: The type of the group.
+      enum:
+      - ACTIVE_DIRECTORY_GROUP
+      - AWS_SSO_GROUP
+      - DATABRICKS_ACCOUNT_GROUP
+      - DUO_GROUP
+      - GIT_HUB_TEAM
+      - GIT_LAB_GROUP
+      - GOOGLE_GROUPS_GROUP
+      - GOOGLE_GROUPS_GKE_GROUP
+      - LDAP_GROUP
+      - OKTA_GROUP
+      - OKTA_GROUP_RULE
+      - TAILSCALE_GROUP
+      - OPAL_GROUP
+      - OPAL_ACCESS_RULE
+      - AZURE_AD_SECURITY_GROUP
+      - AZURE_AD_MICROSOFT_365_GROUP
+      - CONNECTOR_GROUP
+      - SNOWFLAKE_ROLE
+      - WORKDAY_USER_SECURITY_GROUP
+      - PAGERDUTY_ON_CALL_SCHEDULE
+      - INCIDENTIO_ON_CALL_SCHEDULE
+      - ROOTLY_ON_CALL_SCHEDULE
+      - DEVIN_GROUP
+      - GIT_HUB_ENTERPRISE_TEAM
+      - GRAFANA_TEAM
+      - CLICKHOUSE_ROLE
+      - SLACK_USER_GROUP
+      - TWINGATE_GROUP
+      - TWINGATE_GROUP_SYNCED
+      - ZENDESK_GROUP
+      - ZENDESK_ORGANIZATION
+      - HUBSPOT_TEAM
+      - TABLEAU_GROUP
+      example: OPAL_GROUP
+      type: string
     GroupRemoteInfo:
       description: Information that defines the remote group. This replaces the deprecated remote_id and metadata fields. If remote_info is provided, a group will be imported into Opal. For group types that support group creation through Opal, a new group will be created if remote_info is not provided.
       properties:
@@ -2073,337 +2595,6 @@ components:
           required:
           - group_id
       type: object
-    GroupResource:
-      description: '# GroupResource Object
-
-        ### Description
-
-        The `GroupResource` object is used to represent a relationship between a group and a resource.'
-      example:
-        group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        resource_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-        access_level_remote_id: write
-      properties:
-        group_id:
-          description: The ID of the group.
-          example: f454d283-ca87-4a87-bdbb-df212eca5353
-          format: uuid
-          type: string
-        resource_id:
-          description: The ID of the resource.
-          example: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-          format: uuid
-          type: string
-        group_name:
-          description: The name of the group
-          example: API Group
-          type: string
-        resource_name:
-          description: The name of the resource
-          example: API Group
-          type: string
-        expiration_date:
-          description: The day and time the group's access will expire.
-          example: 2022-01-23 04:56:07+00:00
-          format: date-time
-          nullable: true
-          type: string
-        access_level:
-          $ref: '#/components/schemas/ResourceAccessLevel'
-      required:
-      - group_id
-      - resource_id
-      - access_level
-      type: object
-    MessageChannelList:
-      example:
-        channels:
-        - message_channel_id: 7870617d-e72a-47f5-a84c-693817ab4567
-          third_party_provider: SLACK
-          remote_id: C03FJR97276
-          name: api-team-audit-channel
-          is_private: false
-        - message_channel_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
-          third_party_provider: SLACK
-          remote_id: A4FJR97365D
-          name: api-team-monitor-channel
-          is_private: false
-      properties:
-        channels:
-          items:
-            $ref: '#/components/schemas/MessageChannel'
-          type: array
-      type: object
-      required:
-      - channels
-    Condition:
-      description: '# Condition Object
-
-        ### Description
-
-        The `Condition` object is used to represent a condition.
-
-
-        ### Usage Example
-
-        Used to match request configurations to users in `RequestConfiguration`'
-      example:
-        group_ids:
-        - 1b978423-db0a-4037-a4cf-f79c60cb67b3
-      type: object
-      properties:
-        group_ids:
-          description: The list of group IDs to match.
-          example:
-          - 1b978423-db0a-4037-a4cf-f79c60cb67b3
-          items:
-            type: string
-            format: uuid
-          type: array
-        role_remote_ids:
-          description: The list of role remote IDs to match.
-          example:
-          - arn:aws:iam::590304332660:role/AdministratorAccess
-          type: array
-          items:
-            type: string
-    ResourceWithAccessLevel:
-      description: Information about a resource and corresponding access level
-      example:
-        resource_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-        access_level_remote_id: write
-      properties:
-        resource_id:
-          description: The ID of the resource.
-          example: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-          format: uuid
-          type: string
-        access_level_remote_id:
-          description: The ID of the resource.
-          example: write
-          type: string
-      required:
-      - resource_id
-      type: object
-    OnCallSchedule:
-      description: '# OnCallSchedule Object
-
-        ### Description
-
-        The `OnCallSchedule` object is used to represent an on call schedule.
-
-
-        ### Usage Example
-
-        Update a groups on call schedule from the `UPDATE Groups` endpoint.'
-      example:
-        on_call_schedule_id: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
-        third_party_provider: PAGER_DUTY
-        remote_id: P7OWH2R
-        name: Customer Support On-Call
-      properties:
-        on_call_schedule_id:
-          description: The ID of the on-call schedule.
-          example: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
-          format: uuid
-          type: string
-        third_party_provider:
-          $ref: '#/components/schemas/OnCallScheduleProviderEnum'
-        remote_id:
-          description: The remote ID of the on call schedule
-          example: P7OWH2R
-          type: string
-        name:
-          description: The name of the on call schedule.
-          example: Customer Support On-Call
-          type: string
-      type: object
-      required:
-      - message_channel_id
-    PropagationStatusEnum:
-      description: The status of whether the user has been synced to the group or resource in the remote system.
-      enum:
-      - SUCCESS
-      - ERR_REMOTE_INTERNAL_ERROR
-      - ERR_REMOTE_USER_NOT_FOUND
-      - ERR_REMOTE_USER_NOT_LINKED
-      - ERR_REMOTE_RESOURCE_NOT_FOUND
-      - ERR_REMOTE_THROTTLE
-      - ERR_NOT_AUTHORIZED_TO_QUERY_RESOURCE
-      - ERR_REMOTE_PROVISIONING_VIA_IDP_FAILED
-      - ERR_IDP_EMAIL_UPDATE_CONFLICT
-      - ERR_TIMEOUT
-      - ERR_UNKNOWN
-      - ERR_OPAL_INTERNAL_ERROR
-      - ERR_ORG_READ_ONLY
-      - ERR_OPERATION_UNSUPPORTED
-      - PENDING
-      - PENDING_MANUAL_PROPAGATION
-      - PENDING_TICKET_CREATION
-      - ERR_TICKET_CREATION_SKIPPED
-      - ERR_DRY_RUN_MODE_ENABLED
-      - ERR_HR_IDP_PROVIDER_NOT_LINKED
-      - ERR_REMOTE_UNRECOVERABLE_ERROR
-      - ERR_REMOTE_TICKET_NOT_FOUND
-      example:
-      - SUCCESS
-      type: string
-    UpdateGroupInfo:
-      description: '# UpdateGroupInfo Object
-
-        ### Description
-
-        The `UpdateGroupInfo` object is used as an input to the UpdateGroup API.'
-      example:
-        group_id: f454d283-ca87-4a87-bdbb-df212eca5353
-        description: This group represents Active Directory group "Payments Production Admin". We use this AD group to facilitate staging deployments and qualifying new releases.
-        name: api-group
-        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-        max_duration: 120
-        require_manager_approval: false
-        require_support_ticket: false
-      properties:
-        group_id:
-          description: The ID of the group.
-          example: f454d283-ca87-4a87-bdbb-df212eca5353
-          format: uuid
-          type: string
-        name:
-          description: The name of the group.
-          example: api-group
-          type: string
-        description:
-          description: A description of the group.
-          example: This group represents Active Directory group "Payments Production Admin". We use this AD group to facilitate staging deployments and qualifying new releases.
-          type: string
-        admin_owner_id:
-          description: The ID of the owner of the group.
-          example: 7c86c85d-0651-43e2-a748-d69d658418e8
-          format: uuid
-          type: string
-        max_duration:
-          description: The maximum duration for which the group can be requested (in minutes). Use -1 to set to indefinite. Deprecated in favor of `request_configurations`.
-          type: integer
-          example: 120
-          deprecated: true
-        recommended_duration:
-          description: The recommended duration for which the group should be requested (in minutes). Will be the default value in a request. Use -1 to set to indefinite and 0 to unset. Deprecated in favor of `request_configurations`.
-          type: integer
-          example: 120
-          deprecated: true
-        require_manager_approval:
-          description: A bool representing whether or not access requests to the group require manager approval. Deprecated in favor of `request_configurations`.
-          example: false
-          type: boolean
-          deprecated: true
-        require_support_ticket:
-          description: A bool representing whether or not access requests to the group require an access ticket. Deprecated in favor of `request_configurations`.
-          example: false
-          type: boolean
-          deprecated: true
-        folder_id:
-          description: The ID of the folder that the group is located in.
-          example: e27cb7b0-98e2-4555-9916-9e6d8ca6b079
-          format: uuid
-          type: string
-          deprecated: true
-        require_mfa_to_approve:
-          description: A bool representing whether or not to require MFA for reviewers to approve requests for this group.
-          example: false
-          type: boolean
-        require_mfa_to_request:
-          description: A bool representing whether or not to require MFA for requesting access to this group. Deprecated in favor of `request_configurations`.
-          example: false
-          type: boolean
-          deprecated: true
-        auto_approval:
-          description: A bool representing whether or not to automatically approve requests to this group. Deprecated in favor of `request_configurations`.
-          example: false
-          type: boolean
-          deprecated: true
-        configuration_template_id:
-          description: The ID of the associated configuration template.
-          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
-          format: uuid
-          type: string
-        request_template_id:
-          description: The ID of the associated request template. Deprecated in favor of `request_configurations`.
-          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
-          format: uuid
-          type: string
-          deprecated: true
-        is_requestable:
-          description: A bool representing whether or not to allow access requests to this group. Deprecated in favor of `request_configurations`.
-          example: false
-          type: boolean
-          deprecated: true
-        group_leader_user_ids:
-          description: A list of User IDs for the group leaders of the group
-          items:
-            type: string
-            format: uuid
-          type: array
-        extensions_duration_in_minutes:
-          description: The duration for which access can be extended (in minutes). Deprecated, set the extension duration in the request_configuration you want it to apply to.
-          type: integer
-          example: 120
-          deprecated: true
-        request_configurations:
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestConfiguration'
-          description: The request configuration list of the configuration template. If not provided, the default request configuration will be used.
-        request_configuration_list:
-          description: The request configuration list of the configuration template. If not provided, the default request configuration will be used. Deprecated in favor of `request_configurations`.
-          $ref: '#/components/schemas/CreateRequestConfigurationInfoList'
-          deprecated: true
-          example:
-            request_configurations:
-            - request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-              organization_id: w86c85d-0651-43e2-a748-d69d658418e8
-              condition: null
-              allow_requests: true
-              auto_approval: false
-              require_mfa_to_request: false
-              max_duration_minutes: 120
-              recommended_duration_minutes: 120
-              require_support_ticket: false
-              reviewer_stages:
-              - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-                owner_ids:
-                - 37cb7e41-12ba-46da-92ff-030abe0450b1
-                - 37cb7e41-12ba-46da-92ff-030abe0450b2
-                stage: 1
-              priority: 0
-            - request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e9
-              organization_id: w86c85d-0651-43e2-a748-d69d658418e8
-              condition:
-                group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b4
-              allow_requests: true
-              auto_approval: false
-              require_mfa_to_request: false
-              max_duration_minutes: 120
-              recommended_duration_minutes: 120
-              require_support_ticket: false
-              reviewer_stages:
-              - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-                owner_ids:
-                - 37cb7e41-12ba-46da-92ff-030abe0450b1
-                - 37cb7e41-12ba-46da-92ff-030abe0450b2
-                stage: 1
-              priority: 1
-        custom_request_notification:
-          description: Custom request notification sent to the requester when the request is approved.
-          type: string
-          maxLength: 800
-          nullable: true
-          example: Check your email to register your account.
-        risk_sensitivity_override:
-          allOf:
-          - $ref: '#/components/schemas/RiskSensitivityEnum'
-      required:
-      - group_id
-      type: object
     ReviewerStage:
       description: A reviewer stage.
       example:
@@ -2446,16 +2637,26 @@ components:
       - require_manager_approval
       - owner_ids
       - stage
-    ReviewerStageList:
-      properties:
-        stages:
-          description: A list of reviewer stages.
-          items:
-            $ref: '#/components/schemas/ReviewerStage'
-          type: array
+    SyncTask:
       type: object
+      description: Represents a sync task that has been completed, either successfully or with errors.
+      properties:
+        id:
+          description: The ID of the sync task.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
+          format: uuid
+          type: string
+        completed_at:
+          description: The time when the sync task was completed.
+          example: 2023-10-01 12:00:00+00:00
+          type: string
+          format: date-time
       required:
-      - stages
+      - id
+      - completed_at
+      example:
+        id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        completed_at: 2023-10-01 12:00:00+00:00
     GroupContainingGroupList:
       example:
         containing_groups:
@@ -2469,262 +2670,109 @@ components:
       type: object
       required:
       - containing_groups
-    CreateRequestConfigurationInfoList:
-      description: '# CreateRequestConfigurationInfoList Object
+    RequestConfiguration:
+      description: '# Request Configuration Object
 
         ### Description
 
-        The `CreateRequestConfigurationInfoList` object is used as an input to the CreateRequestConfigurations API.
-
-
-        ### Formatting Requirements
-
-        The `CreateRequestConfigurationInfoList` object must contain a list of `RequestConfiguration` objects.
-
-        Exactly one default `RequestConfiguration` must be provided.  A default `RequestConfiguration` is one with a `condition` of `null`
-
-        and a `priority` of `0`.  The default `RequestConfiguration` will be used when no other `RequestConfiguration` matches the request.
-
-
-        Only one `RequestConfiguration` may be provided for each priority, and the priorities must be contiguous.  For example, if there are
-
-        two `RequestConfigurations` with priorities 0 and 2, there must be a `RequestConfiguration` with priority 1.
-
-
-        To use the `condition` field, the `condition` must be a valid JSON object.
-
-
-        The `condition` must be a JSON object with the key `group_ids` (more options may be added in the future), whose value is a list of
-
-        group IDs.
-
-        The `condition` will match if the user requesting access is a member of any of the groups in the list. Currently, we only support
-
-        using a single group as a condition.'
-      example:
-        request_configurations:
-        - request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-          organization_id: w86c85d-0651-43e2-a748-d69d658418e8
-          condition: null
-          allow_requests: true
-          auto_approval: false
-          require_mfa_to_request: false
-          max_duration_minutes: 120
-          recommended_duration_minutes: 120
-          require_support_ticket: false
-          reviewer_stages:
-          - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-            owner_ids:
-            - 37cb7e41-12ba-46da-92ff-030abe0450b1
-            - 37cb7e41-12ba-46da-92ff-030abe0450b2
-            stage: 1
-          priority: 0
-        - request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e9
-          organization_id: w86c85d-0651-43e2-a748-d69d658418e8
-          condition:
-            group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b4
-          allow_requests: true
-          auto_approval: false
-          require_mfa_to_request: false
-          max_duration_minutes: 120
-          recommended_duration_minutes: 120
-          require_support_ticket: false
-          reviewer_stages:
-          - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-            owner_ids:
-            - 37cb7e41-12ba-46da-92ff-030abe0450b1
-            - 37cb7e41-12ba-46da-92ff-030abe0450b2
-            stage: 1
-          priority: 1
-      properties:
-        request_configurations:
-          description: A list of request configurations to create.
-          items:
-            $ref: '#/components/schemas/RequestConfiguration'
-          type: array
-      type: object
-      required:
-      - request_configurations
-    GroupTypeEnum:
-      description: The type of the group.
-      enum:
-      - ACTIVE_DIRECTORY_GROUP
-      - AWS_SSO_GROUP
-      - DATABRICKS_ACCOUNT_GROUP
-      - DUO_GROUP
-      - GIT_HUB_TEAM
-      - GIT_LAB_GROUP
-      - GOOGLE_GROUPS_GROUP
-      - GOOGLE_GROUPS_GKE_GROUP
-      - LDAP_GROUP
-      - OKTA_GROUP
-      - OKTA_GROUP_RULE
-      - TAILSCALE_GROUP
-      - OPAL_GROUP
-      - OPAL_ACCESS_RULE
-      - AZURE_AD_SECURITY_GROUP
-      - AZURE_AD_MICROSOFT_365_GROUP
-      - CONNECTOR_GROUP
-      - SNOWFLAKE_ROLE
-      - WORKDAY_USER_SECURITY_GROUP
-      - PAGERDUTY_ON_CALL_SCHEDULE
-      - INCIDENTIO_ON_CALL_SCHEDULE
-      - ROOTLY_ON_CALL_SCHEDULE
-      - DEVIN_GROUP
-      - GIT_HUB_ENTERPRISE_TEAM
-      - GRAFANA_TEAM
-      - CLICKHOUSE_ROLE
-      - SLACK_USER_GROUP
-      - TWINGATE_GROUP
-      - TWINGATE_GROUP_SYNCED
-      - ZENDESK_GROUP
-      - ZENDESK_ORGANIZATION
-      - HUBSPOT_TEAM
-      - TABLEAU_GROUP
-      example: OPAL_GROUP
-      type: string
-    PaginatedGroupsList:
-      example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        results:
-        - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-          app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-          name: Payments Production Admin
-          description: This group represents Active Directory group "Payments Production Admin". We use this AD group to facilitate staging deployments and qualifying new releases.
-          admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-          group_leader_user_ids:
-          - 7c86c85d-0651-43e2-a748-d69d658418e8
-          remote_id: 037m2jsg218b2wb
-          remote_name: Finance Team
-          group_type: ACTIVE_DIRECTORY_GROUP
-          max_duration: 120
-          recommended_duration: 60
-          extensions_duration_in_minutes: 60
-          require_manager_approval: false
-          require_support_ticket: false
-          require_mfa_to_approve: false
-          require_mfa_to_request: false
-          auto_approval: false
-          is_requestable: true
-        - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
-          app_id: a7c3e291-1234-4abc-9def-1234567890ab
-          name: Integrations On-Call
-          description: Manages the Integrations Team on-call privileged resources. This group is automatically synced with the on-call rotation defined in PagerDuty.
-          admin_owner_id: 4220bc12-ab8a-4b5d-be7b-f6bbcf9159f3
-          group_leader_user_ids: []
-          remote_id: pagerduty-schedule:P123XYZ
-          remote_name: Integrations On-Call
-          group_type: PAGERDUTY_ON_CALL_SCHEDULE
-          max_duration: 360
-          recommended_duration: 120
-          extensions_duration_in_minutes: 0
-          require_manager_approval: false
-          require_support_ticket: true
-          require_mfa_to_approve: false
-          require_mfa_to_request: false
-          auto_approval: false
-          is_requestable: true
-      properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
-          type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/Group'
-          type: array
-      type: object
-      required:
-      - results
-    RiskSensitivityEnum:
-      type: string
-      description: Indicates the level of potential impact misuse or unauthorized access may incur.
-      enum:
-      - UNKNOWN
-      - CRITICAL
-      - HIGH
-      - MEDIUM
-      - LOW
-      - NONE
-    MessageChannel:
-      description: '# MessageChannel Object
-
-        ### Description
-
-        The `MessageChannel` object is used to represent a message channel.
+        The `RequestConfiguration` object is used to represent a request configuration.
 
 
         ### Usage Example
 
-        Update a groups message channel from the `UPDATE Groups` endpoint.'
+        Returned from the `GET Request Configurations` endpoint.'
       example:
-        message_channel_id: 6670617d-e72a-47f5-a84c-693817ab4860
-        third_party_provider: SLACK
-        remote_id: C03FJR97276
-        name: api-team-audit-channel
-        is_private: false
+        request_configuration_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        organization_id: w86c85d-0651-43e2-a748-d69d658418e8
+        created_at: 2021-01-06 20:00:00+00:00
+        updated_at: 2021-01-06 20:00:00+00:00
+        condition:
+          group_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+        allow_requests: true
+        auto_approval: false
+        require_mfa_to_request: false
+        max_duration_minutes: 120
+        recommended_duration_minutes: 120
+        require_support_ticket: false
+        reviewer_stages:
+        - reviewer_stage_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+          owner_ids:
+          - 37cb7e41-12ba-46da-92ff-030abe0450b1
+          - 37cb7e41-12ba-46da-92ff-030abe0450b2
+          stage: 1
+        priority: 1
+      type: object
       properties:
-        message_channel_id:
-          description: The ID of the message channel.
-          example: 6670617d-e72a-47f5-a84c-693817ab4860
-          format: uuid
-          type: string
-        third_party_provider:
-          $ref: '#/components/schemas/MessageChannelProviderEnum'
-        remote_id:
-          description: The remote ID of the message channel
-          example: C03FJR97276
-          type: string
-        name:
-          description: The name of the message channel.
-          example: api-team-audit-channel
-          type: string
-        is_private:
-          description: A bool representing whether or not the message channel is private.
+        condition:
+          description: The condition for the request configuration.
+          $ref: '#/components/schemas/Condition'
+        allow_requests:
+          description: A bool representing whether or not to allow requests for this resource.
+          example: true
+          type: boolean
+        auto_approval:
+          description: A bool representing whether or not to automatically approve requests for this resource.
           example: false
           type: boolean
-      type: object
-      required:
-      - message_channel_id
-    TagsList:
-      example:
-        results:
-        - tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
-          created_at: 2022-01-23 04:56:07+00:00
-          updated_at: 2022-02-23 01:34:07+00:00
-          user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
-          admin_owner_id: bfb518b1-3f5b-4e3b-8eb8-3b3fabd4ea2b
-          key: database-name
-          value: redis_db
-        - tag_id: 92f0a738-5f9f-43c2-ad67-fa31ff0eb052
-          created_at: 2022-03-23 04:56:07+00:00
-          updated_at: 2022-04-23 01:34:07+00:00
-          user_creator_id: a4d7d928-783e-4599-8ec6-088d635af4ac
-          admin_owner_id: gtg418b1-3f5b-4e3b-8eb8-3b3fabd4eaa1
-          key: database-type
-          value: sql
-      properties:
-        tags:
+        require_mfa_to_request:
+          description: A bool representing whether or not to require MFA for requesting access to this resource.
+          example: false
+          type: boolean
+        max_duration_minutes:
+          description: The maximum duration for which the resource can be requested (in minutes).
+          type: integer
+          example: 120
+        recommended_duration_minutes:
+          description: The recommended duration for which the resource should be requested (in minutes). -1 represents an indefinite duration.
+          type: integer
+          example: 120
+        require_support_ticket:
+          description: A bool representing whether or not access requests to the resource require an access ticket.
+          example: false
+          type: boolean
+        extensions_duration_in_minutes:
+          description: The duration for which access can be extended (in minutes). Set to 0 to disable extensions. When > 0, extensions are enabled for the specified duration.
+          type: integer
+          example: 120
+        request_template_id:
+          description: The ID of the associated request template.
+          example: 06851574-e50d-40ca-8c78-f72ae6ab4304
+          format: uuid
+          type: string
+        reviewer_stages:
+          description: The list of reviewer stages for the request configuration.
           items:
-            $ref: '#/components/schemas/Tag'
+            $ref: '#/components/schemas/ReviewerStage'
           type: array
+        priority:
+          description: The priority of the request configuration.
+          example: 1
+          type: integer
       required:
-      - tags
-      type: object
-    PropagationStatus:
-      description: The state of whether the push action was propagated to the remote system. If this is null, the access was synced from the remote system.
+      - organization_id
+      - allow_requests
+      - auto_approval
+      - require_mfa_to_request
+      - require_support_ticket
+      - priority
+    VisibilityInfo:
+      description: Visibility infomation of an entity.
+      example:
+        visibility: LIMITED
+        visibility_group_ids:
+        - 7870617d-e72a-47f5-a84c-693817ab4567
+        - 1520617d-e72a-47f5-a84c-693817ab48ad2
       properties:
-        status:
-          $ref: '#/components/schemas/PropagationStatusEnum'
+        visibility:
+          $ref: '#/components/schemas/VisibilityTypeEnum'
+        visibility_group_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+      type: object
       required:
-      - status
+      - visibility
   securitySchemes:
     BearerAuth:
       scheme: bearer

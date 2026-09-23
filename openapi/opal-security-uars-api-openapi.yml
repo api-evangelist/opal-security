@@ -1,11 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: hello@opal.dev
     name: Opal Team
     url: https://www.opal.dev/
   description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
-  title: Opal access-rules uars API
+  title: Opal Uars API
   version: '1.0'
 servers:
 - description: Production
@@ -49,6 +49,8 @@ paths:
       - BearerAuth: []
       tags:
       - uars
+      summary: Get UARs
+      x-summary-source: derived
   /uar:
     post:
       description: Starts a User Access Review.
@@ -71,6 +73,8 @@ paths:
       - BearerAuth: []
       tags:
       - uars
+      summary: Create uar
+      x-summary-source: derived
   /uar/{uar_id}:
     get:
       description: Retrieves a specific UAR.
@@ -97,8 +101,252 @@ paths:
       - BearerAuth: []
       tags:
       - uars
+      summary: Get uar
+      x-summary-source: derived
 components:
   schemas:
+    UAR:
+      description: A user access review.
+      example:
+        uar_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        name: Monthly UAR (July)
+        send_reviewer_assignment_notification: false
+        deadline: 2022-07-14 06:59:59+00:00
+        time_zone: America/Los_Angeles
+        self_review_allowed: false
+        uar_scope:
+          tags:
+          - key: uar_scope
+            value: high_priority
+          names:
+          - demo
+          - api
+          admins:
+          - f454d283-ca87-4a8a-bdbb-df212eca5353
+          - 8763d283-ca87-4a8a-bdbb-df212ecab139
+      properties:
+        uar_id:
+          description: The ID of the UAR.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        name:
+          description: The name of the UAR.
+          example: Monthly UAR (July)
+          type: string
+        reviewer_assignment_policy:
+          $ref: '#/components/schemas/UARReviewerAssignmentPolicyEnum'
+        send_reviewer_assignment_notification:
+          description: A bool representing whether to send a notification to reviewers when they're assigned a new review. Default is False.
+          example: false
+          type: boolean
+        deadline:
+          description: The last day for reviewers to complete their access reviews.
+          example: 2022-07-14 06:59:59+00:00
+          type: string
+          format: date-time
+        time_zone:
+          description: The time zone name (as defined by the IANA Time Zone database) used in the access review deadline and exported audit report. Default is America/Los_Angeles.
+          example: America/Los_Angeles
+          type: string
+        self_review_allowed:
+          description: A bool representing whether to present a warning when a user is the only reviewer for themself. Default is False.
+          example: false
+          type: boolean
+        instantly_action_reviews:
+          description: A bool representing whether to instantly action changes when reviewers submit their decision. Default is False.
+          type: boolean
+          example: false
+        uar_scope:
+          $ref: '#/components/schemas/UARScope'
+      required:
+      - uar_id
+      - name
+      - deadline
+      - reviewer_assignment_policy
+      - send_reviewer_assignment_notification
+      - time_zone
+      - self_review_allowed
+      - instantly_action_reviews
+      type: object
+    TagFilter:
+      description: A tag filter defined by the tags key and value.
+      example:
+        key: uar_scope
+        value: high_priority
+      properties:
+        key:
+          description: The key of the tag.
+          example: uar_scope
+          type: string
+        value:
+          description: The value of the tag.
+          example: high_priority
+          type: string
+      required:
+      - key
+      type: object
+    CreateUARInfo:
+      description: Information needed to start a user access review.
+      example:
+        name: Monthly UAR (July)
+        send_reviewer_assignment_notification: false
+        deadline: 2022-07-14 06:59:59+00:00
+        time_zone: America/Los_Angeles
+        self_review_allowed: false
+        reminder_schedule:
+        - 7
+        - 3
+        - 1
+        - 0
+        reminder_include_manager: true
+        uar_scope:
+          group_visibility: STRICT
+          tags:
+          - key: uar_scope
+            value: high_priority
+          names:
+          - demo
+          - api
+          admins:
+          - f454d283-ca87-4a8a-bdbb-df212eca5353
+          - 8763d283-ca87-4a8a-bdbb-df212ecab139
+      properties:
+        name:
+          description: The name of the UAR.
+          example: Monthly UAR (July)
+          type: string
+        reviewer_assignment_policy:
+          $ref: '#/components/schemas/UARReviewerAssignmentPolicyEnum'
+        send_reviewer_assignment_notification:
+          description: A bool representing whether to send a notification to reviewers when they're assigned a new review. Default is False.
+          example: false
+          type: boolean
+        deadline:
+          description: The last day for reviewers to complete their access reviews.
+          example: 2022-07-14 06:59:59+00:00
+          type: string
+          format: date-time
+        time_zone:
+          description: The time zone name (as defined by the IANA Time Zone database) used in the access review deadline and exported audit report. Default is America/Los_Angeles.
+          example: America/Los_Angeles
+          type: string
+        self_review_allowed:
+          description: A bool representing whether to present a warning when a user is the only reviewer for themself. Default is False.
+          example: false
+          type: boolean
+        instantly_action_reviews:
+          description: A bool representing whether to instantly action changes when reviewers submit their decision. Default is False.
+          type: boolean
+          example: false
+        reminder_schedule:
+          items:
+            type: integer
+          type: array
+        reminder_include_manager:
+          type: boolean
+          example: false
+        uar_scope:
+          $ref: '#/components/schemas/UARScope'
+      required:
+      - name
+      - deadline
+      - reviewer_assignment_policy
+      - send_reviewer_assignment_notification
+      - time_zone
+      - self_review_allowed
+      type: object
+    ResourceTypeEnum:
+      description: The type of the resource.
+      enum:
+      - AWS_IAM_ROLE
+      - AWS_EC2_INSTANCE
+      - AWS_EKS_CLUSTER
+      - AWS_RDS_POSTGRES_CLUSTER
+      - AWS_RDS_POSTGRES_INSTANCE
+      - AWS_RDS_MYSQL_CLUSTER
+      - AWS_RDS_MYSQL_INSTANCE
+      - AWS_ACCOUNT
+      - AWS_SSO_PERMISSION_SET
+      - AWS_ORGANIZATIONAL_UNIT
+      - AZURE_MANAGEMENT_GROUP
+      - AZURE_RESOURCE_GROUP
+      - AZURE_SUBSCRIPTION
+      - AZURE_VIRTUAL_MACHINE
+      - AZURE_STORAGE_ACCOUNT
+      - AZURE_STORAGE_CONTAINER
+      - AZURE_SQL_SERVER
+      - AZURE_SQL_MANAGED_INSTANCE
+      - AZURE_SQL_DATABASE
+      - AZURE_SQL_MANAGED_DATABASE
+      - AZURE_USER_ASSIGNED_MANAGED_Identity
+      - AZURE_ENTRA_ID_ROLE
+      - AZURE_ENTERPRISE_APP
+      - CUSTOM
+      - CUSTOM_CONNECTOR
+      - DATABRICKS_ACCOUNT_SERVICE_PRINCIPAL
+      - GCP_ORGANIZATION
+      - GCP_BUCKET
+      - GCP_COMPUTE_INSTANCE
+      - GCP_FOLDER
+      - GCP_GKE_CLUSTER
+      - GCP_PROJECT
+      - GCP_CLOUD_SQL_POSTGRES_INSTANCE
+      - GCP_CLOUD_SQL_MYSQL_INSTANCE
+      - GCP_BIG_QUERY_DATASET
+      - GCP_BIG_QUERY_TABLE
+      - GCP_SERVICE_ACCOUNT
+      - GIT_HUB_REPO
+      - GIT_HUB_ORG_ROLE
+      - GIT_LAB_PROJECT
+      - GOOGLE_WORKSPACE_ROLE
+      - MONGO_INSTANCE
+      - MONGO_ATLAS_INSTANCE
+      - NETSUITE_ROLE
+      - DATADOG_ROLE
+      - OKTA_APP
+      - OKTA_ROLE
+      - OPAL_ROLE
+      - OPAL_SCOPED_ROLE
+      - PAGERDUTY_ROLE
+      - TAILSCALE_SSH
+      - SALESFORCE_PERMISSION_SET
+      - SALESFORCE_PROFILE
+      - SALESFORCE_ROLE
+      - SNOWFLAKE_DATABASE
+      - SNOWFLAKE_SCHEMA
+      - SNOWFLAKE_TABLE
+      - WORKDAY_ROLE
+      - MYSQL_INSTANCE
+      - MARIADB_INSTANCE
+      - POSTGRES_INSTANCE
+      - TELEPORT_ROLE
+      - ILEVEL_ADVANCED_ROLE
+      - DATASTAX_ASTRA_ROLE
+      - COUPA_ROLE
+      - CURSOR_ORGANIZATION
+      - OPENAI_PLATFORM_PROJECT
+      - OPENAI_PLATFORM_SERVICE_ACCOUNT
+      - ANTHROPIC_WORKSPACE
+      - GIT_HUB_ORG
+      - ORACLE_FUSION_ROLE
+      - DEVIN_ORGANIZATION
+      - DEVIN_ROLE
+      - VAULT_SECRET
+      - VAULT_POLICY
+      - VAULT_OIDC_ROLE
+      - GIT_HUB_ENTERPRISE_ROLE
+      - GRAFANA_FOLDER
+      - GRAFANA_DASHBOARD
+      - GRAFANA_BASIC_ROLE
+      - GRAFANA_ROLE
+      - CLICKHOUSE_DATABASE
+      - CLICKHOUSE_TABLE
+      - TWINGATE_RESOURCE
+      - ZENDESK_ROLE
+      - HUBSPOT_ROLE
+      example: AWS_IAM_ROLE
+      type: string
     UARScope:
       description: If set, the access review will only contain resources and groups that match at least one of the filters in scope.
       example:
@@ -192,125 +440,17 @@ components:
             type: string
           type: array
       type: object
-    GroupTypeEnum:
-      description: The type of the group.
+    UARReviewerAssignmentPolicyEnum:
+      description: A policy for auto-assigning reviewers. If auto-assignment is on, specific assignments can still be manually adjusted after the access review is started. Default is Manually. BY_OWNING_TEAM_ADMIN assigns reviews to resource admins in round-robin fashion. BY_OWNING_TEAM_ADMIN_ALL assigns reviews to all resource admins. BY_APPROVERS assigns reviews to resource approvers in round-robin fashion. BY_APPROVERS_ALL assigns reviews to all resource approvers.
       enum:
-      - ACTIVE_DIRECTORY_GROUP
-      - AWS_SSO_GROUP
-      - DATABRICKS_ACCOUNT_GROUP
-      - DUO_GROUP
-      - GIT_HUB_TEAM
-      - GIT_LAB_GROUP
-      - GOOGLE_GROUPS_GROUP
-      - GOOGLE_GROUPS_GKE_GROUP
-      - LDAP_GROUP
-      - OKTA_GROUP
-      - OKTA_GROUP_RULE
-      - TAILSCALE_GROUP
-      - OPAL_GROUP
-      - OPAL_ACCESS_RULE
-      - AZURE_AD_SECURITY_GROUP
-      - AZURE_AD_MICROSOFT_365_GROUP
-      - CONNECTOR_GROUP
-      - SNOWFLAKE_ROLE
-      - WORKDAY_USER_SECURITY_GROUP
-      - PAGERDUTY_ON_CALL_SCHEDULE
-      - INCIDENTIO_ON_CALL_SCHEDULE
-      - ROOTLY_ON_CALL_SCHEDULE
-      - DEVIN_GROUP
-      - GIT_HUB_ENTERPRISE_TEAM
-      - GRAFANA_TEAM
-      - CLICKHOUSE_ROLE
-      - SLACK_USER_GROUP
-      - TWINGATE_GROUP
-      - TWINGATE_GROUP_SYNCED
-      - ZENDESK_GROUP
-      - ZENDESK_ORGANIZATION
-      - HUBSPOT_TEAM
-      - TABLEAU_GROUP
-      example: OPAL_GROUP
+      - MANUALLY
+      - BY_OWNING_TEAM_ADMIN
+      - BY_OWNING_TEAM_ADMIN_ALL
+      - BY_MANAGER
+      - BY_APPROVERS
+      - BY_APPROVERS_ALL
+      example: MANUALLY
       type: string
-    UAR:
-      description: A user access review.
-      example:
-        uar_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        name: Monthly UAR (July)
-        send_reviewer_assignment_notification: false
-        deadline: 2022-07-14 06:59:59+00:00
-        time_zone: America/Los_Angeles
-        self_review_allowed: false
-        uar_scope:
-          tags:
-          - key: uar_scope
-            value: high_priority
-          names:
-          - demo
-          - api
-          admins:
-          - f454d283-ca87-4a8a-bdbb-df212eca5353
-          - 8763d283-ca87-4a8a-bdbb-df212ecab139
-      properties:
-        uar_id:
-          description: The ID of the UAR.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        name:
-          description: The name of the UAR.
-          example: Monthly UAR (July)
-          type: string
-        reviewer_assignment_policy:
-          $ref: '#/components/schemas/UARReviewerAssignmentPolicyEnum'
-        send_reviewer_assignment_notification:
-          description: A bool representing whether to send a notification to reviewers when they're assigned a new review. Default is False.
-          example: false
-          type: boolean
-        deadline:
-          description: The last day for reviewers to complete their access reviews.
-          example: 2022-07-14 06:59:59+00:00
-          type: string
-          format: date-time
-        time_zone:
-          description: The time zone name (as defined by the IANA Time Zone database) used in the access review deadline and exported audit report. Default is America/Los_Angeles.
-          example: America/Los_Angeles
-          type: string
-        self_review_allowed:
-          description: A bool representing whether to present a warning when a user is the only reviewer for themself. Default is False.
-          example: false
-          type: boolean
-        instantly_action_reviews:
-          description: A bool representing whether to instantly action changes when reviewers submit their decision. Default is False.
-          type: boolean
-          example: false
-        uar_scope:
-          $ref: '#/components/schemas/UARScope'
-      required:
-      - uar_id
-      - name
-      - deadline
-      - reviewer_assignment_policy
-      - send_reviewer_assignment_notification
-      - time_zone
-      - self_review_allowed
-      - instantly_action_reviews
-      type: object
-    TagFilter:
-      description: A tag filter defined by the tags key and value.
-      example:
-        key: uar_scope
-        value: high_priority
-      properties:
-        key:
-          description: The key of the tag.
-          example: uar_scope
-          type: string
-        value:
-          description: The value of the tag.
-          example: high_priority
-          type: string
-      required:
-      - key
-      type: object
     PaginatedUARsList:
       description: A list of UARs.
       example:
@@ -367,177 +507,43 @@ components:
       required:
       - results
       type: object
-    CreateUARInfo:
-      description: Information needed to start a user access review.
-      example:
-        name: Monthly UAR (July)
-        send_reviewer_assignment_notification: false
-        deadline: 2022-07-14 06:59:59+00:00
-        time_zone: America/Los_Angeles
-        self_review_allowed: false
-        reminder_schedule:
-        - 7
-        - 3
-        - 1
-        - 0
-        reminder_include_manager: true
-        uar_scope:
-          group_visibility: STRICT
-          tags:
-          - key: uar_scope
-            value: high_priority
-          names:
-          - demo
-          - api
-          admins:
-          - f454d283-ca87-4a8a-bdbb-df212eca5353
-          - 8763d283-ca87-4a8a-bdbb-df212ecab139
-      properties:
-        name:
-          description: The name of the UAR.
-          example: Monthly UAR (July)
-          type: string
-        reviewer_assignment_policy:
-          $ref: '#/components/schemas/UARReviewerAssignmentPolicyEnum'
-        send_reviewer_assignment_notification:
-          description: A bool representing whether to send a notification to reviewers when they're assigned a new review. Default is False.
-          example: false
-          type: boolean
-        deadline:
-          description: The last day for reviewers to complete their access reviews.
-          example: 2022-07-14 06:59:59+00:00
-          type: string
-          format: date-time
-        time_zone:
-          description: The time zone name (as defined by the IANA Time Zone database) used in the access review deadline and exported audit report. Default is America/Los_Angeles.
-          example: America/Los_Angeles
-          type: string
-        self_review_allowed:
-          description: A bool representing whether to present a warning when a user is the only reviewer for themself. Default is False.
-          example: false
-          type: boolean
-        instantly_action_reviews:
-          description: A bool representing whether to instantly action changes when reviewers submit their decision. Default is False.
-          type: boolean
-          example: false
-        reminder_schedule:
-          items:
-            type: integer
-          type: array
-        reminder_include_manager:
-          type: boolean
-          example: false
-        uar_scope:
-          $ref: '#/components/schemas/UARScope'
-      required:
-      - name
-      - deadline
-      - reviewer_assignment_policy
-      - send_reviewer_assignment_notification
-      - time_zone
-      - self_review_allowed
-      type: object
-    UARReviewerAssignmentPolicyEnum:
-      description: A policy for auto-assigning reviewers. If auto-assignment is on, specific assignments can still be manually adjusted after the access review is started. Default is Manually. BY_OWNING_TEAM_ADMIN assigns reviews to resource admins in round-robin fashion. BY_OWNING_TEAM_ADMIN_ALL assigns reviews to all resource admins. BY_APPROVERS assigns reviews to resource approvers in round-robin fashion. BY_APPROVERS_ALL assigns reviews to all resource approvers.
+    GroupTypeEnum:
+      description: The type of the group.
       enum:
-      - MANUALLY
-      - BY_OWNING_TEAM_ADMIN
-      - BY_OWNING_TEAM_ADMIN_ALL
-      - BY_MANAGER
-      - BY_APPROVERS
-      - BY_APPROVERS_ALL
-      example: MANUALLY
-      type: string
-    ResourceTypeEnum:
-      description: The type of the resource.
-      enum:
-      - AWS_IAM_ROLE
-      - AWS_EC2_INSTANCE
-      - AWS_EKS_CLUSTER
-      - AWS_RDS_POSTGRES_CLUSTER
-      - AWS_RDS_POSTGRES_INSTANCE
-      - AWS_RDS_MYSQL_CLUSTER
-      - AWS_RDS_MYSQL_INSTANCE
-      - AWS_ACCOUNT
-      - AWS_SSO_PERMISSION_SET
-      - AWS_ORGANIZATIONAL_UNIT
-      - AZURE_MANAGEMENT_GROUP
-      - AZURE_RESOURCE_GROUP
-      - AZURE_SUBSCRIPTION
-      - AZURE_VIRTUAL_MACHINE
-      - AZURE_STORAGE_ACCOUNT
-      - AZURE_STORAGE_CONTAINER
-      - AZURE_SQL_SERVER
-      - AZURE_SQL_MANAGED_INSTANCE
-      - AZURE_SQL_DATABASE
-      - AZURE_SQL_MANAGED_DATABASE
-      - AZURE_USER_ASSIGNED_MANAGED_Identity
-      - AZURE_ENTRA_ID_ROLE
-      - AZURE_ENTERPRISE_APP
-      - CUSTOM
-      - CUSTOM_CONNECTOR
-      - DATABRICKS_ACCOUNT_SERVICE_PRINCIPAL
-      - GCP_ORGANIZATION
-      - GCP_BUCKET
-      - GCP_COMPUTE_INSTANCE
-      - GCP_FOLDER
-      - GCP_GKE_CLUSTER
-      - GCP_PROJECT
-      - GCP_CLOUD_SQL_POSTGRES_INSTANCE
-      - GCP_CLOUD_SQL_MYSQL_INSTANCE
-      - GCP_BIG_QUERY_DATASET
-      - GCP_BIG_QUERY_TABLE
-      - GCP_SERVICE_ACCOUNT
-      - GIT_HUB_REPO
-      - GIT_HUB_ORG_ROLE
-      - GIT_LAB_PROJECT
-      - GOOGLE_WORKSPACE_ROLE
-      - MONGO_INSTANCE
-      - MONGO_ATLAS_INSTANCE
-      - NETSUITE_ROLE
-      - DATADOG_ROLE
-      - OKTA_APP
-      - OKTA_ROLE
-      - OPAL_ROLE
-      - OPAL_SCOPED_ROLE
-      - PAGERDUTY_ROLE
-      - TAILSCALE_SSH
-      - SALESFORCE_PERMISSION_SET
-      - SALESFORCE_PROFILE
-      - SALESFORCE_ROLE
-      - SNOWFLAKE_DATABASE
-      - SNOWFLAKE_SCHEMA
-      - SNOWFLAKE_TABLE
-      - WORKDAY_ROLE
-      - MYSQL_INSTANCE
-      - MARIADB_INSTANCE
-      - POSTGRES_INSTANCE
-      - TELEPORT_ROLE
-      - ILEVEL_ADVANCED_ROLE
-      - DATASTAX_ASTRA_ROLE
-      - COUPA_ROLE
-      - CURSOR_ORGANIZATION
-      - OPENAI_PLATFORM_PROJECT
-      - OPENAI_PLATFORM_SERVICE_ACCOUNT
-      - ANTHROPIC_WORKSPACE
-      - GIT_HUB_ORG
-      - ORACLE_FUSION_ROLE
-      - DEVIN_ORGANIZATION
-      - DEVIN_ROLE
-      - VAULT_SECRET
-      - VAULT_POLICY
-      - VAULT_OIDC_ROLE
-      - GIT_HUB_ENTERPRISE_ROLE
-      - GRAFANA_FOLDER
-      - GRAFANA_DASHBOARD
-      - GRAFANA_BASIC_ROLE
-      - GRAFANA_ROLE
-      - CLICKHOUSE_DATABASE
-      - CLICKHOUSE_TABLE
-      - TWINGATE_RESOURCE
-      - ZENDESK_ROLE
-      - HUBSPOT_ROLE
-      example: AWS_IAM_ROLE
+      - ACTIVE_DIRECTORY_GROUP
+      - AWS_SSO_GROUP
+      - DATABRICKS_ACCOUNT_GROUP
+      - DUO_GROUP
+      - GIT_HUB_TEAM
+      - GIT_LAB_GROUP
+      - GOOGLE_GROUPS_GROUP
+      - GOOGLE_GROUPS_GKE_GROUP
+      - LDAP_GROUP
+      - OKTA_GROUP
+      - OKTA_GROUP_RULE
+      - TAILSCALE_GROUP
+      - OPAL_GROUP
+      - OPAL_ACCESS_RULE
+      - AZURE_AD_SECURITY_GROUP
+      - AZURE_AD_MICROSOFT_365_GROUP
+      - CONNECTOR_GROUP
+      - SNOWFLAKE_ROLE
+      - WORKDAY_USER_SECURITY_GROUP
+      - PAGERDUTY_ON_CALL_SCHEDULE
+      - INCIDENTIO_ON_CALL_SCHEDULE
+      - ROOTLY_ON_CALL_SCHEDULE
+      - DEVIN_GROUP
+      - GIT_HUB_ENTERPRISE_TEAM
+      - GRAFANA_TEAM
+      - CLICKHOUSE_ROLE
+      - SLACK_USER_GROUP
+      - TWINGATE_GROUP
+      - TWINGATE_GROUP_SYNCED
+      - ZENDESK_GROUP
+      - ZENDESK_ORGANIZATION
+      - HUBSPOT_TEAM
+      - TABLEAU_GROUP
+      example: OPAL_GROUP
       type: string
   securitySchemes:
     BearerAuth:

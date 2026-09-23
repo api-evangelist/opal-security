@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: hello@opal.dev
     name: Opal Team
     url: https://www.opal.dev/
   description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
-  title: Opal access-rules API
+  title: Opal Access Rules API
   version: '1.0'
 servers:
 - description: Production
   url: https://api.opal.dev/v1
 tags:
-- name: access-rules
+- name: Access Rules
   description: Operations related to access rules
 paths:
   /access-rules:
@@ -47,7 +47,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - access-rules
+      - Access Rules
+      summary: Get access rules
+      x-summary-source: derived
     post:
       description: Creates a new access rule config for the given group_id.
       operationId: create_access_rule
@@ -67,7 +69,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - access-rules
+      - Access Rules
+      summary: Create access rule
+      x-summary-source: derived
   /access-rules/{access_rule_id}:
     get:
       description: Returns a list of access rule config given the group_id of the access rule.
@@ -93,7 +97,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - access-rules
+      - Access Rules
+      summary: Get access rule
+      x-summary-source: derived
     put:
       description: Updates the access rule config for the given group_id.
       operationId: update_access_rule
@@ -124,9 +130,89 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - access-rules
+      - Access Rules
+      summary: Update access rule
+      x-summary-source: derived
 components:
   schemas:
+    TagSelector:
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        connection_id:
+          type: string
+          format: uuid
+      required:
+      - key
+      - value
+      - connection_id
+    UpdateAccessRuleInfo:
+      description: '# UpdateAccessRuleInfo Object
+
+        ### Description
+
+        The `UpdateAccessRuleInfo` object is used as an input to the UpdateAccessRule and CreateAccessRule API.'
+      properties:
+        name:
+          description: The name of the access rule.
+          example: Platform Engineering
+          type: string
+        description:
+          description: A description of the group.
+          example: This access rule represents all platform engineers in the company.
+          type: string
+        admin_owner_id:
+          description: The ID of the owner of the group.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
+          format: uuid
+          type: string
+        status:
+          description: The status of the access rule.
+          type: string
+          enum:
+          - ACTIVE
+          - PAUSED
+          example: ACTIVE
+        ruleClauses:
+          $ref: '#/components/schemas/RuleClauses'
+      required:
+      - status
+      - ruleClauses
+      - name
+      - admin_owner_id
+      - description
+    PaginatedAccessRulesList:
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          type: string
+        previous:
+          description: The cursor used to retrieve the previous page of results.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/AccessRule'
+          type: array
+      required:
+      - results
+      type: object
+    UserAttributeSelector:
+      properties:
+        attribute:
+          type: string
+          enum:
+          - HR_IDP_STATUS
+        values:
+          type: array
+          items:
+            type: string
+      required:
+      - attribute
+      - values
     RuleDisjunction:
       properties:
         selectors:
@@ -139,15 +225,6 @@ components:
             $ref: '#/components/schemas/UserAttributeSelector'
       required:
       - selectors
-    RuleConjunction:
-      properties:
-        clauses:
-          type: array
-          minItems: 1
-          items:
-            $ref: '#/components/schemas/RuleDisjunction'
-      required:
-      - clauses
     AccessRule:
       description: '# Access Rule Object
 
@@ -194,41 +271,6 @@ components:
       - admin_owner_id
       - access_rule_id
       - description
-    UpdateAccessRuleInfo:
-      description: '# UpdateAccessRuleInfo Object
-
-        ### Description
-
-        The `UpdateAccessRuleInfo` object is used as an input to the UpdateAccessRule and CreateAccessRule API.'
-      properties:
-        name:
-          description: The name of the access rule.
-          example: Platform Engineering
-          type: string
-        description:
-          description: A description of the group.
-          example: This access rule represents all platform engineers in the company.
-          type: string
-        admin_owner_id:
-          description: The ID of the owner of the group.
-          example: 7c86c85d-0651-43e2-a748-d69d658418e8
-          format: uuid
-          type: string
-        status:
-          description: The status of the access rule.
-          type: string
-          enum:
-          - ACTIVE
-          - PAUSED
-          example: ACTIVE
-        ruleClauses:
-          $ref: '#/components/schemas/RuleClauses'
-      required:
-      - status
-      - ruleClauses
-      - name
-      - admin_owner_id
-      - description
     RuleClauses:
       properties:
         when:
@@ -237,49 +279,15 @@ components:
           $ref: '#/components/schemas/RuleConjunction'
       required:
       - when
-    TagSelector:
+    RuleConjunction:
       properties:
-        key:
-          type: string
-        value:
-          type: string
-        connection_id:
-          type: string
-          format: uuid
-      required:
-      - key
-      - value
-      - connection_id
-    PaginatedAccessRulesList:
-      properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          type: string
-        previous:
-          description: The cursor used to retrieve the previous page of results.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/AccessRule'
+        clauses:
           type: array
-      required:
-      - results
-      type: object
-    UserAttributeSelector:
-      properties:
-        attribute:
-          type: string
-          enum:
-          - HR_IDP_STATUS
-        values:
-          type: array
+          minItems: 1
           items:
-            type: string
+            $ref: '#/components/schemas/RuleDisjunction'
       required:
-      - attribute
-      - values
+      - clauses
   securitySchemes:
     BearerAuth:
       scheme: bearer

@@ -1,28 +1,7 @@
 {
   "provider": "opal-security",
   "sources": [
-    "opal-security-access-rules-api-openapi.yml",
-    "opal-security-apps-api-openapi.yml",
-    "opal-security-bundles-api-openapi.yml",
-    "opal-security-configuration-templates-api-openapi.yml",
-    "opal-security-delegations-api-openapi.yml",
-    "opal-security-event-streams-api-openapi.yml",
-    "opal-security-events-api-openapi.yml",
-    "opal-security-group-bindings-api-openapi.yml",
-    "opal-security-groups-api-openapi.yml",
-    "opal-security-idp-group-mappings-api-openapi.yml",
-    "opal-security-message-channels-api-openapi.yml",
-    "opal-security-non-human-identities-api-openapi.yml",
-    "opal-security-on-call-schedules-api-openapi.yml",
-    "opal-security-opal-queries-api-openapi.yml",
-    "opal-security-owners-api-openapi.yml",
-    "opal-security-requests-api-openapi.yml",
-    "opal-security-resources-api-openapi.yml",
-    "opal-security-sessions-api-openapi.yml",
-    "opal-security-tags-api-openapi.yml",
-    "opal-security-tokens-api-openapi.yml",
-    "opal-security-uars-api-openapi.yml",
-    "opal-security-users-api-openapi.yml"
+    "_original/opal-security-openapi.yaml"
   ],
   "outputs": [
     "opal-security-access-rules-api-openapi.yml",
@@ -51,6 +30,33 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "opal-security-openapi.yaml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "opal-security-access-rules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-apps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-bundles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-configuration-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-delegations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-event-streams-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-events-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-group-bindings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-idp-group-mappings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-message-channels-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-non-human-identities-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-on-call-schedules-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-opal-queries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-owners-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-resources-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-sessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-uars-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opal-security-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

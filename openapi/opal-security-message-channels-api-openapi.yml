@@ -1,11 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: hello@opal.dev
     name: Opal Team
     url: https://www.opal.dev/
   description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
-  title: Opal access-rules message-channels API
+  title: Opal Message Channels API
   version: '1.0'
 servers:
 - description: Production
@@ -51,6 +51,8 @@ paths:
       - BearerAuth: []
       tags:
       - message-channels
+      summary: Create message channel
+      x-summary-source: derived
   /message-channels/{message_channel_id}:
     get:
       summary: Get message channel by ID
@@ -80,27 +82,6 @@ paths:
       - message-channels
 components:
   schemas:
-    MessageChannelList:
-      example:
-        channels:
-        - message_channel_id: 7870617d-e72a-47f5-a84c-693817ab4567
-          third_party_provider: SLACK
-          remote_id: C03FJR97276
-          name: api-team-audit-channel
-          is_private: false
-        - message_channel_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
-          third_party_provider: SLACK
-          remote_id: A4FJR97365D
-          name: api-team-monitor-channel
-          is_private: false
-      properties:
-        channels:
-          items:
-            $ref: '#/components/schemas/MessageChannel'
-          type: array
-      type: object
-      required:
-      - channels
     MessageChannel:
       description: '# MessageChannel Object
 
@@ -167,6 +148,27 @@ components:
       - SLACK
       example: SLACK
       type: string
+    MessageChannelList:
+      example:
+        channels:
+        - message_channel_id: 7870617d-e72a-47f5-a84c-693817ab4567
+          third_party_provider: SLACK
+          remote_id: C03FJR97276
+          name: api-team-audit-channel
+          is_private: false
+        - message_channel_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
+          third_party_provider: SLACK
+          remote_id: A4FJR97365D
+          name: api-team-monitor-channel
+          is_private: false
+      properties:
+        channels:
+          items:
+            $ref: '#/components/schemas/MessageChannel'
+          type: array
+      type: object
+      required:
+      - channels
   securitySchemes:
     BearerAuth:
       scheme: bearer

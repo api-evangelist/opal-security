@@ -1,17 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: hello@opal.dev
     name: Opal Team
     url: https://www.opal.dev/
   description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
-  title: Opal access-rules tags API
+  title: Opal Tags API
   version: '1.0'
 servers:
 - description: Production
   url: https://api.opal.dev/v1
 tags:
-- name: tags
+- name: Tags
   description: Operations related to tags
 paths:
   /tag/{tag_id}:
@@ -40,7 +40,7 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
     delete:
       description: UNSTABLE. May be removed at any time. Deletes a tag with the given id.
       operationId: delete_tag_by_ID
@@ -61,7 +61,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Delete tag by ID
+      x-summary-source: derived
   /tag:
     get:
       description: Gets a tag with the given key and value.
@@ -95,7 +97,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Get tag
+      x-summary-source: derived
     post:
       description: Creates a tag with the given key and value.
       operationId: create_tag
@@ -146,7 +150,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Create tag
+      x-summary-source: derived
   /tags:
     get:
       summary: Get tags
@@ -182,7 +188,7 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
   /tags/{tag_id}/users/{user_id}:
     post:
       description: Applies a tag to a user.
@@ -220,7 +226,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Add user tag
+      x-summary-source: derived
     delete:
       description: Removes a tag from a user.
       operationId: remove_user_tag
@@ -251,7 +259,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Remove user tag
+      x-summary-source: derived
   /tags/{tag_id}/groups/{group_id}:
     post:
       description: Applies a tag to a group.
@@ -283,7 +293,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Add group tag
+      x-summary-source: derived
     delete:
       description: Removes a tag from a group.
       operationId: remove_group_tag
@@ -314,7 +326,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Remove group tag
+      x-summary-source: derived
   /tags/{tag_id}/resources/{resource_id}:
     post:
       description: Applies a tag to a resource.
@@ -346,7 +360,9 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Add resource tag
+      x-summary-source: derived
     delete:
       description: Removes a tag from a resource.
       operationId: remove_resource_tag
@@ -377,46 +393,11 @@ paths:
       security:
       - BearerAuth: []
       tags:
-      - tags
+      - Tags
+      summary: Remove resource tag
+      x-summary-source: derived
 components:
   schemas:
-    PaginatedTagsList:
-      example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        results:
-        - tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
-          created_at: 2022-01-23 04:56:07+00:00
-          updated_at: 2022-02-23 01:34:07+00:00
-          user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
-          admin_owner_id: bfb518b1-3f5b-4e3b-8eb8-3b3fabd4ea2b
-          key: database-name
-          value: redis_db
-        - tag_id: 92f0a738-5f9f-43c2-ad67-fa31ff0eb052
-          created_at: 2022-03-23 04:56:07+00:00
-          updated_at: 2022-04-23 01:34:07+00:00
-          user_creator_id: a4d7d928-783e-4599-8ec6-088d635af4ac
-          admin_owner_id: gtg418b1-3f5b-4e3b-8eb8-3b3fabd4eaa1
-          key: database-type
-          value: sql
-      properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
-          type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/Tag'
-          type: array
-      required:
-      - results
-      type: object
     Tag:
       description: '# Tag Object
 
@@ -467,6 +448,43 @@ components:
       type: object
       required:
       - tag_id
+    PaginatedTagsList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+          created_at: 2022-01-23 04:56:07+00:00
+          updated_at: 2022-02-23 01:34:07+00:00
+          user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
+          admin_owner_id: bfb518b1-3f5b-4e3b-8eb8-3b3fabd4ea2b
+          key: database-name
+          value: redis_db
+        - tag_id: 92f0a738-5f9f-43c2-ad67-fa31ff0eb052
+          created_at: 2022-03-23 04:56:07+00:00
+          updated_at: 2022-04-23 01:34:07+00:00
+          user_creator_id: a4d7d928-783e-4599-8ec6-088d635af4ac
+          admin_owner_id: gtg418b1-3f5b-4e3b-8eb8-3b3fabd4eaa1
+          key: database-type
+          value: sql
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Tag'
+          type: array
+      required:
+      - results
+      type: object
     CreateTagInfo:
       description: '# CreateTagInfo Object
 

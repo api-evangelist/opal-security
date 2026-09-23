@@ -1,0 +1,1 @@
+{"resource":"https://app.opal.dev/mcp/end-user","authorization_servers":["https://app.opal.dev"],"scopes_supported":["mcp","mcp:readonly"],"bearer_methods_supported":["header"]}

@@ -1,11 +1,11 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   contact:
     email: hello@opal.dev
     name: Opal Team
     url: https://www.opal.dev/
   description: The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.
-  title: Opal access-rules idp-group-mappings API
+  title: Opal Idp Group Mappings API
   version: '1.0'
 servers:
 - description: Production
@@ -40,6 +40,8 @@ paths:
       - BearerAuth: []
       tags:
       - idp-group-mappings
+      summary: Get idp group mappings
+      x-summary-source: derived
     put:
       description: Updates the list of available `IdpGroupMapping` objects for an Okta app.
       operationId: updateIdpGroupMappings
@@ -82,6 +84,8 @@ paths:
       - BearerAuth: []
       tags:
       - idp-group-mappings
+      summary: Update idp group mappings
+      x-summary-source: derived
   /idp-group-mappings/{app_resource_id}/groups/{group_id}:
     get:
       description: Gets an `IdpGroupMapping` object for an Okta app and group.
@@ -118,6 +122,8 @@ paths:
       - BearerAuth: []
       tags:
       - idp-group-mappings
+      summary: Get idp group mapping
+      x-summary-source: derived
     post:
       description: 'Creates or updates an individual `IdpGroupMapping` object (upsert operation).
 
@@ -126,9 +132,7 @@ paths:
 
         - If the mapping doesn''t exist, it will be created with the provided values
 
-        - If the mapping exists, only the fields provided in the request will be updated
-
-        '
+        - If the mapping exists, only the fields provided in the request will be updated'
       operationId: createIdpGroupMapping
       parameters:
       - description: The ID of the Okta app.
@@ -185,6 +189,8 @@ paths:
       - BearerAuth: []
       tags:
       - idp-group-mappings
+      summary: Create idp group mapping
+      x-summary-source: derived
     delete:
       description: Deletes an `IdpGroupMapping` object.
       operationId: delete_idp_group_mappings
@@ -216,8 +222,27 @@ paths:
       - BearerAuth: []
       tags:
       - idp-group-mappings
+      summary: Delete idp group mappings
+      x-summary-source: derived
 components:
   schemas:
+    IdpGroupMappingList:
+      example:
+        mappings:
+        - group_id: 6f99639b-7928-4043-8184-47cbc6766145
+          alias: finance-team
+          hidden_from_end_user: false
+        - group_id: 7870617d-e72a-47f5-a84c-693817ab4567
+          alias: engineering-team
+          hidden_from_end_user: false
+      properties:
+        mappings:
+          items:
+            $ref: '#/components/schemas/IdpGroupMapping'
+          type: array
+      type: object
+      required:
+      - mappings
     IdpGroupMapping:
       description: Information about a group mapping.
       example:
@@ -248,23 +273,6 @@ components:
       - group_id
       - hidden_from_end_user
       type: object
-    IdpGroupMappingList:
-      example:
-        mappings:
-        - group_id: 6f99639b-7928-4043-8184-47cbc6766145
-          alias: finance-team
-          hidden_from_end_user: false
-        - group_id: 7870617d-e72a-47f5-a84c-693817ab4567
-          alias: engineering-team
-          hidden_from_end_user: false
-      properties:
-        mappings:
-          items:
-            $ref: '#/components/schemas/IdpGroupMapping'
-          type: array
-      type: object
-      required:
-      - mappings
   securitySchemes:
     BearerAuth:
       scheme: bearer
