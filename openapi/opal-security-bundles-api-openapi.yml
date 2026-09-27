@@ -481,38 +481,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PaginatedBundleResourceList:
-      example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        total_count: 3
-        bundle_resources:
-        - id: a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1
-          name: Resource 1
-          access_level_name: read
-          access_level_remote_id: pull
-      properties:
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
-          type: string
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
-          type: string
-        total_count:
-          description: The total number of items in the result set.
-          example: 2
-          type: integer
-        bundle_resources:
-          items:
-            $ref: '#/components/schemas/BundleResource'
-          type: array
-      type: object
-      required:
-      - bundle_resources
     PaginatedBundleList:
       example:
         next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
@@ -555,28 +523,63 @@ components:
       type: object
       required:
       - bundles
-    BundleResource:
+    VisibilityTypeEnum:
+      description: The visibility level of the entity.
+      enum:
+      - GLOBAL
+      - LIMITED
+      example: GLOBAL
+      type: string
+    VisibilityInfo:
+      description: Visibility infomation of an entity.
+      example:
+        visibility: LIMITED
+        visibility_group_ids:
+        - 7870617d-e72a-47f5-a84c-693817ab4567
+        - 1520617d-e72a-47f5-a84c-693817ab48ad2
       properties:
-        bundle_id:
-          description: The ID of the bundle containing the resource.
-          example: a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1
-          format: uuid
+        visibility:
+          $ref: '#/components/schemas/VisibilityTypeEnum'
+        visibility_group_ids:
+          items:
+            type: string
+            format: uuid
+          type: array
+      type: object
+      required:
+      - visibility
+    PaginatedBundleGroupList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        total_count: 2
+        bundle_groups:
+        - id: a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1
+          name: Group 1
+        - id: 8294e9c9-deb6-48e9-9c99-da2a1e04a87f
+          name: Group 2
+      properties:
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
           type: string
-          readOnly: true
-        resource_id:
-          description: The ID of the resource within a bundle.
-          example: a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1
-          format: uuid
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
           type: string
-          readOnly: true
-        access_level_name:
-          description: The access level of the resource within a bundle.
-          example: Read
-          type: string
-        access_level_remote_id:
-          description: The remote ID of the access level of the resource within a bundle.
-          example: arn:aws:iam::490306337630:role/SupportUser
-          type: string
+        total_count:
+          description: The total number of items in the result set.
+          example: 2
+          type: integer
+        bundle_groups:
+          items:
+            $ref: '#/components/schemas/BundleGroup'
+          type: array
+      type: object
+      required:
+      - bundle_groups
     Bundle:
       properties:
         bundle_id:
@@ -623,13 +626,28 @@ components:
           example: 5
           type: integer
           readOnly: true
-    VisibilityTypeEnum:
-      description: The visibility level of the entity.
-      enum:
-      - GLOBAL
-      - LIMITED
-      example: GLOBAL
-      type: string
+    BundleResource:
+      properties:
+        bundle_id:
+          description: The ID of the bundle containing the resource.
+          example: a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1
+          format: uuid
+          type: string
+          readOnly: true
+        resource_id:
+          description: The ID of the resource within a bundle.
+          example: a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1
+          format: uuid
+          type: string
+          readOnly: true
+        access_level_name:
+          description: The access level of the resource within a bundle.
+          example: Read
+          type: string
+        access_level_remote_id:
+          description: The remote ID of the access level of the resource within a bundle.
+          example: arn:aws:iam::490306337630:role/SupportUser
+          type: string
     CreateBundleInfo:
       description: '# CreateBundleInfo Object
 
@@ -683,16 +701,16 @@ components:
           description: The remote ID of the access level of the group within a bundle.
           example: arn:aws:iam::490306337630:role/SupportUser
           type: string
-    PaginatedBundleGroupList:
+    PaginatedBundleResourceList:
       example:
         next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
         previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        total_count: 2
-        bundle_groups:
+        total_count: 3
+        bundle_resources:
         - id: a381e7a3-e5e0-4c48-b1d6-4ccb4c191bc1
-          name: Group 1
-        - id: 8294e9c9-deb6-48e9-9c99-da2a1e04a87f
-          name: Group 2
+          name: Resource 1
+          access_level_name: read
+          access_level_remote_id: pull
       properties:
         previous:
           description: The cursor used to obtain the current result page.
@@ -708,31 +726,13 @@ components:
           description: The total number of items in the result set.
           example: 2
           type: integer
-        bundle_groups:
+        bundle_resources:
           items:
-            $ref: '#/components/schemas/BundleGroup'
+            $ref: '#/components/schemas/BundleResource'
           type: array
       type: object
       required:
-      - bundle_groups
-    VisibilityInfo:
-      description: Visibility infomation of an entity.
-      example:
-        visibility: LIMITED
-        visibility_group_ids:
-        - 7870617d-e72a-47f5-a84c-693817ab4567
-        - 1520617d-e72a-47f5-a84c-693817ab48ad2
-      properties:
-        visibility:
-          $ref: '#/components/schemas/VisibilityTypeEnum'
-        visibility_group_ids:
-          items:
-            type: string
-            format: uuid
-          type: array
-      type: object
-      required:
-      - visibility
+      - bundle_resources
   securitySchemes:
     BearerAuth:
       scheme: bearer

@@ -199,56 +199,70 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Tag:
-      description: '# Tag Object
+    User:
+      description: '# User Object
 
         ### Description
 
-        The `Tag` object is used to represent a tag.
+        The `User` object is used to represent a user.
 
 
         ### Usage Example
 
-        Get tags from the `GET Tag` endpoint.'
+        Fetch from the `LIST Sessions` endpoint.'
       example:
-        tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
-        created_at: 2022-01-23 04:56:07+00:00
-        updated_at: 2022-02-23 01:34:07+00:00
-        user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
-        key: database-name
-        value: redis_db
+        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        email: john.doe@company.dev
+        full_name: John Doe
+        first_name: John
+        last_name: Doe
+        position: Engineer
       properties:
-        tag_id:
-          description: The ID of the tag.
-          example: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+        user_id:
+          description: The ID of the user.
+          example: h0z968412-2451-4bbd-42h4-057l715d917m
           format: uuid
           type: string
-        created_at:
-          description: The date the tag was created.
-          example: 2022-01-23 04:56:07+00:00
-          format: date-time
+        email:
+          description: The email of the user.
+          example: john.doe@company.dev
           type: string
-        updated_at:
-          description: The date the tag was last updated.
-          example: 2022-02-23 01:34:07+00:00
-          format: date-time
+        full_name:
+          description: The full name of the user.
+          example: John Doe
           type: string
-        user_creator_id:
-          description: The ID of the user that created the tag.
-          example: d4a7d928-783e-4599-8ec6-088d635a5bcc
-          format: uuid
+        first_name:
+          description: The first name of the user.
+          example: John
           type: string
-        key:
-          description: The key of the tag.
-          example: database-name
+        last_name:
+          description: The last name of the user.
+          example: Doe
           type: string
-        value:
-          description: The value of the tag.
-          example: redis_db
+        position:
+          description: The user's position.
+          example: Senior Engineer
           type: string
-      type: object
+        hr_idp_status:
+          $ref: '#/components/schemas/UserHrIdpStatusEnum'
       required:
-      - tag_id
+      - user_id
+      - email
+      - full_name
+      - first_name
+      - last_name
+      - position
+      type: object
+    UserHrIdpStatusEnum:
+      description: User status pulled from an HR/IDP provider.
+      enum:
+      - ACTIVE
+      - SUSPENDED
+      - DEPROVISIONED
+      - DELETED
+      - NOT_FOUND
+      example: ACTIVE
+      type: string
     ThirdPartyProviderEnum:
       description: The third party provider of the remote user.
       enum:
@@ -268,6 +282,37 @@ components:
       - TELEPORT
       example: GIT_HUB
       type: string
+    PaginatedUsersList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          email: john.doe@company.dev
+          full_name: John Doe
+          position: Senior Engineer
+        - user_id: e8581682-04f7-473a-a419-472f0fb26d46
+          email: jane.smith@company.dev
+          full_name: Jane Smith
+          position: Product Marketing Lead
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+      type: object
+      required:
+      - results
     PaginatedRemoteUsersList:
       example:
         next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
@@ -326,60 +371,6 @@ components:
       - remote_id
       - third_party_provider
       type: object
-    User:
-      description: '# User Object
-
-        ### Description
-
-        The `User` object is used to represent a user.
-
-
-        ### Usage Example
-
-        Fetch from the `LIST Sessions` endpoint.'
-      example:
-        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-        email: john.doe@company.dev
-        full_name: John Doe
-        first_name: John
-        last_name: Doe
-        position: Engineer
-      properties:
-        user_id:
-          description: The ID of the user.
-          example: h0z968412-2451-4bbd-42h4-057l715d917m
-          format: uuid
-          type: string
-        email:
-          description: The email of the user.
-          example: john.doe@company.dev
-          type: string
-        full_name:
-          description: The full name of the user.
-          example: John Doe
-          type: string
-        first_name:
-          description: The first name of the user.
-          example: John
-          type: string
-        last_name:
-          description: The last name of the user.
-          example: Doe
-          type: string
-        position:
-          description: The user's position.
-          example: Senior Engineer
-          type: string
-        hr_idp_status:
-          $ref: '#/components/schemas/UserHrIdpStatusEnum'
-      required:
-      - user_id
-      - email
-      - full_name
-      - first_name
-      - last_name
-      - position
-      type: object
     TagsList:
       example:
         results:
@@ -405,47 +396,56 @@ components:
       required:
       - tags
       type: object
-    UserHrIdpStatusEnum:
-      description: User status pulled from an HR/IDP provider.
-      enum:
-      - ACTIVE
-      - SUSPENDED
-      - DEPROVISIONED
-      - DELETED
-      - NOT_FOUND
-      example: ACTIVE
-      type: string
-    PaginatedUsersList:
+    Tag:
+      description: '# Tag Object
+
+        ### Description
+
+        The `Tag` object is used to represent a tag.
+
+
+        ### Usage Example
+
+        Get tags from the `GET Tag` endpoint.'
       example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        results:
-        - user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-          email: john.doe@company.dev
-          full_name: John Doe
-          position: Senior Engineer
-        - user_id: e8581682-04f7-473a-a419-472f0fb26d46
-          email: jane.smith@company.dev
-          full_name: Jane Smith
-          position: Product Marketing Lead
+        tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+        created_at: 2022-01-23 04:56:07+00:00
+        updated_at: 2022-02-23 01:34:07+00:00
+        user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
+        key: database-name
+        value: redis_db
       properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
+        tag_id:
+          description: The ID of the tag.
+          example: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+          format: uuid
           type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
+        created_at:
+          description: The date the tag was created.
+          example: 2022-01-23 04:56:07+00:00
+          format: date-time
           type: string
-        results:
-          items:
-            $ref: '#/components/schemas/User'
-          type: array
+        updated_at:
+          description: The date the tag was last updated.
+          example: 2022-02-23 01:34:07+00:00
+          format: date-time
+          type: string
+        user_creator_id:
+          description: The ID of the user that created the tag.
+          example: d4a7d928-783e-4599-8ec6-088d635a5bcc
+          format: uuid
+          type: string
+        key:
+          description: The key of the tag.
+          example: database-name
+          type: string
+        value:
+          description: The value of the tag.
+          example: redis_db
+          type: string
       type: object
       required:
-      - results
+      - tag_id
   securitySchemes:
     BearerAuth:
       scheme: bearer

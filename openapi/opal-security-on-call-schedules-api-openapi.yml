@@ -82,32 +82,6 @@ paths:
       - On-Call Schedules
 components:
   schemas:
-    OnCallScheduleProviderEnum:
-      description: The third party provider of the on call schedule.
-      enum:
-      - OPSGENIE
-      - PAGER_DUTY
-      example: PAGER_DUTY
-      type: string
-    OnCallScheduleList:
-      example:
-        on_call_schedules:
-        - on_call_schedule_id: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
-          third_party_provider: PAGER_DUTY
-          remote_id: P7OWH2R
-          name: Customer Support On-Call
-        - on_call_schedule_id: 4d61592c-ed61-4b13-8f22-2fac1c49f574
-          third_party_provider: OPSGENIE
-          remote_id: 72a8cb04-9e25-465d-a932-992f72077c61
-          name: Opal Backend On-Call
-      properties:
-        on_call_schedules:
-          items:
-            $ref: '#/components/schemas/OnCallSchedule'
-          type: array
-      type: object
-      required:
-      - on_call_schedules
     OnCallSchedule:
       description: '# OnCallSchedule Object
 
@@ -143,6 +117,32 @@ components:
       type: object
       required:
       - message_channel_id
+    OnCallScheduleProviderEnum:
+      description: The third party provider of the on call schedule.
+      enum:
+      - OPSGENIE
+      - PAGER_DUTY
+      example: PAGER_DUTY
+      type: string
+    OnCallScheduleList:
+      example:
+        on_call_schedules:
+        - on_call_schedule_id: 50d5e9f6-f23f-4d5a-ae91-b2640cf3975e
+          third_party_provider: PAGER_DUTY
+          remote_id: P7OWH2R
+          name: Customer Support On-Call
+        - on_call_schedule_id: 4d61592c-ed61-4b13-8f22-2fac1c49f574
+          third_party_provider: OPSGENIE
+          remote_id: 72a8cb04-9e25-465d-a932-992f72077c61
+          name: Opal Backend On-Call
+      properties:
+        on_call_schedules:
+          items:
+            $ref: '#/components/schemas/OnCallSchedule'
+          type: array
+      type: object
+      required:
+      - on_call_schedules
     CreateOnCallScheduleInfo:
       description: '# CreateOnCallScheduleInfo Object
 

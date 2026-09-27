@@ -108,118 +108,12 @@ paths:
       - Event Streams
 components:
   schemas:
-    EventStreamConnection:
-      description: The connection configuration for an event stream.
-      properties:
-        name:
-          description: The name of the connection.
-          type: string
-        connection_type:
-          $ref: '#/components/schemas/EventStreamConnectionTypeEnum'
-        enabled:
-          description: Whether the connection is enabled.
-          type: boolean
-        webhook_url:
-          description: The webhook URL, present when connection_type is WEBHOOK.
-          type: string
-        credentials:
-          $ref: '#/components/schemas/WebhookCredentials'
-      required:
-      - name
-      - connection_type
-      - enabled
-      type: object
-    WebhookCredentials:
-      description: Authentication credentials for a webhook connection.
-      properties:
-        auth_type:
-          $ref: '#/components/schemas/WebhookAuthTypeEnum'
-        api_key_credentials:
-          description: API key credentials, present when auth_type is API_KEY.
-          items:
-            $ref: '#/components/schemas/WebhookApiKeyCredential'
-          type: array
-        hmac_credential_1:
-          description: Primary HMAC credential, present when auth_type is HMAC.
-          nullable: true
-          $ref: '#/components/schemas/WebhookHmacCredential'
-        hmac_credential_2:
-          description: Secondary HMAC credential for rotation, present when auth_type is HMAC.
-          nullable: true
-          $ref: '#/components/schemas/WebhookHmacCredential'
-      required:
-      - auth_type
-      type: object
     WebhookApiKeyLocationEnum:
       description: Where the API key is placed in webhook requests.
       enum:
       - HEADER
       - QUERY_PARAM
       type: string
-    WebhookHmacCredential:
-      description: An HMAC credential for webhook authentication.
-      properties:
-        id:
-          description: The unique identifier for the credential.
-          format: uuid
-          type: string
-        secret:
-          description: The HMAC secret value.
-          type: string
-        created_at:
-          description: When the credential was created.
-          format: date-time
-          type: string
-      required:
-      - id
-      - secret
-      - created_at
-      type: object
-    CreateEventStreamInfo:
-      description: Information needed to create an event stream.
-      properties:
-        name:
-          description: The name for the event stream.
-          type: string
-        connection_type:
-          $ref: '#/components/schemas/EventStreamConnectionTypeEnum'
-        webhook_url:
-          description: The webhook URL. Required when connection_type is WEBHOOK.
-          type: string
-        credentials:
-          $ref: '#/components/schemas/WebhookCredentials'
-      required:
-      - name
-      - connection_type
-      type: object
-    EventStreamList:
-      description: A list of event streams.
-      properties:
-        event_streams:
-          items:
-            $ref: '#/components/schemas/EventStream'
-          type: array
-      required:
-      - event_streams
-      type: object
-    EventStreamConnectionTypeEnum:
-      description: The type of event stream connection.
-      enum:
-      - WEBHOOK
-      type: string
-    EventStream:
-      description: An event streaming connection that publishes events to an external system.
-      properties:
-        event_stream_id:
-          description: The ID of the event stream.
-          format: uuid
-          type: string
-        connection:
-          $ref: '#/components/schemas/EventStreamConnection'
-      required:
-      - event_stream_id
-      - connection
-      type: object
     WebhookApiKeyCredential:
       description: An API key credential for webhook authentication.
       properties:
@@ -241,6 +135,119 @@ components:
       - value
       - location
       type: object
+    EventStreamConnection:
+      description: The connection configuration for an event stream.
+      properties:
+        name:
+          description: The name of the connection.
+          type: string
+        connection_type:
+          $ref: '#/components/schemas/EventStreamConnectionTypeEnum'
+        enabled:
+          description: Whether the connection is enabled.
+          type: boolean
+        webhook_url:
+          description: The webhook URL, present when connection_type is WEBHOOK.
+          type: string
+        credentials:
+          $ref: '#/components/schemas/WebhookCredentials'
+      required:
+      - name
+      - connection_type
+      - enabled
+      type: object
+    EventStream:
+      description: An event streaming connection that publishes events to an external system.
+      properties:
+        event_stream_id:
+          description: The ID of the event stream.
+          format: uuid
+          type: string
+        connection:
+          $ref: '#/components/schemas/EventStreamConnection'
+      required:
+      - event_stream_id
+      - connection
+      type: object
+    WebhookAuthTypeEnum:
+      description: The authentication type for webhook connections.
+      enum:
+      - NONE
+      - API_KEY
+      - HMAC
+      type: string
+    CreateEventStreamInfo:
+      description: Information needed to create an event stream.
+      properties:
+        name:
+          description: The name for the event stream.
+          type: string
+        connection_type:
+          $ref: '#/components/schemas/EventStreamConnectionTypeEnum'
+        webhook_url:
+          description: The webhook URL. Required when connection_type is WEBHOOK.
+          type: string
+        credentials:
+          $ref: '#/components/schemas/WebhookCredentials'
+      required:
+      - name
+      - connection_type
+      type: object
+    WebhookHmacCredential:
+      description: An HMAC credential for webhook authentication.
+      properties:
+        id:
+          description: The unique identifier for the credential.
+          format: uuid
+          type: string
+        secret:
+          description: The HMAC secret value.
+          type: string
+        created_at:
+          description: When the credential was created.
+          format: date-time
+          type: string
+      required:
+      - id
+      - secret
+      - created_at
+      type: object
+    EventStreamConnectionTypeEnum:
+      description: The type of event stream connection.
+      enum:
+      - WEBHOOK
+      type: string
+    WebhookCredentials:
+      description: Authentication credentials for a webhook connection.
+      properties:
+        auth_type:
+          $ref: '#/components/schemas/WebhookAuthTypeEnum'
+        api_key_credentials:
+          description: API key credentials, present when auth_type is API_KEY.
+          items:
+            $ref: '#/components/schemas/WebhookApiKeyCredential'
+          type: array
+        hmac_credential_1:
+          description: Primary HMAC credential, present when auth_type is HMAC.
+          nullable: true
+          $ref: '#/components/schemas/WebhookHmacCredential'
+        hmac_credential_2:
+          description: Secondary HMAC credential for rotation, present when auth_type is HMAC.
+          nullable: true
+          $ref: '#/components/schemas/WebhookHmacCredential'
+      required:
+      - auth_type
+      type: object
+    EventStreamList:
+      description: A list of event streams.
+      properties:
+        event_streams:
+          items:
+            $ref: '#/components/schemas/EventStream'
+          type: array
+      required:
+      - event_streams
+      type: object
     UpdateEventStreamInfo:
       description: Information needed to update an event stream.
       properties:
@@ -256,13 +263,6 @@ components:
         credentials:
           $ref: '#/components/schemas/WebhookCredentials'
       type: object
-    WebhookAuthTypeEnum:
-      description: The authentication type for webhook connections.
-      enum:
-      - NONE
-      - API_KEY
-      - HMAC
-      type: string
   securitySchemes:
     BearerAuth:
       scheme: bearer

@@ -129,6 +129,12 @@ components:
       required:
       - results
       type: object
+    ApiAccessLevelEnum:
+      description: The access level of an API token.
+      enum:
+      - READ_ONLY
+      - FULL_ACCESS
+      type: string
     Token:
       description: A first-party API token.
       example:
@@ -186,12 +192,6 @@ components:
       - user_id
       - access_level
       type: object
-    ApiAccessLevelEnum:
-      description: The access level of an API token.
-      enum:
-      - READ_ONLY
-      - FULL_ACCESS
-      type: string
   securitySchemes:
     BearerAuth:
       scheme: bearer

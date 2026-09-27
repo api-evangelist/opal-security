@@ -135,19 +135,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    TagSelector:
-      properties:
-        key:
-          type: string
-        value:
-          type: string
-        connection_id:
-          type: string
-          format: uuid
-      required:
-      - key
-      - value
-      - connection_id
     UpdateAccessRuleInfo:
       description: '# UpdateAccessRuleInfo Object
 
@@ -183,23 +170,19 @@ components:
       - name
       - admin_owner_id
       - description
-    PaginatedAccessRulesList:
+    TagSelector:
       properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        key:
           type: string
-        previous:
-          description: The cursor used to retrieve the previous page of results.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        value:
           type: string
-        results:
-          items:
-            $ref: '#/components/schemas/AccessRule'
-          type: array
+        connection_id:
+          type: string
+          format: uuid
       required:
-      - results
-      type: object
+      - key
+      - value
+      - connection_id
     UserAttributeSelector:
       properties:
         attribute:
@@ -213,18 +196,14 @@ components:
       required:
       - attribute
       - values
-    RuleDisjunction:
+    RuleClauses:
       properties:
-        selectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/TagSelector'
-        attribute_selectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserAttributeSelector'
+        when:
+          $ref: '#/components/schemas/RuleConjunction'
+        unless:
+          $ref: '#/components/schemas/RuleConjunction'
       required:
-      - selectors
+      - when
     AccessRule:
       description: '# Access Rule Object
 
@@ -271,14 +250,35 @@ components:
       - admin_owner_id
       - access_rule_id
       - description
-    RuleClauses:
+    RuleDisjunction:
       properties:
-        when:
-          $ref: '#/components/schemas/RuleConjunction'
-        unless:
-          $ref: '#/components/schemas/RuleConjunction'
+        selectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagSelector'
+        attribute_selectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAttributeSelector'
       required:
-      - when
+      - selectors
+    PaginatedAccessRulesList:
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          type: string
+        previous:
+          description: The cursor used to retrieve the previous page of results.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/AccessRule'
+          type: array
+      required:
+      - results
+      type: object
     RuleConjunction:
       properties:
         clauses:
