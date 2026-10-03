@@ -199,6 +199,135 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Tag:
+      description: '# Tag Object
+
+        ### Description
+
+        The `Tag` object is used to represent a tag.
+
+
+        ### Usage Example
+
+        Get tags from the `GET Tag` endpoint.'
+      example:
+        tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+        created_at: 2022-01-23 04:56:07+00:00
+        updated_at: 2022-02-23 01:34:07+00:00
+        user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
+        key: database-name
+        value: redis_db
+      properties:
+        tag_id:
+          description: The ID of the tag.
+          example: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+          format: uuid
+          type: string
+        created_at:
+          description: The date the tag was created.
+          example: 2022-01-23 04:56:07+00:00
+          format: date-time
+          type: string
+        updated_at:
+          description: The date the tag was last updated.
+          example: 2022-02-23 01:34:07+00:00
+          format: date-time
+          type: string
+        user_creator_id:
+          description: The ID of the user that created the tag.
+          example: d4a7d928-783e-4599-8ec6-088d635a5bcc
+          format: uuid
+          type: string
+        key:
+          description: The key of the tag.
+          example: database-name
+          type: string
+        value:
+          description: The value of the tag.
+          example: redis_db
+          type: string
+      type: object
+      required:
+      - tag_id
+    PaginatedUsersList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          email: john.doe@company.dev
+          full_name: John Doe
+          position: Senior Engineer
+        - user_id: e8581682-04f7-473a-a419-472f0fb26d46
+          email: jane.smith@company.dev
+          full_name: Jane Smith
+          position: Product Marketing Lead
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+      type: object
+      required:
+      - results
+    ThirdPartyProviderEnum:
+      description: The third party provider of the remote user.
+      enum:
+      - AUTH0
+      - SLACK
+      - GOOGLE_CHAT
+      - JIRA
+      - LINEAR
+      - SERVICE_NOW
+      - FRESH_SERVICE
+      - SHORTCUT
+      - PAGER_DUTY
+      - OPSGENIE
+      - GIT_HUB
+      - GIT_LAB
+      - GIT_LAB_CONNECTION
+      - TELEPORT
+      example: GIT_HUB
+      type: string
+    PaginatedRemoteUsersList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          remote_id: 1234567890
+          third_party_provider: GIT_LAB
+        - user_id: 29827fb8-f2dd-4e80-9576-238979927392
+          remote_id: remoteid123
+          third_party_provider: GIT_HUB
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/RemoteUser'
+          type: array
+      type: object
+      required:
+      - results
     User:
       description: '# User Object
 
@@ -253,95 +382,31 @@ components:
       - last_name
       - position
       type: object
-    UserHrIdpStatusEnum:
-      description: User status pulled from an HR/IDP provider.
-      enum:
-      - ACTIVE
-      - SUSPENDED
-      - DEPROVISIONED
-      - DELETED
-      - NOT_FOUND
-      example: ACTIVE
-      type: string
-    ThirdPartyProviderEnum:
-      description: The third party provider of the remote user.
-      enum:
-      - AUTH0
-      - SLACK
-      - GOOGLE_CHAT
-      - JIRA
-      - LINEAR
-      - SERVICE_NOW
-      - FRESH_SERVICE
-      - SHORTCUT
-      - PAGER_DUTY
-      - OPSGENIE
-      - GIT_HUB
-      - GIT_LAB
-      - GIT_LAB_CONNECTION
-      - TELEPORT
-      example: GIT_HUB
-      type: string
-    PaginatedUsersList:
+    TagsList:
       example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
         results:
-        - user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-          email: john.doe@company.dev
-          full_name: John Doe
-          position: Senior Engineer
-        - user_id: e8581682-04f7-473a-a419-472f0fb26d46
-          email: jane.smith@company.dev
-          full_name: Jane Smith
-          position: Product Marketing Lead
+        - tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
+          created_at: 2022-01-23 04:56:07+00:00
+          updated_at: 2022-02-23 01:34:07+00:00
+          user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
+          admin_owner_id: bfb518b1-3f5b-4e3b-8eb8-3b3fabd4ea2b
+          key: database-name
+          value: redis_db
+        - tag_id: 92f0a738-5f9f-43c2-ad67-fa31ff0eb052
+          created_at: 2022-03-23 04:56:07+00:00
+          updated_at: 2022-04-23 01:34:07+00:00
+          user_creator_id: a4d7d928-783e-4599-8ec6-088d635af4ac
+          admin_owner_id: gtg418b1-3f5b-4e3b-8eb8-3b3fabd4eaa1
+          key: database-type
+          value: sql
       properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
-          type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
-          type: string
-        results:
+        tags:
           items:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/Tag'
           type: array
-      type: object
       required:
-      - results
-    PaginatedRemoteUsersList:
-      example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        results:
-        - user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-          remote_id: 1234567890
-          third_party_provider: GIT_LAB
-        - user_id: 29827fb8-f2dd-4e80-9576-238979927392
-          remote_id: remoteid123
-          third_party_provider: GIT_HUB
-      properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
-          type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/RemoteUser'
-          type: array
+      - tags
       type: object
-      required:
-      - results
     RemoteUser:
       description: '# RemoteUser Object
 
@@ -371,81 +436,16 @@ components:
       - remote_id
       - third_party_provider
       type: object
-    TagsList:
-      example:
-        results:
-        - tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
-          created_at: 2022-01-23 04:56:07+00:00
-          updated_at: 2022-02-23 01:34:07+00:00
-          user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
-          admin_owner_id: bfb518b1-3f5b-4e3b-8eb8-3b3fabd4ea2b
-          key: database-name
-          value: redis_db
-        - tag_id: 92f0a738-5f9f-43c2-ad67-fa31ff0eb052
-          created_at: 2022-03-23 04:56:07+00:00
-          updated_at: 2022-04-23 01:34:07+00:00
-          user_creator_id: a4d7d928-783e-4599-8ec6-088d635af4ac
-          admin_owner_id: gtg418b1-3f5b-4e3b-8eb8-3b3fabd4eaa1
-          key: database-type
-          value: sql
-      properties:
-        tags:
-          items:
-            $ref: '#/components/schemas/Tag'
-          type: array
-      required:
-      - tags
-      type: object
-    Tag:
-      description: '# Tag Object
-
-        ### Description
-
-        The `Tag` object is used to represent a tag.
-
-
-        ### Usage Example
-
-        Get tags from the `GET Tag` endpoint.'
-      example:
-        tag_id: f290a738-5f9f-43c2-ad67-fa31ff0eb946
-        created_at: 2022-01-23 04:56:07+00:00
-        updated_at: 2022-02-23 01:34:07+00:00
-        user_creator_id: d4a7d928-783e-4599-8ec6-088d635a5bcc
-        key: database-name
-        value: redis_db
-      properties:
-        tag_id:
-          description: The ID of the tag.
-          example: f290a738-5f9f-43c2-ad67-fa31ff0eb946
-          format: uuid
-          type: string
-        created_at:
-          description: The date the tag was created.
-          example: 2022-01-23 04:56:07+00:00
-          format: date-time
-          type: string
-        updated_at:
-          description: The date the tag was last updated.
-          example: 2022-02-23 01:34:07+00:00
-          format: date-time
-          type: string
-        user_creator_id:
-          description: The ID of the user that created the tag.
-          example: d4a7d928-783e-4599-8ec6-088d635a5bcc
-          format: uuid
-          type: string
-        key:
-          description: The key of the tag.
-          example: database-name
-          type: string
-        value:
-          description: The value of the tag.
-          example: redis_db
-          type: string
-      type: object
-      required:
-      - tag_id
+    UserHrIdpStatusEnum:
+      description: User status pulled from an HR/IDP provider.
+      enum:
+      - ACTIVE
+      - SUSPENDED
+      - DEPROVISIONED
+      - DELETED
+      - NOT_FOUND
+      example: ACTIVE
+      type: string
   securitySchemes:
     BearerAuth:
       scheme: bearer

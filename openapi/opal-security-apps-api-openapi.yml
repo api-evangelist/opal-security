@@ -133,64 +133,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    App:
-      description: '# App Object
-
-        ### Description
-
-        The `App` object is used to represent an app to an application.
-
-
-        ### Usage Example
-
-        List from the `GET Apps` endpoint.'
-      example:
-        app_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        name: Okta Org
-        description: Okta directory for the engineering team.
-        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-        app_type: OKTA_DIRECTORY
-      properties:
-        app_id:
-          description: The ID of the app.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        name:
-          description: The name of the app.
-          example: Okta Org
-          type: string
-        description:
-          description: A description of the app.
-          example: Okta directory for the engineering team.
-          type: string
-        admin_owner_id:
-          description: The ID of the owner of the app.
-          example: 7c86c85d-0651-43e2-a748-d69d658418e8
-          format: uuid
-          type: string
-        app_type:
-          $ref: '#/components/schemas/AppTypeEnum'
-        validations:
-          description: Validation checks of an apps' configuration and permissions.
-          items:
-            $ref: '#/components/schemas/AppValidation'
-          type: array
-      required:
-      - app_id
-      - name
-      - description
-      - admin_owner_id
-      - app_type
-      type: object
-    AppValidationSeverityEnum:
-      description: The severity of an app validation.
+    AppValidationStatusEnum:
+      description: The status of an app validation.
       enum:
-      - CRITICAL
-      - HIGH
-      - MEDIUM
-      - LOW
-      example: CRITICAL
+      - SUCCESS
+      - FAILED
+      example: FAILED
       type: string
     AppTypeEnum:
       description: The type of an app.
@@ -245,13 +193,25 @@ components:
       - ZENDESK
       example: OKTA_DIRECTORY
       type: string
-    AppValidationStatusEnum:
-      description: The status of an app validation.
-      enum:
-      - SUCCESS
-      - FAILED
-      example: FAILED
-      type: string
+    SyncErrorList:
+      example:
+        sync_errors:
+        - app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+          first_seen: 2022-07-14 06:59:59+00:00
+          last_seen: 2022-08-23 04:32:46+00:00
+          error_message: Failed to connect to the remote system - insufficient credentials.
+        - app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+          first_seen: 2023-04-24 06:59:59+00:00
+          last_seen: 2024-08-21 04:32:46+00:00
+          error_message: Resource not found.
+      properties:
+        sync_errors:
+          items:
+            $ref: '#/components/schemas/SyncError'
+          type: array
+      type: object
+      required:
+      - sync_errors
     AppsList:
       description: A list of apps.
       example:
@@ -323,6 +283,65 @@ components:
       - status
       - severity
       - updated_at
+    App:
+      description: '# App Object
+
+        ### Description
+
+        The `App` object is used to represent an app to an application.
+
+
+        ### Usage Example
+
+        List from the `GET Apps` endpoint.'
+      example:
+        app_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        name: Okta Org
+        description: Okta directory for the engineering team.
+        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        app_type: OKTA_DIRECTORY
+      properties:
+        app_id:
+          description: The ID of the app.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        name:
+          description: The name of the app.
+          example: Okta Org
+          type: string
+        description:
+          description: A description of the app.
+          example: Okta directory for the engineering team.
+          type: string
+        admin_owner_id:
+          description: The ID of the owner of the app.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
+          format: uuid
+          type: string
+        app_type:
+          $ref: '#/components/schemas/AppTypeEnum'
+        validations:
+          description: Validation checks of an apps' configuration and permissions.
+          items:
+            $ref: '#/components/schemas/AppValidation'
+          type: array
+      required:
+      - app_id
+      - name
+      - description
+      - admin_owner_id
+      - app_type
+      type: object
+    AppValidationSeverityEnum:
+      description: The severity of an app validation.
+      enum:
+      - CRITICAL
+      - HIGH
+      - MEDIUM
+      - LOW
+      example: CRITICAL
+      type: string
     SyncError:
       description: '# SyncError Object
 
@@ -364,25 +383,6 @@ components:
       - last_seen
       - error_message
       type: object
-    SyncErrorList:
-      example:
-        sync_errors:
-        - app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-          first_seen: 2022-07-14 06:59:59+00:00
-          last_seen: 2022-08-23 04:32:46+00:00
-          error_message: Failed to connect to the remote system - insufficient credentials.
-        - app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-          first_seen: 2023-04-24 06:59:59+00:00
-          last_seen: 2024-08-21 04:32:46+00:00
-          error_message: Resource not found.
-      properties:
-        sync_errors:
-          items:
-            $ref: '#/components/schemas/SyncError'
-          type: array
-      type: object
-      required:
-      - sync_errors
   securitySchemes:
     BearerAuth:
       scheme: bearer

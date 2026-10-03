@@ -135,54 +135,32 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateAccessRuleInfo:
-      description: '# UpdateAccessRuleInfo Object
-
-        ### Description
-
-        The `UpdateAccessRuleInfo` object is used as an input to the UpdateAccessRule and CreateAccessRule API.'
+    RuleConjunction:
       properties:
-        name:
-          description: The name of the access rule.
-          example: Platform Engineering
-          type: string
-        description:
-          description: A description of the group.
-          example: This access rule represents all platform engineers in the company.
-          type: string
-        admin_owner_id:
-          description: The ID of the owner of the group.
-          example: 7c86c85d-0651-43e2-a748-d69d658418e8
-          format: uuid
-          type: string
-        status:
-          description: The status of the access rule.
-          type: string
-          enum:
-          - ACTIVE
-          - PAUSED
-          example: ACTIVE
-        ruleClauses:
-          $ref: '#/components/schemas/RuleClauses'
+        clauses:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/RuleDisjunction'
       required:
-      - status
-      - ruleClauses
-      - name
-      - admin_owner_id
-      - description
-    TagSelector:
+      - clauses
+    PaginatedAccessRulesList:
       properties:
-        key:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
           type: string
-        value:
+        previous:
+          description: The cursor used to retrieve the previous page of results.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
           type: string
-        connection_id:
-          type: string
-          format: uuid
+        results:
+          items:
+            $ref: '#/components/schemas/AccessRule'
+          type: array
       required:
-      - key
-      - value
-      - connection_id
+      - results
+      type: object
     UserAttributeSelector:
       properties:
         attribute:
@@ -196,14 +174,31 @@ components:
       required:
       - attribute
       - values
-    RuleClauses:
+    RuleDisjunction:
       properties:
-        when:
-          $ref: '#/components/schemas/RuleConjunction'
-        unless:
-          $ref: '#/components/schemas/RuleConjunction'
+        selectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/TagSelector'
+        attribute_selectors:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserAttributeSelector'
       required:
-      - when
+      - selectors
+    TagSelector:
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+        connection_id:
+          type: string
+          format: uuid
+      required:
+      - key
+      - value
+      - connection_id
     AccessRule:
       description: '# Access Rule Object
 
@@ -250,44 +245,49 @@ components:
       - admin_owner_id
       - access_rule_id
       - description
-    RuleDisjunction:
+    UpdateAccessRuleInfo:
+      description: '# UpdateAccessRuleInfo Object
+
+        ### Description
+
+        The `UpdateAccessRuleInfo` object is used as an input to the UpdateAccessRule and CreateAccessRule API.'
       properties:
-        selectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/TagSelector'
-        attribute_selectors:
-          type: array
-          items:
-            $ref: '#/components/schemas/UserAttributeSelector'
-      required:
-      - selectors
-    PaginatedAccessRulesList:
-      properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        name:
+          description: The name of the access rule.
+          example: Platform Engineering
           type: string
-        previous:
-          description: The cursor used to retrieve the previous page of results.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        description:
+          description: A description of the group.
+          example: This access rule represents all platform engineers in the company.
           type: string
-        results:
-          items:
-            $ref: '#/components/schemas/AccessRule'
-          type: array
+        admin_owner_id:
+          description: The ID of the owner of the group.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
+          format: uuid
+          type: string
+        status:
+          description: The status of the access rule.
+          type: string
+          enum:
+          - ACTIVE
+          - PAUSED
+          example: ACTIVE
+        ruleClauses:
+          $ref: '#/components/schemas/RuleClauses'
       required:
-      - results
-      type: object
-    RuleConjunction:
+      - status
+      - ruleClauses
+      - name
+      - admin_owner_id
+      - description
+    RuleClauses:
       properties:
-        clauses:
-          type: array
-          minItems: 1
-          items:
-            $ref: '#/components/schemas/RuleDisjunction'
+        when:
+          $ref: '#/components/schemas/RuleConjunction'
+        unless:
+          $ref: '#/components/schemas/RuleConjunction'
       required:
-      - clauses
+      - when
   securitySchemes:
     BearerAuth:
       scheme: bearer

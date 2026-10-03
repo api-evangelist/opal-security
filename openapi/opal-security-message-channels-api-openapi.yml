@@ -82,32 +82,6 @@ paths:
       - message-channels
 components:
   schemas:
-    MessageChannelProviderEnum:
-      description: The third party provider of the message channel.
-      enum:
-      - SLACK
-      example: SLACK
-      type: string
-    CreateMessageChannelInfo:
-      description: '# CreateMessageChannelInfo Object
-
-        ### Description
-
-        The `CreateMessageChannelInfo` object is used to describe the message channel object to be created.'
-      example:
-        third_party_provider: SLACK
-        remote_id: C03FJR97276
-      properties:
-        third_party_provider:
-          $ref: '#/components/schemas/MessageChannelProviderEnum'
-        remote_id:
-          description: The remote ID of the message channel
-          example: C03FJR97276
-          type: string
-      type: object
-      required:
-      - third_party_provider
-      - remote_id
     MessageChannel:
       description: '# MessageChannel Object
 
@@ -148,6 +122,32 @@ components:
       type: object
       required:
       - message_channel_id
+    MessageChannelProviderEnum:
+      description: The third party provider of the message channel.
+      enum:
+      - SLACK
+      example: SLACK
+      type: string
+    CreateMessageChannelInfo:
+      description: '# CreateMessageChannelInfo Object
+
+        ### Description
+
+        The `CreateMessageChannelInfo` object is used to describe the message channel object to be created.'
+      example:
+        third_party_provider: SLACK
+        remote_id: C03FJR97276
+      properties:
+        third_party_provider:
+          $ref: '#/components/schemas/MessageChannelProviderEnum'
+        remote_id:
+          description: The remote ID of the message channel
+          example: C03FJR97276
+          type: string
+      type: object
+      required:
+      - third_party_provider
+      - remote_id
     MessageChannelList:
       example:
         channels:

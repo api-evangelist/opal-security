@@ -38,70 +38,39 @@ paths:
       - opal-queries
 components:
   schemas:
-    OpalNodeQueryResults:
+    EntityNameFilter:
       type: object
       required:
-      - type
-      - edges
-      - pageInfo
-      description: Paginated results of a NODE-type OpalQuery — one edge per matched entity (user, resource, or group).
+      - stringMatchType
+      - string
+      description: Filters entities by name using a string match strategy.
       properties:
-        type:
+        stringMatchType:
+          $ref: '#/components/schemas/StringMatchType'
+        string:
           type: string
-          enum:
-          - NODE
-        edges:
-          type: array
-          description: List of matched entities.
-          items:
-            $ref: '#/components/schemas/OpalQueryResultEdge'
-        pageInfo:
-          $ref: '#/components/schemas/PageInfo'
-    OpalQueryResultEdge:
+          description: The string value to match against the entity name.
+          example: engineering
+    PageInfo:
       type: object
       required:
-      - node
-      - cursor
-      description: A single result edge from an OpalQuery, containing the matched entity and its pagination cursor.
+      - hasNextPage
+      - endCursor
+      - hasPreviousPage
+      - startCursor
       properties:
-        node:
-          $ref: '#/components/schemas/OpalQueryResultNode'
-        cursor:
+        hasNextPage:
+          type: boolean
+          description: Whether there are more items after the end cursor
+        endCursor:
           type: string
-          description: Opaque cursor for this entity, used for pagination.
-    OpalQueryResultNode:
-      type: object
-      required:
-      - id
-      - name
-      - entityType
-      - entityItemType
-      description: A matched entity from an OpalQuery result.
-      properties:
-        id:
+          description: The cursor to continue pagination forwards
+        hasPreviousPage:
+          type: boolean
+          description: Whether there are more items before the start cursor
+        startCursor:
           type: string
-          format: uuid
-          description: The entity's unique identifier.
-        name:
-          type: string
-          description: The display name of the entity.
-        entityType:
-          type: string
-          enum:
-          - USER
-          - GROUP
-          - RESOURCE
-          description: The top-level entity type.
-        entityItemType:
-          $ref: '#/components/schemas/EntityItemTypeEnum'
-    OpalNodeQueryBody:
-      type: object
-      description: The filter body for a NODE-type OpalQuery.
-      properties:
-        nodeFilters:
-          $ref: '#/components/schemas/AccessEntityFilters'
-        accessFilters:
-          $ref: '#/components/schemas/AccessRelationshipFilters'
+          description: The cursor to continue pagination backwards
     OpalNodeQuery:
       type: object
       required:
@@ -138,19 +107,70 @@ components:
           type: string
           description: Cursor from a previous response to fetch the next page of results.
           example: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-    EntityNameFilter:
+    AccessRelationshipFilters:
+      type: object
+      description: 'Filters the returned nodes by the access edges connected to them. When `isAccessibleBy` and `hasAccessTo` are provided, the returned nodes must satisfy both edge constraints simultaneously.
+
+        '
+      properties:
+        isAccessibleBy:
+          description: Inbound-edge filter. The returned node must be accessible by at least one entity matching this filter.
+          $ref: '#/components/schemas/AccessEntityFilters'
+        hasAccessTo:
+          description: Outbound-edge filter. The returned node must have access to at least one entity matching this filter.
+          $ref: '#/components/schemas/AccessEntityFilters'
+    OpalQueryResultNode:
       type: object
       required:
-      - stringMatchType
-      - string
-      description: Filters entities by name using a string match strategy.
+      - id
+      - name
+      - entityType
+      - entityItemType
+      description: A matched entity from an OpalQuery result.
       properties:
-        stringMatchType:
-          $ref: '#/components/schemas/StringMatchType'
-        string:
+        id:
           type: string
-          description: The string value to match against the entity name.
-          example: engineering
+          format: uuid
+          description: The entity's unique identifier.
+        name:
+          type: string
+          description: The display name of the entity.
+        entityType:
+          type: string
+          enum:
+          - USER
+          - GROUP
+          - RESOURCE
+          description: The top-level entity type.
+        entityItemType:
+          $ref: '#/components/schemas/EntityItemTypeEnum'
+    RunOpalQueryRequest:
+      description: Request body for running an ad-hoc OpalQuery. The `type` field determines which query schema applies.
+      oneOf:
+      - $ref: '#/components/schemas/OpalNodeQuery'
+      discriminator:
+        propertyName: type
+        mapping:
+          NODE: '#/components/schemas/OpalNodeQuery'
+    OpalNodeQueryResults:
+      type: object
+      required:
+      - type
+      - edges
+      - pageInfo
+      description: Paginated results of a NODE-type OpalQuery — one edge per matched entity (user, resource, or group).
+      properties:
+        type:
+          type: string
+          enum:
+          - NODE
+        edges:
+          type: array
+          description: List of matched entities.
+          items:
+            $ref: '#/components/schemas/OpalQueryResultEdge'
+        pageInfo:
+          $ref: '#/components/schemas/PageInfo'
     EntityTagFilter:
       type: object
       required:
@@ -169,94 +189,6 @@ components:
           type: string
           format: uuid
           description: If specified, filters by tags associated with this connection.
-    OpalQueryResults:
-      description: Paginated results of an OpalQuery. The `type` field discriminates which result schema applies and mirrors the `type` field on the request.
-      oneOf:
-      - $ref: '#/components/schemas/OpalNodeQueryResults'
-      discriminator:
-        propertyName: type
-        mapping:
-          NODE: '#/components/schemas/OpalNodeQueryResults'
-    PageInfo:
-      type: object
-      required:
-      - hasNextPage
-      - endCursor
-      - hasPreviousPage
-      - startCursor
-      properties:
-        hasNextPage:
-          type: boolean
-          description: Whether there are more items after the end cursor
-        endCursor:
-          type: string
-          description: The cursor to continue pagination forwards
-        hasPreviousPage:
-          type: boolean
-          description: Whether there are more items before the start cursor
-        startCursor:
-          type: string
-          description: The cursor to continue pagination backwards
-    AccessEntityFilters:
-      type: object
-      description: Filters for matching entities by type, name, tag, IDs, connections, or access levels. Supports recursive logical composition via allOf/anyOf.
-      properties:
-        entityTypes:
-          type: array
-          description: Filter by entity type. Only RESOURCE, GROUP, and USER are queryable via OpalQuery.
-          items:
-            type: string
-            enum:
-            - RESOURCE
-            - GROUP
-            - USER
-        entityItemTypes:
-          type: array
-          description: Filter by entity item types.
-          items:
-            $ref: '#/components/schemas/EntityItemTypeEnum'
-        entityName:
-          $ref: '#/components/schemas/EntityNameFilter'
-        entityTag:
-          $ref: '#/components/schemas/EntityTagFilter'
-        entityIDs:
-          type: array
-          description: Filter by specific entity UUIDs.
-          items:
-            type: string
-            format: uuid
-        importedFromApp:
-          type: array
-          description: Filter by app IDs from which returned nodes will be imported from.
-          items:
-            type: string
-            format: uuid
-        roleRemoteIds:
-          type: array
-          description: Filter by role remote IDs. Can only be applied within a hasAccessTo clause.
-          items:
-            type: string
-        roleNames:
-          type: array
-          description: Filter by role display names (e.g. "Admin", "Read"). Can only be applied within a hasAccessTo clause.
-          items:
-            type: string
-        allOf:
-          type: array
-          description: "A list of nested filters that must all match (logical AND). Each\n item has the same shape as this object — scalar fields like\n `entityTypes` or `entityTag`, and can further nest `allOf`,\n `anyOf`, or `not`.\n"
-          items:
-            $ref: '#/components/schemas/AccessEntityFilters'
-        anyOf:
-          type: array
-          description: "A list of nested filters where at least one must match (logical\n OR). Each item has the same shape as this object.\n"
-          items:
-            $ref: '#/components/schemas/AccessEntityFilters'
-        not:
-          description: 'Excludes entities matching the embedded filter (logical NOT). Pass a filter object with the same shape as this one — typically a single scalar field, like `{not: {entityTypes: ["RESOURCE"]}}` to exclude resources.
-
-            '
-          type: object
-          x-go-type: AccessEntityFilters
     StringMatchType:
       type: string
       description: How to match a string value against entity names.
@@ -265,26 +197,14 @@ components:
       - EQUALS
       - STARTS_WITH
       - ENDS_WITH
-    AccessRelationshipFilters:
-      type: object
-      description: 'Filters the returned nodes by the access edges connected to them. When `isAccessibleBy` and `hasAccessTo` are provided, the returned nodes must satisfy both edge constraints simultaneously.
-
-        '
-      properties:
-        isAccessibleBy:
-          description: Inbound-edge filter. The returned node must be accessible by at least one entity matching this filter.
-          $ref: '#/components/schemas/AccessEntityFilters'
-        hasAccessTo:
-          description: Outbound-edge filter. The returned node must have access to at least one entity matching this filter.
-          $ref: '#/components/schemas/AccessEntityFilters'
-    RunOpalQueryRequest:
-      description: Request body for running an ad-hoc OpalQuery. The `type` field determines which query schema applies.
+    OpalQueryResults:
+      description: Paginated results of an OpalQuery. The `type` field discriminates which result schema applies and mirrors the `type` field on the request.
       oneOf:
-      - $ref: '#/components/schemas/OpalNodeQuery'
+      - $ref: '#/components/schemas/OpalNodeQueryResults'
       discriminator:
         propertyName: type
         mapping:
-          NODE: '#/components/schemas/OpalNodeQuery'
+          NODE: '#/components/schemas/OpalNodeQueryResults'
     EntityItemTypeEnum:
       description: Granular subtype of an entity.
       enum:
@@ -374,6 +294,86 @@ components:
       - ILEVEL_ADVANCED_ROLE
       example: OPAL_ROLE
       type: string
+    OpalNodeQueryBody:
+      type: object
+      description: The filter body for a NODE-type OpalQuery.
+      properties:
+        nodeFilters:
+          $ref: '#/components/schemas/AccessEntityFilters'
+        accessFilters:
+          $ref: '#/components/schemas/AccessRelationshipFilters'
+    OpalQueryResultEdge:
+      type: object
+      required:
+      - node
+      - cursor
+      description: A single result edge from an OpalQuery, containing the matched entity and its pagination cursor.
+      properties:
+        node:
+          $ref: '#/components/schemas/OpalQueryResultNode'
+        cursor:
+          type: string
+          description: Opaque cursor for this entity, used for pagination.
+    AccessEntityFilters:
+      type: object
+      description: Filters for matching entities by type, name, tag, IDs, connections, or access levels. Supports recursive logical composition via allOf/anyOf.
+      properties:
+        entityTypes:
+          type: array
+          description: Filter by entity type. Only RESOURCE, GROUP, and USER are queryable via OpalQuery.
+          items:
+            type: string
+            enum:
+            - RESOURCE
+            - GROUP
+            - USER
+        entityItemTypes:
+          type: array
+          description: Filter by entity item types.
+          items:
+            $ref: '#/components/schemas/EntityItemTypeEnum'
+        entityName:
+          $ref: '#/components/schemas/EntityNameFilter'
+        entityTag:
+          $ref: '#/components/schemas/EntityTagFilter'
+        entityIDs:
+          type: array
+          description: Filter by specific entity UUIDs.
+          items:
+            type: string
+            format: uuid
+        importedFromApp:
+          type: array
+          description: Filter by app IDs from which returned nodes will be imported from.
+          items:
+            type: string
+            format: uuid
+        roleRemoteIds:
+          type: array
+          description: Filter by role remote IDs. Can only be applied within a hasAccessTo clause.
+          items:
+            type: string
+        roleNames:
+          type: array
+          description: Filter by role display names (e.g. "Admin", "Read"). Can only be applied within a hasAccessTo clause.
+          items:
+            type: string
+        allOf:
+          type: array
+          description: "A list of nested filters that must all match (logical AND). Each\n item has the same shape as this object — scalar fields like\n `entityTypes` or `entityTag`, and can further nest `allOf`,\n `anyOf`, or `not`.\n"
+          items:
+            $ref: '#/components/schemas/AccessEntityFilters'
+        anyOf:
+          type: array
+          description: "A list of nested filters where at least one must match (logical\n OR). Each item has the same shape as this object.\n"
+          items:
+            $ref: '#/components/schemas/AccessEntityFilters'
+        not:
+          description: 'Excludes entities matching the embedded filter (logical NOT). Pass a filter object with the same shape as this one — typically a single scalar field, like `{not: {entityTypes: ["RESOURCE"]}}` to exclude resources.
+
+            '
+          type: object
+          x-go-type: AccessEntityFilters
   securitySchemes:
     BearerAuth:
       scheme: bearer

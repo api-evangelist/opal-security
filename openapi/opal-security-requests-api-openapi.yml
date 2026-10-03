@@ -406,155 +406,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RequestItemStages:
-      description: The stages configuration for a request item
-      type: object
-      deprecated: true
-      properties:
-        requestedRoleName:
-          description: The name of the requested role
-          type: string
-        requestedItemName:
-          description: The name of the requested item
-          type: string
-        stages:
-          description: The stages of review for this request
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestStage'
-      required:
-      - requestedItemName
-      - stages
-    RequestCustomFieldResponse:
-      properties:
-        field_name:
-          type: string
-        field_type:
-          example: SHORT_TEXT
-          $ref: '#/components/schemas/RequestTemplateCustomFieldTypeEnum'
-        field_value:
-          oneOf:
-          - type: string
-            example: This is a response to a long text or short text or multi choice
-          - type: boolean
-            example: true
-      required:
-      - field_name
-      - field_type
-      - field_value
-    RequestReviewer:
-      description: A reviewer in a request stage
-      type: object
-      properties:
-        id:
-          description: The unique identifier of the reviewer
-          type: string
-          format: uuid
-        full_name:
-          description: The user's full name.
-          example: Jake Barnes
-          type: string
-        status:
-          description: The status of this reviewer's review
-          type: string
-          enum:
-          - PENDING
-          - APPROVED
-          - REJECTED
-      required:
-      - id
-      - status
-    RequestCommentList:
-      description: A paginated list of request comments
-      type: object
-      example:
-        comments:
-        - created_at: 2021-01-06 20:00:00+00:00
-          request_id: 4c86c85d-0651-43e2-a748-d69d658418e8
-          user_id: c86c85d-0651-43e2-a748-d69d658418e8
-          comment: This is a comment.
-      properties:
-        comments:
-          items:
-            $ref: '#/components/schemas/RequestComment'
-          type: array
-      required:
-      - comments
-    RequestStage:
-      description: A stage in the request review process
-      type: object
-      properties:
-        stage:
-          description: The stage number
-          type: integer
-        operator:
-          description: The operator to apply to reviewers in this stage
-          $ref: '#/components/schemas/ReviewStageOperator'
-        reviewers:
-          description: The reviewers for this stage
-          type: array
-          items:
-            $ref: '#/components/schemas/RequestReviewer'
-      required:
-      - stage
-      - operator
-      - reviewers
-    RequestedItem:
-      description: '# Requested Item Object
-
-        ### Description
-
-        The `RequestedItem` object is used to represent a request target item.
-
-
-        ### Usage Example
-
-        Returned from the `GET Requests` endpoint.'
-      properties:
-        resource_id:
-          description: The ID of the resource requested.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        group_id:
-          description: The ID of the group requested.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        access_level_name:
-          description: The name of the access level requested.
-          example: admin
-          type: string
-        access_level_remote_id:
-          description: The ID of the access level requested on the remote system.
-          example: arn:aws:iam::490306337630:role/SupportUser
-          type: string
-        name:
-          description: The name of the target.
-          example: Engineering Team
-          type: string
-        remote_id:
-          description: The ID of the target on the remote system.
-          example: arn:aws:iam::490306337630:role/SupportUser
-          type: string
-        remote_name:
-          description: The name of the target on the remote system.
-          example: SupportUser
-          type: string
-      example:
-        resource_id: null
-        group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        access_level_name: admin
-        access_level_remote_id: arn:aws:iam::490306337630:role/SupportUser
-        name: Engineering Team
-    TicketingProviderEnum:
-      description: The third party ticketing platform provider.
-      enum:
-      - JIRA
-      - LINEAR
-      - SERVICE_NOW
-      example: LINEAR
-      type: string
     RequestComment:
       description: '# Request Comment Object
 
@@ -604,42 +455,107 @@ components:
       - request_id
       - user_id
       - comment
-    RequestApprovalEnum:
-      type: string
-      enum:
-      - REGULAR
-      - ADMIN
-      description: The decision level for the approval
-      example: REGULAR
-    RequestReviewerStages:
-      description: The stages configuration for a request item
+    RequestStage:
+      description: A stage in the request review process
       type: object
       properties:
-        access_level_name:
-          description: The name of the access level requested.
-          example: admin
-          type: string
-        access_level_remote_id:
-          description: The ID of the access level requested on the remote system.
-          example: arn:aws:iam::490306337630:role/SupportUser
-          type: string
-        item_name:
-          description: The name of the requested item
-          type: string
-        item_id:
-          description: The ID of the resource requested.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        stages:
-          description: The stages of review for this request
+        stage:
+          description: The stage number
+          type: integer
+        operator:
+          description: The operator to apply to reviewers in this stage
+          $ref: '#/components/schemas/ReviewStageOperator'
+        reviewers:
+          description: The reviewers for this stage
           type: array
           items:
-            $ref: '#/components/schemas/RequestStage'
+            $ref: '#/components/schemas/RequestReviewer'
       required:
-      - item_name
-      - item_id
-      - stages
+      - stage
+      - operator
+      - reviewers
+    RequestReviewer:
+      description: A reviewer in a request stage
+      type: object
+      properties:
+        id:
+          description: The unique identifier of the reviewer
+          type: string
+          format: uuid
+        full_name:
+          description: The user's full name.
+          example: Jake Barnes
+          type: string
+        status:
+          description: The status of this reviewer's review
+          type: string
+          enum:
+          - PENDING
+          - APPROVED
+          - REJECTED
+      required:
+      - id
+      - status
+    RequestEdge:
+      type: object
+      required:
+      - node
+      - cursor
+      properties:
+        node:
+          $ref: '#/components/schemas/Request'
+        cursor:
+          type: string
+          description: The cursor for this request edge
+    RequestConnection:
+      type: object
+      required:
+      - edges
+      - pageInfo
+      - totalCount
+      properties:
+        edges:
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestEdge'
+        pageInfo:
+          $ref: '#/components/schemas/PageInfo'
+        totalCount:
+          type: integer
+          description: The total number of items available
+    RequestCommentList:
+      description: A paginated list of request comments
+      type: object
+      example:
+        comments:
+        - created_at: 2021-01-06 20:00:00+00:00
+          request_id: 4c86c85d-0651-43e2-a748-d69d658418e8
+          user_id: c86c85d-0651-43e2-a748-d69d658418e8
+          comment: This is a comment.
+      properties:
+        comments:
+          items:
+            $ref: '#/components/schemas/RequestComment'
+          type: array
+      required:
+      - comments
+    RequestStatusEnum:
+      description: '# Request Status
+
+        ### Description
+
+        The `RequestStatus` enum is used to represent the status of a request.
+
+
+        ### Usage Example
+
+        Returned from the `GET Requests` endpoint.'
+      enum:
+      - PENDING
+      - APPROVED
+      - DENIED
+      - CANCELED
+      type: string
     RequestTemplateCustomFieldTypeEnum:
       description: The type of the custom request field.
       enum:
@@ -648,6 +564,25 @@ components:
       - BOOLEAN
       - MULTI_CHOICE
       type: string
+    RequestItemStages:
+      description: The stages configuration for a request item
+      type: object
+      deprecated: true
+      properties:
+        requestedRoleName:
+          description: The name of the requested role
+          type: string
+        requestedItemName:
+          description: The name of the requested item
+          type: string
+        stages:
+          description: The stages of review for this request
+          type: array
+          items:
+            $ref: '#/components/schemas/RequestStage'
+      required:
+      - requestedItemName
+      - stages
     CreateRequestInfo:
       description: All the information needed for creating a request
       properties:
@@ -742,22 +677,182 @@ components:
       - duration_minutes
       - resources
       - groups
-    RequestConnection:
+    RequestReviewerStages:
+      description: The stages configuration for a request item
       type: object
-      required:
-      - edges
-      - pageInfo
-      - totalCount
       properties:
-        edges:
+        access_level_name:
+          description: The name of the access level requested.
+          example: admin
+          type: string
+        access_level_remote_id:
+          description: The ID of the access level requested on the remote system.
+          example: arn:aws:iam::490306337630:role/SupportUser
+          type: string
+        item_name:
+          description: The name of the requested item
+          type: string
+        item_id:
+          description: The ID of the resource requested.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        stages:
+          description: The stages of review for this request
           type: array
           items:
-            $ref: '#/components/schemas/RequestEdge'
-        pageInfo:
-          $ref: '#/components/schemas/PageInfo'
-        totalCount:
-          type: integer
-          description: The total number of items available
+            $ref: '#/components/schemas/RequestStage'
+      required:
+      - item_name
+      - item_id
+      - stages
+    RequestedItem:
+      description: '# Requested Item Object
+
+        ### Description
+
+        The `RequestedItem` object is used to represent a request target item.
+
+
+        ### Usage Example
+
+        Returned from the `GET Requests` endpoint.'
+      properties:
+        resource_id:
+          description: The ID of the resource requested.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        group_id:
+          description: The ID of the group requested.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        access_level_name:
+          description: The name of the access level requested.
+          example: admin
+          type: string
+        access_level_remote_id:
+          description: The ID of the access level requested on the remote system.
+          example: arn:aws:iam::490306337630:role/SupportUser
+          type: string
+        name:
+          description: The name of the target.
+          example: Engineering Team
+          type: string
+        remote_id:
+          description: The ID of the target on the remote system.
+          example: arn:aws:iam::490306337630:role/SupportUser
+          type: string
+        remote_name:
+          description: The name of the target on the remote system.
+          example: SupportUser
+          type: string
+      example:
+        resource_id: null
+        group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        access_level_name: admin
+        access_level_remote_id: arn:aws:iam::490306337630:role/SupportUser
+        name: Engineering Team
+    RequestCustomFieldResponse:
+      properties:
+        field_name:
+          type: string
+        field_type:
+          example: SHORT_TEXT
+          $ref: '#/components/schemas/RequestTemplateCustomFieldTypeEnum'
+        field_value:
+          oneOf:
+          - type: string
+            example: This is a response to a long text or short text or multi choice
+          - type: boolean
+            example: true
+      required:
+      - field_name
+      - field_type
+      - field_value
+    RequestList:
+      description: '# Request List
+
+        ### Description
+
+        The `RequestList` object is used to represent a list of requests.
+
+
+        ### Usage Example
+
+        Returned from the `GET Requests` endpoint.'
+      example:
+        requests:
+        - id: 7c86c85d-0651-43e2-a748-d69d658418e8
+          organization_id: w86c85d-0651-43e2-a748-d69d658418e8
+          created_at: 2021-01-06 20:00:00+00:00
+          updated_at: 2021-01-06 20:00:00+00:00
+          requester_id: c86c85d-0651-43e2-a748-d69d658418e8
+          target_user_id: r86c85d-0651-43e2-a748-d69d658418e8
+          target_group_id: g86c85d-0651-43e2-a748-d69d658418e8
+          status: pending
+          reason: I need this resource.
+          duration_minutes: 1440
+          request_comments:
+          - id: 4c86c85d-0651-43e2-a748-d69d658418e8
+            created_at: 2021-01-06 20:00:00+00:00
+            updated_at: 2021-01-06 20:00:00+00:00
+            request_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+            user_id: c86c85d-0651-43e2-a748-d69d658418e8
+            comment: This is a comment.
+        cursor: eyJjcmVhdGVkX2F0IjoiMjAyMS0wMS0wNlQyMDo0NzowMFoiLCJ2YWx1ZSI6ImFkbWluIn0=
+      properties:
+        requests:
+          description: The list of requests.
+          type: array
+          items:
+            $ref: '#/components/schemas/Request'
+        cursor:
+          description: The cursor to use in the next request to get the next page of results.
+          type: string
+          example: eyJjcmVhdGVkX2F0IjoiMjAyMS0wMS0wNlQyMDo0NzowMFoiLCJ2YWx1ZSI6ImFkbWluIn0=
+    TicketingProviderEnum:
+      description: The third party ticketing platform provider.
+      enum:
+      - JIRA
+      - LINEAR
+      - SERVICE_NOW
+      example: LINEAR
+      type: string
+    PageInfo:
+      type: object
+      required:
+      - hasNextPage
+      - endCursor
+      - hasPreviousPage
+      - startCursor
+      properties:
+        hasNextPage:
+          type: boolean
+          description: Whether there are more items after the end cursor
+        endCursor:
+          type: string
+          description: The cursor to continue pagination forwards
+        hasPreviousPage:
+          type: boolean
+          description: Whether there are more items before the start cursor
+        startCursor:
+          type: string
+          description: The cursor to continue pagination backwards
+    ReviewStageOperator:
+      description: The operator to apply to reviewers in a stage
+      type: string
+      enum:
+      - AND
+      - OR
+    RequestApprovalEnum:
+      type: string
+      enum:
+      - REGULAR
+      - ADMIN
+      description: The decision level for the approval
+      example: REGULAR
     Request:
       description: '# Request Object
 
@@ -871,101 +966,6 @@ components:
       - requester_id
       - status
       - reason
-    RequestStatusEnum:
-      description: '# Request Status
-
-        ### Description
-
-        The `RequestStatus` enum is used to represent the status of a request.
-
-
-        ### Usage Example
-
-        Returned from the `GET Requests` endpoint.'
-      enum:
-      - PENDING
-      - APPROVED
-      - DENIED
-      - CANCELED
-      type: string
-    RequestList:
-      description: '# Request List
-
-        ### Description
-
-        The `RequestList` object is used to represent a list of requests.
-
-
-        ### Usage Example
-
-        Returned from the `GET Requests` endpoint.'
-      example:
-        requests:
-        - id: 7c86c85d-0651-43e2-a748-d69d658418e8
-          organization_id: w86c85d-0651-43e2-a748-d69d658418e8
-          created_at: 2021-01-06 20:00:00+00:00
-          updated_at: 2021-01-06 20:00:00+00:00
-          requester_id: c86c85d-0651-43e2-a748-d69d658418e8
-          target_user_id: r86c85d-0651-43e2-a748-d69d658418e8
-          target_group_id: g86c85d-0651-43e2-a748-d69d658418e8
-          status: pending
-          reason: I need this resource.
-          duration_minutes: 1440
-          request_comments:
-          - id: 4c86c85d-0651-43e2-a748-d69d658418e8
-            created_at: 2021-01-06 20:00:00+00:00
-            updated_at: 2021-01-06 20:00:00+00:00
-            request_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-            user_id: c86c85d-0651-43e2-a748-d69d658418e8
-            comment: This is a comment.
-        cursor: eyJjcmVhdGVkX2F0IjoiMjAyMS0wMS0wNlQyMDo0NzowMFoiLCJ2YWx1ZSI6ImFkbWluIn0=
-      properties:
-        requests:
-          description: The list of requests.
-          type: array
-          items:
-            $ref: '#/components/schemas/Request'
-        cursor:
-          description: The cursor to use in the next request to get the next page of results.
-          type: string
-          example: eyJjcmVhdGVkX2F0IjoiMjAyMS0wMS0wNlQyMDo0NzowMFoiLCJ2YWx1ZSI6ImFkbWluIn0=
-    ReviewStageOperator:
-      description: The operator to apply to reviewers in a stage
-      type: string
-      enum:
-      - AND
-      - OR
-    PageInfo:
-      type: object
-      required:
-      - hasNextPage
-      - endCursor
-      - hasPreviousPage
-      - startCursor
-      properties:
-        hasNextPage:
-          type: boolean
-          description: Whether there are more items after the end cursor
-        endCursor:
-          type: string
-          description: The cursor to continue pagination forwards
-        hasPreviousPage:
-          type: boolean
-          description: Whether there are more items before the start cursor
-        startCursor:
-          type: string
-          description: The cursor to continue pagination backwards
-    RequestEdge:
-      type: object
-      required:
-      - node
-      - cursor
-      properties:
-        node:
-          $ref: '#/components/schemas/Request'
-        cursor:
-          type: string
-          description: The cursor for this request edge
   securitySchemes:
     BearerAuth:
       scheme: bearer

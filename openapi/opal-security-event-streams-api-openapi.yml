@@ -108,32 +108,37 @@ paths:
       - Event Streams
 components:
   schemas:
-    WebhookApiKeyLocationEnum:
-      description: Where the API key is placed in webhook requests.
-      enum:
-      - HEADER
-      - QUERY_PARAM
-      type: string
-    WebhookApiKeyCredential:
-      description: An API key credential for webhook authentication.
+    CreateEventStreamInfo:
+      description: Information needed to create an event stream.
       properties:
-        id:
-          description: The unique identifier for the credential.
-          format: uuid
-          type: string
         name:
-          description: The name of the API key.
+          description: The name for the event stream.
           type: string
-        value:
-          description: The value of the API key.
+        connection_type:
+          $ref: '#/components/schemas/EventStreamConnectionTypeEnum'
+        webhook_url:
+          description: The webhook URL. Required when connection_type is WEBHOOK.
           type: string
-        location:
-          $ref: '#/components/schemas/WebhookApiKeyLocationEnum'
+        credentials:
+          $ref: '#/components/schemas/WebhookCredentials'
       required:
-      - id
       - name
-      - value
-      - location
+      - connection_type
+      type: object
+    UpdateEventStreamInfo:
+      description: Information needed to update an event stream.
+      properties:
+        name:
+          description: Updated name for the event stream.
+          type: string
+        enabled:
+          description: Whether the event stream should be enabled.
+          type: boolean
+        webhook_url:
+          description: Updated webhook URL.
+          type: string
+        credentials:
+          $ref: '#/components/schemas/WebhookCredentials'
       type: object
     EventStreamConnection:
       description: The connection configuration for an event stream.
@@ -156,18 +161,26 @@ components:
       - connection_type
       - enabled
       type: object
-    EventStream:
-      description: An event streaming connection that publishes events to an external system.
+    WebhookApiKeyLocationEnum:
+      description: Where the API key is placed in webhook requests.
+      enum:
+      - HEADER
+      - QUERY_PARAM
+      type: string
+    EventStreamConnectionTypeEnum:
+      description: The type of event stream connection.
+      enum:
+      - WEBHOOK
+      type: string
+    EventStreamList:
+      description: A list of event streams.
       properties:
-        event_stream_id:
-          description: The ID of the event stream.
-          format: uuid
-          type: string
-        connection:
-          $ref: '#/components/schemas/EventStreamConnection'
+        event_streams:
+          items:
+            $ref: '#/components/schemas/EventStream'
+          type: array
       required:
-      - event_stream_id
-      - connection
+      - event_streams
       type: object
     WebhookAuthTypeEnum:
       description: The authentication type for webhook connections.
@@ -176,22 +189,26 @@ components:
       - API_KEY
       - HMAC
       type: string
-    CreateEventStreamInfo:
-      description: Information needed to create an event stream.
+    WebhookApiKeyCredential:
+      description: An API key credential for webhook authentication.
       properties:
+        id:
+          description: The unique identifier for the credential.
+          format: uuid
+          type: string
         name:
-          description: The name for the event stream.
+          description: The name of the API key.
           type: string
-        connection_type:
-          $ref: '#/components/schemas/EventStreamConnectionTypeEnum'
-        webhook_url:
-          description: The webhook URL. Required when connection_type is WEBHOOK.
+        value:
+          description: The value of the API key.
           type: string
-        credentials:
-          $ref: '#/components/schemas/WebhookCredentials'
+        location:
+          $ref: '#/components/schemas/WebhookApiKeyLocationEnum'
       required:
+      - id
       - name
-      - connection_type
+      - value
+      - location
       type: object
     WebhookHmacCredential:
       description: An HMAC credential for webhook authentication.
@@ -212,11 +229,6 @@ components:
       - secret
       - created_at
       type: object
-    EventStreamConnectionTypeEnum:
-      description: The type of event stream connection.
-      enum:
-      - WEBHOOK
-      type: string
     WebhookCredentials:
       description: Authentication credentials for a webhook connection.
       properties:
@@ -238,30 +250,18 @@ components:
       required:
       - auth_type
       type: object
-    EventStreamList:
-      description: A list of event streams.
+    EventStream:
+      description: An event streaming connection that publishes events to an external system.
       properties:
-        event_streams:
-          items:
-            $ref: '#/components/schemas/EventStream'
-          type: array
+        event_stream_id:
+          description: The ID of the event stream.
+          format: uuid
+          type: string
+        connection:
+          $ref: '#/components/schemas/EventStreamConnection'
       required:
-      - event_streams
-      type: object
-    UpdateEventStreamInfo:
-      description: Information needed to update an event stream.
-      properties:
-        name:
-          description: Updated name for the event stream.
-          type: string
-        enabled:
-          description: Whether the event stream should be enabled.
-          type: boolean
-        webhook_url:
-          description: Updated webhook URL.
-          type: string
-        credentials:
-          $ref: '#/components/schemas/WebhookCredentials'
+      - event_stream_id
+      - connection
       type: object
   securitySchemes:
     BearerAuth:

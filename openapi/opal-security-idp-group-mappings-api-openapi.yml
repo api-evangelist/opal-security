@@ -226,23 +226,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    IdpGroupMappingList:
-      example:
-        mappings:
-        - group_id: 6f99639b-7928-4043-8184-47cbc6766145
-          alias: finance-team
-          hidden_from_end_user: false
-        - group_id: 7870617d-e72a-47f5-a84c-693817ab4567
-          alias: engineering-team
-          hidden_from_end_user: false
-      properties:
-        mappings:
-          items:
-            $ref: '#/components/schemas/IdpGroupMapping'
-          type: array
-      type: object
-      required:
-      - mappings
     IdpGroupMapping:
       description: Information about a group mapping.
       example:
@@ -273,6 +256,23 @@ components:
       - group_id
       - hidden_from_end_user
       type: object
+    IdpGroupMappingList:
+      example:
+        mappings:
+        - group_id: 6f99639b-7928-4043-8184-47cbc6766145
+          alias: finance-team
+          hidden_from_end_user: false
+        - group_id: 7870617d-e72a-47f5-a84c-693817ab4567
+          alias: engineering-team
+          hidden_from_end_user: false
+      properties:
+        mappings:
+          items:
+            $ref: '#/components/schemas/IdpGroupMapping'
+          type: array
+      type: object
+      required:
+      - mappings
   securitySchemes:
     BearerAuth:
       scheme: bearer

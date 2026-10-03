@@ -142,46 +142,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    UpdateGroupBindingInfo:
-      description: '# UpdateGroupBindingInfo Object
-
-        ### Description
-
-        The `UpdateGroupBindingInfo` object is used as an input to the UpdateGroupBinding API.'
-      example:
-        group_binding_id: 0ae19dbf-324d-4216-999c-574d46182c7e
-        source_group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        groups:
-        - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
-      properties:
-        group_binding_id:
-          description: The ID of the group binding.
-          example: 0ae19dbf-324d-4216-999c-574d46182c7e
-          format: uuid
-          type: string
-        source_group_id:
-          description: The ID of the source group.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        groups:
-          description: The list of groups.
-          items:
-            properties:
-              group_id:
-                description: The ID of the group.
-                example: f454d283-ca87-4a8a-bdbb-df212eca5353
-                format: uuid
-                type: string
-            required:
-            - group_id
-          type: array
-      required:
-      - group_binding_id
-      - source_group_id
-      - groups
-      type: object
     GroupBinding:
       description: '# Group Binding Object
 
@@ -235,6 +195,139 @@ components:
       - created_at
       - source_group_id
       - groups
+    GroupTypeEnum:
+      description: The type of the group.
+      enum:
+      - ACTIVE_DIRECTORY_GROUP
+      - AWS_SSO_GROUP
+      - DATABRICKS_ACCOUNT_GROUP
+      - DUO_GROUP
+      - GIT_HUB_TEAM
+      - GIT_LAB_GROUP
+      - GOOGLE_GROUPS_GROUP
+      - GOOGLE_GROUPS_GKE_GROUP
+      - LDAP_GROUP
+      - OKTA_GROUP
+      - OKTA_GROUP_RULE
+      - TAILSCALE_GROUP
+      - OPAL_GROUP
+      - OPAL_ACCESS_RULE
+      - AZURE_AD_SECURITY_GROUP
+      - AZURE_AD_MICROSOFT_365_GROUP
+      - CONNECTOR_GROUP
+      - SNOWFLAKE_ROLE
+      - WORKDAY_USER_SECURITY_GROUP
+      - PAGERDUTY_ON_CALL_SCHEDULE
+      - INCIDENTIO_ON_CALL_SCHEDULE
+      - ROOTLY_ON_CALL_SCHEDULE
+      - DEVIN_GROUP
+      - GIT_HUB_ENTERPRISE_TEAM
+      - GRAFANA_TEAM
+      - CLICKHOUSE_ROLE
+      - SLACK_USER_GROUP
+      - TWINGATE_GROUP
+      - TWINGATE_GROUP_SYNCED
+      - ZENDESK_GROUP
+      - ZENDESK_ORGANIZATION
+      - HUBSPOT_TEAM
+      - TABLEAU_GROUP
+      example: OPAL_GROUP
+      type: string
+    CreateGroupBindingInfo:
+      description: '# CreateGroupBindingInfo Object
+
+        ### Description
+
+        The `CreateGroupBindingInfo` object is used as an input to the CreateGroupBinding API.'
+      example:
+        source_group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        groups:
+        - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+      properties:
+        source_group_id:
+          description: The ID of the source group.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        groups:
+          description: The list of groups.
+          items:
+            properties:
+              group_id:
+                description: The ID of the group.
+                example: f454d283-ca87-4a8a-bdbb-df212eca5353
+                format: uuid
+                type: string
+            required:
+            - group_id
+          type: array
+      required:
+      - source_group_id
+      - groups
+      type: object
+    UpdateGroupBindingInfo:
+      description: '# UpdateGroupBindingInfo Object
+
+        ### Description
+
+        The `UpdateGroupBindingInfo` object is used as an input to the UpdateGroupBinding API.'
+      example:
+        group_binding_id: 0ae19dbf-324d-4216-999c-574d46182c7e
+        source_group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        groups:
+        - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+      properties:
+        group_binding_id:
+          description: The ID of the group binding.
+          example: 0ae19dbf-324d-4216-999c-574d46182c7e
+          format: uuid
+          type: string
+        source_group_id:
+          description: The ID of the source group.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        groups:
+          description: The list of groups.
+          items:
+            properties:
+              group_id:
+                description: The ID of the group.
+                example: f454d283-ca87-4a8a-bdbb-df212eca5353
+                format: uuid
+                type: string
+            required:
+            - group_id
+          type: array
+      required:
+      - group_binding_id
+      - source_group_id
+      - groups
+      type: object
+    UpdateGroupBindingInfoList:
+      example:
+        group_bindings:
+        - group_binding_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+          source_group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+          groups:
+          - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+          - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+        - group_binding_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+          source_group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+          groups:
+          - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
+          - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+      properties:
+        group_bindings:
+          description: A list of group bindings with information to update.
+          items:
+            $ref: '#/components/schemas/UpdateGroupBindingInfo'
+          type: array
+      type: object
+      required:
+      - group_bindings
     PaginatedGroupBindingsList:
       example:
         next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
@@ -275,44 +368,6 @@ components:
           type: array
       required:
       - results
-    GroupTypeEnum:
-      description: The type of the group.
-      enum:
-      - ACTIVE_DIRECTORY_GROUP
-      - AWS_SSO_GROUP
-      - DATABRICKS_ACCOUNT_GROUP
-      - DUO_GROUP
-      - GIT_HUB_TEAM
-      - GIT_LAB_GROUP
-      - GOOGLE_GROUPS_GROUP
-      - GOOGLE_GROUPS_GKE_GROUP
-      - LDAP_GROUP
-      - OKTA_GROUP
-      - OKTA_GROUP_RULE
-      - TAILSCALE_GROUP
-      - OPAL_GROUP
-      - OPAL_ACCESS_RULE
-      - AZURE_AD_SECURITY_GROUP
-      - AZURE_AD_MICROSOFT_365_GROUP
-      - CONNECTOR_GROUP
-      - SNOWFLAKE_ROLE
-      - WORKDAY_USER_SECURITY_GROUP
-      - PAGERDUTY_ON_CALL_SCHEDULE
-      - INCIDENTIO_ON_CALL_SCHEDULE
-      - ROOTLY_ON_CALL_SCHEDULE
-      - DEVIN_GROUP
-      - GIT_HUB_ENTERPRISE_TEAM
-      - GRAFANA_TEAM
-      - CLICKHOUSE_ROLE
-      - SLACK_USER_GROUP
-      - TWINGATE_GROUP
-      - TWINGATE_GROUP_SYNCED
-      - ZENDESK_GROUP
-      - ZENDESK_ORGANIZATION
-      - HUBSPOT_TEAM
-      - TABLEAU_GROUP
-      example: OPAL_GROUP
-      type: string
     GroupBindingGroup:
       description: '# Group Binding Group Object
 
@@ -338,61 +393,6 @@ components:
       required:
       - group_id
       - group_type
-      type: object
-    UpdateGroupBindingInfoList:
-      example:
-        group_bindings:
-        - group_binding_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-          source_group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-          groups:
-          - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-          - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
-        - group_binding_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
-          source_group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
-          groups:
-          - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
-          - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-      properties:
-        group_bindings:
-          description: A list of group bindings with information to update.
-          items:
-            $ref: '#/components/schemas/UpdateGroupBindingInfo'
-          type: array
-      type: object
-      required:
-      - group_bindings
-    CreateGroupBindingInfo:
-      description: '# CreateGroupBindingInfo Object
-
-        ### Description
-
-        The `CreateGroupBindingInfo` object is used as an input to the CreateGroupBinding API.'
-      example:
-        source_group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        groups:
-        - group_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        - group_id: 99d0b81d-14be-4cf6-bd27-348b4af1d11b
-      properties:
-        source_group_id:
-          description: The ID of the source group.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        groups:
-          description: The list of groups.
-          items:
-            properties:
-              group_id:
-                description: The ID of the group.
-                example: f454d283-ca87-4a8a-bdbb-df212eca5353
-                format: uuid
-                type: string
-            required:
-            - group_id
-          type: array
-      required:
-      - source_group_id
-      - groups
       type: object
   securitySchemes:
     BearerAuth:

@@ -144,63 +144,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreateDelegationRequest:
-      type: object
-      description: Request body for creating a new delegation of access review requests from one user to another.
-      properties:
-        delegator_user_id:
-          description: The ID of the user delegating their access review requests.
-          example: 123e4567-e89b-12d3-a456-426614174000
-          format: uuid
-          type: string
-        delegate_user_id:
-          description: The ID of the user being delegated to.
-          example: 7c86c85d-0651-43e2-a748-d69d658418e8
-          format: uuid
-          type: string
-        start_time:
-          description: The start time of the delegation.
-          example: 2023-10-01 12:00:00+00:00
-          type: string
-          format: date-time
-        end_time:
-          description: The end time of the delegation.
-          example: 2023-10-01 12:00:00+00:00
-          type: string
-          format: date-time
-        reason:
-          description: The reason for the delegation.
-          example: I need to be out of the office
-          type: string
-      required:
-      - delegator_user_id
-      - delegate_user_id
-      - start_time
-      - end_time
-      - reason
-    PaginatedDelegationsList:
-      type: object
-      description: A list of delegations for your organization.
-      properties:
-        results:
-          description: The delegations in the result set.
-          type: array
-          items:
-            $ref: '#/components/schemas/Delegation'
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
-          type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
-          type: string
-        total_count:
-          description: The total number of items in the result set.
-          example: 2
-          type: integer
     Delegation:
       type: object
       description: '# Delegation Object
@@ -264,6 +207,63 @@ components:
       - reason
       - created_at
       - updated_at
+    PaginatedDelegationsList:
+      type: object
+      description: A list of delegations for your organization.
+      properties:
+        results:
+          description: The delegations in the result set.
+          type: array
+          items:
+            $ref: '#/components/schemas/Delegation'
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        total_count:
+          description: The total number of items in the result set.
+          example: 2
+          type: integer
+    CreateDelegationRequest:
+      type: object
+      description: Request body for creating a new delegation of access review requests from one user to another.
+      properties:
+        delegator_user_id:
+          description: The ID of the user delegating their access review requests.
+          example: 123e4567-e89b-12d3-a456-426614174000
+          format: uuid
+          type: string
+        delegate_user_id:
+          description: The ID of the user being delegated to.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
+          format: uuid
+          type: string
+        start_time:
+          description: The start time of the delegation.
+          example: 2023-10-01 12:00:00+00:00
+          type: string
+          format: date-time
+        end_time:
+          description: The end time of the delegation.
+          example: 2023-10-01 12:00:00+00:00
+          type: string
+          format: date-time
+        reason:
+          description: The reason for the delegation.
+          example: I need to be out of the office
+          type: string
+      required:
+      - delegator_user_id
+      - delegate_user_id
+      - start_time
+      - end_time
+      - reason
   securitySchemes:
     BearerAuth:
       scheme: bearer

@@ -116,6 +116,126 @@ components:
       - BY_APPROVERS_ALL
       example: MANUALLY
       type: string
+    UAR:
+      description: A user access review.
+      example:
+        uar_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        name: Monthly UAR (July)
+        send_reviewer_assignment_notification: false
+        deadline: 2022-07-14 06:59:59+00:00
+        time_zone: America/Los_Angeles
+        self_review_allowed: false
+        uar_scope:
+          tags:
+          - key: uar_scope
+            value: high_priority
+          names:
+          - demo
+          - api
+          admins:
+          - f454d283-ca87-4a8a-bdbb-df212eca5353
+          - 8763d283-ca87-4a8a-bdbb-df212ecab139
+      properties:
+        uar_id:
+          description: The ID of the UAR.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        name:
+          description: The name of the UAR.
+          example: Monthly UAR (July)
+          type: string
+        reviewer_assignment_policy:
+          $ref: '#/components/schemas/UARReviewerAssignmentPolicyEnum'
+        send_reviewer_assignment_notification:
+          description: A bool representing whether to send a notification to reviewers when they're assigned a new review. Default is False.
+          example: false
+          type: boolean
+        deadline:
+          description: The last day for reviewers to complete their access reviews.
+          example: 2022-07-14 06:59:59+00:00
+          type: string
+          format: date-time
+        time_zone:
+          description: The time zone name (as defined by the IANA Time Zone database) used in the access review deadline and exported audit report. Default is America/Los_Angeles.
+          example: America/Los_Angeles
+          type: string
+        self_review_allowed:
+          description: A bool representing whether to present a warning when a user is the only reviewer for themself. Default is False.
+          example: false
+          type: boolean
+        instantly_action_reviews:
+          description: A bool representing whether to instantly action changes when reviewers submit their decision. Default is False.
+          type: boolean
+          example: false
+        uar_scope:
+          $ref: '#/components/schemas/UARScope'
+      required:
+      - uar_id
+      - name
+      - deadline
+      - reviewer_assignment_policy
+      - send_reviewer_assignment_notification
+      - time_zone
+      - self_review_allowed
+      - instantly_action_reviews
+      type: object
+    PaginatedUARsList:
+      description: A list of UARs.
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - uar_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+          name: Monthly UAR (July)
+          send_reviewer_assignment_notification: false
+          deadline: 2022-07-14 06:59:59+00:00
+          time_zone: America/Los_Angeles
+          self_review_allowed: false
+          uar_scope:
+            tags:
+            - key: uar_scope
+              value: high_priority
+            names:
+            - demo
+            - api
+            admins:
+            - f454d283-ca87-4a8a-bdbb-df212eca5353
+            - 8763d283-ca87-4a8a-bdbb-df212ecab139
+        - uar_id: 39a4d283-ca87-4a8a-bdbb-df212eca5fdb
+          name: Monthly UAR (August)
+          send_reviewer_assignment_notification: true
+          deadline: 2022-08-14 06:59:59+00:00
+          time_zone: America/Los_Angeles
+          self_review_allowed: false
+          uar_scope:
+            tags:
+            - key: uar_scope
+              value: high_priority
+            names:
+            - demo
+            - api
+            admins:
+            - f454d283-ca87-4a8a-bdbb-df212eca5353
+            - 8763d283-ca87-4a8a-bdbb-df212ecab139
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/UAR'
+          type: array
+      required:
+      - results
+      type: object
     UARScope:
       description: If set, the access review will only contain resources and groups that match at least one of the filters in scope.
       example:
@@ -209,6 +329,23 @@ components:
             type: string
           type: array
       type: object
+    TagFilter:
+      description: A tag filter defined by the tags key and value.
+      example:
+        key: uar_scope
+        value: high_priority
+      properties:
+        key:
+          description: The key of the tag.
+          example: uar_scope
+          type: string
+        value:
+          description: The value of the tag.
+          example: high_priority
+          type: string
+      required:
+      - key
+      type: object
     GroupTypeEnum:
       description: The type of the group.
       enum:
@@ -247,157 +384,6 @@ components:
       - TABLEAU_GROUP
       example: OPAL_GROUP
       type: string
-    TagFilter:
-      description: A tag filter defined by the tags key and value.
-      example:
-        key: uar_scope
-        value: high_priority
-      properties:
-        key:
-          description: The key of the tag.
-          example: uar_scope
-          type: string
-        value:
-          description: The value of the tag.
-          example: high_priority
-          type: string
-      required:
-      - key
-      type: object
-    CreateUARInfo:
-      description: Information needed to start a user access review.
-      example:
-        name: Monthly UAR (July)
-        send_reviewer_assignment_notification: false
-        deadline: 2022-07-14 06:59:59+00:00
-        time_zone: America/Los_Angeles
-        self_review_allowed: false
-        reminder_schedule:
-        - 7
-        - 3
-        - 1
-        - 0
-        reminder_include_manager: true
-        uar_scope:
-          group_visibility: STRICT
-          tags:
-          - key: uar_scope
-            value: high_priority
-          names:
-          - demo
-          - api
-          admins:
-          - f454d283-ca87-4a8a-bdbb-df212eca5353
-          - 8763d283-ca87-4a8a-bdbb-df212ecab139
-      properties:
-        name:
-          description: The name of the UAR.
-          example: Monthly UAR (July)
-          type: string
-        reviewer_assignment_policy:
-          $ref: '#/components/schemas/UARReviewerAssignmentPolicyEnum'
-        send_reviewer_assignment_notification:
-          description: A bool representing whether to send a notification to reviewers when they're assigned a new review. Default is False.
-          example: false
-          type: boolean
-        deadline:
-          description: The last day for reviewers to complete their access reviews.
-          example: 2022-07-14 06:59:59+00:00
-          type: string
-          format: date-time
-        time_zone:
-          description: The time zone name (as defined by the IANA Time Zone database) used in the access review deadline and exported audit report. Default is America/Los_Angeles.
-          example: America/Los_Angeles
-          type: string
-        self_review_allowed:
-          description: A bool representing whether to present a warning when a user is the only reviewer for themself. Default is False.
-          example: false
-          type: boolean
-        instantly_action_reviews:
-          description: A bool representing whether to instantly action changes when reviewers submit their decision. Default is False.
-          type: boolean
-          example: false
-        reminder_schedule:
-          items:
-            type: integer
-          type: array
-        reminder_include_manager:
-          type: boolean
-          example: false
-        uar_scope:
-          $ref: '#/components/schemas/UARScope'
-      required:
-      - name
-      - deadline
-      - reviewer_assignment_policy
-      - send_reviewer_assignment_notification
-      - time_zone
-      - self_review_allowed
-      type: object
-    UAR:
-      description: A user access review.
-      example:
-        uar_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        name: Monthly UAR (July)
-        send_reviewer_assignment_notification: false
-        deadline: 2022-07-14 06:59:59+00:00
-        time_zone: America/Los_Angeles
-        self_review_allowed: false
-        uar_scope:
-          tags:
-          - key: uar_scope
-            value: high_priority
-          names:
-          - demo
-          - api
-          admins:
-          - f454d283-ca87-4a8a-bdbb-df212eca5353
-          - 8763d283-ca87-4a8a-bdbb-df212ecab139
-      properties:
-        uar_id:
-          description: The ID of the UAR.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        name:
-          description: The name of the UAR.
-          example: Monthly UAR (July)
-          type: string
-        reviewer_assignment_policy:
-          $ref: '#/components/schemas/UARReviewerAssignmentPolicyEnum'
-        send_reviewer_assignment_notification:
-          description: A bool representing whether to send a notification to reviewers when they're assigned a new review. Default is False.
-          example: false
-          type: boolean
-        deadline:
-          description: The last day for reviewers to complete their access reviews.
-          example: 2022-07-14 06:59:59+00:00
-          type: string
-          format: date-time
-        time_zone:
-          description: The time zone name (as defined by the IANA Time Zone database) used in the access review deadline and exported audit report. Default is America/Los_Angeles.
-          example: America/Los_Angeles
-          type: string
-        self_review_allowed:
-          description: A bool representing whether to present a warning when a user is the only reviewer for themself. Default is False.
-          example: false
-          type: boolean
-        instantly_action_reviews:
-          description: A bool representing whether to instantly action changes when reviewers submit their decision. Default is False.
-          type: boolean
-          example: false
-        uar_scope:
-          $ref: '#/components/schemas/UARScope'
-      required:
-      - uar_id
-      - name
-      - deadline
-      - reviewer_assignment_policy
-      - send_reviewer_assignment_notification
-      - time_zone
-      - self_review_allowed
-      - instantly_action_reviews
-      type: object
     ResourceTypeEnum:
       description: The type of the resource.
       enum:
@@ -489,61 +475,75 @@ components:
       - HUBSPOT_ROLE
       example: AWS_IAM_ROLE
       type: string
-    PaginatedUARsList:
-      description: A list of UARs.
+    CreateUARInfo:
+      description: Information needed to start a user access review.
       example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        results:
-        - uar_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-          name: Monthly UAR (July)
-          send_reviewer_assignment_notification: false
-          deadline: 2022-07-14 06:59:59+00:00
-          time_zone: America/Los_Angeles
-          self_review_allowed: false
-          uar_scope:
-            tags:
-            - key: uar_scope
-              value: high_priority
-            names:
-            - demo
-            - api
-            admins:
-            - f454d283-ca87-4a8a-bdbb-df212eca5353
-            - 8763d283-ca87-4a8a-bdbb-df212ecab139
-        - uar_id: 39a4d283-ca87-4a8a-bdbb-df212eca5fdb
-          name: Monthly UAR (August)
-          send_reviewer_assignment_notification: true
-          deadline: 2022-08-14 06:59:59+00:00
-          time_zone: America/Los_Angeles
-          self_review_allowed: false
-          uar_scope:
-            tags:
-            - key: uar_scope
-              value: high_priority
-            names:
-            - demo
-            - api
-            admins:
-            - f454d283-ca87-4a8a-bdbb-df212eca5353
-            - 8763d283-ca87-4a8a-bdbb-df212ecab139
+        name: Monthly UAR (July)
+        send_reviewer_assignment_notification: false
+        deadline: 2022-07-14 06:59:59+00:00
+        time_zone: America/Los_Angeles
+        self_review_allowed: false
+        reminder_schedule:
+        - 7
+        - 3
+        - 1
+        - 0
+        reminder_include_manager: true
+        uar_scope:
+          group_visibility: STRICT
+          tags:
+          - key: uar_scope
+            value: high_priority
+          names:
+          - demo
+          - api
+          admins:
+          - f454d283-ca87-4a8a-bdbb-df212eca5353
+          - 8763d283-ca87-4a8a-bdbb-df212ecab139
       properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
+        name:
+          description: The name of the UAR.
+          example: Monthly UAR (July)
           type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
+        reviewer_assignment_policy:
+          $ref: '#/components/schemas/UARReviewerAssignmentPolicyEnum'
+        send_reviewer_assignment_notification:
+          description: A bool representing whether to send a notification to reviewers when they're assigned a new review. Default is False.
+          example: false
+          type: boolean
+        deadline:
+          description: The last day for reviewers to complete their access reviews.
+          example: 2022-07-14 06:59:59+00:00
           type: string
-        results:
+          format: date-time
+        time_zone:
+          description: The time zone name (as defined by the IANA Time Zone database) used in the access review deadline and exported audit report. Default is America/Los_Angeles.
+          example: America/Los_Angeles
+          type: string
+        self_review_allowed:
+          description: A bool representing whether to present a warning when a user is the only reviewer for themself. Default is False.
+          example: false
+          type: boolean
+        instantly_action_reviews:
+          description: A bool representing whether to instantly action changes when reviewers submit their decision. Default is False.
+          type: boolean
+          example: false
+        reminder_schedule:
           items:
-            $ref: '#/components/schemas/UAR'
+            type: integer
           type: array
+        reminder_include_manager:
+          type: boolean
+          example: false
+        uar_scope:
+          $ref: '#/components/schemas/UARScope'
       required:
-      - results
+      - name
+      - deadline
+      - reviewer_assignment_policy
+      - send_reviewer_assignment_notification
+      - time_zone
+      - self_review_allowed
       type: object
   securitySchemes:
     BearerAuth:

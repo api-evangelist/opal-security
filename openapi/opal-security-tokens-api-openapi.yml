@@ -100,6 +100,12 @@ paths:
       - Tokens
 components:
   schemas:
+    ApiAccessLevelEnum:
+      description: The access level of an API token.
+      enum:
+      - READ_ONLY
+      - FULL_ACCESS
+      type: string
     PaginatedTokensList:
       example:
         next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
@@ -129,12 +135,6 @@ components:
       required:
       - results
       type: object
-    ApiAccessLevelEnum:
-      description: The access level of an API token.
-      enum:
-      - READ_ONLY
-      - FULL_ACCESS
-      type: string
     Token:
       description: A first-party API token.
       example:

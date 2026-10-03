@@ -53,64 +53,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ResourceAccessLevel:
-      description: '# Access Level Object
-
-        ### Description
-
-        The `AccessLevel` object is used to represent the level of access that a principal has. The "default" access
-
-        level is a `AccessLevel` object whose fields are all empty strings.
-
-
-        ### Usage Example
-
-        View the `AccessLevel` of a resource/user or resource/group pair to see the level of access granted to the resource.'
-      example:
-        access_level_name: AdminRole
-        access_level_remote_id: arn:aws:iam::590304332660:role/AdministratorAccess
-      properties:
-        access_level_name:
-          description: The human-readable name of the access level.
-          example: AdminRole
-          type: string
-        access_level_remote_id:
-          description: The machine-readable identifier of the access level.
-          example: arn:aws:iam::590304332660:role/AdministratorAccess
-          type: string
-      required:
-      - access_level_name
-      - access_level_remote_id
-      type: object
-    SessionsList:
-      example:
-        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-        results:
-        - connection_id: h0z968412-2451-4bbd-42h4-057l715d917m
-          user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-          resource_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
-          expiration_date: 2022-01-23 04:56:07+00:00
-        - connection_id: 6e6b5597-bd36-4f4c-a629-01e3fa791932
-          user_id: b031c922-b84f-4424-9f4f-c49c05871bfe
-          resource_id: 77eb1ab7-2c27-4fc4-afdb-137e1265cddd
-          expiration_date: 2022-03-12 07:22:18+00:00
-      properties:
-        next:
-          description: The cursor with which to continue pagination if additional result pages exist.
-          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
-          nullable: true
-          type: string
-        previous:
-          description: The cursor used to obtain the current result page.
-          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
-          nullable: true
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/Session'
-          type: array
-      type: object
     Session:
       description: '# Session Object
 
@@ -157,6 +99,64 @@ components:
       - resource_id
       - access_level
       - expiration_date
+      type: object
+    SessionsList:
+      example:
+        next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+        previous: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+        results:
+        - connection_id: h0z968412-2451-4bbd-42h4-057l715d917m
+          user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+          resource_id: 1b978423-db0a-4037-a4cf-f79c60cb67b3
+          expiration_date: 2022-01-23 04:56:07+00:00
+        - connection_id: 6e6b5597-bd36-4f4c-a629-01e3fa791932
+          user_id: b031c922-b84f-4424-9f4f-c49c05871bfe
+          resource_id: 77eb1ab7-2c27-4fc4-afdb-137e1265cddd
+          expiration_date: 2022-03-12 07:22:18+00:00
+      properties:
+        next:
+          description: The cursor with which to continue pagination if additional result pages exist.
+          example: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
+          nullable: true
+          type: string
+        previous:
+          description: The cursor used to obtain the current result page.
+          example: cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Session'
+          type: array
+      type: object
+    ResourceAccessLevel:
+      description: '# Access Level Object
+
+        ### Description
+
+        The `AccessLevel` object is used to represent the level of access that a principal has. The "default" access
+
+        level is a `AccessLevel` object whose fields are all empty strings.
+
+
+        ### Usage Example
+
+        View the `AccessLevel` of a resource/user or resource/group pair to see the level of access granted to the resource.'
+      example:
+        access_level_name: AdminRole
+        access_level_remote_id: arn:aws:iam::590304332660:role/AdministratorAccess
+      properties:
+        access_level_name:
+          description: The human-readable name of the access level.
+          example: AdminRole
+          type: string
+        access_level_remote_id:
+          description: The machine-readable identifier of the access level.
+          example: arn:aws:iam::590304332660:role/AdministratorAccess
+          type: string
+      required:
+      - access_level_name
+      - access_level_remote_id
       type: object
   securitySchemes:
     BearerAuth:

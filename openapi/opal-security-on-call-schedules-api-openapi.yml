@@ -82,6 +82,26 @@ paths:
       - On-Call Schedules
 components:
   schemas:
+    CreateOnCallScheduleInfo:
+      description: '# CreateOnCallScheduleInfo Object
+
+        ### Description
+
+        The `CreateOnCallScheduleInfo` object is used to describe the on call schedule object to be created.'
+      example:
+        third_party_provider: PAGER_DUTY
+        remote_id: PNZNINN
+      properties:
+        third_party_provider:
+          $ref: '#/components/schemas/OnCallScheduleProviderEnum'
+        remote_id:
+          description: The remote ID of the on call schedule
+          example: PNZNINN
+          type: string
+      type: object
+      required:
+      - third_party_provider
+      - remote_id
     OnCallSchedule:
       description: '# OnCallSchedule Object
 
@@ -117,13 +137,6 @@ components:
       type: object
       required:
       - message_channel_id
-    OnCallScheduleProviderEnum:
-      description: The third party provider of the on call schedule.
-      enum:
-      - OPSGENIE
-      - PAGER_DUTY
-      example: PAGER_DUTY
-      type: string
     OnCallScheduleList:
       example:
         on_call_schedules:
@@ -143,26 +156,13 @@ components:
       type: object
       required:
       - on_call_schedules
-    CreateOnCallScheduleInfo:
-      description: '# CreateOnCallScheduleInfo Object
-
-        ### Description
-
-        The `CreateOnCallScheduleInfo` object is used to describe the on call schedule object to be created.'
-      example:
-        third_party_provider: PAGER_DUTY
-        remote_id: PNZNINN
-      properties:
-        third_party_provider:
-          $ref: '#/components/schemas/OnCallScheduleProviderEnum'
-        remote_id:
-          description: The remote ID of the on call schedule
-          example: PNZNINN
-          type: string
-      type: object
-      required:
-      - third_party_provider
-      - remote_id
+    OnCallScheduleProviderEnum:
+      description: The third party provider of the on call schedule.
+      enum:
+      - OPSGENIE
+      - PAGER_DUTY
+      example: PAGER_DUTY
+      type: string
   securitySchemes:
     BearerAuth:
       scheme: bearer
