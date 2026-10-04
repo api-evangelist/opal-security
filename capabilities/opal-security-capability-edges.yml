@@ -1,0 +1,139 @@
+slug: opal-security
+provider: Opal Security
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 12
+edges:
+- tag: Access Rules
+  spec_file: opal-security-access-rules-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.9
+  evidence: '''Create access rule'' / ''Get access rules'' with schemas AccessRule, UserAttributeSelector,
+    RuleConjunction on a platform that ''orchestrates just-in-time and least-privilege access, designs
+    intelligent access policies'''
+  reason: Operations manage attribute-based access policy rules governing who gets access to resources
+    — squarely Identity & Access Management.
+- tag: Requests
+  spec_file: opal-security-requests-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.9
+  evidence: POST /requests/{id}/approve approveRequest; POST /requests/{id}/deny denyRequest; schemas
+    RequestReviewer, RequestedItem, RequestApprovalEnum
+  reason: Access request submission, reviewer stages and approve/deny decisions are precisely the request-and-approval
+    workflow of identity & access management.
+- tag: uars
+  spec_file: opal-security-uars-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.88
+  evidence: GET /uars getUARs Get UARs; POST /uar create_uar; schemas UARReviewerAssignmentPolicyEnum,
+    UARScope
+  reason: User access reviews (access certification campaigns with reviewer assignment policies) are a
+    core Identity & Access Management function.
+- tag: Bundles
+  spec_file: opal-security-bundles-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: '''Create bundle'', ''Add bundle resource'', ''Add bundle group'', ''Get bundle visibility''
+    with schemas BundleResource, BundleGroup, VisibilityInfo'
+  reason: Bundles group resources and groups into requestable access packages with visibility scoping
+    — entitlement grouping for access requests, i.e. Identity & Access Management on this access-governance
+    platform.
+- tag: Groups
+  spec_file: opal-security-groups-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: GET /groups/{group_id}/resources get_group_resources; GET /groups/{group_id}/containing-groups
+    Get nested groups; schemas ResourceWithAccessLevel, ReviewerStage, UpdateGroupResourcesInfo
+  reason: Manages access groups, their nested group structure, the resources and access levels they grant
+    and their reviewers — core identity and access administration.
+- tag: Resources
+  spec_file: opal-security-resources-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: PUT /resources/{resource_id}/reviewers set_resource_reviewers; schemas ResourceUser, ScopedRolePermission,
+    AccessList, RequestConfiguration
+  reason: Registers the systems/entitlements under management, who has access to them and who reviews
+    that access — the resource side of identity & access management.
+- tag: idp-group-mappings
+  spec_file: opal-security-idp-group-mappings-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.85
+  evidence: GET /idp-group-mappings/{app_resource_id} getIdpGroupMappings; schemas IdpGroupMapping, IdpGroupMappingList
+  reason: Maps identity-provider groups to application resources, i.e. federation/entitlement mapping,
+    squarely Identity & Access Management.
+- tag: Users
+  spec_file: opal-security-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.8
+  evidence: GET /users getUsers Get users; GET /users/remote_users getRemoteUsers Get remote users; schema
+    UserHrIdpStatusEnum, RemoteUser — on an "access management and identity security platform"
+  reason: The Users surface enumerates identity records (including remote/IdP-linked users and their HR/IdP
+    status) within an access-management platform, which is identity administration rather than HR employee
+    records.
+- tag: group-bindings
+  spec_file: opal-security-group-bindings-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: POST /group-bindings createGroupBinding Create group binding; schemas GroupBinding, GroupTypeEnum,
+    GroupBindingGroup
+  reason: Group bindings link equivalent access groups across connected systems in Opal's access platform
+    — an identity and access administration construct, not an organisational/HR grouping.
+- tag: Apps
+  spec_file: opal-security-apps-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.75
+  evidence: '''Get apps'', ''Get app by ID'', ''Get sync errors'' with schemas App, AppTypeEnum, AppValidationStatusEnum,
+    SyncError'
+  reason: Read-only inventory of connected applications (and their identity-sync health) within an access
+    management platform; the App objects are the integration targets over which access is governed, supporting
+    IAM. Lower confidence because the operations themselves are a connector/integration inventory rather
+    than access administration proper.
+- tag: non-human-identities
+  spec_file: opal-security-non-human-identities-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: GET /non-human-identities get_nhis Get nhis; schemas Resource, ReviewerStage, RiskSensitivityEnum
+  reason: Enumerates non-human (service/machine) identities and their access resources within an identity
+    security platform; this is machine identity administration under IAM.
+- tag: Configuration Templates
+  spec_file: opal-security-configuration-templates-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /configuration-templates createConfigurationTemplate; schemas RequestConfiguration, ReviewerStage,
+    VisibilityInfo, TicketPropagationConfiguration
+  reason: Templates bundle access-request configuration, reviewer stages and visibility rules for Opal's
+    access governance — i.e. reusable access policy definition, part of Identity & Access Management rather
+    than generic app configuration.
