@@ -133,13 +133,106 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AppValidationStatusEnum:
-      description: The status of an app validation.
-      enum:
-      - SUCCESS
-      - FAILED
-      example: FAILED
-      type: string
+    App:
+      description: '# App Object
+
+        ### Description
+
+        The `App` object is used to represent an app to an application.
+
+
+        ### Usage Example
+
+        List from the `GET Apps` endpoint.'
+      example:
+        app_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        name: Okta Org
+        description: Okta directory for the engineering team.
+        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        app_type: OKTA_DIRECTORY
+      properties:
+        app_id:
+          description: The ID of the app.
+          example: f454d283-ca87-4a8a-bdbb-df212eca5353
+          format: uuid
+          type: string
+        name:
+          description: The name of the app.
+          example: Okta Org
+          type: string
+        description:
+          description: A description of the app.
+          example: Okta directory for the engineering team.
+          type: string
+        admin_owner_id:
+          description: The ID of the owner of the app.
+          example: 7c86c85d-0651-43e2-a748-d69d658418e8
+          format: uuid
+          type: string
+        app_type:
+          $ref: '#/components/schemas/AppTypeEnum'
+        validations:
+          description: Validation checks of an apps' configuration and permissions.
+          items:
+            $ref: '#/components/schemas/AppValidation'
+          type: array
+      required:
+      - app_id
+      - name
+      - description
+      - admin_owner_id
+      - app_type
+      type: object
+    AppValidation:
+      description: '# App validation object
+
+        ### Description
+
+        The `AppValidation` object is used to represent a validation check of an apps'' configuration and permissions.
+
+
+        ### Usage Example
+
+        List from the `GET Apps` endpoint.'
+      example:
+        key: iam:GetRole
+        name: Opal's service account is missing the 'iam:GetRole' permission.
+        usage_reason: Opal uses the 'iam:GetRole' permissions to view access to resources.
+        details: 403 Google API Error. Service account is not authorized to access role assignments.
+        severity: HIGH
+        status: FAILED
+        updated_at: 2021-01-06 20:00:00+00:00
+      properties:
+        key:
+          description: The key of the app validation. These are not unique IDs between runs.
+          example: iam:GetUser
+          type: string
+        name:
+          description: The human-readable description of whether the validation has the permissions.
+          example: Opal's service account is missing the 'iam:GetUser' description.
+        usage_reason:
+          description: The reason for needing the validation.
+          example: Opal uses the 'iam:GetUser' permission to import users.
+          type: string
+        details:
+          description: Extra details regarding the validation. Could be an error message or restrictions on permissions.
+          example: 403 Google API Error. Service account is not authorized to access role assignments.
+          type: string
+        severity:
+          $ref: '#/components/schemas/AppValidationSeverityEnum'
+        status:
+          $ref: '#/components/schemas/AppValidationStatusEnum'
+        updated_at:
+          description: The date and time the app validation was last run.
+          example: 2021-01-06 20:00:00+00:00
+          format: date-time
+          type: string
+      required:
+      - key
+      - name
+      - status
+      - severity
+      - updated_at
     AppTypeEnum:
       description: The type of an app.
       enum:
@@ -193,155 +286,6 @@ components:
       - ZENDESK
       example: OKTA_DIRECTORY
       type: string
-    SyncErrorList:
-      example:
-        sync_errors:
-        - app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-          first_seen: 2022-07-14 06:59:59+00:00
-          last_seen: 2022-08-23 04:32:46+00:00
-          error_message: Failed to connect to the remote system - insufficient credentials.
-        - app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
-          first_seen: 2023-04-24 06:59:59+00:00
-          last_seen: 2024-08-21 04:32:46+00:00
-          error_message: Resource not found.
-      properties:
-        sync_errors:
-          items:
-            $ref: '#/components/schemas/SyncError'
-          type: array
-      type: object
-      required:
-      - sync_errors
-    AppsList:
-      description: A list of apps.
-      example:
-      - app_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        name: Okta Org
-        description: Okta directory for the engineering team.
-        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-        app_type: OKTA_DIRECTORY
-      - app_id: 5247d283-ca87-4a8a-bdbb-df212eca1243
-        name: Prod AWS Account
-        description: Our production engineering account for AWS.
-        admin_owner_id: aab485d-0651-43e2-a748-d69d6584123af
-        app_type: AWS
-      properties:
-        apps:
-          items:
-            $ref: '#/components/schemas/App'
-          type: array
-      required:
-      - apps
-      type: object
-    AppValidation:
-      description: '# App validation object
-
-        ### Description
-
-        The `AppValidation` object is used to represent a validation check of an apps'' configuration and permissions.
-
-
-        ### Usage Example
-
-        List from the `GET Apps` endpoint.'
-      example:
-        key: iam:GetRole
-        name: Opal's service account is missing the 'iam:GetRole' permission.
-        usage_reason: Opal uses the 'iam:GetRole' permissions to view access to resources.
-        details: 403 Google API Error. Service account is not authorized to access role assignments.
-        severity: HIGH
-        status: FAILED
-        updated_at: 2021-01-06 20:00:00+00:00
-      properties:
-        key:
-          description: The key of the app validation. These are not unique IDs between runs.
-          example: iam:GetUser
-          type: string
-        name:
-          description: The human-readable description of whether the validation has the permissions.
-          example: Opal's service account is missing the 'iam:GetUser' description.
-        usage_reason:
-          description: The reason for needing the validation.
-          example: Opal uses the 'iam:GetUser' permission to import users.
-          type: string
-        details:
-          description: Extra details regarding the validation. Could be an error message or restrictions on permissions.
-          example: 403 Google API Error. Service account is not authorized to access role assignments.
-          type: string
-        severity:
-          $ref: '#/components/schemas/AppValidationSeverityEnum'
-        status:
-          $ref: '#/components/schemas/AppValidationStatusEnum'
-        updated_at:
-          description: The date and time the app validation was last run.
-          example: 2021-01-06 20:00:00+00:00
-          format: date-time
-          type: string
-      required:
-      - key
-      - name
-      - status
-      - severity
-      - updated_at
-    App:
-      description: '# App Object
-
-        ### Description
-
-        The `App` object is used to represent an app to an application.
-
-
-        ### Usage Example
-
-        List from the `GET Apps` endpoint.'
-      example:
-        app_id: f454d283-ca87-4a8a-bdbb-df212eca5353
-        name: Okta Org
-        description: Okta directory for the engineering team.
-        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
-        app_type: OKTA_DIRECTORY
-      properties:
-        app_id:
-          description: The ID of the app.
-          example: f454d283-ca87-4a8a-bdbb-df212eca5353
-          format: uuid
-          type: string
-        name:
-          description: The name of the app.
-          example: Okta Org
-          type: string
-        description:
-          description: A description of the app.
-          example: Okta directory for the engineering team.
-          type: string
-        admin_owner_id:
-          description: The ID of the owner of the app.
-          example: 7c86c85d-0651-43e2-a748-d69d658418e8
-          format: uuid
-          type: string
-        app_type:
-          $ref: '#/components/schemas/AppTypeEnum'
-        validations:
-          description: Validation checks of an apps' configuration and permissions.
-          items:
-            $ref: '#/components/schemas/AppValidation'
-          type: array
-      required:
-      - app_id
-      - name
-      - description
-      - admin_owner_id
-      - app_type
-      type: object
-    AppValidationSeverityEnum:
-      description: The severity of an app validation.
-      enum:
-      - CRITICAL
-      - HIGH
-      - MEDIUM
-      - LOW
-      example: CRITICAL
-      type: string
     SyncError:
       description: '# SyncError Object
 
@@ -383,6 +327,62 @@ components:
       - last_seen
       - error_message
       type: object
+    AppValidationSeverityEnum:
+      description: The severity of an app validation.
+      enum:
+      - CRITICAL
+      - HIGH
+      - MEDIUM
+      - LOW
+      example: CRITICAL
+      type: string
+    AppsList:
+      description: A list of apps.
+      example:
+      - app_id: f454d283-ca87-4a8a-bdbb-df212eca5353
+        name: Okta Org
+        description: Okta directory for the engineering team.
+        admin_owner_id: 7c86c85d-0651-43e2-a748-d69d658418e8
+        app_type: OKTA_DIRECTORY
+      - app_id: 5247d283-ca87-4a8a-bdbb-df212eca1243
+        name: Prod AWS Account
+        description: Our production engineering account for AWS.
+        admin_owner_id: aab485d-0651-43e2-a748-d69d6584123af
+        app_type: AWS
+      properties:
+        apps:
+          items:
+            $ref: '#/components/schemas/App'
+          type: array
+      required:
+      - apps
+      type: object
+    SyncErrorList:
+      example:
+        sync_errors:
+        - app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+          first_seen: 2022-07-14 06:59:59+00:00
+          last_seen: 2022-08-23 04:32:46+00:00
+          error_message: Failed to connect to the remote system - insufficient credentials.
+        - app_id: b5a5ca27-0ea3-4d86-9199-2126d57d1fbd
+          first_seen: 2023-04-24 06:59:59+00:00
+          last_seen: 2024-08-21 04:32:46+00:00
+          error_message: Resource not found.
+      properties:
+        sync_errors:
+          items:
+            $ref: '#/components/schemas/SyncError'
+          type: array
+      type: object
+      required:
+      - sync_errors
+    AppValidationStatusEnum:
+      description: The status of an app validation.
+      enum:
+      - SUCCESS
+      - FAILED
+      example: FAILED
+      type: string
   securitySchemes:
     BearerAuth:
       scheme: bearer

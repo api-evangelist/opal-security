@@ -150,6 +150,32 @@ paths:
       - Events
 components:
   schemas:
+    SubEvent:
+      description: '# Sub event Object
+
+        ### Description
+
+        The `SubEvent` object is used to represent a subevent.
+
+
+        ### Usage Example
+
+        Fetch from the `LIST Events` endpoint.'
+      example:
+        sub_event_type: USERS_CREATED
+        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        user_name: John Smith
+        resource_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
+        resource_name: Figma
+      properties:
+        sub_event_type:
+          description: The subevent type.
+          example: USERS_CREATED
+          type: string
+      required:
+      - sub_event_type
+      type: object
+      additionalProperties: true
     Event:
       description: '# Event Object
 
@@ -246,32 +272,6 @@ components:
             $ref: '#/components/schemas/Event'
           type: array
       type: object
-    SubEvent:
-      description: '# Sub event Object
-
-        ### Description
-
-        The `SubEvent` object is used to represent a subevent.
-
-
-        ### Usage Example
-
-        Fetch from the `LIST Events` endpoint.'
-      example:
-        sub_event_type: USERS_CREATED
-        user_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-        user_name: John Smith
-        resource_id: 29827fb8-f2dd-4e80-9576-28e31e9934ac
-        resource_name: Figma
-      properties:
-        sub_event_type:
-          description: The subevent type.
-          example: USERS_CREATED
-          type: string
-      required:
-      - sub_event_type
-      type: object
-      additionalProperties: true
   securitySchemes:
     BearerAuth:
       scheme: bearer

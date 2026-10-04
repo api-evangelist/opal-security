@@ -82,6 +82,33 @@ paths:
       - message-channels
 components:
   schemas:
+    MessageChannelProviderEnum:
+      description: The third party provider of the message channel.
+      enum:
+      - SLACK
+      example: SLACK
+      type: string
+    MessageChannelList:
+      example:
+        channels:
+        - message_channel_id: 7870617d-e72a-47f5-a84c-693817ab4567
+          third_party_provider: SLACK
+          remote_id: C03FJR97276
+          name: api-team-audit-channel
+          is_private: false
+        - message_channel_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
+          third_party_provider: SLACK
+          remote_id: A4FJR97365D
+          name: api-team-monitor-channel
+          is_private: false
+      properties:
+        channels:
+          items:
+            $ref: '#/components/schemas/MessageChannel'
+          type: array
+      type: object
+      required:
+      - channels
     MessageChannel:
       description: '# MessageChannel Object
 
@@ -122,12 +149,6 @@ components:
       type: object
       required:
       - message_channel_id
-    MessageChannelProviderEnum:
-      description: The third party provider of the message channel.
-      enum:
-      - SLACK
-      example: SLACK
-      type: string
     CreateMessageChannelInfo:
       description: '# CreateMessageChannelInfo Object
 
@@ -148,27 +169,6 @@ components:
       required:
       - third_party_provider
       - remote_id
-    MessageChannelList:
-      example:
-        channels:
-        - message_channel_id: 7870617d-e72a-47f5-a84c-693817ab4567
-          third_party_provider: SLACK
-          remote_id: C03FJR97276
-          name: api-team-audit-channel
-          is_private: false
-        - message_channel_id: 1520617d-e72a-47f5-a84c-693817ab48ad2
-          third_party_provider: SLACK
-          remote_id: A4FJR97365D
-          name: api-team-monitor-channel
-          is_private: false
-      properties:
-        channels:
-          items:
-            $ref: '#/components/schemas/MessageChannel'
-          type: array
-      type: object
-      required:
-      - channels
   securitySchemes:
     BearerAuth:
       scheme: bearer

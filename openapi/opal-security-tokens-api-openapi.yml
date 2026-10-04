@@ -100,12 +100,6 @@ paths:
       - Tokens
 components:
   schemas:
-    ApiAccessLevelEnum:
-      description: The access level of an API token.
-      enum:
-      - READ_ONLY
-      - FULL_ACCESS
-      type: string
     PaginatedTokensList:
       example:
         next: cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw
@@ -192,6 +186,12 @@ components:
       - user_id
       - access_level
       type: object
+    ApiAccessLevelEnum:
+      description: The access level of an API token.
+      enum:
+      - READ_ONLY
+      - FULL_ACCESS
+      type: string
   securitySchemes:
     BearerAuth:
       scheme: bearer
