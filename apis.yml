@@ -586,6 +586,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/opal-security/overview
 - type: CapabilityMap
   url: capabilities/opal-security-capability-edges.yml
   name: Opal Security Business Capability Map
