@@ -1,357 +1,334 @@
 {
+  "info": {
+    "_postman_id": "aa2f64cb-b8a5-497a-b5e6-c28bafeb5e29",
+    "name": "Opal Tags API",
+    "description": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:50:42.000Z",
+    "updatedAt": "2026-10-21T19:50:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-aa2f64cb-b8a5-497a-b5e6-c28bafeb5e29"
+  },
   "item": [
     {
-      "id": "a1f471f7-6787-4b93-b2a2-761d16abf16f",
-      "name": "tags",
-      "description": {
-        "content": "Operations related to tags",
-        "type": "text/plain"
-      },
+      "name": "tag",
       "item": [
         {
-          "id": "4e7cb42f-81d5-485a-8450-b64c3f6488ea",
-          "name": "Get tag by ID",
-          "request": {
-            "name": "Get tag by ID",
-            "description": {
-              "content": "UNSTABLE. May be removed at any time. Gets a tag with the given id.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tag",
-                ":tag_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "tag_id",
-                  "description": "(Required) The tag ID"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "{tag_id}",
+          "item": [
             {
-              "id": "e0841989-6a50-415d-b727-16320c9d7889",
-              "name": "The tag requested.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tag",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
+              "name": "Get tag by ID",
+              "id": "3c1609ac-6ebd-4d40-888c-5c7ea3e44ae1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
                     {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "tag_id",
-                      "description": "(Required) The tag ID"
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
                     }
                   ]
                 },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/tag/:tag_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tag",
+                    ":tag_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "f91bb32e-cbf4-468d-a11e-6b5c0a91ffee",
+                      "key": "tag_id",
+                      "value": "<uuid>",
+                      "description": "(Required) The tag ID"
+                    }
+                  ]
+                },
+                "description": "UNSTABLE. May be removed at any time. Gets a tag with the given id."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "id": "261e8020-d313-4984-b03b-606ab5cb3327",
+                  "name": "The tag requested.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tag/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tag",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"tag_id\": \"<uuid>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"user_creator_id\": \"<uuid>\",\n  \"key\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T19:50:43.000Z",
+                  "updatedAt": "2026-10-21T19:50:43.000Z",
+                  "uid": "35240-261e8020-d313-4984-b03b-606ab5cb3327"
                 }
               ],
-              "body": "{\n  \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n  \"created_at\": \"2022-01-23 04:56:07+00:00\",\n  \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n  \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n  \"key\": \"database-name\",\n  \"value\": \"redis_db\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T19:50:43.000Z",
+              "updatedAt": "2026-10-21T19:50:43.000Z",
+              "uid": "35240-3c1609ac-6ebd-4d40-888c-5c7ea3e44ae1"
+            },
+            {
+              "name": "Delete tag by ID",
+              "id": "08f025d8-2009-432c-a42d-20b60de5be13",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/tag/:tag_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tag",
+                    ":tag_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "1bde118f-1db1-41ca-b9b4-33038b9d096b",
+                      "key": "tag_id",
+                      "value": "<uuid>",
+                      "description": "(Required) The tag ID"
+                    }
+                  ]
+                },
+                "description": "UNSTABLE. May be removed at any time. Deletes a tag with the given id."
+              },
+              "response": [
+                {
+                  "id": "784f6f6f-09d7-4973-9381-2185095042ac",
+                  "name": "Tag was deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tag/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tag",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:50:43.000Z",
+                  "updatedAt": "2026-10-21T19:50:43.000Z",
+                  "uid": "35240-784f6f6f-09d7-4973-9381-2185095042ac"
+                }
+              ],
+              "createdAt": "2026-10-21T19:50:43.000Z",
+              "updatedAt": "2026-10-21T19:50:43.000Z",
+              "uid": "35240-08f025d8-2009-432c-a42d-20b60de5be13"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "3cba2950-051f-485b-b6d0-32b22e2125b7",
+          "createdAt": "2026-10-21T19:50:42.000Z",
+          "updatedAt": "2026-10-21T19:50:42.000Z",
+          "uid": "35240-3cba2950-051f-485b-b6d0-32b22e2125b7"
         },
         {
-          "id": "3e684638-8dc7-4122-8666-25b08b59519e",
-          "name": "delete tag by ID",
+          "name": "Get tag",
+          "id": "d039304e-39b1-455d-b917-fe6eeaf005e2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "delete tag by ID",
-            "description": {
-              "content": "UNSTABLE. May be removed at any time. Deletes a tag with the given id.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tag",
-                ":tag_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "tag_id",
-                  "description": "(Required) The tag ID"
-                }
-              ]
-            },
-            "method": "DELETE",
             "auth": {
               "type": "bearer",
               "bearer": [
                 {
                   "key": "token",
-                  "value": "{{bearerToken}}"
+                  "value": "{{bearerToken}}",
+                  "type": "string"
                 }
               ]
-            }
-          },
-          "response": [
-            {
-              "id": "38abadaa-e6d4-471a-80bc-dc9c72f3bc86",
-              "name": "Tag was deleted.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tag",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "tag_id",
-                      "description": "(Required) The tag ID"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a370f42c-0405-45e0-8005-e0ca1b2b462d",
-          "name": "get tag",
-          "request": {
-            "name": "get tag",
-            "description": {
-              "content": "Gets a tag with the given key and value.",
-              "type": "text/plain"
             },
-            "url": {
-              "path": [
-                "tag"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "tag_key",
-                  "value": "<string>",
-                  "description": "(Required) The key of the tag to get."
-                },
-                {
-                  "disabled": false,
-                  "key": "tag_value",
-                  "value": "<string>",
-                  "description": "The value of the tag to get."
-                }
-              ],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
+            "url": {
+              "raw": "{{baseUrl}}/tag?tag_key=<string>&tag_value=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tag"
+              ],
+              "query": [
                 {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
+                  "description": "(Required) The key of the tag to get.",
+                  "key": "tag_key",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The value of the tag to get.",
+                  "key": "tag_value",
+                  "value": "<string>"
                 }
               ]
-            }
+            },
+            "description": "Gets a tag with the given key and value."
           },
           "response": [
             {
-              "id": "89d8acbc-f747-4405-b670-6b645a594edd",
+              "id": "c2fc8f1b-d9d3-4660-a079-ca9772e3544f",
               "name": "The tag requested.",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/tag?tag_key=<string>&tag_value=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "tag"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "(Required) The key of the tag to get.",
                       "key": "tag_key",
-                      "value": "api-scope"
+                      "value": "<string>"
                     },
                     {
+                      "description": "The value of the tag to get.",
                       "key": "tag_value",
-                      "value": "production"
+                      "value": "<string>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n  \"created_at\": \"2022-01-23 04:56:07+00:00\",\n  \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n  \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n  \"key\": \"database-name\",\n  \"value\": \"redis_db\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"tag_id\": \"<uuid>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"user_creator_id\": \"<uuid>\",\n  \"key\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T19:50:43.000Z",
+              "updatedAt": "2026-10-21T19:50:43.000Z",
+              "uid": "35240-c2fc8f1b-d9d3-4660-a079-ca9772e3544f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T19:50:43.000Z",
+          "updatedAt": "2026-10-21T19:50:43.000Z",
+          "uid": "35240-d039304e-39b1-455d-b917-fe6eeaf005e2"
         },
         {
-          "id": "791b8015-9a82-4289-9d65-28b8e9f66a31",
-          "name": "create tag",
+          "name": "Create tag",
+          "id": "bca3265e-52c3-4212-b219-3cf631be04c2",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "create tag",
-            "description": {
-              "content": "Creates a tag with the given key and value.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tag"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+            "auth": {
+              "type": "bearer",
+              "bearer": [
                 {
-                  "disabled": false,
-                  "key": "tag_key",
-                  "value": "<string>",
-                  "description": "The key of the tag to create."
-                },
-                {
-                  "disabled": false,
-                  "key": "tag_value",
-                  "value": "<string>",
-                  "description": "The value of the tag to create."
-                },
-                {
-                  "disabled": false,
-                  "key": "admin_owner_id",
-                  "value": "<uuid>",
-                  "description": "The ID of the owner that manages the tag."
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
                 }
-              ],
-              "variable": []
+              ]
             },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -362,919 +339,924 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"tag_key\": \"<string>\",\n  \"tag_value\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/tag?tag_key=<string>&tag_value=<string>&admin_owner_id=<uuid>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tag"
+              ],
+              "query": [
+                {
+                  "description": "The key of the tag to create.",
+                  "key": "tag_key",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The value of the tag to create.",
+                  "key": "tag_value",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The ID of the owner that manages the tag.",
+                  "key": "admin_owner_id",
+                  "value": "<uuid>"
+                }
+              ]
+            },
+            "description": "Creates a tag with the given key and value."
           },
           "response": [
             {
-              "id": "e1b2a819-2c25-4240-93fa-54f6f051f600",
+              "id": "86700c5f-584e-44ed-abf3-787c09d41ed9",
               "name": "The tag that was created.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "tag"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "tag_key",
-                      "value": "api-scope"
-                    },
-                    {
-                      "key": "tag_value",
-                      "value": "production"
-                    },
-                    {
-                      "key": "admin_owner_id",
-                      "value": "f92aa855-cea9-4814-b9d8-f2a60d3e4a06"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"tag_key\": \"api-scope\",\n  \"tag_value\": \"production\"\n}",
+                  "raw": "{\n  \"tag_key\": \"<string>\",\n  \"tag_value\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tag?tag_key=<string>&tag_value=<string>&admin_owner_id=<uuid>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tag"
+                  ],
+                  "query": [
+                    {
+                      "description": "The key of the tag to create.",
+                      "key": "tag_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The value of the tag to create.",
+                      "key": "tag_value",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "The ID of the owner that manages the tag.",
+                      "key": "admin_owner_id",
+                      "value": "<uuid>"
+                    }
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n  \"created_at\": \"2022-01-23 04:56:07+00:00\",\n  \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n  \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n  \"key\": \"database-name\",\n  \"value\": \"redis_db\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"tag_id\": \"<uuid>\",\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\",\n  \"user_creator_id\": \"<uuid>\",\n  \"key\": \"<string>\",\n  \"value\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T19:50:43.000Z",
+              "updatedAt": "2026-10-21T19:50:43.000Z",
+              "uid": "35240-86700c5f-584e-44ed-abf3-787c09d41ed9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
+          "createdAt": "2026-10-21T19:50:43.000Z",
+          "updatedAt": "2026-10-21T19:50:43.000Z",
+          "uid": "35240-bca3265e-52c3-4212-b219-3cf631be04c2"
+        }
+      ],
+      "id": "faf1e5f7-6a26-454f-8cd4-0027c79eb59a",
+      "createdAt": "2026-10-21T19:50:42.000Z",
+      "updatedAt": "2026-10-21T19:50:42.000Z",
+      "uid": "35240-faf1e5f7-6a26-454f-8cd4-0027c79eb59a"
+    },
+    {
+      "name": "tags",
+      "item": [
         {
-          "id": "65e50414-854f-4e53-ab0e-0fe3704c0ba2",
-          "name": "Get tags",
-          "request": {
-            "name": "Get tags",
-            "description": {
-              "content": "Returns a list of tags created by your organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "{tag_id}",
+          "item": [
+            {
+              "name": "users",
+              "item": [
                 {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>",
-                  "description": "The pagination cursor value."
-                },
-                {
-                  "disabled": false,
-                  "key": "page_size",
-                  "value": "<integer>",
-                  "description": "Number of results to return per page. Default is 200."
+                  "name": "{user_id}",
+                  "item": [
+                    {
+                      "name": "Add user tag",
+                      "id": "a1132c33-f511-4231-93b4-f32ad5f07dda",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/tags/:tag_id/users/:user_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tags",
+                            ":tag_id",
+                            "users",
+                            ":user_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "423b7c20-dfd5-4b15-b486-5aee6dca4ad1",
+                              "key": "tag_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the tag to apply."
+                            },
+                            {
+                              "id": "192b460e-1f43-4dbd-af16-65c8a4ff70fe",
+                              "key": "user_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the user to apply the tag to."
+                            }
+                          ]
+                        },
+                        "description": "Applies a tag to a user."
+                      },
+                      "response": [
+                        {
+                          "id": "01430020-b457-49c1-966e-a76361e88f14",
+                          "name": "Tag applied to user successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/tags/:tag_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tags",
+                                ":tag_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tag_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:50:43.000Z",
+                          "updatedAt": "2026-10-21T19:50:43.000Z",
+                          "uid": "35240-01430020-b457-49c1-966e-a76361e88f14"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:50:43.000Z",
+                      "updatedAt": "2026-10-21T19:50:43.000Z",
+                      "uid": "35240-a1132c33-f511-4231-93b4-f32ad5f07dda"
+                    },
+                    {
+                      "name": "Remove user tag",
+                      "id": "b7acf63e-6749-419e-b51e-b4d721626c8a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/tags/:tag_id/users/:user_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tags",
+                            ":tag_id",
+                            "users",
+                            ":user_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e31aa423-e4c5-499d-ad7e-54511d660912",
+                              "key": "tag_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the tag to remove."
+                            },
+                            {
+                              "id": "350ef8ac-f5f9-4c0d-bf15-bc504f996d69",
+                              "key": "user_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the user to remove the tag from."
+                            }
+                          ]
+                        },
+                        "description": "Removes a tag from a user."
+                      },
+                      "response": [
+                        {
+                          "id": "05a75f68-5eaa-4ce5-850a-4f35663f06eb",
+                          "name": "Tag removed from user successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/tags/:tag_id/users/:user_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tags",
+                                ":tag_id",
+                                "users",
+                                ":user_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tag_id"
+                                },
+                                {
+                                  "key": "user_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:50:43.000Z",
+                          "updatedAt": "2026-10-21T19:50:43.000Z",
+                          "uid": "35240-05a75f68-5eaa-4ce5-850a-4f35663f06eb"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:50:43.000Z",
+                      "updatedAt": "2026-10-21T19:50:43.000Z",
+                      "uid": "35240-b7acf63e-6749-419e-b51e-b4d721626c8a"
+                    }
+                  ],
+                  "id": "31034292-c458-42e5-ac49-de81e5576ed6",
+                  "createdAt": "2026-10-21T19:50:42.000Z",
+                  "updatedAt": "2026-10-21T19:50:42.000Z",
+                  "uid": "35240-31034292-c458-42e5-ac49-de81e5576ed6"
                 }
               ],
-              "variable": []
+              "id": "8f51221d-960c-4dc5-894c-0fccec70d299",
+              "createdAt": "2026-10-21T19:50:42.000Z",
+              "updatedAt": "2026-10-21T19:50:42.000Z",
+              "uid": "35240-8f51221d-960c-4dc5-894c-0fccec70d299"
             },
+            {
+              "name": "groups",
+              "item": [
+                {
+                  "name": "{group_id}",
+                  "item": [
+                    {
+                      "name": "Add group tag",
+                      "id": "b2885458-53bf-408d-a51d-dde2c797316d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/tags/:tag_id/groups/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tags",
+                            ":tag_id",
+                            "groups",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "858fc3a9-66d5-495b-ac29-fd3856a95657",
+                              "key": "tag_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the tag to apply."
+                            },
+                            {
+                              "id": "c90ebafc-88d8-4d52-9023-53c8706f2074",
+                              "key": "group_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the group to apply the tag to."
+                            }
+                          ]
+                        },
+                        "description": "Applies a tag to a group."
+                      },
+                      "response": [
+                        {
+                          "id": "1a122fce-de17-45f4-b75c-055a34311c24",
+                          "name": "Tag applied to group successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/tags/:tag_id/groups/:group_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tags",
+                                ":tag_id",
+                                "groups",
+                                ":group_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tag_id"
+                                },
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:50:43.000Z",
+                          "updatedAt": "2026-10-21T19:50:43.000Z",
+                          "uid": "35240-1a122fce-de17-45f4-b75c-055a34311c24"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:50:43.000Z",
+                      "updatedAt": "2026-10-21T19:50:43.000Z",
+                      "uid": "35240-b2885458-53bf-408d-a51d-dde2c797316d"
+                    },
+                    {
+                      "name": "Remove group tag",
+                      "id": "c4f09be6-083c-4b5f-ba79-6cfc34c8e892",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/tags/:tag_id/groups/:group_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tags",
+                            ":tag_id",
+                            "groups",
+                            ":group_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0835fdd6-8f10-4685-bc5f-75b718a33ca2",
+                              "key": "tag_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the tag to remove."
+                            },
+                            {
+                              "id": "2cfc3992-2627-4cd2-a270-6081d0bd00af",
+                              "key": "group_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the group to remove the tag from."
+                            }
+                          ]
+                        },
+                        "description": "Removes a tag from a group."
+                      },
+                      "response": [
+                        {
+                          "id": "bb3ee388-847c-4fb9-9e30-4db8f4a34019",
+                          "name": "Tag removed from group successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/tags/:tag_id/groups/:group_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tags",
+                                ":tag_id",
+                                "groups",
+                                ":group_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tag_id"
+                                },
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:50:43.000Z",
+                          "updatedAt": "2026-10-21T19:50:43.000Z",
+                          "uid": "35240-bb3ee388-847c-4fb9-9e30-4db8f4a34019"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:50:43.000Z",
+                      "updatedAt": "2026-10-21T19:50:43.000Z",
+                      "uid": "35240-c4f09be6-083c-4b5f-ba79-6cfc34c8e892"
+                    }
+                  ],
+                  "id": "548b66ea-7371-4bbf-9c15-5dff8be73a6c",
+                  "createdAt": "2026-10-21T19:50:42.000Z",
+                  "updatedAt": "2026-10-21T19:50:42.000Z",
+                  "uid": "35240-548b66ea-7371-4bbf-9c15-5dff8be73a6c"
+                }
+              ],
+              "id": "a673bfbc-f308-4566-aab1-ea71e2dae8b4",
+              "createdAt": "2026-10-21T19:50:42.000Z",
+              "updatedAt": "2026-10-21T19:50:42.000Z",
+              "uid": "35240-a673bfbc-f308-4566-aab1-ea71e2dae8b4"
+            },
+            {
+              "name": "resources",
+              "item": [
+                {
+                  "name": "{resource_id}",
+                  "item": [
+                    {
+                      "name": "Add resource tag",
+                      "id": "1a3baa7b-3937-4c9f-9f69-dd320f7be5fb",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/tags/:tag_id/resources/:resource_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tags",
+                            ":tag_id",
+                            "resources",
+                            ":resource_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5ceae76c-17f9-4f24-adaa-349d151c64f9",
+                              "key": "tag_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the tag to apply."
+                            },
+                            {
+                              "id": "eca8d626-4424-4cf2-8dd8-a49102fa807f",
+                              "key": "resource_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the resource to apply the tag to."
+                            }
+                          ]
+                        },
+                        "description": "Applies a tag to a resource."
+                      },
+                      "response": [
+                        {
+                          "id": "a00d6015-13b8-4dec-a95e-ede494ba34d7",
+                          "name": "Tag applied to resource successfully.",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/tags/:tag_id/resources/:resource_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tags",
+                                ":tag_id",
+                                "resources",
+                                ":resource_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tag_id"
+                                },
+                                {
+                                  "key": "resource_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:50:43.000Z",
+                          "updatedAt": "2026-10-21T19:50:43.000Z",
+                          "uid": "35240-a00d6015-13b8-4dec-a95e-ede494ba34d7"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:50:43.000Z",
+                      "updatedAt": "2026-10-21T19:50:43.000Z",
+                      "uid": "35240-1a3baa7b-3937-4c9f-9f69-dd320f7be5fb"
+                    },
+                    {
+                      "name": "Remove resource tag",
+                      "id": "ccd37040-e65c-41b3-b04f-c5cd2ebb6c18",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "{{bearerToken}}",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/tags/:tag_id/resources/:resource_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "tags",
+                            ":tag_id",
+                            "resources",
+                            ":resource_id"
+                          ],
+                          "variable": [
+                            {
+                              "id": "d459bbc5-abfc-4c23-9df3-cc812ee696e8",
+                              "key": "tag_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the tag to remove."
+                            },
+                            {
+                              "id": "cc1900c2-66f6-4467-b68e-370a02c22c02",
+                              "key": "resource_id",
+                              "value": "<uuid>",
+                              "description": "(Required) The ID of the resource to remove the tag from."
+                            }
+                          ]
+                        },
+                        "description": "Removes a tag from a resource."
+                      },
+                      "response": [
+                        {
+                          "id": "9349684e-8b82-4e05-a7fb-8a794f1fab09",
+                          "name": "Tag removed from resource successfully.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/tags/:tag_id/resources/:resource_id",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "tags",
+                                ":tag_id",
+                                "resources",
+                                ":resource_id"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "tag_id"
+                                },
+                                {
+                                  "key": "resource_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-10-21T19:50:43.000Z",
+                          "updatedAt": "2026-10-21T19:50:43.000Z",
+                          "uid": "35240-9349684e-8b82-4e05-a7fb-8a794f1fab09"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T19:50:43.000Z",
+                      "updatedAt": "2026-10-21T19:50:43.000Z",
+                      "uid": "35240-ccd37040-e65c-41b3-b04f-c5cd2ebb6c18"
+                    }
+                  ],
+                  "id": "effb9943-5e94-4089-895e-8062e5ed0d98",
+                  "createdAt": "2026-10-21T19:50:42.000Z",
+                  "updatedAt": "2026-10-21T19:50:42.000Z",
+                  "uid": "35240-effb9943-5e94-4089-895e-8062e5ed0d98"
+                }
+              ],
+              "id": "a3270243-4e4e-4a77-82c2-5f8e4fbc21dc",
+              "createdAt": "2026-10-21T19:50:42.000Z",
+              "updatedAt": "2026-10-21T19:50:42.000Z",
+              "uid": "35240-a3270243-4e4e-4a77-82c2-5f8e4fbc21dc"
+            }
+          ],
+          "id": "821e3486-e302-4434-8daa-050be2146a8e",
+          "createdAt": "2026-10-21T19:50:42.000Z",
+          "updatedAt": "2026-10-21T19:50:42.000Z",
+          "uid": "35240-821e3486-e302-4434-8daa-050be2146a8e"
+        },
+        {
+          "name": "Get tags",
+          "id": "63b1d74b-098a-41be-8be3-ffcb243b2800",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
+            "url": {
+              "raw": "{{baseUrl}}/tags?cursor=<string>&page_size=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tags"
+              ],
+              "query": [
                 {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
+                  "description": "The pagination cursor value.",
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of results to return per page. Default is 200.",
+                  "key": "page_size",
+                  "value": "<integer>"
                 }
               ]
-            }
+            },
+            "description": "Returns a list of tags created by your organization."
           },
           "response": [
             {
-              "id": "8e6624ce-9c7b-4fa1-922e-68e9cba32194",
+              "id": "72466f71-ed2a-4cae-a774-3286525f7aef",
               "name": "A list of tags created by your organization.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "cursor",
-                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
-                    },
-                    {
-                      "key": "page_size",
-                      "value": "200"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/tags?cursor=<string>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ],
+                  "query": [
+                    {
+                      "description": "The pagination cursor value.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results to return per page. Default is 200.",
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\",\n  \"results\": [\n    {\n      \"tag_id\": \"f290a738-5f9f-43c2-ad67-fa31ff0eb946\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"updated_at\": \"2022-02-23 01:34:07+00:00\",\n      \"user_creator_id\": \"d4a7d928-783e-4599-8ec6-088d635a5bcc\",\n      \"admin_owner_id\": \"bfb518b1-3f5b-4e3b-8eb8-3b3fabd4ea2b\",\n      \"key\": \"database-name\",\n      \"value\": \"redis_db\"\n    },\n    {\n      \"tag_id\": \"92f0a738-5f9f-43c2-ad67-fa31ff0eb052\",\n      \"created_at\": \"2022-03-23 04:56:07+00:00\",\n      \"updated_at\": \"2022-04-23 01:34:07+00:00\",\n      \"user_creator_id\": \"a4d7d928-783e-4599-8ec6-088d635af4ac\",\n      \"admin_owner_id\": \"gtg418b1-3f5b-4e3b-8eb8-3b3fabd4eaa1\",\n      \"key\": \"database-type\",\n      \"value\": \"sql\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"tag_id\": \"<uuid>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"user_creator_id\": \"<uuid>\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    },\n    {\n      \"tag_id\": \"<uuid>\",\n      \"created_at\": \"<dateTime>\",\n      \"updated_at\": \"<dateTime>\",\n      \"user_creator_id\": \"<uuid>\",\n      \"key\": \"<string>\",\n      \"value\": \"<string>\"\n    }\n  ],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T19:50:43.000Z",
+              "updatedAt": "2026-10-21T19:50:43.000Z",
+              "uid": "35240-72466f71-ed2a-4cae-a774-3286525f7aef"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "93bf985f-7026-445b-92a0-432e7fc6340e",
-          "name": "add user tag",
-          "request": {
-            "name": "add user tag",
-            "description": {
-              "content": "Applies a tag to a user.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id",
-                "users",
-                ":user_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "tag_id",
-                  "description": "(Required) The ID of the tag to apply."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "user_id",
-                  "description": "(Required) The ID of the user to apply the tag to."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "<object>",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "2a5a9e3a-535f-41d9-826f-76fa244af593",
-              "name": "Tag applied to user successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id",
-                    "users",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "tag_id",
-                      "description": "(Required) The ID of the tag to apply."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "user_id",
-                      "description": "(Required) The ID of the user to apply the tag to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "<object>",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "23b74e8f-5bcc-4bfd-a932-14a1e29483fa",
-          "name": "remove user tag",
-          "request": {
-            "name": "remove user tag",
-            "description": {
-              "content": "Removes a tag from a user.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id",
-                "users",
-                ":user_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "tag_id",
-                  "description": "(Required) The ID of the tag to remove."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "user_id",
-                  "description": "(Required) The ID of the user to remove the tag from."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "29f87f5f-833d-447c-924b-29820e0f4289",
-              "name": "Tag removed from user successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id",
-                    "users",
-                    ":user_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "tag_id",
-                      "description": "(Required) The ID of the tag to remove."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "user_id",
-                      "description": "(Required) The ID of the user to remove the tag from."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "01439368-b446-4829-88ba-02885b7fd48b",
-          "name": "add group tag",
-          "request": {
-            "name": "add group tag",
-            "description": {
-              "content": "Applies a tag to a group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id",
-                "groups",
-                ":group_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "tag_id",
-                  "description": "(Required) The ID of the tag to apply."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "group_id",
-                  "description": "(Required) The ID of the group to apply the tag to."
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "9aa8b576-1f5c-4330-bda9-e378fbb8efe8",
-              "name": "Tag applied to group successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id",
-                    "groups",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "tag_id",
-                      "description": "(Required) The ID of the tag to apply."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "group_id",
-                      "description": "(Required) The ID of the group to apply the tag to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "c8b75a2e-d8b8-41e7-b53f-cae3d3f0481d",
-          "name": "remove group tag",
-          "request": {
-            "name": "remove group tag",
-            "description": {
-              "content": "Removes a tag from a group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id",
-                "groups",
-                ":group_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "tag_id",
-                  "description": "(Required) The ID of the tag to remove."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "group_id",
-                  "description": "(Required) The ID of the group to remove the tag from."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "b59cd366-c31c-4189-afc1-dc3601289088",
-              "name": "Tag removed from group successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id",
-                    "groups",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "tag_id",
-                      "description": "(Required) The ID of the tag to remove."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "group_id",
-                      "description": "(Required) The ID of the group to remove the tag from."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "78281c5f-0555-4886-a39c-0ebff2f5fc3c",
-          "name": "add resource tag",
-          "request": {
-            "name": "add resource tag",
-            "description": {
-              "content": "Applies a tag to a resource.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id",
-                "resources",
-                ":resource_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "tag_id",
-                  "description": "(Required) The ID of the tag to apply."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "resource_id",
-                  "description": "(Required) The ID of the resource to apply the tag to."
-                }
-              ]
-            },
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "41b7eb04-cf4a-415a-9f33-611d0b79cafa",
-              "name": "Tag applied to resource successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id",
-                    "resources",
-                    ":resource_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "tag_id",
-                      "description": "(Required) The ID of the tag to apply."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "resource_id",
-                      "description": "(Required) The ID of the resource to apply the tag to."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "POST",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d1f384fe-db20-4690-8851-e3e24df9ac4a",
-          "name": "remove resource tag",
-          "request": {
-            "name": "remove resource tag",
-            "description": {
-              "content": "Removes a tag from a resource.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id",
-                "resources",
-                ":resource_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "tag_id",
-                  "description": "(Required) The ID of the tag to remove."
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "resource_id",
-                  "description": "(Required) The ID of the resource to remove the tag from."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "6d1ed042-22c7-4760-a4be-53c26b203d7e",
-              "name": "Tag removed from resource successfully.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id",
-                    "resources",
-                    ":resource_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "tag_id",
-                      "description": "(Required) The ID of the tag to remove."
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "resource_id",
-                      "description": "(Required) The ID of the resource to remove the tag from."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T19:50:43.000Z",
+          "updatedAt": "2026-10-21T19:50:43.000Z",
+          "uid": "35240-63b1d74b-098a-41be-8be3-ffcb243b2800"
         }
       ],
-      "event": []
+      "id": "ad4975f6-9fef-466b-8aac-80a803f657f7",
+      "createdAt": "2026-10-21T19:50:42.000Z",
+      "updatedAt": "2026-10-21T19:50:42.000Z",
+      "uid": "35240-ad4975f6-9fef-466b-8aac-80a803f657f7"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.opal.dev/v1",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.opal.dev/v1"
     }
-  ],
-  "info": {
-    "_postman_id": "9f2d796c-c3b2-4213-8b29-904ebcf23c8a",
-    "name": "Opal access-rules tags API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

@@ -1,140 +1,334 @@
 {
+  "info": {
+    "_postman_id": "d19f5b37-53d4-4bd7-b077-fceda6b67fc4",
+    "name": "Opal Group Bindings API",
+    "description": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:49:03.000Z",
+    "updatedAt": "2026-10-21T19:49:03.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d19f5b37-53d4-4bd7-b077-fceda6b67fc4"
+  },
   "item": [
     {
-      "id": "ffef6ac3-d3a6-4234-ab6f-5049b3cb70b5",
       "name": "group-bindings",
-      "description": {
-        "content": "Operations related to group bindings",
-        "type": "text/plain"
-      },
       "item": [
         {
-          "id": "7c8d4d09-853f-4703-83b8-12a1472bed88",
-          "name": "Get group bindings",
-          "request": {
-            "name": "Get group bindings",
-            "description": {
-              "content": "Returns a list of `GroupBinding` objects.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "group-bindings"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>",
-                  "description": "The pagination cursor value."
+          "name": "{group_binding_id}",
+          "item": [
+            {
+              "name": "Get group binding by ID",
+              "id": "8c2f0274-2bdc-4532-a301-6f5f5957a139",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
                 },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/group-bindings/:group_binding_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group-bindings",
+                    ":group_binding_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "4fc03b92-0230-423c-a561-d04d56ddf26a",
+                      "key": "group_binding_id",
+                      "value": "<uuid>",
+                      "description": "(Required) The ID of the group binding."
+                    }
+                  ]
+                },
+                "description": "Returns a `GroupBinding` object."
+              },
+              "response": [
                 {
-                  "disabled": false,
-                  "key": "page_size",
-                  "value": "<integer>",
-                  "description": "Number of results to return per page. Default is 200."
+                  "id": "fcd69524-1647-4821-8012-cd668d575ad3",
+                  "name": "The requested `GroupBinding`.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/group-bindings/:group_binding_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group-bindings",
+                        ":group_binding_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_binding_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"group_binding_id\": \"<uuid>\",\n  \"created_by_id\": \"<uuid>\",\n  \"created_at\": \"<dateTime>\",\n  \"source_group_id\": \"<uuid>\",\n  \"groups\": [\n    {\n      \"group_id\": \"<uuid>\",\n      \"group_type\": \"ZENDESK_ORGANIZATION\"\n    },\n    {\n      \"group_id\": \"<uuid>\",\n      \"group_type\": \"HUBSPOT_TEAM\"\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T19:49:03.000Z",
+                  "updatedAt": "2026-10-21T19:49:03.000Z",
+                  "uid": "35240-fcd69524-1647-4821-8012-cd668d575ad3"
                 }
               ],
-              "variable": []
+              "createdAt": "2026-10-21T19:49:03.000Z",
+              "updatedAt": "2026-10-21T19:49:03.000Z",
+              "uid": "35240-8c2f0274-2bdc-4532-a301-6f5f5957a139"
             },
+            {
+              "name": "Delete group binding",
+              "id": "eaa8c95e-a7a8-40ed-9cf5-8ccfa7dbf607",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/group-bindings/:group_binding_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group-bindings",
+                    ":group_binding_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "618960e0-ec1e-4049-b284-4d91f0454c6a",
+                      "key": "group_binding_id",
+                      "value": "<uuid>",
+                      "description": "(Required) The ID of the group binding."
+                    }
+                  ]
+                },
+                "description": "Deletes a group binding."
+              },
+              "response": [
+                {
+                  "id": "242b68a8-f1c5-49d5-8373-4c6880209ec7",
+                  "name": "The group binding was successfully deleted.",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/group-bindings/:group_binding_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "group-bindings",
+                        ":group_binding_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "group_binding_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-21T19:49:03.000Z",
+                  "updatedAt": "2026-10-21T19:49:03.000Z",
+                  "uid": "35240-242b68a8-f1c5-49d5-8373-4c6880209ec7"
+                }
+              ],
+              "createdAt": "2026-10-21T19:49:03.000Z",
+              "updatedAt": "2026-10-21T19:49:03.000Z",
+              "uid": "35240-eaa8c95e-a7a8-40ed-9cf5-8ccfa7dbf607"
+            }
+          ],
+          "id": "b09594c4-a5bf-48f9-80c3-05d5be402ad0",
+          "createdAt": "2026-10-21T19:49:03.000Z",
+          "updatedAt": "2026-10-21T19:49:03.000Z",
+          "uid": "35240-b09594c4-a5bf-48f9-80c3-05d5be402ad0"
+        },
+        {
+          "name": "Get group bindings",
+          "id": "10fac7db-33bd-4c56-b66e-880c96454f52",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
+            "url": {
+              "raw": "{{baseUrl}}/group-bindings?cursor=<string>&page_size=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "group-bindings"
+              ],
+              "query": [
                 {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
+                  "description": "The pagination cursor value.",
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of results to return per page. Default is 200.",
+                  "key": "page_size",
+                  "value": "<integer>"
                 }
               ]
-            }
+            },
+            "description": "Returns a list of `GroupBinding` objects."
           },
           "response": [
             {
-              "id": "54cc0a2f-f45e-4941-800a-9232e5389eb6",
+              "id": "b4dbbc86-7ffe-4a53-833e-e44569d7a243",
               "name": "One page worth of group bindings for your organization.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "group-bindings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "cursor",
-                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
-                    },
-                    {
-                      "key": "page_size",
-                      "value": "200"
-                    }
-                  ],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/group-bindings?cursor=<string>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group-bindings"
+                  ],
+                  "query": [
+                    {
+                      "description": "The pagination cursor value.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results to return per page. Default is 200.",
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWtJ\",\n  \"results\": [\n    {\n      \"group_binding_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"created_by_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"source_group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"groups\": [\n        {\n          \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"group_type\": \"OKTA_GROUP\"\n        },\n        {\n          \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n          \"group_type\": \"AWS_SSO_GROUP\"\n        }\n      ]\n    },\n    {\n      \"group_binding_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"created_by_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"source_group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"created_at\": \"2022-01-23 04:56:07+00:00\",\n      \"groups\": [\n        {\n          \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n          \"group_type\": \"AWS_SSO_GROUP\"\n        },\n        {\n          \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n          \"group_type\": \"OKTA_GROUP\"\n        }\n      ]\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"group_binding_id\": \"<uuid>\",\n      \"created_by_id\": \"<uuid>\",\n      \"created_at\": \"<dateTime>\",\n      \"source_group_id\": \"<uuid>\",\n      \"groups\": [\n        {\n          \"group_id\": \"<uuid>\",\n          \"group_type\": \"AWS_SSO_GROUP\"\n        },\n        {\n          \"group_id\": \"<uuid>\",\n          \"group_type\": \"OPAL_ACCESS_RULE\"\n        }\n      ]\n    },\n    {\n      \"group_binding_id\": \"<uuid>\",\n      \"created_by_id\": \"<uuid>\",\n      \"created_at\": \"<dateTime>\",\n      \"source_group_id\": \"<uuid>\",\n      \"groups\": [\n        {\n          \"group_id\": \"<uuid>\",\n          \"group_type\": \"GRAFANA_TEAM\"\n        },\n        {\n          \"group_id\": \"<uuid>\",\n          \"group_type\": \"PAGERDUTY_ON_CALL_SCHEDULE\"\n        }\n      ]\n    }\n  ],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T19:49:03.000Z",
+              "updatedAt": "2026-10-21T19:49:03.000Z",
+              "uid": "35240-b4dbbc86-7ffe-4a53-833e-e44569d7a243"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T19:49:03.000Z",
+          "updatedAt": "2026-10-21T19:49:03.000Z",
+          "uid": "35240-10fac7db-33bd-4c56-b66e-880c96454f52"
         },
         {
-          "id": "1d3f3b02-e067-4d46-805b-70895d7147ae",
-          "name": "create Group Binding",
+          "name": "Create group binding",
+          "id": "32d6daa1-11f9-4e00-9893-625b4eee2efa",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "create Group Binding",
-            "description": {
-              "content": "Creates a group binding.",
-              "type": "text/plain"
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
-            "url": {
-              "path": [
-                "group-bindings"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -145,400 +339,198 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"source_group_id\": \"<uuid>\",\n  \"groups\": [\n    {\n      \"group_id\": \"<uuid>\"\n    },\n    {\n      \"group_id\": \"<uuid>\"\n    }\n  ]\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/group-bindings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "group-bindings"
+              ]
+            },
+            "description": "Creates a group binding."
           },
           "response": [
             {
-              "id": "bf652b73-30b3-419d-9f5f-e0074e3907b0",
+              "id": "27e63e39-dfa8-425f-be24-f28c2b36bcfc",
               "name": "The group binding just created.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "group-bindings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"source_group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"groups\": [\n    {\n      \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n    },\n    {\n      \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\"\n    }\n  ]\n}",
+                  "raw": "{\n  \"source_group_id\": \"<uuid>\",\n  \"groups\": [\n    {\n      \"group_id\": \"<uuid>\"\n    },\n    {\n      \"group_id\": \"<uuid>\"\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/group-bindings",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "group-bindings"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"group_binding_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"created_by_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n  \"created_at\": \"2022-01-23 04:56:07+00:00\",\n  \"source_group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"groups\": [\n    {\n      \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"group_type\": \"OKTA_GROUP\"\n    },\n    {\n      \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"group_type\": \"AWS_SSO_GROUP\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"group_binding_id\": \"<uuid>\",\n  \"created_by_id\": \"<uuid>\",\n  \"created_at\": \"<dateTime>\",\n  \"source_group_id\": \"<uuid>\",\n  \"groups\": [\n    {\n      \"group_id\": \"<uuid>\",\n      \"group_type\": \"ZENDESK_ORGANIZATION\"\n    },\n    {\n      \"group_id\": \"<uuid>\",\n      \"group_type\": \"HUBSPOT_TEAM\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T19:49:03.000Z",
+              "updatedAt": "2026-10-21T19:49:03.000Z",
+              "uid": "35240-27e63e39-dfa8-425f-be24-f28c2b36bcfc"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T19:49:03.000Z",
+          "updatedAt": "2026-10-21T19:49:03.000Z",
+          "uid": "35240-32d6daa1-11f9-4e00-9893-625b4eee2efa"
         },
         {
-          "id": "8482f5a3-20e6-439f-9646-46bb345fd4a7",
-          "name": "update Group Bindings",
+          "name": "Update group bindings",
+          "id": "4419636e-2f30-44db-ab52-27111e0d21e7",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "update Group Bindings",
-            "description": {
-              "content": "Bulk updates a list of group bindings.",
-              "type": "text/plain"
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
-            "url": {
-              "path": [
-                "group-bindings"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "PUT",
             "header": [
               {
                 "key": "Content-Type",
                 "value": "application/json"
               }
             ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
               "raw": "{\n  \"group_bindings\": [\n    {\n      \"group_binding_id\": \"<uuid>\",\n      \"source_group_id\": \"<uuid>\",\n      \"groups\": [\n        {\n          \"group_id\": \"<uuid>\"\n        },\n        {\n          \"group_id\": \"<uuid>\"\n        }\n      ]\n    },\n    {\n      \"group_binding_id\": \"<uuid>\",\n      \"source_group_id\": \"<uuid>\",\n      \"groups\": [\n        {\n          \"group_id\": \"<uuid>\"\n        },\n        {\n          \"group_id\": \"<uuid>\"\n        }\n      ]\n    }\n  ]\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/group-bindings",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "group-bindings"
+              ]
+            },
+            "description": "Bulk updates a list of group bindings."
           },
           "response": [
             {
-              "id": "420e2964-3a36-4c58-a3bd-28558a4a2a9a",
+              "id": "e2909320-f56f-498e-83f1-8685702b55b9",
               "name": "The group bindings were successfully updated.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "group-bindings"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
                     "key": "Authorization",
                     "value": "Bearer <token>"
                   }
                 ],
-                "method": "PUT",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"group_bindings\": [\n    {\n      \"group_binding_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"source_group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"groups\": [\n        {\n          \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n        },\n        {\n          \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\"\n        }\n      ]\n    },\n    {\n      \"group_binding_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"source_group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"groups\": [\n        {\n          \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\"\n        },\n        {\n          \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\"\n        }\n      ]\n    }\n  ]\n}",
+                  "raw": "{\n  \"group_bindings\": [\n    {\n      \"group_binding_id\": \"<uuid>\",\n      \"source_group_id\": \"<uuid>\",\n      \"groups\": [\n        {\n          \"group_id\": \"<uuid>\"\n        },\n        {\n          \"group_id\": \"<uuid>\"\n        }\n      ]\n    },\n    {\n      \"group_binding_id\": \"<uuid>\",\n      \"source_group_id\": \"<uuid>\",\n      \"groups\": [\n        {\n          \"group_id\": \"<uuid>\"\n        },\n        {\n          \"group_id\": \"<uuid>\"\n        }\n      ]\n    }\n  ]\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "f03731cb-cb02-49d6-92c0-c3a5999942ea",
-          "name": "Get group binding by ID",
-          "request": {
-            "name": "Get group binding by ID",
-            "description": {
-              "content": "Returns a `GroupBinding` object.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "group-bindings",
-                ":group_binding_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "group_binding_id",
-                  "description": "(Required) The ID of the group binding."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "12441322-ddf9-4cbe-8b78-6e1b49178e7e",
-              "name": "The requested `GroupBinding`.",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "group-bindings",
-                    ":group_binding_id"
-                  ],
+                  "raw": "{{baseUrl}}/group-bindings",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "group_binding_id",
-                      "description": "(Required) The ID of the group binding."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"group_binding_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"created_by_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n  \"created_at\": \"2022-01-23 04:56:07+00:00\",\n  \"source_group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n  \"groups\": [\n    {\n      \"group_id\": \"f454d283-ca87-4a8a-bdbb-df212eca5353\",\n      \"group_type\": \"OKTA_GROUP\"\n    },\n    {\n      \"group_id\": \"99d0b81d-14be-4cf6-bd27-348b4af1d11b\",\n      \"group_type\": \"AWS_SSO_GROUP\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a8867a90-f308-4cbb-b190-859859df4539",
-          "name": "delete Group Binding",
-          "request": {
-            "name": "delete Group Binding",
-            "description": {
-              "content": "Deletes a group binding.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "group-bindings",
-                ":group_binding_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "group_binding_id",
-                  "description": "(Required) The ID of the group binding."
-                }
-              ]
-            },
-            "method": "DELETE",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "4f25798c-1351-4363-a67f-2ca53e9b5440",
-              "name": "The group binding was successfully deleted.",
-              "originalRequest": {
-                "url": {
                   "path": [
-                    "group-bindings",
-                    ":group_binding_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "group_binding_id",
-                      "description": "(Required) The ID of the group binding."
-                    }
+                    "group-bindings"
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
+              "_postman_previewlanguage": "text",
+              "header": [],
               "cookie": [],
-              "_postman_previewlanguage": "text"
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-10-21T19:49:03.000Z",
+              "updatedAt": "2026-10-21T19:49:03.000Z",
+              "uid": "35240-e2909320-f56f-498e-83f1-8685702b55b9"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T19:49:03.000Z",
+          "updatedAt": "2026-10-21T19:49:03.000Z",
+          "uid": "35240-4419636e-2f30-44db-ab52-27111e0d21e7"
         }
       ],
-      "event": []
+      "id": "85f3896d-063f-4f09-9bbc-276104d63973",
+      "createdAt": "2026-10-21T19:49:03.000Z",
+      "updatedAt": "2026-10-21T19:49:03.000Z",
+      "uid": "35240-85f3896d-063f-4f09-9bbc-276104d63973"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.opal.dev/v1",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.opal.dev/v1"
     }
-  ],
-  "info": {
-    "_postman_id": "a6cd9164-73be-4417-8671-d1a1b4231097",
-    "name": "Opal access-rules group-bindings API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
-      "type": "text/plain"
-    }
-  }
+  ]
 }

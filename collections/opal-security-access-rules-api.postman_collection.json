@@ -1,140 +1,376 @@
 {
+  "info": {
+    "_postman_id": "582a14f6-7103-4197-bfc7-4521282b701e",
+    "name": "Opal Access Rules API",
+    "description": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T19:48:19.000Z",
+    "updatedAt": "2026-10-21T19:48:19.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-582a14f6-7103-4197-bfc7-4521282b701e"
+  },
   "item": [
     {
-      "id": "a085a097-9333-4610-9428-47376378c9bd",
       "name": "access-rules",
-      "description": {
-        "content": "Operations related to access rules",
-        "type": "text/plain"
-      },
       "item": [
         {
-          "id": "a2215101-93b8-47c9-9f60-24349695920b",
-          "name": "get access rules",
-          "request": {
-            "name": "get access rules",
-            "description": {
-              "content": "Returns a list of access rules for your organization.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "access-rules"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "cursor",
-                  "value": "<string>",
-                  "description": "The pagination cursor value."
-                },
-                {
-                  "disabled": false,
-                  "key": "page_size",
-                  "value": "<integer>",
-                  "description": "Number of results to return per page. Default is 200."
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "{access_rule_id}",
+          "item": [
             {
-              "id": "8d372825-4cad-415d-9337-7830f5bf4995",
-              "name": "One page of access rules for your organization.",
-              "originalRequest": {
+              "name": "Get access rule",
+              "id": "08834862-c45b-49ea-affd-a72f173452bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "access-rules"
-                  ],
+                  "raw": "{{baseUrl}}/access-rules/:access_rule_id",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
+                  "path": [
+                    "access-rules",
+                    ":access_rule_id"
+                  ],
+                  "variable": [
                     {
-                      "key": "cursor",
-                      "value": "cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw"
-                    },
+                      "id": "86f2c797-c546-47a6-b8d1-1afde3aafb59",
+                      "key": "access_rule_id",
+                      "value": "<uuid>",
+                      "description": "(Required) The access rule ID (group ID) of the access rule."
+                    }
+                  ]
+                },
+                "description": "Returns a list of access rule config given the group_id of the access rule."
+              },
+              "response": [
+                {
+                  "id": "eb09758d-10f4-48b5-a059-16b3de4ae9c8",
+                  "name": "The access rules for the group.",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/access-rules/:access_rule_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "access-rules",
+                        ":access_rule_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "access_rule_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "page_size",
-                      "value": "200"
+                      "key": "Content-Type",
+                      "value": "application/json"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"PAUSED\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"access_rule_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T19:48:19.000Z",
+                  "updatedAt": "2026-10-21T19:48:19.000Z",
+                  "uid": "35240-eb09758d-10f4-48b5-a059-16b3de4ae9c8"
+                }
+              ],
+              "createdAt": "2026-10-21T19:48:19.000Z",
+              "updatedAt": "2026-10-21T19:48:19.000Z",
+              "uid": "35240-08834862-c45b-49ea-affd-a72f173452bf"
+            },
+            {
+              "name": "Update access rule",
+              "id": "a400503a-7388-4d00-b259-ca2c8f3a500e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "{{bearerToken}}",
+                      "type": "string"
+                    }
+                  ]
                 },
+                "method": "PUT",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
                   }
                 ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/access-rules/:access_rule_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "access-rules",
+                    ":access_rule_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "6e61d887-3677-4719-b4b0-6cb6ebec71aa",
+                      "key": "access_rule_id",
+                      "value": "<uuid>",
+                      "description": "(Required) The access rule ID (group ID) of the access rule."
+                    }
+                  ]
+                },
+                "description": "Updates the access rule config for the given group_id."
+              },
+              "response": [
+                {
+                  "id": "b70555ac-a7d1-49e0-89e3-f762d6ab5e9b",
+                  "name": "The updated access rule config for the group.",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/access-rules/:access_rule_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "access-rules",
+                        ":access_rule_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "access_rule_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"status\": \"PAUSED\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"access_rule_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T19:48:19.000Z",
+                  "updatedAt": "2026-10-21T19:48:19.000Z",
+                  "uid": "35240-b70555ac-a7d1-49e0-89e3-f762d6ab5e9b"
+                }
+              ],
+              "createdAt": "2026-10-21T19:48:19.000Z",
+              "updatedAt": "2026-10-21T19:48:19.000Z",
+              "uid": "35240-a400503a-7388-4d00-b259-ca2c8f3a500e"
+            }
+          ],
+          "id": "722f4e3f-e11d-481f-8e34-b4e319f31da9",
+          "createdAt": "2026-10-21T19:48:19.000Z",
+          "updatedAt": "2026-10-21T19:48:19.000Z",
+          "uid": "35240-722f4e3f-e11d-481f-8e34-b4e319f31da9"
+        },
+        {
+          "name": "Get access rules",
+          "id": "77d0c736-000e-44dc-8451-d665e8b35f72",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/access-rules?cursor=<string>&page_size=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "access-rules"
+              ],
+              "query": [
+                {
+                  "description": "The pagination cursor value.",
+                  "key": "cursor",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Number of results to return per page. Default is 200.",
+                  "key": "page_size",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Returns a list of access rules for your organization."
+          },
+          "response": [
+            {
+              "id": "741a045b-b702-4783-ae5d-ea600323f6a4",
+              "name": "One page of access rules for your organization.",
+              "originalRequest": {
                 "method": "GET",
-                "body": {}
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/access-rules?cursor=<string>&page_size=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "access-rules"
+                  ],
+                  "query": [
+                    {
+                      "description": "The pagination cursor value.",
+                      "key": "cursor",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of results to return per page. Default is 200.",
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"results\": [\n    {\n      \"status\": \"ACTIVE\",\n      \"ruleClauses\": {\n        \"when\": {\n          \"clauses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"unless\": {\n          \"clauses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"name\": \"Platform Engineering\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"access_rule_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"description\": \"This access rule represents all platform engineers in the company.\"\n    },\n    {\n      \"status\": \"ACTIVE\",\n      \"ruleClauses\": {\n        \"when\": {\n          \"clauses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        \"unless\": {\n          \"clauses\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      },\n      \"name\": \"Platform Engineering\",\n      \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"access_rule_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n      \"description\": \"This access rule represents all platform engineers in the company.\"\n    }\n  ],\n  \"next\": \"cD0yMDIxLTAxLTA2KzAzJTNBMjQlM0E1My40MzQzMjYlMkIwMCUzQTAw\",\n  \"previous\": \"cj1sZXdwd2VycWVtY29zZnNkc2NzUWxNMEUxTXk0ME16UXpNallsTWtJ\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"status\": \"PAUSED\",\n      \"ruleClauses\": {\n        \"when\": {\n          \"clauses\": [\n            {\n              \"selectors\": [\n                {\n                  \"key\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"connection_id\": \"<uuid>\"\n                },\n                {\n                  \"key\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"connection_id\": \"<uuid>\"\n                }\n              ],\n              \"attribute_selectors\": [\n                {\n                  \"attribute\": \"HR_IDP_STATUS\",\n                  \"values\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ]\n                },\n                {\n                  \"attribute\": \"HR_IDP_STATUS\",\n                  \"values\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ]\n                }\n              ]\n            }\n          ]\n        },\n        \"unless\": {\n          \"clauses\": [\n            {\n              \"selectors\": [\n                {\n                  \"key\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"connection_id\": \"<uuid>\"\n                },\n                {\n                  \"key\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"connection_id\": \"<uuid>\"\n                }\n              ],\n              \"attribute_selectors\": [\n                {\n                  \"attribute\": \"HR_IDP_STATUS\",\n                  \"values\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ]\n                },\n                {\n                  \"attribute\": \"HR_IDP_STATUS\",\n                  \"values\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      },\n      \"name\": \"<string>\",\n      \"admin_owner_id\": \"<uuid>\",\n      \"access_rule_id\": \"<uuid>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"status\": \"ACTIVE\",\n      \"ruleClauses\": {\n        \"when\": {\n          \"clauses\": [\n            {\n              \"selectors\": [\n                {\n                  \"key\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"connection_id\": \"<uuid>\"\n                },\n                {\n                  \"key\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"connection_id\": \"<uuid>\"\n                }\n              ],\n              \"attribute_selectors\": [\n                {\n                  \"attribute\": \"HR_IDP_STATUS\",\n                  \"values\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ]\n                },\n                {\n                  \"attribute\": \"HR_IDP_STATUS\",\n                  \"values\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ]\n                }\n              ]\n            }\n          ]\n        },\n        \"unless\": {\n          \"clauses\": [\n            {\n              \"selectors\": [\n                {\n                  \"key\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"connection_id\": \"<uuid>\"\n                },\n                {\n                  \"key\": \"<string>\",\n                  \"value\": \"<string>\",\n                  \"connection_id\": \"<uuid>\"\n                }\n              ],\n              \"attribute_selectors\": [\n                {\n                  \"attribute\": \"HR_IDP_STATUS\",\n                  \"values\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ]\n                },\n                {\n                  \"attribute\": \"HR_IDP_STATUS\",\n                  \"values\": [\n                    \"<string>\",\n                    \"<string>\"\n                  ]\n                }\n              ]\n            }\n          ]\n        }\n      },\n      \"name\": \"<string>\",\n      \"admin_owner_id\": \"<uuid>\",\n      \"access_rule_id\": \"<uuid>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"next\": \"<string>\",\n  \"previous\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T19:48:19.000Z",
+              "updatedAt": "2026-10-21T19:48:19.000Z",
+              "uid": "35240-741a045b-b702-4783-ae5d-ea600323f6a4"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T19:48:19.000Z",
+          "updatedAt": "2026-10-21T19:48:19.000Z",
+          "uid": "35240-77d0c736-000e-44dc-8451-d665e8b35f72"
         },
         {
-          "id": "f8fd6b48-d198-4af4-ad72-bebca40196cf",
-          "name": "create access rule",
+          "name": "Create access rule",
+          "id": "b8046a03-f51c-4203-9818-c0861a69b370",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "create access rule",
-            "description": {
-              "content": "Creates a new access rule config for the given group_id.",
-              "type": "text/plain"
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}",
+                  "type": "string"
+                }
+              ]
             },
-            "url": {
-              "path": [
-                "access-rules"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "POST",
             "header": [
               {
                 "key": "Content-Type",
@@ -145,332 +381,100 @@
                 "value": "application/json"
               }
             ],
-            "method": "POST",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"status\": \"<string>\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
+              "raw": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
               "options": {
                 "raw": {
+                  "headerFamily": "json",
                   "language": "json"
                 }
               }
-            }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/access-rules",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "access-rules"
+              ]
+            },
+            "description": "Creates a new access rule config for the given group_id."
           },
           "response": [
             {
-              "id": "5a81f251-1abe-49d8-a19b-3fe8f3f0a23f",
+              "id": "62e42a46-e653-4ea7-a143-9670a04a39cc",
               "name": "The created access rule config for the group.",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "access-rules"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
+                    "key": "Content-Type",
+                    "value": "application/json"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"Platform Engineering\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"description\": \"This access rule represents all platform engineers in the company.\"\n}",
+                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/access-rules",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "access-rules"
+                  ]
                 }
               },
               "status": "Created",
               "code": 201,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"Platform Engineering\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"access_rule_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"description\": \"This access rule represents all platform engineers in the company.\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"status\": \"PAUSED\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            },\n            {\n              \"key\": \"<string>\",\n              \"value\": \"<string>\",\n              \"connection_id\": \"<uuid>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"attribute\": \"HR_IDP_STATUS\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"access_rule_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T19:48:19.000Z",
+              "updatedAt": "2026-10-21T19:48:19.000Z",
+              "uid": "35240-62e42a46-e653-4ea7-a143-9670a04a39cc"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "20746f9e-357f-4039-a967-360b2d65a7ec",
-          "name": "get access rule",
-          "request": {
-            "name": "get access rule",
-            "description": {
-              "content": "Returns a list of access rule config given the group_id of the access rule.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "access-rules",
-                ":access_rule_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "access_rule_id",
-                  "description": "(Required) The access rule ID (group ID) of the access rule."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "79b56444-bdf6-4164-8f26-e2710055ed5f",
-              "name": "The access rules for the group.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "access-rules",
-                    ":access_rule_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "access_rule_id",
-                      "description": "(Required) The access rule ID (group ID) of the access rule."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"Platform Engineering\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"access_rule_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"description\": \"This access rule represents all platform engineers in the company.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "5c4078b2-902b-4c52-bd42-c9af387ecbf2",
-          "name": "update access rule",
-          "request": {
-            "name": "update access rule",
-            "description": {
-              "content": "Updates the access rule config for the given group_id.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "access-rules",
-                ":access_rule_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<uuid>",
-                  "key": "access_rule_id",
-                  "description": "(Required) The access rule ID (group ID) of the access rule."
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": {
-              "type": "bearer",
-              "bearer": [
-                {
-                  "key": "token",
-                  "value": "{{bearerToken}}"
-                }
-              ]
-            },
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"status\": \"<string>\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"<string>\",\n  \"admin_owner_id\": \"<uuid>\",\n  \"description\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "c6d2215a-c92d-4883-a48d-1bd46c1a09d3",
-              "name": "The updated access rule config for the group.",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "access-rules",
-                    ":access_rule_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<uuid>",
-                      "key": "access_rule_id",
-                      "description": "(Required) The access rule ID (group ID) of the access rule."
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"Platform Engineering\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"description\": \"This access rule represents all platform engineers in the company.\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"status\": \"ACTIVE\",\n  \"ruleClauses\": {\n    \"when\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    },\n    \"unless\": {\n      \"clauses\": [\n        {\n          \"selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"attribute_selectors\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ]\n    }\n  },\n  \"name\": \"Platform Engineering\",\n  \"admin_owner_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"access_rule_id\": \"7c86c85d-0651-43e2-a748-d69d658418e8\",\n  \"description\": \"This access rule represents all platform engineers in the company.\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T19:48:19.000Z",
+          "updatedAt": "2026-10-21T19:48:19.000Z",
+          "uid": "35240-b8046a03-f51c-4203-9818-c0861a69b370"
         }
       ],
-      "event": []
+      "id": "48f65a66-5403-4087-9be7-8a3bae5314e6",
+      "createdAt": "2026-10-21T19:48:19.000Z",
+      "updatedAt": "2026-10-21T19:48:19.000Z",
+      "uid": "35240-48f65a66-5403-4087-9be7-8a3bae5314e6"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://api.opal.dev/v1",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://api.opal.dev/v1"
     }
-  ],
-  "info": {
-    "_postman_id": "b9cd5853-b1b5-4ccb-b4ea-efd91ea18074",
-    "name": "Opal access-rules API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Opal API is a RESTful API that allows you to interact with the Opal Security platform programmatically.\n\nContact Support:\n Name: Opal Team\n Email: hello@opal.dev",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
