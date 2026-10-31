@@ -64,6 +64,164 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Opal Security is a company surfaced as a portfolio company of greylock and added to the API Evangelist network as a stub for enrichment. Sector: cybersecurity. This profile is a lead awaiting the enrichment pipeline.
+Opal Security (legal entity Perma Security, Inc.) is a next-generation access management and identity security platform that gives enterprises comprehensive visibility into access across their systems, orchestrates just-in-time and least-privilege access, designs intelligent access policies, and automates user access reviews (UARs). Opal exposes a RESTful API at https://api.opal.dev/v1 covering apps, resources, groups, users, bundles, access requests, access rules, owners, events, event streaming, sessions, and tokens, plus official SDKs (Python, Go), a CLI, a Terraform provider, and three hosted Model Context Protocol (MCP) servers for AI agents. Backed by Greylock. Sector: cybersecurity.
 
-Backed by: greylock — https://opal.dev/
+**Areas:** Company · Cybersecurity · Identity and Access Management · Least Privilege · Access Reviews · Security
+
+## Opal Security on APIs.io
+
+Everything profiled for Opal Security is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/opal-security/](https://apis.io/providers/opal-security/)** — or go straight to one of the APIs or properties below.
+
+### APIs (22)
+
+- [Opal Security Access Rules API](https://apis.io/apis/opal-security/opal-security-access-rules-api/) — Operations related to access rules
+- [Opal Security Apps API](https://apis.io/apis/opal-security/opal-security-apps-api/) — Operations related to apps
+- [Opal Security Bundles API](https://apis.io/apis/opal-security/opal-security-bundles-api/) — Operations related to bundles
+- [Opal Security Configuration Templates API](https://apis.io/apis/opal-security/opal-security-configuration-templates-api/) — Operations related to configuration templates
+- [Opal Security Delegations API](https://apis.io/apis/opal-security/opal-security-delegations-api/) — Operations related to request reviewer delegations
+- [Opal Security Event Streams API](https://apis.io/apis/opal-security/opal-security-event-streams-api/) — Operations related to event streaming connections
+- [Opal Security Events API](https://apis.io/apis/opal-security/opal-security-events-api/) — Operations related to events
+- [Opal Security Group Bindings API](https://apis.io/apis/opal-security/opal-security-group-bindings-api/) — Operations related to group bindings
+- [Opal Security Groups API](https://apis.io/apis/opal-security/opal-security-groups-api/) — Operations related to groups
+- [Opal Security Idp Group Mappings API](https://apis.io/apis/opal-security/opal-security-idp-group-mappings-api/) — Operations related to IDP group mappings
+- [Opal Security Message Channels API](https://apis.io/apis/opal-security/opal-security-message-channels-api/) — Operations related to message channels
+- [Opal Security Non Human Identities API](https://apis.io/apis/opal-security/opal-security-non-human-identities-api/) — Operations related to non-human identities
+- [Opal Security On Call Schedules API](https://apis.io/apis/opal-security/opal-security-on-call-schedules-api/) — Operations related to on-call schedules
+- [Opal Security Opal Queries API](https://apis.io/apis/opal-security/opal-security-opal-queries-api/) — Operations related to OpalQuery
+- [Opal Security Owners API](https://apis.io/apis/opal-security/opal-security-owners-api/) — Operations related to owners
+- [Opal Security Requests API](https://apis.io/apis/opal-security/opal-security-requests-api/) — Operations related to requests
+- [Opal Security Resources API](https://apis.io/apis/opal-security/opal-security-resources-api/) — Operations related to resources
+- [Opal Security Sessions API](https://apis.io/apis/opal-security/opal-security-sessions-api/) — Operations related to sessions
+- [Opal Security Tags API](https://apis.io/apis/opal-security/opal-security-tags-api/) — Operations related to tags
+- [Opal Security Tokens API](https://apis.io/apis/opal-security/opal-security-tokens-api/) — Operations related to API tokens
+- [Opal Security Uars API](https://apis.io/apis/opal-security/opal-security-uars-api/) — Operations related to UARs
+- [Opal Security Users API](https://apis.io/apis/opal-security/opal-security-users-api/) — Operations related to users
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Opal Security Events Webhooks](https://apis.io/asyncapis/opal-security/opal-security-events-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [opal-security-mcp.yml](https://apis.io/servers/opal-security/opal-security-mcp-yml/)
+
+#### Collections (22)
+
+Postman and Open Collection request collections.
+
+- [Opal access-rules API](https://apis.io/collections/opal-security/open-opal-security-access-rules-api/)
+- [Opal access-rules apps API](https://apis.io/collections/opal-security/open-opal-security-apps-api/)
+- [Opal access-rules bundles API](https://apis.io/collections/opal-security/open-opal-security-bundles-api/)
+- [Opal access-rules configuration-templates API](https://apis.io/collections/opal-security/open-opal-security-configuration-templates-api/)
+- [Opal access-rules delegations API](https://apis.io/collections/opal-security/open-opal-security-delegations-api/)
+- [Opal access-rules event-streams API](https://apis.io/collections/opal-security/open-opal-security-event-streams-api/)
+- [Opal access-rules events API](https://apis.io/collections/opal-security/open-opal-security-events-api/)
+- [Opal access-rules group-bindings API](https://apis.io/collections/opal-security/open-opal-security-group-bindings-api/)
+- [Opal access-rules groups API](https://apis.io/collections/opal-security/open-opal-security-groups-api/)
+- [Opal access-rules idp-group-mappings API](https://apis.io/collections/opal-security/open-opal-security-idp-group-mappings-api/)
+- [Opal access-rules message-channels API](https://apis.io/collections/opal-security/open-opal-security-message-channels-api/)
+- [Opal access-rules non-human-identities API](https://apis.io/collections/opal-security/open-opal-security-non-human-identities-api/)
+- [Opal access-rules on-call-schedules API](https://apis.io/collections/opal-security/open-opal-security-on-call-schedules-api/)
+- [Opal access-rules opal-queries API](https://apis.io/collections/opal-security/open-opal-security-opal-queries-api/)
+- [Opal access-rules owners API](https://apis.io/collections/opal-security/open-opal-security-owners-api/)
+- [Opal access-rules requests API](https://apis.io/collections/opal-security/open-opal-security-requests-api/)
+- [Opal access-rules resources API](https://apis.io/collections/opal-security/open-opal-security-resources-api/)
+- [Opal access-rules sessions API](https://apis.io/collections/opal-security/open-opal-security-sessions-api/)
+- [Opal access-rules tags API](https://apis.io/collections/opal-security/open-opal-security-tags-api/)
+- [Opal access-rules tokens API](https://apis.io/collections/opal-security/open-opal-security-tokens-api/)
+- [Opal access-rules uars API](https://apis.io/collections/opal-security/open-opal-security-uars-api/)
+- [Opal access-rules users API](https://apis.io/collections/opal-security/open-opal-security-users-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Opal Security Openapi Overlay](https://apis.io/overlays/opal-security/opal-security-openapi-overlay/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Opal Security Authentication](https://apis.io/security/opal-security/opal-security-authentication/)
+- [Opal Security Domain Security](https://apis.io/security/opal-security/opal-security-domain-security/)
+- [Opal Security Trust Center](https://apis.io/security/opal-security/opal-security-trust-center/)
+- [Opal Security Vulnerability Disclosure](https://apis.io/security/opal-security/opal-security-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://opal.dev/)
+- [Documentation](https://docs.opal.dev/)
+- [Getting started](https://docs.opal.dev/)
+- [API reference](https://docs.opal.dev/api-reference/access-rules/get-access-rules)
+- [Pricing](https://opal.dev/pricing)
+- [Sign up](https://app.opal.dev/)
+- [Blog](https://opal.dev/blog)
+- [Terms of service](https://opal.dev/terms-of-service)
+- [Privacy policy](https://opal.dev/privacy-policy)
+- [GitHub](https://github.com/opalsecurity)
+- [Status](https://status.opal.dev/)
+
+## API Evangelist rating
+
+**Kin Score 51.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 62.9 |
+| Contract governance | 4.5 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 73.1 |
+| Access clarity | 26.3 |
+
+**Agent readiness 50.3** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | unknown |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/opal-security/](https://apis.io/providers/opal-security/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Opal Security: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/opal-security/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
